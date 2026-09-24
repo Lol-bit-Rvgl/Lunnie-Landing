@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <defs>
+    <clipPath id="c"><polygon points="0,0 284,0 300,16 300,300 16,300 0,284"/></clipPath>
+  </defs>
+  <g clip-path="url(#c)">
+    <rect width="300" height="300" fill="#07060f"/>
+    <rect x="8" y="8" width="132" height="136" fill="#0d0b1d" stroke="#eadaff" stroke-width="2"/>
+    <circle cx="74" cy="64" r="24" fill="#100a26" stroke="#9d4edd" stroke-width="3"/>
+    <path d="M52 78 L52 104 Q74 116 96 104 L96 78" fill="none" stroke="#9d4edd" stroke-width="3"/>
+    <circle cx="74" cy="64" r="4" stroke="#fff" fill="#fff" stroke-width="2"/>
+    <text x="26" y="132" font-family="Courier New" font-size="9" fill="#7209b7">PANEL 01</text>
+    <rect x="160" y="8" width="132" height="136" fill="#0d0b1d" stroke="#eadaff" stroke-width="2"/>
+    <path d="M210 24 C 240 40 236 84 196 104" fill="none" stroke="#eadaff" stroke-width="6"/>
+    <path d="M224 22 C 204 56 214 96 184 110" fill="none" stroke="#9d4edd" stroke-width="3"/>
+    <circle cx="228" cy="96" r="4" fill="#ff5d8f"/>
+    <text x="178" y="132" font-family="Courier New" font-size="9" fill="#7209b7">PANEL 02</text>
+    <rect x="8" y="164" width="284" height="124" fill="#0d0b1d" stroke="#eadaff" stroke-width="2"/>
+    <ellipse cx="74" cy="230" rx="34" ry="24" fill="none" stroke="#eadaff" stroke-width="3"/>
+    <circle cx="66" cy="222" r="3" fill="#07060f"/>
+    <circle cx="82" cy="222" r="3" fill="#07060f"/>
+    <path d="M74 238 q8 6 14 0" stroke="#07060f" stroke-width="2.4" fill="none"/>
+    <ellipse cx="214" cy="232" rx="30" ry="20" fill="none" stroke="#9d4edd" stroke-width="3" stroke-dasharray="4 4"/>
+    <circle cx="252" cy="204" r="8" fill="#7209b7"/>
+    <text x="150" y="276" text-anchor="middle" font-family="Courier New" font-size="10" font-weight="bold" fill="#fff" letter-spacing="2">TO BE CONTINUED...
+</text>
+  </g>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="neb" cx="50%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#9d4edd"/>
+      <stop offset="55%" stop-color="#3a0ca3"/>
+      <stop offset="100%" stop-color="#07060f"/>
+    </radialGradient>
+    <radialGradient id="face" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#eadaff"/>
+      <stop offset="100%" stop-color="#b79cf0"/>
+    </radialGradient>
+    <clipPath id="oct"><polygon points="100,0 151,22 178,74 156,134 100,160 44,134 22,74 49,22"/></clipPath>
+  </defs>
+  <rect width="200" height="200" rx="14" fill="#07060f"/>
+  <circle cx="168" cy="34" r="2" fill="#ffffff"/>
+  <circle cx="34" cy="60" r="2" fill="#ffffff" opacity="0.7"/>
+  <circle cx="150" cy="150" r="2" fill="#ffffff" opacity="0.6"/>
+  <circle cx="52" cy="168" r="1.5" fill="#9d4edd"/>
+  <circle cx="186" cy="120" r="1.5" fill="#9d4edd" opacity="0.8"/>
+  <g clip-path="url(#oct)">
+    <rect width="200" height="200" fill="#07060f"/>
+    <circle cx="100" cy="84" r="72" fill="url(#neb)" opacity="0.85"/>
+    <ellipse cx="100" cy="118" rx="78" ry="30" fill="#2a0b52"/>
+    <path d="M100 152 C 64 152 46 132 46 96 L 154 96 C 154 132 136 152 100 152z" fill="#0d0b1d"/>
+    <circle cx="100" cy="86" r="42" fill="url(#face)"/>
+    <path d="M62 74 L138 74 L138 46 C 120 28 78 28 62 46z" fill="#0d0b1d"/>
+    <path d="M44 62 L58 40 L86 56z" fill="#0d0b1d"/>
+    <path d="M156 62 L142 40 L114 56z" fill="#0d0b1d"/>
+    <path d="M82 86 L91 95 L82 104z M118 86 L109 95 L118 104z" fill="#07060f"/>
+    <path d="M88 118 Q100 128 112 118" stroke="#ff5d8f" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <ellipse cx="82" cy="100" rx="5" ry="3.4" fill="#ff5d8f" opacity="0.55"/>
+    <ellipse cx="118" cy="100" rx="5" ry="3.4" fill="#ff5d8f" opacity="0.55"/>
+  </g>
+  <path d="M0 182 L18 200 L0 200z" fill="#9d4edd" opacity="0.9"/>
+  <path d="M200 182 L182 200 L200 200z" fill="#7209b7"/>
+  <path d="M36 172 L52 200 L36 200z" fill="#3a0ca3"/>
+  <path d="M164 172 L148 200 L164 200z" fill="#3a0ca3"/>
+</svg>

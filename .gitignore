@@ -1,0 +1,32 @@
+# ── Sistema ────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.swp
+*.swo
+*~
+
+# ── Editores / IDE ─────────────────────────────────────────
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+
+# ── Node / dependencias (si algún día añades tooling) ──────
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+
+# ── Build / estáticos generados ────────────────────────────
+dist/
+build/
+*.min.js
+*.map
+
+# ── Registros y temporales ─────────────────────────────────
+*.log
+tmp/
+temp/

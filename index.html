@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<!--
+  LUNNIE ♡ — index.html
+  Dirección de arte: SPACE × PERSONA 5 × GUILTY GEAR
+  3 columnas: perfil & tools | contenido central | widgets.
+  Stack: HTML5 semántico + CSS Grid/clip-path + JS vanilla.
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lunnie: rincón espacial de arte, OCs, comisiones y blog. Estética Persona 5 / Guilty Gear / web revival.">
+  <title>LUNNIE ♡ my corner of the space-web</title>
+
+  <!-- Favicon púrpura (SVG data-URI, sin archivo extra) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%233a0ca3%22/><path d=%22M50 14a36 36 0 1 0 0 72z%22 fill=%22%239d4edd%22 opacity=%22.9%22/><circle cx=%2270%22 cy=%2230%22 r=%223%22 fill=%22white%22/></svg>">
+
+  <!-- Tipografías: Oswald (display pesado GG) + Rajdhani (UI P5) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Capa fija espacial: nebulosas + estrellas + rejilla técnica -->
+  <div class="space-bg" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       TICKER / MARQUEE
+       ============================================================ -->
+  <div class="marquee-bar" aria-hidden="true">
+    <div class="marquee-track">
+      <span><em>✦ LOOKING FOR A HOME IN THE INTERNET ✦</em> <b>ENCARGOS ABIERTOS</b> :: 7 CATEGORÍAS ✦ <em>GALERÍA CON FILTROS</em> ✦ <em>100% SIN FRAMEWORKS</em> ✦ <em>HEAVEN OR HELL ???</em></span>
+      <span><em>✦ LOOKING FOR A HOME IN THE INTERNET ✦</em> <b>ENCARGOS ABIERTOS</b> :: 7 CATEGORÍAS ✦ <em>GALERÍA CON FILTROS</em> ✦ <em>100% SIN FRAMEWORKS</em> ✦ <em>HEAVEN OR HELL ???</em></span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <header class="hero">
+    <span class="hero-badge">EST. <i>2026</i> // NEOCITIES SECTOR</span>
+    <h1 class="hero-title">LU<span class="hi">NN</span>IE</h1>
+    <p class="hero-sub">my corner of the <em>space-web</em></p>
+    <div class="hero-rule" aria-hidden="true"></div>
+  </header>
+
+  <!-- ============================================================
+       NAVEGACIÓN PRINCIPAL
+       ============================================================ -->
+  <nav class="site-nav" aria-label="Navegación principal">
+    <a href="index.html" class="active">🏠 home</a>
+    <a href="galeria.html">🎨 galería</a>
+    <a href="encargos.html">🛠 encargos</a>
+    <a href="ocs.html">✨ OCs</a>
+    <a href="blog.html">📝 blog</a>
+    <a href="sobre-mi.html">👤 sobre mí</a>
+  </nav>
+
+  <main class="page">
+    <div class="grid">
+
+      <!-- ==========================================================
+           COLUMNA IZQUIERDA — PERFIL & TOOLS
+           ========================================================== -->
+      <aside class="col stack" style="order: 1">
+
+        <!-- Perfil -->
+        <section class="panel" data-reveal aria-labelledby="t-perfil">
+          <header class="panel-head"><h2 id="t-perfil">perfil</h2><span class="chip chip-live">online</span></header>
+          <div class="profile-fig">
+            <img class="profile-avatar shape-oct" src="assets/img/avatar.svg" alt="Avatar espacio de Lunnie" width="132">
+          </div>
+          <h3 class="profile-name">LUNNIE</h3>
+          <p class="profile-tag">ARTIST // SPACE SECTOR 17</p>
+          <p class="profile-bio">Dibujo munditos, OCs y lo que sale del cosmos. Comisiones y galería en este sector. La web es mi casa otra vez.</p>
+          <div class="profile-stats">
+            <div><b>42</b><span>obras</span></div>
+            <div><b>07</b><span>OCs</span></div>
+            <div><b>∞</b><span>café</span></div>
+          </div>
+        </section>
+
+        <!-- Botón 88x31 + copiar -->
+        <section class="panel" data-reveal aria-labelledby="t-button">
+          <header class="panel-head"><h2 id="t-button">my 88x31</h2><span class="chip">button</span></header>
+          <div class="button-block">
+            <div class="badge-row">
+              <img class="badge-88" src="assets/img/button.svg" alt="Botón 88x31 de LUNNIE">
+              <img class="badge-88" src="assets/img/button.svg" alt="Botón 88x31 de LUNNIE variante">
+            </div>
+            <p class="tiny">¿enlazarme? copia el código:</p>
+            <textarea id="button-code" class="copy-source" rows="4" readonly>&lt;a href="https://lunnie.neocities.org/" target="_blank"&gt;&lt;img src="https://lunnie.neocities.org/assets/img/button.svg" alt="LUNNIE" width="88" height="31" border="0"&gt;&lt;/a&gt;</textarea>
+            <button type="button" id="copy-btn" class="btn btn-blank">📋 copiar</button>
+            <p id="copy-feedback" class="copy-feedback" hidden>¡copiado! ✨ gracias por el cariño</p>
+          </div>
+        </section>
+
+        <!-- ==========================================================
+             WIDGET DISCORD EN VIVO (render por discord-widget.js)
+             ========================================================== -->
+        <section class="panel" data-reveal aria-labelledby="t-discord">
+          <header class="panel-head">
+            <h2 id="t-discord">estado live</h2>
+            <span class="meter live" title="sondeo de Lanyard"></span>
+          </header>
+          <!-- Contenedor que llena discord-widget.js. Necesita tu ID. -->
+          <div class="dw" id="discord-widget">
+            <p class="dw-loading">▚ INICIANDO…</p>
+          </div>
+        </section>
+
+        <!-- Redes -->
+        <section class="panel" data-reveal aria-labelledby="t-social">
+          <header class="panel-head"><h2 id="t-social">redes</h2><span class="chip">social</span></header>
+          <ul class="social-list">
+            <li><a href="#" target="_blank" rel="noopener">twitter / x</a></li>
+            <li><a href="#" target="_blank" rel="noopener">tumblr</a></li>
+            <li><a href="#" target="_blank" rel="noopener">artfol</a></li>
+            <li><a href="https://neocities.org/site/lunnie" target="_blank" rel="noopener">neocities</a></li>
+          </ul>
+        </section>
+
+        <!-- Webring -->
+        <section class="panel" data-reveal aria-labelledby="t-webring">
+          <header class="panel-head">
+            <h2 id="t-webring">webring</h2>
+            <button type="button" class="btn btn-ink" id="webring-girar">🎲 random</button>
+          </header>
+          <ul class="friend-links" id="friend-links">
+            <li><a href="#" target="_blank" rel="noopener" title="amigo 1"><img src="assets/img/button.svg" alt="botón amigo"></a></li>
+            <li><a href="#" target="_blank" rel="noopener" title="amigo 2"><img src="assets/img/button.svg" alt="botón amigo"></a></li>
+            <li><a href="#" target="_blank" rel="noopener" title="amigo 3"><img src="assets/img/button.svg" alt="botón amigo"></a></li>
+            <li><a href="#" target="_blank" rel="noopener" title="amigo 4"><img src="assets/img/button.svg" alt="botón amigo"></a></li>
+            <li><a href="#" target="_blank" rel="noopener" title="amigo 5"><img src="assets/img/button.svg" alt="botón amigo"></a></li>
+            <li><a href="#" target="_blank" rel="noopener" title="amigo 6"><img src="assets/img/button.svg" alt="botón amigo"></a></li>
+          </ul>
+        </section>
+      </aside>
+
+      <!-- ==========================================================
+           COLUMNA CENTRAL — CONTENIDO
+           ========================================================== -->
+      <div class="col stack" style="order: 2">
+
+        <!-- Banner ilustrado -->
+        <figure class="banner-wrap" data-reveal>
+          <img id="site-banner" src="assets/img/banner.svg" alt="Banner del sector: nebulosa con el nombre LUNNIE">
+        </figure>
+
+        <!-- Bienvenida en caja de diálogo P5 -->
+        <section class="p5-box" aria-labelledby="t-welcome" data-reveal>
+          <span class="speaker-tab">lunnie // entrada</span>
+          <p>
+            Bienvenid@ a <strong>mi rincón en el espacio</strong>. Aquí no hay algoritmo: hay
+            un dibujante que quería volver a tener casa en la web, con 3 columnas, botones
+            88x31 y mucho clip-path. La galería y los encargos están en su sector.
+          </p>
+          <p>
+            Todo el sitio es <em>estático</em>: HTML + CSS + JS a pelo, preparado para
+            Neocities o GitHub Pages. Los comentarios funcionan con GitHub Discussions
+            (giscus) — sin servidor, sin base de datos.
+          </p>
+          <span class="skip-mark" aria-hidden="true">▼▼▼</span>
+        </section>
+
+        <!-- Dibujo destacado -->
+        <section class="panel" data-reveal aria-labelledby="t-featured">
+          <header class="panel-head">
+            <h2 id="t-featured">obra destacada</h2>
+            <span class="chip chip-warn">new</span>
+          </header>
+          <div class="featured-grid">
+            <figure class="featured-art-wrap">
+              <img class="featured-art shape-hex" src="assets/img/art2.svg" alt="Gatita astronauta — obra destacada">
+            </figure>
+            <div class="featured-info">
+              <div class="tags-row">
+                <span class="chip">original</span>
+                <span class="chip chip-open">portada</span>
+              </div>
+              <h3>«gatita astronauta»</h3>
+              <p>
+                Mi pedazo favorito del mes: una pequeña exploradora espacial flotando
+                con su casco. (Hecha a mano en este sector, sin IA en el proceso.)
+              </p>
+              <a class="btn" href="galeria.html">ver en galería</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Avance de galería -->
+        <section class="panel" data-reveal aria-labelledby="t-preview">
+          <header class="panel-head"><h2 id="t-preview">últimas obras</h2><span class="chip">preview</span></header>
+          <div class="gal-strip">
+            <a href="galeria.html"><img src="assets/img/art1.svg" alt="planeta con anillo"></a>
+            <a href="galeria.html"><img src="assets/img/art3.svg" alt="mecha kawaii"></a>
+            <a href="galeria.html"><img src="assets/img/art4.svg" alt="cara lunar"></a>
+            <a href="galeria.html"><img src="assets/img/art5.svg" alt="página de cómic"></a>
+            <a href="galeria.html"><img src="assets/img/art6.svg" alt="animación rough"></a>
+            <a class="more" href="galeria.html">all →</a>
+          </div>
+        </section>
+
+        <!-- Changelog -->
+        <section class="panel" data-reveal aria-labelledby="t-log">
+          <header class="panel-head"><h2 id="t-log">registro de actualizaciones</h2><span class="chip chip-live">live</span></header>
+          <ol class="timeline" reversed>
+            <li>
+              <time datetime="2026-09-24">24/09/2026</time>
+              <p><strong>Rebrand espacial.</strong> El sector pasa a negro abisal + neón. Nuevo layout P5/GG, widget de Discord en vivo y comentarios con giscus.</p>
+            </li>
+            <li>
+              <time datetime="2026-09-20">20/09/2026</time>
+              <p>Añadida la página de <a href="encargos.html">encargos</a> con 7 categorías y TERMS por tarjeta. Estado por categoría: OPEN/CLOSED.</p>
+            </li>
+            <li>
+              <time datetime="2026-09-12">12/09/2026</time>
+              <p><a href="galeria.html">Galería</a> con filtros: original, fanart, NSFW, cómics y animación. Lightbox «take your time» sin frameworks.</p>
+            </li>
+            <li>
+              <time datetime="2026-09-05">05/09/2026</time>
+              <p>Migración del sistema de música a un <strong>pad espacial</strong> generado con Web Audio API. Sin mp3, sin servidor.</p>
+            </li>
+            <li>
+              <time datetime="2026-09-01">01/09/2026</time>
+              <p><em>Fundación del sector.</em> Primer bootstrap de «Lunnie's Corner» en Neocities 🎉</p>
+            </li>
+          </ol>
+        </section>
+
+        <!-- ==========================================================
+             COMENTARIOS: diálogo P5 + hilo Giscus
+             ========================================================== -->
+        <section class="panel" data-reveal aria-labelledby="t-comments">
+          <header class="panel-head">
+            <h2 id="t-comments">guestbook // comentarios</h2>
+            <span class="chip">vía github</span>
+          </header>
+
+          <!-- Caja de diálogo al estilo P5 -->
+          <div class="dg-row">
+            <img class="dg-sprite shape-oct" src="assets/img/assistant.svg" alt="asistente Lunnie">
+            <div class="dg-bubble">
+              <label for="dg-text">▚ deja tu mensaje</label>
+              <textarea id="dg-text" placeholder="Escribe tu comentario… (se envía vía GitHub al pulsar ENVIAR)"></textarea>
+              <div class="dg-actions">
+                <a class="btn" href="#" target="_blank" rel="noopener">enviar ✎</a>
+                <span class="dg-note">* el enlace anterior apunta a GitHub Discussions; cámbialo a tu repo.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hilo: script.js inyecta giscus si data-repo está configurado -->
+          <div class="giscus" id="giscus-thread">
+            <div class="giscus-fallback" id="giscus-fallback">▧ CARGANDO SISTEMA DE COMENTARIOS…</div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ==========================================================
+           COLUMNA DERECHA — WIDGETS
+           ========================================================== -->
+      <aside class="col stack" style="order: 3">
+
+        <!-- Working on -->
+        <section class="panel" data-reveal aria-labelledby="t-work">
+          <header class="panel-head"><h2 id="t-work">working on rn…</h2><span class="chip chip-open">wip</span></header>
+          <div class="working-row"><span class="dot"></span><p>portada del <strong>sketchbook espacial</strong></p></div>
+          <div class="working-row"><span class="dot"></span><p>página de <a href="ocs.html"><strong>OCs</strong></a> con tarjetas por personaje</p></div>
+          <div class="working-row"><span class="dot"></span><p>playlist para el <a href="blog.html"><strong>blog</strong></a></p></div>
+          <div class="working-row"><span class="dot"></span><p>página <a href="sobre-mi.html"><strong>sobre mí</strong></a></p></div>
+          <p class="panel-foot tiny">actualizado: hoy / este es un widget decorativo, puedes sincronizarlo con tu webring o feed.</p>
+        </section>
+
+        <!-- Música ambiental -->
+        <section class="panel" data-reveal aria-labelledby="t-music">
+          <header class="panel-head"><h2 id="t-music">música ambiente</h2><span class="chip">pad</span></header>
+          <div class="music-block">
+            <div class="eq" id="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            <p class="tiny">pad espacial sintetizado en tu navegador (Web Audio API). Cero mp3.</p>
+            <button type="button" class="btn" id="music-toggle" aria-pressed="false">▶ emitir ambiente</button>
+            <p class="music-now" id="music-status">SILENCIO CÓSMICO</p>
+          </div>
+        </section>
+
+        <!-- Diagnósticos (mini widgets GG) -->
+        <section class="panel" data-reveal aria-labelledby="t-diag">
+          <header class="panel-head"><h2 id="t-diag">system diagnostics</h2><span class="chip chip-open">100%</span></header>
+          <div class="diag-row"><span>UPTIME DEL SECTOR</span><b>ESTABLE</b></div>
+          <div class="diag-row"><span>FRAMEWORKS CARGADOS</span><b>00</b></div>
+          <div class="diag-row"><span>BUILD STEP</span><b>NONE</b></div>
+          <div class="diag-row"><span>CAFÉ CONSUMIDO</span><b>∞</b></div>
+          <div class="diag-row"><span>MODO SERENIDAD</span><b class="pos">ON</b></div>
+        </section>
+
+        <!-- Badges decorativos -->
+        <section class="panel" data-reveal aria-labelledby="t-badges">
+          <header class="panel-head"><h2 id="t-badges">badges</h2><span class="chip">colección</span></header>
+          <div class="badges-block" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+            <img class="badge-88" src="assets/img/button.svg" alt="badge">
+            <img class="badge-88" src="assets/img/button.svg" alt="badge">
+            <img class="badge-88" src="assets/img/button.svg" alt="badge">
+          </div>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <p class="foot-display">LUNNIE'S CORNER</p>
+    <p>© <span data-year>2026</span> — crafted with ♥ and 0 JS frameworks · estética P5 × GG × space ✦</p>
+    <p>no endorsement of algorithms were given in the making of this site.</p>
+  </footer>
+
+  <!-- ============================================================
+       ASISTENTE FLOTANTE
+       ============================================================ -->
+  <div class="assistant" id="assistant">
+    <button type="button" class="assistant-bubble" id="assistant-bubble" aria-label="Abrir asistente">
+      <img src="assets/img/assistant.svg" alt="Mascota asistente">
+    </button>
+    <div class="assistant-popup" id="assistant-popup" hidden>
+      <div class="assistant-head">
+        <span class="title">asistente v2.0</span>
+        <button type="button" class="assistant-close" id="assistant-close" aria-label="Cerrar asistente">✕</button>
+      </div>
+      <div class="assistant-body" id="assistant-body"><p>conectando con el sector…</p></div>
+      <button type="button" class="btn btn-ink" id="assistant-otro">🎲 otro consejo</button>
+    </div>
+  </div>
+
+  <!-- Config de Giscus (comentarios). Datos vacíos = aviso elegante.
+       En tu repo: Settings → Discussions. Rellena:
+         data-repo       → "usuario/repo"
+         data-repo-id    → id interno del repo (giscus.app te lo da)
+         data-category   → "Announcements" (discussion category)
+         data-category-id → id de esa categoría                     -->
+  <div hidden id="giscus-config"
+       data-repo="TU_USUARIO/TU_REPO"
+       data-repo-id=""
+       data-category=""
+       data-category-id=""
+       data-mapping="pathname"></div>
+
+  <!-- Scripts: core del sitio + widget de Discord -->
+  <script src="script.js" defer></script>
+  <script src="discord-widget.js" defer></script>
+</body>
+</html>

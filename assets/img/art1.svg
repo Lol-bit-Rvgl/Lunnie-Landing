@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <defs>
+    <radialGradient id="n" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#9d4edd" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#9d4edd" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="p" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#eadaff"/>
+      <stop offset="60%" stop-color="#3a0ca3"/>
+      <stop offset="100%" stop-color="#07060f"/>
+    </linearGradient>
+    <clipPath id="c"><polygon points="0,0 284,0 300,16 300,300 16,300 0,284"/></clipPath>
+  </defs>
+  <g clip-path="url(#c)">
+    <rect width="300" height="300" fill="#07060f"/>
+    <ellipse cx="150" cy="160" rx="150" ry="130" fill="url(#n)"/>
+    <circle cx="60" cy="40" r="1.6" fill="#fff"/>
+    <circle cx="240" cy="60" r="1.6" fill="#fff"/>
+    <circle cx="260" cy="220" r="1.4" fill="#fff"/>
+    <circle cx="40" cy="200" r="1.4" fill="#fff"/>
+    <circle cx="180" cy="30" r="1.2" fill="#fff" opacity="0.7"/>
+    <circle cx="150" cy="156" r="62" fill="#1a1030" stroke="#9d4edd" stroke-width="2"/>
+    <circle cx="150" cy="156" r="40" fill="url(#p)"/>
+    <path d="M150 78 a50 22 0 1 1 0 0" transform="rotate(-20 150 156)" fill="none" stroke="#eadaff" stroke-width="3" opacity="0.9"/>
+    <circle cx="150" cy="120" r="14" fill="#210a40"/>
+    <circle cx="184" cy="64" r="4" fill="#7209b7"/>
+    <circle cx="248" cy="150" r="3" fill="#3a0ca3"/>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="31" viewBox="0 0 88 31">
+  <defs>
+    <clipPath id="cut"><polygon points="4,0 84,0 88,4 88,27 84,31 0,31 0,4"/></clipPath>
+  </defs>
+  <g clip-path="url(#cut)">
+    <rect width="88" height="31" fill="#0d0b1d"/>
+    <path d="M0 26 L88 10" stroke="#9d4edd" stroke-width="1" opacity="0.8"/>
+    <polygon points="6,6 30,6 24,25 4,25" fill="#3a0ca3"/>
+    <text x="50" y="15" font-family="Arial Black, Arial" font-size="8" font-weight="900" fill="#ffffff" letter-spacing="1">LUNNIE</text>
+    <text x="50" y="23" font-family="Courier New" font-size="6" fill="#9d4edd" letter-spacing="1">EST. 2026</text>
+    <circle cx="13" cy="15" r="2.4" fill="#eadaff"/>
+    <path d="M84 16 L88 12 L88 20z" fill="#ffffff"/>
+  </g>
+</svg>

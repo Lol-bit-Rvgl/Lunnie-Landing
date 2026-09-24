@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <defs>
+    <radialGradient id="hel" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#cbb9f0"/>
+    </radialGradient>
+    <radialGradient id="g" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3a0ca3" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#3a0ca3" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="c"><polygon points="0,0 284,0 300,16 300,300 16,300 0,284"/></clipPath>
+  </defs>
+  <g clip-path="url(#c)">
+    <rect width="300" height="300" fill="#07060f"/>
+    <ellipse cx="150" cy="90" rx="150" ry="90" fill="url(#g)"/>
+    <circle cx="40" cy="50" r="1.5" fill="#fff"/>
+    <circle cx="250" cy="40" r="1.5" fill="#fff"/>
+    <circle cx="280" cy="170" r="1.4" fill="#fff"/>
+    <circle cx="30" cy="150" r="1.4" fill="#fff" opacity="0.7"/>
+    <circle cx="160" cy="230" r="1.4" fill="#fff" opacity="0.7"/>
+    <ellipse cx="150" cy="252" rx="120" ry="22" fill="#120a26"/>
+    <circle cx="150" cy="150" r="58" fill="url(#hel)" stroke="#eadaff" stroke-width="2"/>
+    <polygon points="104,98 108,140 140,98" fill="#fff"/>
+    <polygon points="196,98 192,140 160,98" fill="#fff"/>
+    <path d="M104 100 Q104 62 150 56 Q196 62 196 100" fill="none" stroke="#9d4edd" stroke-width="6"/>
+    <path d="M104 100 Q104 66 150 60 Q196 66 196 100" fill="none" stroke="#7209b7" stroke-width="3"/>
+    <rect x="118" y="138" width="64" height="40" rx="10" fill="#eadaff"/>
+    <path d="M118 160 L182 142 L182 162 L118 180z" fill="#9d4edd"/>
+    <circle cx="128" cy="152" r="3" fill="#07060f"/>
+    <circle cx="148" cy="150" r="3" fill="#07060f"/>
+    <circle cx="172" cy="156" r="3" fill="#07060f"/>
+    <path d="M150 202 v34 M150 236 l-14 14 M150 236 l14 14" stroke="#9d4edd" stroke-width="4" fill="none"/>
+    <ellipse cx="150" cy="230" rx="8" ry="4" fill="#ffffff" opacity="0.8"/>
+  </g>
+</svg>
