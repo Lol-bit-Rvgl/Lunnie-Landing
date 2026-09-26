@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="50" viewBox="0 0 240 50" renderer-info="lunnie-retro">
+  <rect x="1.5" y="1.5" width="237" height="47" rx="5" fill="#0d0b1d" opacity="0.9" stroke="#9d4edd" stroke-width="2" stroke-dasharray="9 4"/>
+  <rect x="5" y="5" width="230" height="40" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.3"/>
+  <text x="120" y="22" text-anchor="middle" font-family="'Arial Black','Courier New',monospace" font-weight="bold" font-size="14" letter-spacing="3" fill="#ffffff" stroke="#7209b7" stroke-width="0.5">HEAVEN OR HELL</text>
+  <text x="120" y="38" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" letter-spacing="5" fill="#ffbf00">LET'S ROCK!</text>
+  <path d="M14 10 L18 8 L16 13 L20 13 L13 20 L15 14 L11 14 Z" fill="#ff5d8f"/>
+  <path d="M218 32 L226 22 L222 30 L230 30 L224 40 L228 32 Z" fill="#7209b7"/>
+</svg>

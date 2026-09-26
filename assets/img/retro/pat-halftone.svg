@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" renderer-info="lunnie-retro">
+  <defs>
+    <pattern id="h" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="5"  cy="5"  r="1.6" fill="#ffffff" opacity="0.07"/>
+      <circle cx="15" cy="15" r="2.6" fill="#ffffff" opacity="0.05"/>
+      <circle cx="5"  cy="15" r="1.0" fill="#9d4edd" opacity="0.10"/>
+      <circle cx="15" cy="5"  r="1.0" fill="#9d4edd" opacity="0.10"/>
+    </pattern>
+  </defs>
+  <rect width="80" height="80" fill="url(#h)"/>
+</svg>

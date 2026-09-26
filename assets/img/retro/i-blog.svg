@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" renderer-info="lunnie-retro">
+    <rect x="2" y="2" width="12" height="12" fill="#7209b7"/>
+    <rect x="4" y="4" width="8" height="8" fill="#0d0b1d"/>
+    <rect x="5" y="5" width="6" height="1" fill="#eadaff"/>
+    <rect x="5" y="7" width="4" height="1" fill="#9d4edd"/>
+    <rect x="5" y="9" width="5" height="1" fill="#eadaff"/>
+    <rect x="5" y="11" width="1" height="1" fill="#ffffff"/>
+</svg>

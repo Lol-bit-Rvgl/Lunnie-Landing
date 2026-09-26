@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="16" viewBox="0 0 48 16" renderer-info="lunnie-retro">
+  <defs>
+    <pattern id="haz" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="10" height="10" fill="#05040c"/>
+      <rect width="5" height="10" fill="#ff5d8f"/>
+    </pattern>
+  </defs>
+  <rect width="48" height="16" fill="url(#haz)"/>
+  <rect width="48" height="16" fill="none" stroke="#eadaff" stroke-width="0.6" opacity="0.55"/>
+</svg>
