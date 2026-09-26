@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<!--
+  LUNNIE ♡ — ocs.html
+  Archivo de personajes originales (OCs): dossiers con ficha de datos,
+  paleta, elemento/vibe y bio. Estética Persona 5 × Guilty Gear.
+  Mismo esqueleto base que index.html: ticker + page-hero + nav + dock + footer.
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Archivo de personajes originales (OC) de Lunnie: fichas de dossier con paleta, elemento y bio de cada OC.">
+  <title>OCs // Dossier — LUNNIE</title>
+
+  <!-- Favicon púrpura (SVG data-URI, sin archivo extra) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%233a0ca3%22/><path d=%22M50 14a36 36 0 1 0 0 72z%22 fill=%22%239d4edd%22 opacity=%22.9%22/><circle cx=%2270%22 cy=%2230%22 r=%223%22 fill=%22white%22/></svg>">
+
+  <!-- Tipografías: Oswald (display pesado GG) + Rajdhani (UI P5) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Capa fija espacial: nebulosas + estrellas + rejilla técnica -->
+  <div class="space-bg" aria-hidden="true"></div>
+
+  <!-- Gatillo del easter egg de cumpleaños (luna en barra superior) -->
+  <button type="button" class="egg-trigger" id="egg-trigger" aria-label="secreto" title="*un enigma brilla en la luna*">🌙</button>
+
+  <!-- Ticker -->
+  <div class="marquee-bar" aria-hidden="true">
+    <div class="marquee-track">
+      <span><em>✦ ARCHIVO DE PERSONAJES ✦</em> <b>OC_01 → OC_03</b> :: DOSSIERS EN CURSO ✦ <em>PALETA + ELEMENTO + BIO</em> ✦ <em>HEAVEN OR HELL ???</em></span>
+      <span><em>✦ ARCHIVO DE PERSONAJES ✦</em> <b>OC_01 → OC_03</b> :: DOSSIERS EN CURSO ✦ <em>PALETA + ELEMENTO + BIO</em> ✦ <em>HEAVEN OR HELL ???</em></span>
+    </div>
+  </div>
+
+  <!-- Hero de página -->
+  <header class="page-hero">
+    <span class="hero-badge">[ARCHIVE // ORIGINAL CHARACTERS]</span>
+    <h1>ocs / dossier</h1>
+    <p>fichas · paletas · elementos · bios</p>
+    <div class="hero-rule" aria-hidden="true"></div>
+  </header>
+
+  <!-- Nav -->
+  <nav class="site-nav" aria-label="Navegación principal">
+    <a href="index.html">🏠 home</a>
+    <a href="galeria.html">🎨 galería</a>
+    <a href="encargos.html">🛠 encargos</a>
+    <a href="ocs.html" class="active">✨ OCs</a>
+    <a href="blog.html">📝 blog</a>
+    <a href="sobre-mi.html">👤 sobre mí</a>
+  </nav>
+
+  <main class="page">
+    <div class="grid">
+      <div class="col stack" style="grid-column: 1 / -1">
+
+        <!-- Intro en caja de diálogo P5 -->
+        <section class="p5-box" aria-labelledby="t-ocs-intro" data-reveal>
+          <span class="speaker-tab">lunnie // archivo oc</span>
+          <p>
+            Bienvenid@ al <strong>archivo de personajes</strong>. Aquí viven mis OCs:
+            fichas de dossier con placa de datos, paleta de color y una bio breve.
+            Cada tarjeta es una plantilla <em>lista para rellenar</em> — sustituye el
+            placeholder SVG por el arte final cuando lo tengas.
+          </p>
+          <p>
+            Estado del archivo: <strong>3 fichas activas</strong> y espacio para las
+            que vengan. Si un OC te gusta, pídmelo en <a href="encargos.html">encargos</a>
+            como fanart oficial ✦
+          </p>
+          <span class="skip-mark" aria-hidden="true">▼▼▼</span>
+        </section>
+
+        <!-- Grid de dossiers -->
+        <section class="panel" data-reveal aria-labelledby="t-ocs">
+          <header class="panel-head">
+            <h2 id="t-ocs">[archive // original characters]</h2>
+            <span class="chip chip-open">[dossier active]</span>
+          </header>
+
+          <div class="oc-grid">
+
+            <!-- OC_01 -->
+            <article class="oc-card" data-reveal>
+              <header class="oc-head">
+                <span class="oc-id">OC_01 // PROTOTYPE</span>
+                <span class="chip chip-open">[DOSSIER ACTIVE]</span>
+              </header>
+              <figure class="oc-fig">
+                <img class="oc-img" src="assets/img/art3.svg" alt="Placeholder del OC_01 Prototype (mecha)">
+                <figcaption>slot imagen → assets/img/oc01.svg (placeholder)</figcaption>
+              </figure>
+              <dl class="oc-data">
+                <div><dt>nombre</dt><dd>PROTOTYPE-01 «proto»</dd></div>
+                <div><dt>especie / rol</dt><dd>humanoide // mensajera orbital</dd></div>
+                <div><dt>paleta</dt><dd class="oc-palette" aria-label="paleta #9d4edd #3a0ca3 #eadaff">
+                  <span style="--sw:#9d4edd"></span>
+                  <span style="--sw:#3a0ca3"></span>
+                  <span style="--sw:#eadaff"></span>
+                </dd></div>
+                <div><dt>elemento / arma</dt><dd>◈ hoja orbital «RIFT»</dd></div>
+                <div><dt>vibe</dt><dd>guilty gear midnight</dd></div>
+              </dl>
+              <p class="oc-bio">
+                Primer boceto que sobrevivió a la carpeta de descartes: cruza órbitas
+                rotas entregando cartas que nunca llegan a tiempo. Corre, tropieza y
+                siempre levanta el puño antes de caer.
+              </p>
+              <footer class="oc-foot">
+                <span class="chip chip-warn">wip</span>
+                <span class="tiny">ficha 01 / 03</span>
+              </footer>
+            </article>
+
+            <!-- OC_02 -->
+            <article class="oc-card" data-reveal>
+              <header class="oc-head">
+                <span class="oc-id">OC_02 // NEBULA</span>
+                <span class="chip chip-open">[DOSSIER ACTIVE]</span>
+              </header>
+              <figure class="oc-fig">
+                <img class="oc-img" src="assets/img/art1.svg" alt="Placeholder del OC_02 Nebula (planeta con anillo)">
+                <figcaption>slot imagen → assets/img/oc02.svg (placeholder)</figcaption>
+              </figure>
+              <dl class="oc-data">
+                <div><dt>nombre</dt><dd>NEBULA</dd></div>
+                <div><dt>especie / rol</dt><dd>gato-cosmos // mascota de puente</dd></div>
+                <div><dt>paleta</dt><dd class="oc-palette" aria-label="paleta #07060f #7209b7 #00ff9f">
+                  <span style="--sw:#07060f"></span>
+                  <span style="--sw:#7209b7"></span>
+                  <span style="--sw:#00ff9f"></span>
+                </dd></div>
+                <div><dt>elemento / arma</dt><dd>◉ cola-anillo · gravedad 0.3</dd></div>
+                <div><dt>vibe</dt><dd>menú nocturno P5</dd></div>
+              </dl>
+              <p class="oc-bio">
+                Duerme encima del motor principal del barco. Si maúlla dos veces seguidas
+                es porque vas a perder el set — aviso sabio, nunca apuestes en su contra.
+              </p>
+              <footer class="oc-foot">
+                <span class="chip chip-open">canonical</span>
+                <span class="tiny">ficha 02 / 03</span>
+              </footer>
+            </article>
+
+            <!-- OC_03 -->
+            <article class="oc-card" data-reveal>
+              <header class="oc-head">
+                <span class="oc-id">OC_03 // VESPER</span>
+                <span class="chip chip-open">[DOSSIER ACTIVE]</span>
+              </header>
+              <figure class="oc-fig">
+                <img class="oc-img" src="assets/img/art4.svg" alt="Placeholder del OC_03 Vesper (cara lunar)">
+                <figcaption>slot imagen → assets/img/oc03.svg (placeholder)</figcaption>
+              </figure>
+              <dl class="oc-data">
+                <div><dt>nombre</dt><dd>VESPER</dd></div>
+                <div><dt>especie / rol</dt><dd>estrella fugaz // rushdown</dd></div>
+                <div><dt>paleta</dt><dd class="oc-palette" aria-label="paleta #ff2d55 #eadaff #240046">
+                  <span style="--sw:#ff2d55"></span>
+                  <span style="--sw:#eadaff"></span>
+                  <span style="--sw:#240046"></span>
+                </dd></div>
+                <div><dt>elemento / arma</dt><dd>✦ guanteletes de luz</dd></div>
+                <div><dt>vibe</dt><dd>GG strive · overclock</dd></div>
+              </dl>
+              <p class="oc-bio">
+                Nació de un fanart a las 3 a.m. y se quedó. Habla poco, aprieta mucho:
+                su round start ya es una declaración de intenciones.
+              </p>
+              <footer class="oc-foot">
+                <span class="chip chip-warn">concept</span>
+                <span class="tiny">ficha 03 / 03</span>
+              </footer>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- Nota de plantilla -->
+        <section class="panel" data-reveal aria-labelledby="t-ocs-note">
+          <header class="panel-head">
+            <h2 id="t-ocs-note">plantilla de dossier</h2>
+            <span class="chip">how-to</span>
+          </header>
+          <p class="muted" style="margin-top:4px">
+            Para añadir un OC nuevo: copia un <code>&lt;article class="oc-card"&gt;</code>,
+            cambia <code>oc-id</code>, rellena la <code>dl.oc-data</code>, sustituye el
+            <code>img</code> por tu arte y mantén el badge
+            <span class="chip chip-open">[DOSSIER ACTIVE]</span>.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================================================
+       TRANSMISSION SIGNALS — dock de contacto (estilo GG)
+       ============================================================ -->
+  <section class="dock" data-reveal aria-labelledby="t-dock">
+    <div class="dock-head">
+      <span class="dock-badge" id="t-dock">// TRANSMISSION SIGNALS</span>
+      <span class="chip chip-open">reachable</span>
+    </div>
+    <div class="dock-row">
+      <button type="button" class="dock-btn" id="dock-discord" data-copy="@lunnie">
+        <span class="dock-ico" aria-hidden="true">⛧</span>
+        <strong>discord</strong>
+        <em>@lunnie</em>
+      </button>
+      <a class="dock-btn dock-link" href="mailto:lunnie.commissions@gmail.com">
+        <span class="dock-ico" aria-hidden="true">✉</span>
+        <strong>correo encargos</strong>
+        <em>lunnie.commissions@gmail.com</em>
+      </a>
+      <a class="dock-btn dock-link" href="#" target="_blank" rel="noopener">
+        <span class="dock-ico" aria-hidden="true">𝕏</span>
+        <strong>twitter / x</strong>
+        <em>@lunnieart</em>
+      </a>
+      <a class="dock-btn dock-link" href="https://neocities.org/site/lunnie" target="_blank" rel="noopener">
+        <span class="dock-ico" aria-hidden="true">◈</span>
+        <strong>neocities</strong>
+        <em>lunnie.neocities.org</em>
+      </a>
+    </div>
+    <p class="dock-feedback" id="dock-feedback" hidden>⛧ tag copiado — ¡gracias por el reach!</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p class="foot-display">LUNNIE'S OC ARCHIVE</p>
+    <p>© <span data-year>2026</span> — 17 y/o · dossiers hechos a mano, 0 frameworks ✦</p>
+    <p>no endorsement of algorithms were given in the making of this site.</p>
+  </footer>
+
+  <!-- ============================================================
+       EASTER EGG DE CUMPLEAÑOS (oculto hasta pulsar la luna 🌙)
+       ============================================================ -->
+  <div class="egg-banner" id="egg-banner" hidden>
+    <div class="egg-inner cut-panel">
+      <button type="button" class="stop-egg" id="egg-close" aria-label="cerrar">✕</button>
+      <p class="egg-kicker">TAKE YOUR TIME //</p>
+      <h2 class="egg-title">HAPPY 17TH BIRTHDAY LUNNIE!</h2>
+      <p class="egg-sub">17 y/o · México · fighting games &amp; celestial vibes ♡</p>
+    </div>
+  </div>
+  <div class="confetti-layer" id="confetti-layer" aria-hidden="true" hidden></div>
+
+  <!-- Asistente flotante -->
+  <div class="assistant" id="assistant">
+    <button type="button" class="assistant-bubble" id="assistant-bubble" aria-label="Abrir asistente">
+      <img src="assets/img/assistant.svg" alt="Mascota asistente">
+    </button>
+    <div class="assistant-popup" id="assistant-popup" hidden>
+      <div class="assistant-head">
+        <span class="title">asistente v2.0</span>
+        <button type="button" class="assistant-close" id="assistant-close" aria-label="Cerrar asistente">✕</button>
+      </div>
+      <div class="assistant-body" id="assistant-body"><p>conectando con el sector…</p></div>
+      <button type="button" class="btn btn-ink" id="assistant-otro">🎲 otro consejo</button>
+    </div>
+  </div>
+
+  <!-- Scripts: core del sitio -->
+  <script src="script.js" defer></script>
+</body>
+</html>

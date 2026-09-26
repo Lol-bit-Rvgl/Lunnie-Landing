@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!--
+  LUNNIE ♡ — sobre-mi.html
+  Operator Profile: layout de 2 columnas asimétricas.
+  Izquierda: avatar + status cards. Derecha: bio, gustos, tabla DOs & DON'Ts,
+  enlaces rápidos de contacto.
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Perfil de la operadora Lunnie: bio, gustos, herramientas, DOs & DON'Ts y enlaces de contacto.">
+  <title>Sobre mí // Operator Profile — LUNNIE</title>
+
+  <!-- Favicon púrpura (SVG data-URI, sin archivo extra) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%233a0ca3%22/><path d=%22M50 14a36 36 0 1 0 0 72z%22 fill=%22%239d4edd%22 opacity=%22.9%22/><circle cx=%2270%22 cy=%2230%22 r=%223%22 fill=%22white%22/></svg>">
+
+  <!-- Tipografías: Oswald (display pesado GG) + Rajdhani (UI P5) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Capa fija espacial: nebulosas + estrellas + rejilla técnica -->
+  <div class="space-bg" aria-hidden="true"></div>
+
+  <!-- Gatillo del easter egg de cumpleaños (luna en barra superior) -->
+  <button type="button" class="egg-trigger" id="egg-trigger" aria-label="secreto" title="*un enigma brilla en la luna*">🌙</button>
+
+  <!-- Ticker -->
+  <div class="marquee-bar" aria-hidden="true">
+    <div class="marquee-track">
+      <span><em>✦ OPERATOR PROFILE ✦</em> <b>NIVEL 17</b> :: DIGITAL ARTIST // MX ✦ <em>CLIP STUDIO + TABLETA</em> ✦ <em>DOs &amp; DON'Ts</em></span>
+      <span><em>✦ OPERATOR PROFILE ✦</em> <b>NIVEL 17</b> :: DIGITAL ARTIST // MX ✦ <em>CLIP STUDIO + TABLETA</em> ✦ <em>DOs &amp; DON'Ts</em></span>
+    </div>
+  </div>
+
+  <!-- Hero de página -->
+  <header class="page-hero">
+    <span class="hero-badge">[OPERATOR PROFILE // LUNNIE]</span>
+    <h1>sobre mí</h1>
+    <p>operadora · artista digital · méxico</p>
+    <div class="hero-rule" aria-hidden="true"></div>
+  </header>
+
+  <!-- Nav -->
+  <nav class="site-nav" aria-label="Navegación principal">
+    <a href="index.html">🏠 home</a>
+    <a href="galeria.html">🎨 galería</a>
+    <a href="encargos.html">🛠 encargos</a>
+    <a href="ocs.html">✨ OCs</a>
+    <a href="blog.html">📝 blog</a>
+    <a href="sobre-mi.html" class="active">👤 sobre mí</a>
+  </nav>
+
+  <main class="page">
+    <div class="grid">
+      <div class="col" style="grid-column: 1 / -1">
+
+        <div class="about-grid">
+
+          <!-- ===================== COLUMNA IZQUIERDA ===================== -->
+          <div class="about-left stack">
+
+            <!-- Avatar + identidad -->
+            <section class="panel" data-reveal aria-labelledby="t-op">
+              <header class="panel-head">
+                <h2 id="t-op">operadora</h2>
+                <span class="chip chip-live">online</span>
+              </header>
+              <figure class="about-fig">
+                <img class="about-avatar shape-oct" src="assets/img/avatar.svg" alt="Avatar espacial de Lunnie" width="240">
+              </figure>
+              <h3 class="profile-name">LUNNIE</h3>
+              <p class="profile-tag">17 Y/O · ARTIST · MX</p>
+              <div class="profile-stats">
+                <div><b>42</b><span>obras</span></div>
+                <div><b>07</b><span>OCs</span></div>
+                <div><b>∞</b><span>café</span></div>
+              </div>
+            </section>
+
+            <!-- Status cards -->
+            <section class="panel" data-reveal aria-labelledby="t-status">
+              <header class="panel-head">
+                <h2 id="t-status">operator status</h2>
+                <span class="chip">stats</span>
+              </header>
+              <div class="stat-grid">
+                <div class="stat-card"><span>nivel</span><b>17</b></div>
+                <div class="stat-card"><span>rol</span><b>digital artist</b></div>
+                <div class="stat-card"><span>ubicación</span><b>méxico</b></div>
+                <div class="stat-card"><span>herramientas</span><b>clip studio / tableta</b></div>
+              </div>
+              <div class="diag-row"><span>ESTADO</span><b class="pos">COMMISSIONS OPEN</b></div>
+              <div class="diag-row"><span>ZONA HORARIA</span><b>CST / GMT-6</b></div>
+            </section>
+
+          </div>
+
+          <!-- ===================== COLUMNA DERECHA ===================== -->
+          <div class="about-right stack">
+
+            <!-- Bio detallada -->
+            <section class="panel" data-reveal aria-labelledby="t-bio">
+              <header class="panel-head">
+                <h2 id="t-bio">operator log // bio</h2>
+                <span class="chip chip-open">[DOSSIER ACTIVE]</span>
+              </header>
+              <div class="about-bio">
+                <p>
+                  Hola, soy <strong>Lunnie</strong>: tengo 17, vivo en México y dibujo
+                  casi todos los días desde que aprendí a sostener un lápiz sin romperlo.
+                  Me muevo entre el ilustrado digital y el boceto sucio — lo que más
+                  busco en un dibujo no es que sea bonito, sino que tenga
+                  <em>actitud</em>: diagonales, contraste, un personaje que parezca
+                  que acaba de entrar en pantalla.
+                </p>
+                <p>
+                  Hace un año quería volver a tener <strong>casa en internet</strong>,
+                  de las de antes: una web hecha a mano, con botones 88x31, muro de
+                  notas y sin un algoritmo decidiendo qué ves. Por eso existe este
+                  sector — lo escribí yo, línea por línea, y cada rincón tiene algo
+                  de mí: mis OCs, mi diario, mis encargos.
+                </p>
+                <p>
+                  En la vida "real" soy estudiante, llevo un portafolio que intento
+                  alimentar entre tareas y turno de sueño irregular. Si me ves a las
+                  2 a.m. probablemente esté planchando líneas en Clip Studio o
+                  perdiendo el mismo matchup en ranked. Ambas actividades son
+                  perfectamente válidas como investigación artística.
+                </p>
+              </div>
+            </section>
+
+            <!-- Gustos / intereses -->
+            <section class="panel" data-reveal aria-labelledby="t-likes">
+              <header class="panel-head">
+                <h2 id="t-likes">likes &amp; interests</h2>
+                <span class="chip">void index</span>
+              </header>
+              <ul class="likes-list">
+                <li>Guilty Gear Strive (y todo lo que rompe en ranked)</li>
+                <li>Persona 5 — menús, diagonal y actitud</li>
+                <li>música: lo-fi, city pop, OSTs de fighting games</li>
+                <li>estética espacial: nebulosas, CRT, widgets</li>
+                <li>web revival: neocities, foros, clip-art</li>
+                <li>café a las 2 a.m. y bocetos a mano alzada</li>
+                <li>mis OCs (obviamente)</li>
+              </ul>
+            </section>
+
+            <!-- DOs & DON'Ts -->
+            <section class="panel" data-reveal aria-labelledby="t-dd">
+              <header class="panel-head">
+                <h2 id="t-dd">do's &amp; don'ts</h2>
+                <span class="chip chip-warn">etiqueta</span>
+              </header>
+              <p class="tiny" style="margin-top:4px">
+                para encargos y para trato social — ambas columnas aplican en este sector.
+              </p>
+              <div class="dd-wrap">
+                <table class="dd-table">
+                  <thead>
+                    <tr><th scope="col">✅ DO</th><th scope="col">❌ DON'T</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>manda referencias y paleta si ya las tienes</td>
+                      <td>no pidas arte de personajes menores en contexto NSFW</td>
+                    </tr>
+                    <tr>
+                      <td>pide presupuesto antes de encargar</td>
+                      <td>no exijas copiar 1:1 el estilo de otro artista</td>
+                    </tr>
+                    <tr>
+                      <td>respeta los plazos y los slots abiertos</td>
+                      <td>no me etiquetes en hilo de quejas o drama</td>
+                    </tr>
+                    <tr>
+                      <td>cita mi autoría si reposteas (con link)</td>
+                      <td>no uses mi arte para IA ni para entrenar modelos</td>
+                    </tr>
+                    <tr>
+                      <td>escribe con calma, respondo cuando puedo</td>
+                      <td>no envíes mensaje doble antes de 48 h</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <!-- Enlaces rápidos de contacto -->
+            <section class="panel" data-reveal aria-labelledby="t-quick">
+              <header class="panel-head">
+                <h2 id="t-quick">quick links</h2>
+                <span class="chip chip-open">reachable</span>
+              </header>
+              <div class="quick-links">
+                <button type="button" class="btn btn-ink" data-copy="@lunnie">
+                  <span>⛧ copiar tag de discord</span>
+                </button>
+                <a class="btn" href="mailto:lunnie.commissions@gmail.com"><span>✉ correo encargos</span></a>
+                <a class="btn btn-ink" href="encargos.html"><span>🛠 ver encargos</span></a>
+                <a class="btn btn-ink" href="galeria.html"><span>🎨 ver galería</span></a>
+                <a class="btn btn-ink" href="blog.html"><span>📝 transmissions log</span></a>
+              </div>
+              <p class="dock-feedback" data-feedback hidden>⛧ tag copiado — ¡gracias por el reach!</p>
+            </section>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================================================
+       TRANSMISSION SIGNALS — dock de contacto (estilo GG)
+       ============================================================ -->
+  <section class="dock" data-reveal aria-labelledby="t-dock">
+    <div class="dock-head">
+      <span class="dock-badge" id="t-dock">// TRANSMISSION SIGNALS</span>
+      <span class="chip chip-open">reachable</span>
+    </div>
+    <div class="dock-row">
+      <button type="button" class="dock-btn" id="dock-discord" data-copy="@lunnie">
+        <span class="dock-ico" aria-hidden="true">⛧</span>
+        <strong>discord</strong>
+        <em>@lunnie</em>
+      </button>
+      <a class="dock-btn dock-link" href="mailto:lunnie.commissions@gmail.com">
+        <span class="dock-ico" aria-hidden="true">✉</span>
+        <strong>correo encargos</strong>
+        <em>lunnie.commissions@gmail.com</em>
+      </a>
+      <a class="dock-btn dock-link" href="#" target="_blank" rel="noopener">
+        <span class="dock-ico" aria-hidden="true">𝕏</span>
+        <strong>twitter / x</strong>
+        <em>@lunnieart</em>
+      </a>
+      <a class="dock-btn dock-link" href="https://neocities.org/site/lunnie" target="_blank" rel="noopener">
+        <span class="dock-ico" aria-hidden="true">◈</span>
+        <strong>neocities</strong>
+        <em>lunnie.neocities.org</em>
+      </a>
+    </div>
+    <p class="dock-feedback" id="dock-feedback" hidden>⛧ tag copiado — ¡gracias por el reach!</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p class="foot-display">LUNNIE'S OPERATOR PROFILE</p>
+    <p>© <span data-year>2026</span> — 17 y/o · hecho a mano en México, sin frameworks ✦</p>
+    <p>no endorsement of algorithms were given in the making of this site.</p>
+  </footer>
+
+  <!-- ============================================================
+       EASTER EGG DE CUMPLEAÑOS (oculto hasta pulsar la luna 🌙)
+       ============================================================ -->
+  <div class="egg-banner" id="egg-banner" hidden>
+    <div class="egg-inner cut-panel">
+      <button type="button" class="stop-egg" id="egg-close" aria-label="cerrar">✕</button>
+      <p class="egg-kicker">TAKE YOUR TIME //</p>
+      <h2 class="egg-title">HAPPY 17TH BIRTHDAY LUNNIE!</h2>
+      <p class="egg-sub">17 y/o · México · fighting games &amp; celestial vibes ♡</p>
+    </div>
+  </div>
+  <div class="confetti-layer" id="confetti-layer" aria-hidden="true" hidden></div>
+
+  <!-- Asistente flotante -->
+  <div class="assistant" id="assistant">
+    <button type="button" class="assistant-bubble" id="assistant-bubble" aria-label="Abrir asistente">
+      <img src="assets/img/assistant.svg" alt="Mascota asistente">
+    </button>
+    <div class="assistant-popup" id="assistant-popup" hidden>
+      <div class="assistant-head">
+        <span class="title">asistente v2.0</span>
+        <button type="button" class="assistant-close" id="assistant-close" aria-label="Cerrar asistente">✕</button>
+      </div>
+      <div class="assistant-body" id="assistant-body"><p>conectando con el sector…</p></div>
+      <button type="button" class="btn btn-ink" id="assistant-otro">🎲 otro consejo</button>
+    </div>
+  </div>
+
+  <!-- Scripts: core del sitio -->
+  <script src="script.js" defer></script>
+</body>
+</html>

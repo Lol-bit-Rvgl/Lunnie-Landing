@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<!--
+  LUNNIE ♡ — blog.html
+  Transmissions Log: diario de formato largo (entradas, reflexiones de dibujo,
+  updates de universidad y proyectos). Cada post incluye fecha cyberpunk,
+  título display, cuerpo con caja de notas, reacciones emoji y hilo de comentarios.
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Transmissions Log de Lunnie: diario largo con reflexiones sobre dibujo, updates de universidad y proyectos.">
+  <title>BLOG // Transmissions Log — LUNNIE</title>
+
+  <!-- Favicon púrpura (SVG data-URI, sin archivo extra) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%233a0ca3%22/><path d=%22M50 14a36 36 0 1 0 0 72z%22 fill=%22%239d4edd%22 opacity=%22.9%22/><circle cx=%2270%22 cy=%2230%22 r=%223%22 fill=%22white%22/></svg>">
+
+  <!-- Tipografías: Oswald (display pesado GG) + Rajdhani (UI P5) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Capa fija espacial: nebulosas + estrellas + rejilla técnica -->
+  <div class="space-bg" aria-hidden="true"></div>
+
+  <!-- Gatillo del easter egg de cumpleaños (luna en barra superior) -->
+  <button type="button" class="egg-trigger" id="egg-trigger" aria-label="secreto" title="*un enigma brilla en la luna*">🌙</button>
+
+  <!-- Ticker -->
+  <div class="marquee-bar" aria-hidden="true">
+    <div class="marquee-track">
+      <span><em>✦ TRANSMISSIONS LOG ✦</em> <b>DIARIO EXTENDIDO</b> :: REFLEXIONES + UPDATES ✦ <em>2026.09.26 // 10:40</em> ✦ <em>TAKE YOUR TIME</em></span>
+      <span><em>✦ TRANSMISSIONS LOG ✦</em> <b>DIARIO EXTENDIDO</b> :: REFLEXIONES + UPDATES ✦ <em>2026.09.26 // 10:40</em> ✦ <em>TAKE YOUR TIME</em></span>
+    </div>
+  </div>
+
+  <!-- Hero de página -->
+  <header class="page-hero">
+    <span class="hero-badge">[LOG ARCHIVE // EXTENDED TRANSMISSIONS]</span>
+    <h1>transmissions log</h1>
+    <p>diario · reflexiones · updates de proyecto</p>
+    <div class="hero-rule" aria-hidden="true"></div>
+  </header>
+
+  <!-- Nav -->
+  <nav class="site-nav" aria-label="Navegación principal">
+    <a href="index.html">🏠 home</a>
+    <a href="galeria.html">🎨 galería</a>
+    <a href="encargos.html">🛠 encargos</a>
+    <a href="ocs.html">✨ OCs</a>
+    <a href="blog.html" class="active">📝 blog</a>
+    <a href="sobre-mi.html">👤 sobre mí</a>
+  </nav>
+
+  <main class="page">
+    <div class="grid">
+      <div class="col stack" style="grid-column: 1 / -1">
+
+        <!-- Intro en caja de diálogo P5 -->
+        <section class="p5-box" aria-labelledby="t-blog-intro" data-reveal>
+          <span class="speaker-tab">lunnie // log</span>
+          <p>
+            Este es el <strong>archivo de transmisiones largas</strong>: entradas de
+            diario, reflexiones sobre dibujo, updates de la universidad y de mis
+            proyectos. Sin algoritmo ni feed — entras, lees y te vas cuando quieras.
+          </p>
+          <p>
+            Cada entrada lleva su timestamp, reacciones y su propio hilo de
+            comentarios. <em>Take your time.</em>
+          </p>
+          <span class="skip-mark" aria-hidden="true">▼▼▼</span>
+        </section>
+
+        <!-- POST 01 -->
+        <article class="post" data-reveal id="post-01">
+          <div class="post-meta">
+            <time datetime="2026-09-26T10:40">2026.09.26 // 10:40</time>
+            <span class="chip chip-open">transmission 01</span>
+            <span class="chip">diary</span>
+          </div>
+          <h2 class="post-title">17 velas: el sector cumple conmigo</h2>
+          <div class="post-body">
+            <p>
+              Hoy cumplí 17 y la primera cosa que hice al despertar no fue abrir
+              regalos: fue abrir este editor. Quería dejar la transmisión escrita
+              antes de que el día se me llenara de mensajes bonitos y café.
+            </p>
+            <p>
+              Un año atrás tenía tres pestañas abiertas y ninguna web mía. Ahora
+              tengo galería, encargos, OCs, este diario y un muro de notas que se
+              guarda en el navegador de quien lo visita. Todo hecho a mano, sin
+              frameworks, tal como lo soñaba en 2012 cuando copiaba HTML de foros.
+            </p>
+            <aside class="post-note">
+              <b>▚ nota al margen</b>
+              <p>
+                Si estás leyendo esto: gracias por entrar a una web sin algoritmo.
+                Eso ya te hace persona de confianza.
+              </p>
+            </aside>
+            <p>
+              La universidad arrancó fuerte y estoy equilibrando portafolio, tarea
+              y las ganas de seguir dibujando a las 2 a.m. El plan para el próximo
+              ciclo: terminar el fanzine de OCs, subir la tira de 3 paneles al blog
+              y abrir 2 slots de encargo cuando cierre el sketchbook.
+            </p>
+          </div>
+          <footer class="post-foot">
+            <div class="post-reacts" role="group" aria-label="Reacciones a la entrada">
+              <button type="button" class="react" data-key="post-01:heart" data-base="14" aria-label="reaccionar con corazón">
+                <span>❤️</span><span class="n">14</span>
+              </button>
+              <button type="button" class="react" data-key="post-01:fire" data-base="9" aria-label="reaccionar con fuego">
+                <span>🔥</span><span class="n">9</span>
+              </button>
+              <button type="button" class="react" data-key="post-01:moon" data-base="11" aria-label="reaccionar con luna">
+                <span>🌙</span><span class="n">11</span>
+              </button>
+              <button type="button" class="react" data-key="post-01:spark" data-base="6" aria-label="reaccionar con destello">
+                <span>✨</span><span class="n">6</span>
+              </button>
+            </div>
+            <div class="post-comments">
+              <span class="tiny">hilo de comentarios // post-01</span>
+              <!-- Contenedor del hilo: configura giscus (data-repo) y se sustituye
+                   este fallback por el hilo real de GitHub Discussions. -->
+              <div class="giscus">
+                <div class="giscus-fallback">▧ HILO SIN CONECTAR — configura giscus (data-repo / repo-id / category) y este bloque se convierte en hilo de GitHub Discussions.</div>
+              </div>
+            </div>
+          </footer>
+        </article>
+
+        <!-- POST 02 -->
+        <article class="post" data-reveal id="post-02">
+          <div class="post-meta">
+            <time datetime="2026-09-18T23:12">2026.09.18 // 23:12</time>
+            <span class="chip chip-open">transmission 02</span>
+            <span class="chip">art notes</span>
+          </div>
+          <h2 class="post-title">dibujar mal a propósito</h2>
+          <div class="post-body">
+            <p>
+              Esta semana borré tres bocetos «perfectos» y me arrepiento de solo
+              uno. Los otros dos estaban muertos desde el tercer trazo: líneas
+              limpias sin ninguna decisión dentro. Elegí empezar otra vez con
+              manchas grandes, sin línea, y el dibujo respiró al instante.
+            </p>
+            <p>
+              Estoy estudiando cómo Persona 5 y Guilty Gear resuelven la misma
+              cosa de formas opuestas: P5 recorta y diagonaliza todo, GG invierte
+              saturación y contraste en el diseño de personaje. Las dos escuelas
+              viven en este sitio — clip-path diagonal acá, neón violento allá.
+            </p>
+            <aside class="post-note">
+              <b>▚ regla de la semana</b>
+              <p>
+                Si el boceto no te hace sonreír al desbloquear la capa, no es el
+                boceto: es el trámite previo al boceto. Bórralo sin culpa.
+              </p>
+            </aside>
+            <p>
+              Próxima transmisión: mini-tutorial de cómo plancho líneas en Clip
+              Studio sin perder el dynamismo del rough, con ejemplos del
+              «rough walk loop» que ya está en la galería.
+            </p>
+          </div>
+          <footer class="post-foot">
+            <div class="post-reacts" role="group" aria-label="Reacciones a la entrada">
+              <button type="button" class="react" data-key="post-02:heart" data-base="21" aria-label="reaccionar con corazón">
+                <span>❤️</span><span class="n">21</span>
+              </button>
+              <button type="button" class="react" data-key="post-02:fire" data-base="17" aria-label="reaccionar con fuego">
+                <span>🔥</span><span class="n">17</span>
+              </button>
+              <button type="button" class="react" data-key="post-02:moon" data-base="5" aria-label="reaccionar con luna">
+                <span>🌙</span><span class="n">5</span>
+              </button>
+              <button type="button" class="react" data-key="post-02:spark" data-base="12" aria-label="reaccionar con destello">
+                <span>✨</span><span class="n">12</span>
+              </button>
+            </div>
+            <div class="post-comments">
+              <span class="tiny">hilo de comentarios // post-02</span>
+              <div class="giscus">
+                <div class="giscus-fallback">▧ HILO SIN CONECTAR — configura giscus (data-repo / repo-id / category) y este bloque se convierte en hilo de GitHub Discussions.</div>
+              </div>
+            </div>
+          </footer>
+        </article>
+
+        <!-- Nota: cómo publicar una entrada nueva -->
+        <section class="panel" data-reveal aria-labelledby="t-blog-note">
+          <header class="panel-head">
+            <h2 id="t-blog-note">nueva transmisión</h2>
+            <span class="chip">plantilla</span>
+          </header>
+          <p class="muted" style="margin-top:4px">
+            Para publicar: copia un <code>&lt;article class="post"&gt;</code>, cambia el
+            <code>datetime</code> al formato <code>AAAA.MM.DD // HH:MM</code>, el título,
+            el cuerpo y los <code>data-key</code> de las reacciones (usan localStorage).
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================================================
+       TRANSMISSION SIGNALS — dock de contacto (estilo GG)
+       ============================================================ -->
+  <section class="dock" data-reveal aria-labelledby="t-dock">
+    <div class="dock-head">
+      <span class="dock-badge" id="t-dock">// TRANSMISSION SIGNALS</span>
+      <span class="chip chip-open">reachable</span>
+    </div>
+    <div class="dock-row">
+      <button type="button" class="dock-btn" id="dock-discord" data-copy="@lunnie">
+        <span class="dock-ico" aria-hidden="true">⛧</span>
+        <strong>discord</strong>
+        <em>@lunnie</em>
+      </button>
+      <a class="dock-btn dock-link" href="mailto:lunnie.commissions@gmail.com">
+        <span class="dock-ico" aria-hidden="true">✉</span>
+        <strong>correo encargos</strong>
+        <em>lunnie.commissions@gmail.com</em>
+      </a>
+      <a class="dock-btn dock-link" href="#" target="_blank" rel="noopener">
+        <span class="dock-ico" aria-hidden="true">𝕏</span>
+        <strong>twitter / x</strong>
+        <em>@lunnieart</em>
+      </a>
+      <a class="dock-btn dock-link" href="https://neocities.org/site/lunnie" target="_blank" rel="noopener">
+        <span class="dock-ico" aria-hidden="true">◈</span>
+        <strong>neocities</strong>
+        <em>lunnie.neocities.org</em>
+      </a>
+    </div>
+    <p class="dock-feedback" id="dock-feedback" hidden>⛧ tag copiado — ¡gracias por el reach!</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p class="foot-display">LUNNIE'S TRANSMISSIONS LOG</p>
+    <p>© <span data-year>2026</span> — 17 y/o · diario largo sin feed ni algoritmo ✦</p>
+    <p>no endorsement of algorithms were given in the making of this site.</p>
+  </footer>
+
+  <!-- ============================================================
+       EASTER EGG DE CUMPLEAÑOS (oculto hasta pulsar la luna 🌙)
+       ============================================================ -->
+  <div class="egg-banner" id="egg-banner" hidden>
+    <div class="egg-inner cut-panel">
+      <button type="button" class="stop-egg" id="egg-close" aria-label="cerrar">✕</button>
+      <p class="egg-kicker">TAKE YOUR TIME //</p>
+      <h2 class="egg-title">HAPPY 17TH BIRTHDAY LUNNIE!</h2>
+      <p class="egg-sub">17 y/o · México · fighting games &amp; celestial vibes ♡</p>
+    </div>
+  </div>
+  <div class="confetti-layer" id="confetti-layer" aria-hidden="true" hidden></div>
+
+  <!-- Asistente flotante -->
+  <div class="assistant" id="assistant">
+    <button type="button" class="assistant-bubble" id="assistant-bubble" aria-label="Abrir asistente">
+      <img src="assets/img/assistant.svg" alt="Mascota asistente">
+    </button>
+    <div class="assistant-popup" id="assistant-popup" hidden>
+      <div class="assistant-head">
+        <span class="title">asistente v2.0</span>
+        <button type="button" class="assistant-close" id="assistant-close" aria-label="Cerrar asistente">✕</button>
+      </div>
+      <div class="assistant-body" id="assistant-body"><p>conectando con el sector…</p></div>
+      <button type="button" class="btn btn-ink" id="assistant-otro">🎲 otro consejo</button>
+    </div>
+  </div>
+
+  <!-- Scripts: core del sitio -->
+  <script src="script.js" defer></script>
+</body>
+</html>
