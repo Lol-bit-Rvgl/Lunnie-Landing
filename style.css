@@ -2801,14 +2801,23 @@ h1, h2, h3 { line-height: 1.05; }
 .dock-btn.is-pending {
   opacity: 0.62;
   cursor: default;
+  pointer-events: none;
 }
 .dock-btn.is-pending:hover { border-color: var(--line-2); }
+.friend-links a.is-pending {
+  pointer-events: none;
+}
 .friend-links a.is-pending img {
   filter: grayscale(0.7) opacity(0.45);
 }
 .friend-links a.is-pending:hover img {
   transform: none;
   box-shadow: none;
+}
+.comm-card .btn.is-pending {
+  opacity: 0.55;
+  cursor: default;
+  pointer-events: none;
 }
 
 /* ---- 25.4 guestbook local ---- */

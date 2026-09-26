@@ -53,6 +53,16 @@ const CONFIG = {
     c5: 'open',
     c6: 'closed',
   },
+  // Destino de los botones "pedir esta ✎" / "lista de espera" por tarjeta
+  // (clave = data-comm). null = se muestra como enlace pendiente.
+  COMMISSION_ORDER: {
+    c1: 'mailto:lunnie.commissions@gmail.com?subject=Encargo — cuerpo completo / lineart',
+    c2: 'mailto:lunnie.commissions@gmail.com?subject=Encargo — página de cómic',
+    c3: 'mailto:lunnie.commissions@gmail.com?subject=Encargo — full illustration',
+    c4: 'mailto:lunnie.commissions@gmail.com?subject=Encargo — chibi',
+    c5: 'mailto:lunnie.commissions@gmail.com?subject=Encargo — pack de stickers',
+    c6: 'mailto:lunnie.commissions@gmail.com?subject=Lista de espera — animación rough',
+  },
   GUESTBOOK_MAX: 12,
 };
 
@@ -791,4 +801,36 @@ async function copyPlain(text) {
   });
 
   render();
+})();
+
+/* ============================================================
+   15. ÓRDENES DE ENCARGOS — botones "pedir esta ✎"
+   ------------------------------------------------------------
+   Los CTAs (.btn de cada .comm-card[data-comm]) apuntan a
+   CONFIG.COMMISSION_ORDER; si la clave falta quedan marcados
+   como pendientes (nunca un enlace muerto #).
+   ============================================================ */
+(function initCommOrders() {
+  const orders = CONFIG.COMMISSION_ORDER || {};
+  document.querySelectorAll('.comm-card[data-comm]').forEach((card) => {
+    const url = orders[card.dataset.comm];
+    card.querySelectorAll(':scope > .btn').forEach((btn) => {
+      if (!url) {
+        btn.classList.add('is-pending');
+        btn.setAttribute('aria-disabled', 'true');
+        btn.removeAttribute('target');
+        return;
+      }
+      btn.href = url;
+      if (/^mailto:/i.test(url)) {
+        btn.removeAttribute('target');
+        btn.removeAttribute('rel');
+      } else {
+        btn.target = '_blank';
+        btn.rel = 'noopener';
+      }
+      btn.classList.remove('is-pending');
+      btn.removeAttribute('aria-disabled');
+    });
+  });
 })();
