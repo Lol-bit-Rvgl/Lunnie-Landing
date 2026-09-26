@@ -16,10 +16,10 @@
   <!-- Favicon púrpura (SVG data-URI, sin archivo extra) -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%233a0ca3%22/><path d=%22M50 14a36 36 0 1 0 0 72z%22 fill=%22%239d4edd%22 opacity=%22.9%22/><circle cx=%2270%22 cy=%2230%22 r=%223%22 fill=%22white%22/></svg>">
 
-  <!-- Tipografías: Oswald (display pesado GG) + Rajdhani (UI P5) -->
+  <!-- Tipografías: Black Ops One (display HUD/GG) + Rajdhani (UI P5) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -36,8 +36,8 @@
        ============================================================ -->
   <div class="marquee-bar" aria-hidden="true">
     <div class="marquee-track">
-      <span><em>✦ LOOKING FOR A HOME IN THE INTERNET ✦</em> <b>ENCARGOS ABIERTOS</b> :: 7 CATEGORÍAS ✦ <em>GALERÍA CON FILTROS</em> ✦ <em>100% SIN FRAMEWORKS</em> ✦ <em>HEAVEN OR HELL ???</em></span>
-      <span><em>✦ LOOKING FOR A HOME IN THE INTERNET ✦</em> <b>ENCARGOS ABIERTOS</b> :: 7 CATEGORÍAS ✦ <em>GALERÍA CON FILTROS</em> ✦ <em>100% SIN FRAMEWORKS</em> ✦ <em>HEAVEN OR HELL ???</em></span>
+      <span><em>✦ LOOKING FOR A HOME IN THE INTERNET ✦</em> <b>ENCARGOS ABIERTOS</b> :: 6 CATEGORÍAS ✦ <em>GALERÍA CON FILTROS</em> ✦ <em>MÚSICA AMBIENTE</em> ✦ <em>HEAVEN OR HELL ???</em></span>
+      <span><em>✦ LOOKING FOR A HOME IN THE INTERNET ✦</em> <b>ENCARGOS ABIERTOS</b> :: 6 CATEGORÍAS ✦ <em>GALERÍA CON FILTROS</em> ✦ <em>MÚSICA AMBIENTE</em> ✦ <em>HEAVEN OR HELL ???</em></span>
     </div>
   </div>
 
@@ -97,11 +97,11 @@
           <header class="panel-head"><h2 id="t-button">my 88x31</h2><span class="chip">button</span></header>
           <div class="button-block">
             <div class="badge-row">
-              <img class="badge-88" src="assets/img/button.svg" alt="Botón 88x31 de LUNNIE">
-              <img class="badge-88" src="assets/img/button.svg" alt="Botón 88x31 de LUNNIE variante">
+              <img class="badge-88" src="assets/img/btn-1.svg" alt="Botón 88x31 de LUNNIE">
+              <img class="badge-88" src="assets/img/btn-2.svg" alt="Botón 88x31 de LUNNIE variante">
             </div>
             <p class="tiny">¿enlazarme? copia el código:</p>
-            <textarea id="button-code" class="copy-source" rows="4" readonly>&lt;a href="https://lunnie.neocities.org/" target="_blank"&gt;&lt;img src="https://lunnie.neocities.org/assets/img/button.svg" alt="LUNNIE" width="88" height="31" border="0"&gt;&lt;/a&gt;</textarea>
+            <textarea id="button-code" class="copy-source" rows="4" readonly>&lt;a href="https://lunnie.neocities.org/" target="_blank"&gt;&lt;img src="https://lunnie.neocities.org/assets/img/btn-1.svg" alt="LUNNIE" width="88" height="31" border="0"&gt;&lt;/a&gt;</textarea>
             <button type="button" id="copy-btn" class="btn btn-blank">📋 copiar</button>
             <p id="copy-feedback" class="copy-feedback" hidden>¡copiado! ✨ gracias por el cariño</p>
           </div>
@@ -124,10 +124,10 @@
         <!-- Redes -->
         <section class="panel" data-reveal aria-labelledby="t-social">
           <header class="panel-head"><h2 id="t-social">redes</h2><span class="chip">social</span></header>
-          <ul class="social-list">
-            <li><a href="#" target="_blank" rel="noopener">twitter / x</a></li>
-            <li><a href="#" target="_blank" rel="noopener">tumblr</a></li>
-            <li><a href="#" target="_blank" rel="noopener">artfol</a></li>
+          <ul class="social-list" id="social-list">
+            <li><a href="#" class="is-pending" data-social="twitter" target="_blank" rel="noopener">twitter / x <em>— pendiente —</em></a></li>
+            <li><a href="#" class="is-pending" data-social="tumblr" target="_blank" rel="noopener">tumblr <em>— pendiente —</em></a></li>
+            <li><a href="#" class="is-pending" data-social="artfol" target="_blank" rel="noopener">artfol <em>— pendiente —</em></a></li>
             <li><a href="https://neocities.org/site/lunnie" target="_blank" rel="noopener">neocities</a></li>
           </ul>
         </section>
@@ -139,12 +139,12 @@
             <button type="button" class="btn btn-ink" id="webring-girar">🎲 random</button>
           </header>
           <ul class="friend-links" id="friend-links">
-            <li><a href="#" target="_blank" rel="noopener" title="amigo 1"><img src="assets/img/button.svg" alt="botón amigo" loading="lazy" decoding="async"></a></li>
-            <li><a href="#" target="_blank" rel="noopener" title="amigo 2"><img src="assets/img/button.svg" alt="botón amigo" loading="lazy" decoding="async"></a></li>
-            <li><a href="#" target="_blank" rel="noopener" title="amigo 3"><img src="assets/img/button.svg" alt="botón amigo" loading="lazy" decoding="async"></a></li>
-            <li><a href="#" target="_blank" rel="noopener" title="amigo 4"><img src="assets/img/button.svg" alt="botón amigo" loading="lazy" decoding="async"></a></li>
-            <li><a href="#" target="_blank" rel="noopener" title="amigo 5"><img src="assets/img/button.svg" alt="botón amigo" loading="lazy" decoding="async"></a></li>
-            <li><a href="#" target="_blank" rel="noopener" title="amigo 6"><img src="assets/img/button.svg" alt="botón amigo" loading="lazy" decoding="async"></a></li>
+            <li><a href="#" target="_blank" rel="noopener" title="amigo 1" data-pending><img src="assets/img/btn-friend.svg" alt="botón amigo pendiente" loading="lazy" decoding="async"></a></li>
+            <li><a href="#" target="_blank" rel="noopener" title="amigo 2" data-pending><img src="assets/img/btn-friend.svg" alt="botón amigo pendiente" loading="lazy" decoding="async"></a></li>
+            <li><a href="#" target="_blank" rel="noopener" title="amigo 3" data-pending><img src="assets/img/btn-friend.svg" alt="botón amigo pendiente" loading="lazy" decoding="async"></a></li>
+            <li><a href="#" target="_blank" rel="noopener" title="amigo 4" data-pending><img src="assets/img/btn-friend.svg" alt="botón amigo pendiente" loading="lazy" decoding="async"></a></li>
+            <li><a href="#" target="_blank" rel="noopener" title="amigo 5" data-pending><img src="assets/img/btn-friend.svg" alt="botón amigo pendiente" loading="lazy" decoding="async"></a></li>
+            <li><a href="#" target="_blank" rel="noopener" title="amigo 6" data-pending><img src="assets/img/btn-friend.svg" alt="botón amigo pendiente" loading="lazy" decoding="async"></a></li>
           </ul>
         </section>
       </aside>
@@ -170,9 +170,9 @@
             88x31 y mucho clip-path. La galería y los encargos están en su sector.
           </p>
           <p>
-            Todo el sitio es <em>estático</em>: HTML + CSS + JS a pelo, preparado para
-            Neocities o GitHub Pages. Los comentarios funcionan con GitHub Discussions
-            (giscus) — sin servidor, sin base de datos.
+            Este año decidí tomarlo con calma: <em>dibujar, subir, archivar</em>. El sector
+            va creciendo poco a poco — ahora mismo estoy armando la galería, el archivo de
+            OCs y una tira de cómic que lleva semanas pidiendo salir de mi sketchbook.
           </p>
           <span class="skip-mark" aria-hidden="true">▼▼▼</span>
         </section>
@@ -242,28 +242,7 @@
         <!-- Changelog -->
         <section class="panel" data-reveal aria-labelledby="t-log">
           <header class="panel-head"><h2 id="t-log">registro de actualizaciones</h2><span class="chip chip-live">live</span></header>
-          <ol class="timeline" reversed>
-            <li>
-              <time datetime="2026-09-24">24/09/2026</time>
-              <p><strong>Rebrand espacial.</strong> El sector pasa a negro abisal + neón. Nuevo layout P5/GG, widget de Discord en vivo y comentarios con giscus.</p>
-            </li>
-            <li>
-              <time datetime="2026-09-20">20/09/2026</time>
-              <p>Añadida la página de <a href="encargos.html">encargos</a> con 7 categorías y TERMS por tarjeta. Estado por categoría: OPEN/CLOSED.</p>
-            </li>
-            <li>
-              <time datetime="2026-09-12">12/09/2026</time>
-              <p><a href="galeria.html">Galería</a> con filtros: original, fanart, NSFW, cómics y animación. Lightbox «take your time» sin frameworks.</p>
-            </li>
-            <li>
-              <time datetime="2026-09-05">05/09/2026</time>
-              <p>Migración del sistema de música a un <strong>pad espacial</strong> generado con Web Audio API. Sin mp3, sin servidor.</p>
-            </li>
-            <li>
-              <time datetime="2026-09-01">01/09/2026</time>
-              <p><em>Fundación del sector.</em> Primer bootstrap de «Lunnie's Corner» en Neocities 🎉</p>
-            </li>
-          </ol>
+          <ol class="timeline" id="changelog" reversed></ol>
         </section>
 
         <!-- ==========================================================
@@ -279,11 +258,11 @@
           <div class="dg-row">
             <img class="dg-sprite shape-oct" src="assets/img/assistant.svg" alt="asistente Lunnie">
             <div class="dg-bubble">
-              <label for="dg-text">▚ deja tu mensaje</label>
-              <textarea id="dg-text" placeholder="Escribe tu comentario… (se envía vía GitHub al pulsar ENVIAR)"></textarea>
+              <label for="gb-text">▚ deja tu huella</label>
+              <textarea id="gb-text" placeholder="Escribe tu mensaje… se guarda en tu navegador ♡"></textarea>
               <div class="dg-actions">
-                <a class="btn" href="#" target="_blank" rel="noopener">enviar ✎</a>
-                <span class="dg-note">* el enlace anterior apunta a GitHub Discussions; cámbialo a tu repo.</span>
+                <button type="button" class="btn" id="gb-post">enviar ✎</button>
+                <span class="dg-note">* huella local por ahora — cuando el hilo real esté conectado, vive justo abajo.</span>
               </div>
             </div>
           </div>
@@ -292,6 +271,9 @@
           <div class="giscus" id="giscus-thread">
             <div class="giscus-fallback" id="giscus-fallback">▧ CARGANDO SISTEMA DE COMENTARIOS…</div>
           </div>
+
+          <!-- Huellas locales (fallback del guestbook): las puebla script.js -->
+          <div class="gb-list" id="gb-list" aria-live="polite"></div>
         </section>
       </div>
 
@@ -307,7 +289,7 @@
           <div class="working-row"><span class="dot"></span><p>página de <a href="ocs.html"><strong>OCs</strong></a> con tarjetas por personaje</p></div>
           <div class="working-row"><span class="dot"></span><p>playlist para el <a href="blog.html"><strong>blog</strong></a></p></div>
           <div class="working-row"><span class="dot"></span><p>página <a href="sobre-mi.html"><strong>sobre mí</strong></a></p></div>
-          <p class="panel-foot tiny">actualizado: hoy / este es un widget decorativo, puedes sincronizarlo con tu webring o feed.</p>
+          <p class="panel-foot tiny">actualizado: hoy — el pulso largo vive en el <a href="blog.html">log</a>.</p>
         </section>
 
         <!-- Música ambiental -->
@@ -325,8 +307,8 @@
         <section class="panel" data-reveal aria-labelledby="t-diag">
           <header class="panel-head"><h2 id="t-diag">system diagnostics</h2><span class="chip chip-open">100%</span></header>
           <div class="diag-row"><span>UPTIME DEL SECTOR</span><b>ESTABLE</b></div>
-          <div class="diag-row"><span>FRAMEWORKS CARGADOS</span><b>00</b></div>
-          <div class="diag-row"><span>BUILD STEP</span><b>NONE</b></div>
+          <div class="diag-row"><span>PRÓXIMO UPDATE</span><b>GALERÍA v3</b></div>
+          <div class="diag-row"><span>MASCOTA</span><b>NEBULA</b></div>
           <div class="diag-row"><span>CAFÉ CONSUMIDO</span><b>∞</b></div>
           <div class="diag-row"><span>NIVEL DEL OPERADOR</span><b>17</b></div>
           <div class="diag-row"><span>MODO SERENIDAD</span><b class="pos">ON</b></div>
@@ -336,9 +318,9 @@
         <section class="panel" data-reveal aria-labelledby="t-badges">
           <header class="panel-head"><h2 id="t-badges">badges</h2><span class="chip">colección</span></header>
           <div class="badges-block glass-card squircle-card" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
-            <img class="badge-88" src="assets/img/button.svg" alt="badge" loading="lazy" decoding="async">
-            <img class="badge-88" src="assets/img/button.svg" alt="badge" loading="lazy" decoding="async">
-            <img class="badge-88" src="assets/img/button.svg" alt="badge" loading="lazy" decoding="async">
+            <img class="badge-88" src="assets/img/btn-1.svg" alt="badge" loading="lazy" decoding="async">
+            <img class="badge-88" src="assets/img/btn-2.svg" alt="badge" loading="lazy" decoding="async">
+            <img class="badge-88" src="assets/img/btn-3.svg" alt="badge" loading="lazy" decoding="async">
           </div>
         </section>
       </aside>
@@ -364,7 +346,7 @@
         <strong>correo encargos</strong>
         <em>lunnie.commissions@gmail.com</em>
       </a>
-      <a class="dock-btn dock-link" href="#" target="_blank" rel="noopener">
+      <a class="dock-btn dock-link is-pending" data-social="twitter" href="#" target="_blank" rel="noopener" title="enlace pendiente de configurar">
         <span class="dock-ico" aria-hidden="true">𝕏</span>
         <strong>twitter / x</strong>
         <em>@lunnieart</em>

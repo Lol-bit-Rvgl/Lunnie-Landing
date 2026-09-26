@@ -9,14 +9,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#07060f">
-  <meta name="description" content="Galería de arte de Lunnie: original, fanart, NSFW, cómics y animación.">
+  <meta name="description" content="Galería de arte de Lunnie: original, fanart, cómics y animación.">
   <title>GALERÍA ♡ LUNNIE</title>
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%233a0ca3%22/><path d=%22M50 14a36 36 0 1 0 0 72z%22 fill=%22%239d4edd%22 opacity=%22.9%22/><circle cx=%2270%22 cy=%2230%22 r=%223%22 fill=%22white%22/></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -26,8 +26,8 @@
   <!-- Ticker -->
   <div class="marquee-bar" aria-hidden="true">
     <div class="marquee-track">
-      <span><em>✦ SELECT YOUR ART ✦</em> <b>NSFW = 18+ VEIL</b> ✦ <em>FILTRA POR CATEGORÍA</em> ✦ <em>TAKE YOUR TIME</em> ✦ <em>HEAVEN OR HELL</em></span>
-      <span><em>✦ SELECT YOUR ART ✦</em> <b>NSFW = 18+ VEIL</b> ✦ <em>FILTRA POR CATEGORÍA</em> ✦ <em>TAKE YOUR TIME</em> ✦ <em>HEAVEN OR HELL</em></span>
+      <span><em>✦ SELECT YOUR ART ✦</em> <b>FILTRA POR CATEGORÍA</b> ✦ <em>TAKE YOUR TIME</em> ✦ <em>SECTOR SFW</em> ✦ <em>HEAVEN OR HELL</em></span>
+      <span><em>✦ SELECT YOUR ART ✦</em> <b>FILTRA POR CATEGORÍA</b> ✦ <em>TAKE YOUR TIME</em> ✦ <em>SECTOR SFW</em> ✦ <em>HEAVEN OR HELL</em></span>
     </div>
   </div>
 
@@ -35,7 +35,7 @@
   <header class="page-hero">
     <span class="hero-badge">ART ARCHIVE // <i>v2.0</i></span>
     <h1>galería</h1>
-    <p>original · fanart · nsfw · cómics · animación</p>
+    <p>original · fanart · cómics · animación</p>
     <div class="hero-rule" aria-hidden="true"></div>
   </header>
 
@@ -58,10 +58,12 @@
           <button type="button" class="filter active" data-filter="all">todo</button>
           <button type="button" class="filter" data-filter="original">original</button>
           <button type="button" class="filter" data-filter="fanart">fanart</button>
-          <button type="button" class="filter" data-filter="nsfw">18+ / nsfw</button>
           <button type="button" class="filter" data-filter="comics">cómics</button>
           <button type="button" class="filter" data-filter="animacion">animación</button>
         </div>
+
+        <!-- Aviso honesto: los assets actuales son de muestra -->
+        <p class="assets-note" data-reveal>🚧 estas piezas son <b>assets de muestra</b> con dirección de arte, no obra terminada — el arte final está en construcción y llegará a este archivo pronto.</p>
 
         <!-- Grid: cada .g-item lleva data-cat (categorías separadas por espacio) -->
         <div class="gal-grid" id="gal-grid">
@@ -90,13 +92,6 @@
             <span class="g-cap"><b>lune sonriente</b><span class="ico">◆ fan</span></span>
           </figure>
 
-          <figure class="g-item is-nsfw" data-reveal tabindex="0"
-                  data-cat="nsfw" data-title="encargo privado — censurado" data-cat-label="NSFW · 18+">
-            <span class="nfsw-stamp">18+</span>
-            <img class="g-img" src="assets/img/art7.svg" alt="encargo NSFW censurado" loading="lazy" decoding="async">
-            <span class="g-cap"><b>estudio privado (veil)</b><span class="ico">◆ nsfw</span></span>
-          </figure>
-
           <figure class="g-item" data-reveal tabindex="0"
                   data-cat="comics" data-title="página de cómic 01" data-cat-label="CÓMIC">
             <img class="g-img" src="assets/img/art5.svg" alt="página de cómic 01" loading="lazy" decoding="async">
@@ -105,7 +100,7 @@
 
           <figure class="g-item" data-reveal tabindex="0"
                   data-cat="comics" data-title="tira x3 paneles" data-cat-label="CÓMIC">
-            <img class="g-img" src="assets/img/art5.svg" alt="tira x3 paneles" loading="lazy" decoding="async">
+            <img class="g-img" src="assets/img/art5b.svg" alt="tira x3 paneles" loading="lazy" decoding="async">
             <span class="g-cap"><b>tira de 3 paneles</b><span class="ico">◆ comic</span></span>
           </figure>
 
@@ -117,8 +112,20 @@
 
           <figure class="g-item" data-reveal tabindex="0"
                   data-cat="animacion" data-title="mecha flicker" data-cat-label="ANIMACIÓN">
-            <img class="g-img" src="assets/img/art3.svg" alt="mecha flicker" loading="lazy" decoding="async">
+            <img class="g-img" src="assets/img/art10.svg" alt="mecha flicker" loading="lazy" decoding="async">
             <span class="g-cap"><b>mecha flicker test</b><span class="ico">◆ anim</span></span>
+          </figure>
+
+          <figure class="g-item" data-reveal tabindex="0"
+                  data-cat="original" data-title="chibi nebulosa" data-cat-label="ORIGINAL">
+            <img class="g-img" src="assets/img/art8.svg" alt="chibi nebulosa" loading="lazy" decoding="async">
+            <span class="g-cap"><b>chibi nebulosa</b><span class="ico">◆ sticker</span></span>
+          </figure>
+
+          <figure class="g-item" data-reveal tabindex="0"
+                  data-cat="original" data-title="página de sketchbook" data-cat-label="ORIGINAL">
+            <img class="g-img" src="assets/img/art9.svg" alt="página de sketchbook" loading="lazy" decoding="async">
+            <span class="g-cap"><b>sketchbook 09</b><span class="ico">◆ rough</span></span>
           </figure>
         </div>
 

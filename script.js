@@ -11,9 +11,50 @@
       6. Inyección de Giscus (sólo si está configurado)
       7. Año automático en el footer
       8. Daily Transmissions (muro de notas + reacciones)
-      9. Dock de contacto (copiar tag de Discord)
+      9. Dock de contacto (copiar tag de Discord, genérico [data-copy])
+      9b. Reacciones de posts (.react[data-key] → localStorage)
       10. Easter egg de cumpleaños (confeti 🌙)
    ============================================================ */
+
+/* ============================================================
+   CONFIG DEL SECTOR — lo que editas a mano, en un solo lugar.
+   ------------------------------------------------------------
+   • SOCIAL_LINKS: claves = data-social de los enlaces (social-list
+     y dock). Deja null mientras no tengas el enlace real → la UI
+     lo muestra como "pendiente".
+   • WEBRING: una entrada por amistad (nombre, URL, botón 88x31).
+   • UPDATE_LOG: se renderiza en el timeline del home (#changelog).
+   • COMM_STATUS: estado por tarjeta (clave = data-comm de cada
+     tarjeta en encargos.html): 'open' | 'closed'.
+   ============================================================ */
+const CONFIG = {
+  SOCIAL_LINKS: {
+    twitter: null,  // 'https://twitter.com/lunnieart'
+    tumblr: null,   // 'https://lunnie.tumblr.com'
+    artfol: null,   // 'https://artfol.me/lunnie'
+  },
+  WEBRING: [
+    /* Añade amistades así (btn: tu botón 88x31 o btn-friend):
+    { name: 'amigo 1', url: 'https://friend.neocities.org', btn: 'assets/img/btn-friend.svg' },
+    */
+  ],
+  UPDATE_LOG: [
+    { d: '2026-09-24', h: 'Rebrand espacial.', x: 'El sector pasa a negro abisal + neón. Nuevo layout P5/GG, música ambiente web y huellas del guestbook.' },
+    { d: '2026-09-20', h: 'Encargos renovados.', x: '6 categorías con TERMS por tarjeta y estado OPEN/CLOSED por slot.' },
+    { d: '2026-09-12', h: 'Galería con filtros.', x: 'original, fanart, cómics y animación, con lightbox para tomarse su tiempo.' },
+    { d: '2026-09-05', h: 'Estreno del pad espacial.', x: 'Música ambiente sintetizada directo en tu navegador, sin archivos.' },
+    { d: '2026-09-01', h: 'Fundación del sector.', x: 'Primer bootstrap de «Lunnie\'s Corner» en Neocities.' },
+  ],
+  COMM_STATUS: {
+    c1: 'open',
+    c2: 'open',
+    c3: 'open',
+    c4: 'open',
+    c5: 'open',
+    c6: 'closed',
+  },
+  GUESTBOOK_MAX: 12,
+};
 
 /* ============================================================
    1. COPIAR CÓDIGO DEL BOTÓN 88x31
@@ -167,13 +208,13 @@
   if (!bubble || !popup) return;
 
   const TIPS = [
-    'Hola ♡ Yo soy tu asistente de este rincón del espacio. Usa la nav para moverse.',
+    'Hola ♡ Soy tu asistente de este rincón del espacio. La nav te mueve de sector.',
     '¿Buscas arte? La galería tiene filtros: original, fanart, cómics, animación…',
-    'Encargos abiertos: 7 categorías en la página de comisiones, con TERMS incluidos.',
-    'El widget de Discord (columna izquierda) muestra si estoy online en directo.',
-    'Deja tu huella en el guestbook vía GitHub — comentarios sin backend, todo en una discussions.',
-    'Prueba el botón “emitir ambiente”: hay un pad espacial generado en tu navegador 🎧',
-    'Este sitio corre sin frameworks. Cero build step, puro HTML+CSS+JS de las viejas.',
+    'Encargos abiertos: 6 categorías en la página de comisiones, cada una con sus términos.',
+    'El widget de Discord (columna del home) muestra si estoy online en directo.',
+    'Deja tu huella en el guestbook del home — se guarda en tu navegador y existe igual ♡',
+    'Prueba el botón “emitir ambiente”: un pad espacial generado en tu navegador 🎧',
+    'Tip de dibujo: si el boceto no te hace sonreír al desbloquear la capa, bórralo sin culpa.',
   ];
 
   let i = 0;
@@ -205,6 +246,33 @@
   const list = document.getElementById('friend-links');
   const btn = document.getElementById('webring-girar');
   if (!list || !btn) return;
+
+  // Si hay amistades en CONFIG, reemplazan los placeholders "pendiente"
+  const entries = CONFIG.WEBRING || [];
+  if (entries.length) {
+    list.textContent = '';
+    entries.forEach((f) => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = f.url;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.title = f.name;
+      const img = document.createElement('img');
+      img.src = f.btn || 'assets/img/btn-friend.svg';
+      img.alt = f.name;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      a.appendChild(img);
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+  } else {
+    list.querySelectorAll('a[data-pending]').forEach((a) => {
+      a.classList.add('is-pending');
+      a.title = 'webring — pendiente de configurar';
+    });
+  }
 
   btn.addEventListener('click', () => {
     const items = Array.from(list.children);
@@ -467,17 +535,59 @@ async function copyPlain(text) {
 
 /* ============================================================
    9. DOCK DE CONTACTO — copiar tag de Discord
+   ------------------------------------------------------------
+   Bindea todos los botones con [data-copy] (dock y quick links).
+   El aviso se busca dentro del contenedor más cercano (.dock / .panel).
    ============================================================ */
 (function initDock() {
-  const btn = document.getElementById('dock-discord');
-  const fb = document.getElementById('dock-feedback');
-  if (!btn) return;
-  btn.addEventListener('click', async () => {
-    const ok = await copyPlain(btn.dataset.copy || '');
-    if (ok && fb) {
-      fb.hidden = false;
-      setTimeout(() => { fb.hidden = true; }, 2600);
-    }
+  document.querySelectorAll('[data-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const ok = await copyPlain(btn.dataset.copy || '');
+      if (!ok) return;
+      const scope = btn.closest('.dock, .panel') || document;
+      const fb = scope.querySelector('.dock-feedback');
+      if (fb) {
+        fb.hidden = false;
+        setTimeout(() => { fb.hidden = true; }, 2600);
+      }
+    });
+  });
+})();
+
+/* ============================================================
+   9b. REACCIONES DE POSTS (.react[data-key] → localStorage)
+   ------------------------------------------------------------
+   data-base = conteo inicial visible; el estado on/off por tecla
+   se guarda en `lunnie-blog-reacts` (clave = data-key).
+   ============================================================ */
+(function initPostReacts() {
+  const KEY = 'lunnie-blog-reacts';
+  const buttons = document.querySelectorAll('.react[data-key]');
+  if (!buttons.length) return;
+
+  const load = () => {
+    try {
+      const raw = JSON.parse(localStorage.getItem(KEY) || '{}');
+      return raw && typeof raw === 'object' ? raw : {};
+    } catch (e) { return {}; }
+  };
+  const store = load();
+
+  buttons.forEach((b) => {
+    const k = b.dataset.key;
+    const base = parseInt(b.dataset.base, 10) || 0;
+    const cnt = b.querySelector('.n');
+    const on = !!store[k];
+    b.classList.toggle('on', on);
+    if (cnt) cnt.textContent = String(base + (on ? 1 : 0));
+
+    b.addEventListener('click', () => {
+      const next = !b.classList.contains('on');
+      b.classList.toggle('on', next);
+      store[k] = next ? 1 : 0;
+      try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {}
+      if (cnt) cnt.textContent = String(base + (next ? 1 : 0));
+    });
   });
 })();
 
@@ -535,4 +645,150 @@ async function copyPlain(text) {
   if (closeBtn) closeBtn.addEventListener('click', close);
   banner.addEventListener('click', (e) => { if (e.target === banner) close(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+})();
+
+/* ============================================================
+   11. SOCIAL LINKS — resuelve los enlaces pendientes del dock y
+       de la columna de contactos.
+   ------------------------------------------------------------
+   Un <a data-social="clave"> amanece como "pendiente". Si la clave
+   existe en CONFIG.SOCIAL_LINKS, se activa el enlace real y se
+   limpia la etiqueta <em>.
+   ============================================================ */
+(function initSocial() {
+  const links = CONFIG.SOCIAL_LINKS || {};
+  document.querySelectorAll('[data-social]').forEach((el) => {
+    const url = links[el.dataset.social];
+    if (!url) {
+      el.classList.add('is-pending');
+      return;
+    }
+    if (el.tagName === 'A') el.href = url;
+    el.classList.remove('is-pending');
+    const em = el.querySelector('em');
+    if (em && /pendiente/i.test(em.textContent)) em.textContent = '';
+  });
+})();
+
+/* ============================================================
+   12. CHANGELOG — timeline del home desde UPDATE_LOG
+   ============================================================ */
+(function initChangelog() {
+  const ol = document.getElementById('changelog');
+  if (!ol) return;
+  (CONFIG.UPDATE_LOG || []).forEach((e) => {
+    const li = document.createElement('li');
+    const time = document.createElement('time');
+    time.dateTime = e.d;
+    time.textContent = e.d.split('-').reverse().join('/');
+    const p = document.createElement('p');
+    const strong = document.createElement('strong');
+    strong.textContent = e.h;
+    p.appendChild(strong);
+    if (e.x) p.appendChild(document.createTextNode(' ' + e.x));
+    li.append(time, p);
+    ol.appendChild(li);
+  });
+})();
+
+/* ============================================================
+   13. ESTADO DE ENCARGOS — chips sincronizados con COMM_STATUS
+   ------------------------------------------------------------
+   Cada tarjeta declara su clave con data-comm (encargos.html).
+   Este módulo pinta el chip "status: open/closed" y la clase
+   .closed de la tarjeta desde el objeto CONFIG, una sola fuente.
+   ============================================================ */
+(function initCommStatus() {
+  const status = CONFIG.COMM_STATUS || {};
+  document.querySelectorAll('.comm-card[data-comm]').forEach((card) => {
+    const isOpen = status[card.dataset.comm] === 'open';
+    card.classList.toggle('closed', !isOpen);
+    const chip = Array.from(card.querySelectorAll('.comm-tags .chip'))
+      .find((c) => /^status:/i.test(c.textContent));
+    if (chip) {
+      chip.className = 'chip ' + (isOpen ? 'chip-open' : 'chip-closed');
+      chip.textContent = 'status: ' + (isOpen ? 'open' : 'closed');
+    }
+  });
+})();
+
+/* ============================================================
+   14. GUESTBOOK — huellas locales (fallback del hilo real)
+   ------------------------------------------------------------
+   Guarda mensajes en localStorage (`lunnie-gb`), máx. GUESTBOOK_MAX.
+   Cuando conectes un backend real (giscus / GitHub Discussions),
+   sustituye solo el cuerpo de load()/save() por tu fetch y la UI
+   no cambia.
+   ============================================================ */
+(function initGuestbook() {
+  const text = document.getElementById('gb-text');
+  const post = document.getElementById('gb-post');
+  const list = document.getElementById('gb-list');
+  if (!text || !post || !list) return;
+
+  const STORE = 'lunnie-gb';
+  const MAX = CONFIG.GUESTBOOK_MAX || 12;
+
+  const load = () => {
+    try {
+      const raw = JSON.parse(localStorage.getItem(STORE) || '[]');
+      return Array.isArray(raw) ? raw : [];
+    } catch (e) { return []; }
+  };
+  const save = (arr) => {
+    try { localStorage.setItem(STORE, JSON.stringify(arr)); } catch (e) {}
+  };
+
+  function render() {
+    list.textContent = '';
+    const items = load();
+    if (!items.length) {
+      const empty = document.createElement('p');
+      empty.className = 'gb-empty';
+      empty.textContent = 'aún no hay huellas… sé la primera ♡';
+      list.appendChild(empty);
+      return;
+    }
+    items.forEach((m) => {
+      const item = document.createElement('div');
+      item.className = 'gb-item';
+      const head = document.createElement('div');
+      head.className = 'gb-head';
+      const name = document.createElement('strong');
+      name.textContent = m.name;
+      const d = document.createElement('time');
+      d.textContent = m.d;
+      head.append(name, d);
+      const p = document.createElement('p');
+      p.textContent = m.t;
+      item.append(head, p);
+      list.appendChild(item);
+    });
+  }
+
+  post.addEventListener('click', () => {
+    const t = text.value.trim();
+    if (!t) { text.focus(); return; }
+    const items = load();
+    items.unshift({
+      name: 'visitante ♡',
+      t: t.slice(0, 280),
+      d: new Date().toLocaleString('es-MX', {
+        day: '2-digit', month: '2-digit',
+        hour: '2-digit', minute: '2-digit',
+      }),
+    });
+    save(items.slice(0, MAX));
+    text.value = '';
+    render();
+  });
+
+  text.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+      e.preventDefault();
+      post.click();
+    }
+  });
+
+  render();
 })();

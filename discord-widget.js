@@ -1,11 +1,17 @@
 /* ============================================================
    LUNNIE ♡ — discord-widget.js
-   WS-free embed: estado de Discord en vivo vía Lanyard API
-   (https://github.com/Phineas/lanyard | api.lanyard.rest)
-
-   CONFIGURACIÓN:
-   → Escribe abajo tu Discord User ID. Si lo dejas vacío o con
-     valor de ejemplo, el widget mostrará un fallback elegante.
+   Presencia de Discord en el home, sin servidor propio.
+   ------------------------------------------------------------
+   DOS MODOS:
+   • EN REPOSO (por defecto): mientras DISCORD_ID tenga el valor
+     de ejemplo, el widget muestra un estado manual intencional —
+     nunca parece roto. Diseñado así a propósito.
+   • EN VIVO: pega tu Discord User ID real en DISCORD_ID y el
+     widget pasa a estado en vivo vía Lanyard API
+     (https://github.com/Phineas/lanyard | api.lanyard.rest):
+     CONECTADO: Obtén tu ID en Discord → Configuración → Avanzado
+     → Modo desarrollador → click derecho sobre tu perfil → Copiar
+     ID de usuario. Pega los números en DISCORD_ID. Nada más.
 
    Depende del contenedor #discord-widget en el HTML.
    ============================================================ */
@@ -13,9 +19,18 @@
   'use strict';
 
   /* ---------- CONFIG ---------- */
-  const DISCORD_ID = '123456789012345678'; // TODO: pon tu Discord ID aquí
-  const POLL_MS = 30000;                   // re-consulta cada 30s
+  const DISCORD_ID = '123456789012345678'; // ← tu Discord User ID real va aquí
+  const POLL_MS = 30000;                   // re-consulta cada 30s (modo vivo)
   const CDN = 'https://cdn.discordapp.com';
+
+  // Estado manual mostrado mientras DISCORD_ID sea el placeholder.
+  const MANUAL = {
+    status: 'offline',
+    heading: '// SECTOR EN REPOSO',
+    line: 'la artífice anda en su órbita haciendo sketch — la señal vuelve cuando regrese ▂ ▄ █',
+    activity: 'emitiendo ambiente… (sin actividad de Discord)',
+    clock: 'PRESENCIA MANUAL // 2026.09.26',
+  };
 
   /* ---------- estado ---------- */
   let timer = null;
@@ -156,20 +171,43 @@
     return box;
   }
 
-  /* ---------- render (fallback: sin señal) ---------- */
-  function renderError(reason) {
+  /* ---------- render (modo reposo, manual e intencional) ---------- */
+  function renderManual() {
     const root = $('discord-widget');
     root.innerHTML = '';
-    const err = el('div', 'dw-error');
-    err.append(el('h3', '', '// SEÑAL PERDIDA'));
-    err.append(el('p', '', reason || 'no pude conectarme a Lanyard.'));
-    const code = el('code', '', 'discord-widget.js → const DISCORD_ID');
-    err.appendChild(code);
-    const btn = el('button', 'btn btn-ink', '↻ REINTENTAR');
-    btn.type = 'button';
-    btn.addEventListener('click', () => fetchNow());
-    err.appendChild(btn);
-    root.append(err);
+    const st = STATUS_META[MANUAL.status] || STATUS_META.offline;
+
+    const head = el('div', 'dw-head');
+    head.append(
+      el('span', '', MANUAL.heading),
+      (function () {
+        const meter = el('span', 'meter sleep');
+        meter.textContent = '◌ WAVEFORM';
+        return meter;
+      })()
+    );
+    root.append(head);
+
+    const row = el('div', 'dw-user');
+    const avBox = el('span', 'dw-avatar ' + st.cls);
+    avBox.appendChild(el('span', 'dw-avatar-inner', '✧'));
+    row.appendChild(avBox);
+    const meta = el('div', '');
+    meta.append(el('strong', 'dw-name', 'LUNNIE'));
+    meta.append(el('span', 'dw-tag', '/ ' + st.label));
+    row.appendChild(meta);
+    root.append(row);
+
+    root.append(el('p', 'dw-status', '» ' + MANUAL.line));
+
+    const act = el('div', 'dw-activity');
+    act.append(el('div', 'art', '⌁'));
+    act.append(el('span', 'dw-activity-data', MANUAL.activity));
+    root.append(act);
+
+    const foot = el('div', 'dw-foot');
+    foot.append(el('span', 'dw-clock', MANUAL.clock));
+    root.append(foot);
   }
 
   function renderLoading() {
@@ -204,7 +242,7 @@
   /* ---------- bucle de polling ---------- */
   async function fetchNow() {
     if (!isValidId(DISCORD_ID)) {
-      renderError('configura tu ID de Discord (placeholder en discord-widget.js).');
+      renderManual();
       return;
     }
     renderLoading();

@@ -1,27 +1,2 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
-  <defs>
-    <clipPath id="c"><polygon points="0,0 284,0 300,16 300,300 16,300 0,284"/></clipPath>
-  </defs>
-  <g clip-path="url(#c)">
-    <rect width="300" height="300" fill="#07060f"/>
-    <rect x="8" y="8" width="132" height="136" fill="#0d0b1d" stroke="#eadaff" stroke-width="2"/>
-    <circle cx="74" cy="64" r="24" fill="#100a26" stroke="#9d4edd" stroke-width="3"/>
-    <path d="M52 78 L52 104 Q74 116 96 104 L96 78" fill="none" stroke="#9d4edd" stroke-width="3"/>
-    <circle cx="74" cy="64" r="4" stroke="#fff" fill="#fff" stroke-width="2"/>
-    <text x="26" y="132" font-family="Courier New" font-size="9" fill="#7209b7">PANEL 01</text>
-    <rect x="160" y="8" width="132" height="136" fill="#0d0b1d" stroke="#eadaff" stroke-width="2"/>
-    <path d="M210 24 C 240 40 236 84 196 104" fill="none" stroke="#eadaff" stroke-width="6"/>
-    <path d="M224 22 C 204 56 214 96 184 110" fill="none" stroke="#9d4edd" stroke-width="3"/>
-    <circle cx="228" cy="96" r="4" fill="#ff5d8f"/>
-    <text x="178" y="132" font-family="Courier New" font-size="9" fill="#7209b7">PANEL 02</text>
-    <rect x="8" y="164" width="284" height="124" fill="#0d0b1d" stroke="#eadaff" stroke-width="2"/>
-    <ellipse cx="74" cy="230" rx="34" ry="24" fill="none" stroke="#eadaff" stroke-width="3"/>
-    <circle cx="66" cy="222" r="3" fill="#07060f"/>
-    <circle cx="82" cy="222" r="3" fill="#07060f"/>
-    <path d="M74 238 q8 6 14 0" stroke="#07060f" stroke-width="2.4" fill="none"/>
-    <ellipse cx="214" cy="232" rx="30" ry="20" fill="none" stroke="#9d4edd" stroke-width="3" stroke-dasharray="4 4"/>
-    <circle cx="252" cy="204" r="8" fill="#7209b7"/>
-    <text x="150" y="276" text-anchor="middle" font-family="Courier New" font-size="10" font-weight="bold" fill="#fff" letter-spacing="2">TO BE CONTINUED...
-</text>
-  </g>
-</svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" renderer-info="lunnie-artwork"><defs><radialGradient id="bg5" cx="0.5" cy="0.5" r="0.6" fx="0.5" fy="0.6"><stop offset="0" stop-color="#240046"/><stop offset="1" stop-color="#07060f"/></radialGradient><filter id="g5" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.12 0"/></filter></defs><rect width="480" height="480" fill="url(#bg5)"/><rect x="30" y="30" width="420" height="230" fill="#ece4f5" stroke="#140f24" stroke-width="6"/><rect x="30" y="288" width="200" height="162" fill="#ece4f5" stroke="#140f24" stroke-width="6"/><rect x="250" y="288" width="200" height="162" fill="#ece4f5" stroke="#140f24" stroke-width="6"/><circle cx="150" cy="130" r="52" fill="none" stroke="#140f24" stroke-width="3"/><path d="M60 120 Q150 40 260 118 M70 210 Q150 120 250 206" fill="none" stroke="#140f24" stroke-width="3"/><path d="M300 80 Q330 60 360 90 M340 70 Q370 96 380 120" stroke="#140f24" stroke-width="2" fill="none"/><g><ellipse cx="384" cy="102" rx="40" ry="26" fill="#fff" stroke="#140f24" stroke-width="4"/><path d="M378 126 L390 126 L398 148 Z" fill="#fff" stroke="#140f24" stroke-width="4"/></g><circle cx="128" cy="388" r="40" fill="none" stroke="#140f24" stroke-width="3"/><path d="M96 L356 L100 L330 L118 L350 Z" fill="#140f24"/><path d="M160 L356 L156 L330 L138 L350 Z" fill="#140f24"/><path d="M118 396 Q128 404 138 396" fill="none" stroke="#140f24" stroke-width="3"/><path d="M70 430 L186 430 M70 432 L186 432" stroke="#140f24" stroke-width="2" opacity="0.5"/><g><ellipse cx="210" cy="330" rx="40" ry="26" fill="#fff" stroke="#140f24" stroke-width="4"/><path d="M204 354 L216 354 L224 376 Z" fill="#fff" stroke="#140f24" stroke-width="4"/></g><path d="M320 L300 L376 L330 L368 L420 L320 L444 L272 L420 L264 L330 Z" fill="#140f24"/><path d="M302 366 L338 366 L332 384 L308 384 Z" fill="#fff" stroke="#140f24" stroke-width="3"/><path d="M330 400 L330 410" stroke="#140f24" stroke-width="4"/><rect width="480" height="480" fill="#fff" filter="url(#g5)"/></svg>

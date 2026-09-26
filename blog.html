@@ -16,10 +16,10 @@
   <!-- Favicon púrpura (SVG data-URI, sin archivo extra) -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%233a0ca3%22/><path d=%22M50 14a36 36 0 1 0 0 72z%22 fill=%22%239d4edd%22 opacity=%22.9%22/><circle cx=%2270%22 cy=%2230%22 r=%223%22 fill=%22white%22/></svg>">
 
-  <!-- Tipografías: Oswald (display pesado GG) + Rajdhani (UI P5) -->
+  <!-- Tipografías: Black Ops One (display HUD/GG) + Rajdhani (UI P5) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -130,7 +130,7 @@
               <!-- Contenedor del hilo: configura giscus (data-repo) y se sustituye
                    este fallback por el hilo real de GitHub Discussions. -->
               <div class="giscus">
-                <div class="giscus-fallback">▧ HILO SIN CONECTAR — configura giscus (data-repo / repo-id / category) y este bloque se convierte en hilo de GitHub Discussions.</div>
+                <div class="giscus-fallback">▧ el hilo de esta entrada se conecta cuando el sector tenga guestbook real ✓ — mientras, deja tu huella en la portada ♡</div>
               </div>
             </div>
           </footer>
@@ -188,22 +188,22 @@
             <div class="post-comments">
               <span class="tiny">hilo de comentarios // post-02</span>
               <div class="giscus">
-                <div class="giscus-fallback">▧ HILO SIN CONECTAR — configura giscus (data-repo / repo-id / category) y este bloque se convierte en hilo de GitHub Discussions.</div>
+                <div class="giscus-fallback">▧ el hilo de esta entrada se conecta cuando el sector tenga guestbook real ✓ — mientras, deja tu huella en la portada ♡</div>
               </div>
             </div>
           </footer>
         </article>
 
-        <!-- Nota: cómo publicar una entrada nueva -->
+        <!-- Nota del archivo -->
         <section class="panel" data-reveal aria-labelledby="t-blog-note">
           <header class="panel-head">
-            <h2 id="t-blog-note">nueva transmisión</h2>
-            <span class="chip">plantilla</span>
+            <h2 id="t-blog-note">próximas transmisiones</h2>
+            <span class="chip chip-warn">en el rádar</span>
           </header>
           <p class="muted" style="margin-top:4px">
-            Para publicar: copia un <code>&lt;article class="post"&gt;</code>, cambia el
-            <code>datetime</code> al formato <code>AAAA.MM.DD // HH:MM</code>, el título,
-            el cuerpo y los <code>data-key</code> de las reacciones (usan localStorage).
+            Mini-tutorial de <strong>planchar líneas en Clip Studio</strong>, el fanzine de
+            OCs y la tira de 3 paneles que ya está en la <a href="galeria.html">galería</a>.
+            El log no tiene agenda — las transmisiones llegan cuando el dibujo las pide ✦
           </p>
         </section>
 
@@ -230,7 +230,7 @@
         <strong>correo encargos</strong>
         <em>lunnie.commissions@gmail.com</em>
       </a>
-      <a class="dock-btn dock-link" href="#" target="_blank" rel="noopener">
+      <a class="dock-btn dock-link is-pending" data-social="twitter" href="#" target="_blank" rel="noopener" title="enlace pendiente de configurar">
         <span class="dock-ico" aria-hidden="true">𝕏</span>
         <strong>twitter / x</strong>
         <em>@lunnieart</em>
