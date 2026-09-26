@@ -21,8 +21,11 @@
     16.  Página Galería (filtros + grid)
     17.  Lightbox "TAKE YOUR TIME / HEAVEN OR HELL"
     18.  Asistente flotante
-    19.  Footer
-    20.  Responsive (geometría rota en móvil)
+   19.  Footer
+   20.  Responsive (geometría rota en móvil)
+   21.  Identidad / diario / dock / easter egg (cumpleaños 17)
+   22.  Páginas OCs / Blog / Sobre mí
+   23.  Liquid Glass + Superelipses (refactor visual)
    ============================================================ */
 
 /* ============================================================
@@ -93,6 +96,28 @@
   /* Sombras */
   --shadow-hard: 6px 6px 0 rgba(0, 0, 0, 0.9);
   --shadow-glow: 0 0 18px rgba(157, 78, 221, 0.55);
+
+  /* --- Superelipses (squircles): radios continuos --- */
+  --sq-panel:  28px;   /* paneles grandes */
+  --sq-card:   22px;   /* tarjetas medianas */
+  --sq-button: 16px;   /* botones / nav */
+  --sq-chip:   12px;   /* chips, tags, inputs */
+  --sq-img:    18px;   /* miniaturas e imágenes */
+
+  /* --- Liquid Glass (estilo Nux-Glass) --- */
+  --glass-tint:      linear-gradient(135deg, rgba(36, 0, 70, 0.45) 0%, rgba(7, 6, 15, 0.65) 100%);
+  --glass-tint-deep: linear-gradient(135deg, rgba(36, 0, 70, 0.62) 0%, rgba(7, 6, 15, 0.78) 100%);
+  --glass-solid:     linear-gradient(135deg, rgba(36, 0, 70, 0.92) 0%, rgba(7, 6, 15, 0.97) 100%);
+  --glass-blur:      blur(16px) saturate(160%);
+  --glass-blur-soft: blur(10px) saturate(140%);
+  --glass-line:      rgba(255, 255, 255, 0.15);
+  --glass-line-top:  rgba(255, 255, 255, 0.35);
+  --glass-line-left: rgba(157, 78, 221, 0.35);
+  --glass-bevel: inset 0 1px 1px 0 rgba(255, 255, 255, 0.2), 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+  --glass-bevel-sm: inset 0 1px 1px 0 rgba(255, 255, 255, 0.16), 0 8px 18px -10px rgba(0, 0, 0, 0.75);
+  --glass-ring: inset 0 0 0 1px rgba(157, 78, 221, 0.28);
+  --glass-sheen: linear-gradient(105deg, rgba(255, 255, 255, 0) 26%, rgba(255, 255, 255, 0.26) 42%,
+                  rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 66%);
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -1704,3 +1729,664 @@ h1, h2, h3 { line-height: 1.05; }
   .egg-inner { padding: 30px 20px; }
   .dock-row { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   22. PÁGINAS: OCs / BLOG / SOBRE MÍ
+   ============================================================ */
+
+/* --- 22.1 Dossier de OCs (tarjetas recortadas) --- */
+.oc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: 22px;
+  margin-top: 4px;
+}
+.oc-card {
+  position: relative;
+  background: linear-gradient(180deg, #0f0c22, #0a0818);
+  border: 2px solid var(--line-2);
+  clip-path: var(--cut-panel);
+  padding-bottom: 14px;
+  transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease);
+}
+.oc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 8px 8px 0 var(--space), 0 0 22px rgba(114, 9, 183, 0.35);
+}
+.oc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  background: repeating-linear-gradient(-45deg, #22114e 0 10px, #1a0d3d 10px 20px);
+  border-bottom: 2px solid var(--neon-violet);
+}
+.oc-id {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.oc-fig { margin: 14px 14px 0; }
+.oc-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 2px solid var(--space);
+  clip-path: var(--cut-tag);
+  filter: saturate(0.95);
+}
+.oc-fig figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--grey-d);
+  margin-top: 6px;
+}
+.oc-data { margin: 14px; display: grid; gap: 7px; }
+.oc-data div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 5px;
+}
+.oc-data dt {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--grey-d);
+}
+.oc-data dd {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.84rem;
+  color: var(--offwhite);
+  text-align: right;
+}
+.oc-palette { display: flex; gap: 5px; align-items: center; }
+.oc-palette span {
+  width: 15px;
+  height: 15px;
+  background: var(--sw, var(--white));
+  border: 1px solid var(--space);
+  transform: skewX(-8deg);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7);
+}
+.oc-bio { margin: 0 14px; font-size: 0.86rem; line-height: 1.6; color: var(--grey); }
+.oc-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 14px 0;
+}
+.oc-card code, .post code, .panel code {
+  font-family: var(--font-mono);
+  font-size: 0.78em;
+  background: var(--space);
+  border: 1px solid var(--line-2);
+  padding: 1px 5px;
+  color: var(--neon-purple);
+}
+
+/* --- 22.2 Transmissions Log (posts largos) --- */
+.post {
+  position: relative;
+  background: var(--panel);
+  border: 2px solid var(--line-2);
+  clip-path: var(--cut-panel);
+  padding: 24px 26px 20px;
+  box-shadow: var(--shadow-hard);
+}
+.post::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  bottom: 18px;
+  width: 5px;
+  background: linear-gradient(180deg, var(--neon-purple), transparent);
+}
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--neon-purple);
+  margin-bottom: 10px;
+}
+.post-meta time { color: var(--st-online); }
+.post-title {
+  margin: 0 0 16px;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--white);
+}
+.post-title::after {
+  content: "";
+  display: block;
+  width: 92px;
+  height: 4px;
+  background: var(--neon-violet);
+  transform: skewX(-30deg);
+  margin-top: 10px;
+}
+.post-body p {
+  color: var(--offwhite);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin: 0 0 13px;
+}
+.post-body p strong { color: var(--white); }
+.post-body p em { color: var(--neon-purple); font-style: normal; }
+.post-note {
+  background: #0a0818;
+  border-left: 4px solid var(--neon-purple);
+  clip-path: var(--cut-tag);
+  padding: 12px 16px;
+  margin: 0 0 14px;
+}
+.post-note b {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--neon-purple);
+  margin-bottom: 6px;
+}
+.post-note p { margin: 0; font-size: 0.86rem; color: var(--grey); }
+.post-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-top: 1px dashed var(--line-2);
+  padding-top: 16px;
+  margin-top: 8px;
+}
+.post-reacts { display: flex; gap: 8px; flex-wrap: wrap; }
+.post-comments { flex: 1 1 320px; min-width: 0; }
+.post-comments .tiny { display: block; margin-bottom: 6px; letter-spacing: 0.1em; }
+.post-comments .giscus { margin-top: 6px; }
+
+/* --- 22.3 Operator Profile (2 columnas asimétricas) --- */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+.about-fig { text-align: center; margin: 6px 0 4px; }
+.about-avatar {
+  width: min(240px, 70%);
+  height: auto;
+  display: inline-block;
+  transition: transform 0.2s var(--ease);
+}
+.about-avatar:hover { transform: rotate(-3deg) scale(1.05); }
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 4px 0 8px;
+}
+.stat-card {
+  background: var(--panel-2);
+  border: 1px solid var(--line-2);
+  clip-path: var(--cut-tag);
+  padding: 10px 12px;
+}
+.stat-card span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--grey-d);
+}
+.stat-card b {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--white);
+}
+.about-bio p {
+  color: var(--offwhite);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin: 0 0 13px;
+}
+.about-bio p:last-child { margin-bottom: 4px; }
+.about-bio strong { color: var(--white); }
+.about-bio em { color: var(--neon-purple); font-style: normal; }
+
+.likes-list {
+  list-style: none;
+  margin: 4px 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.likes-list li {
+  background: var(--panel-2);
+  border: 1px solid var(--line-2);
+  clip-path: var(--cut-tag);
+  padding: 7px 13px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.84rem;
+  color: var(--offwhite);
+}
+.likes-list li::before {
+  content: "◆ ";
+  color: var(--neon-purple);
+  font-size: 0.7rem;
+}
+
+.dd-wrap { overflow-x: auto; margin-top: 10px; }
+.dd-table {
+  width: 100%;
+  min-width: 460px;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+.dd-table th {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--white);
+  padding: 10px 12px;
+  background: repeating-linear-gradient(-45deg, #22114e 0 10px, #1a0d3d 10px 20px);
+  border: 1px solid var(--line-2);
+}
+.dd-table td {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  color: var(--offwhite);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.dd-table tr:nth-child(even) td { background: rgba(255, 255, 255, 0.02); }
+.dd-table td:first-child::before { content: "✅ "; }
+.dd-table td:last-child::before { content: "❌ "; }
+
+.quick-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.quick-links .btn { font-size: 0.8rem; padding: 9px 16px 9px 14px; }
+
+/* --- Responsive sección 22 --- */
+@media (max-width: 1160px) {
+  .about-grid { grid-template-columns: minmax(240px, 300px) minmax(0, 1fr); }
+}
+@media (max-width: 860px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-fig { text-align: center; }
+}
+@media (max-width: 720px) {
+  .post { padding: 20px 16px 16px; }
+  .post-foot { flex-direction: column; }
+  .stat-grid { grid-template-columns: 1fr; }
+  .oc-data div { flex-direction: column; align-items: flex-start; gap: 3px; }
+  .oc-data dd { text-align: left; }
+  .dd-table { min-width: 0; }
+}
+
+/* ============================================================
+   23. LIQUID GLASS + SUPERELIPSES — refactor visual de sistema
+   ------------------------------------------------------------
+   23.1 Utilidades: .squircle-* / .liquid-panel / .glass-card
+   23.2 Superficies de cristal (paneles, tarjetas, docks)
+   23.3 Micro-elementos (nav, botones, chips, tags, inputs)
+   23.4 Estados + destello especular en hover
+   23.5 Performance (blur táctil, reduced-motion, fallback)
+   ============================================================ */
+
+/* ---------- 23.1 UTILIDADES DEL SISTEMA ---------- */
+.squircle-panel  { border-radius: var(--sq-panel);  corner-shape: squircle; }
+.squircle-card   { border-radius: var(--sq-card);   corner-shape: squircle; }
+.squircle-button { border-radius: var(--sq-button); corner-shape: squircle; }
+.squircle-chip   { border-radius: var(--sq-chip);   corner-shape: squircle; }
+
+/* Compat: las utilidades P5 de recorte poligonal ahora emiten superelipses */
+.cut, .cut-panel, .cut-tag { clip-path: none; }
+.cut       { border-radius: var(--sq-button); corner-shape: squircle; }
+.cut-panel { border-radius: var(--sq-panel);  corner-shape: squircle; }
+.cut-tag   { border-radius: var(--sq-chip);   corner-shape: squircle; }
+
+/* Superficie de cristal líquido reutilizable */
+.liquid-panel,
+.glass-card {
+  background-color: transparent;
+  background-image: var(--glass-sheen), var(--glass-tint);
+  background-size: 220% 100%, 100% 100%;
+  background-position: -60% 0, 0 0;
+  background-repeat: no-repeat;
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-line);
+  border-top: 1px solid var(--glass-line-top);
+  border-left: 1px solid var(--glass-line-left);
+  box-shadow: var(--glass-bevel), var(--glass-ring);
+  border-radius: var(--sq-panel);
+  corner-shape: squircle;
+}
+.glass-card { border-radius: var(--sq-card); }
+
+/* ---------- 23.2 SUPERFICIES DE CRISTAL ---------- */
+/* acrílico profundo + lente de desenfoque: el fondo estelar refracta a través */
+.panel, .p5-box, .dg-bubble, .comm-card, .post, .oc-card, .tx-note,
+.dock, .assistant-popup, .tx-box, .lb-stage, .warn-strip, .step,
+.giscus-fallback {
+  background-color: transparent;
+  background-image: var(--glass-sheen), var(--glass-tint);
+  background-size: 220% 100%, 100% 100%;
+  background-position: -60% 0, 0 0;
+  background-repeat: no-repeat;
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-line);
+  border-top: 1px solid var(--glass-line-top);
+  border-left: 1px solid var(--glass-line-left);
+  box-shadow: var(--glass-bevel);
+  clip-path: none;
+  filter: none;
+}
+/* superficies con mucho texto: tinte más profundo para legibilidad */
+.panel, .post, .tx-box, .giscus-fallback {
+  background-image: var(--glass-sheen), var(--glass-tint-deep);
+}
+
+/* superelipses por escala */
+.panel, .p5-box, .comm-card, .post, .oc-card, .dock, .assistant-popup,
+.lb-stage, .tx-box, .warn-strip, .banner-wrap, .g-item, .egg-inner,
+.liquid-panel, .glass-card {
+  border-radius: var(--sq-panel);
+  corner-shape: squircle;
+}
+.step, .giscus-fallback, .stat-card, .profile-stats div, .dw-activity,
+.dw-status, .social-list a, .tx-note, .post-note, .dock-btn {
+  border-radius: var(--sq-card);
+  corner-shape: squircle;
+}
+.site-nav a, .btn, .filter, .egg-trigger, .lb-close, .lb-nav, .stop-egg,
+.p5-box .speaker-tab, .tx-tab, .timeline time, .g-cap, .react,
+.assistant-bubble {
+  border-radius: var(--sq-button);
+  corner-shape: squircle;
+}
+.chip, .likes-list li, .hero-badge, .copy-source, .dg-bubble textarea,
+.tx-box textarea {
+  border-radius: var(--sq-chip);
+  corner-shape: squircle;
+}
+.gal-strip a, .comm-slots figure img, .oc-img, .badge-88, .friend-links img,
+.dw-avatar, .dw-avatar img {
+  border-radius: var(--sq-img);
+  corner-shape: squircle;
+}
+.lb-img {
+  border-radius: calc(var(--sq-panel) - 2px) calc(var(--sq-panel) - 2px) 0 0;
+  corner-shape: squircle;
+}
+.lb-info {
+  border-radius: 0 0 calc(var(--sq-panel) - 2px) calc(var(--sq-panel) - 2px);
+  corner-shape: squircle;
+}
+
+/* fin de los recortes poligonales duros */
+.site-nav a, .panel, .panel-head, .btn, .dw-status, .social-list a,
+.banner-wrap, .p5-box, .p5-box .speaker-tab, .gal-strip a, .timeline time,
+.dg-bubble, .comm-card, .comm-head, .comm-slots figure img, .warn-strip,
+.filter, .g-item, .g-cap, .g-item .nfsw-stamp, .lb-img, .lb-info, .lb-close,
+.lb-nav, .assistant-bubble, .assistant-popup, .egg-trigger, .tx-box, .tx-tab,
+.tx-note, .dock, .dock-head, .dock-btn, .stop-egg, .oc-card, .oc-img, .post,
+.post-note, .stat-card, .likes-list li {
+  clip-path: none;
+}
+
+/* las bandas de cabecera siguen la curva del panel (squircle) */
+.panel, .comm-card, .post, .oc-card, .dock, .assistant-popup { overflow: hidden; }
+
+/* cromo de cabeceras: se conservan las franjas diagonales P5/GG */
+.panel-head, .comm-head, .dock-head, .oc-head, .assistant-head {
+  border-bottom: 1px solid rgba(157, 78, 221, 0.75);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* ---------- 23.3 MICRO-ELEMENTOS ---------- */
+/* paneles pequeños: tinte + bisel, sin backdrop-filter (rendimiento) */
+.hero-badge, .profile-stats div, .stat-card, .social-list a, .dw-status,
+.dw-activity, .likes-list li {
+  background-color: rgba(13, 11, 29, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+.chip {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+/* barra ticker: cristal sin blur (contenido animado) */
+.marquee-bar {
+  background: rgba(5, 4, 10, 0.6);
+  border-top: 1px solid rgba(157, 78, 221, 0.75);
+  border-bottom: 1px solid rgba(157, 78, 221, 0.75);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+/* footer flotante */
+.site-footer {
+  background: linear-gradient(180deg, rgba(7, 6, 15, 0), rgba(36, 0, 70, 0.45));
+  -webkit-backdrop-filter: var(--glass-blur-soft);
+  backdrop-filter: var(--glass-blur-soft);
+  border-top: 1px solid var(--glass-line-top);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+/* navegación: cristal esmerilado sobre las estrellas */
+.site-nav a {
+  background-color: rgba(13, 11, 29, 0.55);
+  background-image: var(--glass-sheen);
+  background-size: 220% 100%;
+  background-position: -60% 0;
+  box-shadow: var(--glass-bevel-sm);
+}
+@media (min-width: 721px) {
+  .site-nav a {
+    -webkit-backdrop-filter: var(--glass-blur-soft);
+    backdrop-filter: var(--glass-blur-soft);
+  }
+}
+
+/* botones, filtros y docks */
+.btn {
+  background-image: var(--glass-sheen);
+  background-size: 220% 100%;
+  background-position: -60% 0;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.25), 0 10px 22px -12px rgba(0, 0, 0, 0.8);
+}
+.filter {
+  background-color: rgba(13, 11, 29, 0.55);
+  background-image: var(--glass-sheen);
+  background-size: 220% 100%;
+  background-position: -60% 0;
+  box-shadow: var(--glass-bevel-sm);
+}
+.dock-btn {
+  background-color: rgba(18, 14, 38, 0.6);
+  background-image: var(--glass-sheen);
+  background-size: 220% 100%;
+  background-position: -60% 0;
+  box-shadow: var(--glass-bevel-sm);
+}
+.react {
+  background-color: rgba(19, 13, 40, 0.7);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+.egg-trigger {
+  background-color: rgba(13, 11, 29, 0.6);
+  box-shadow: var(--glass-bevel-sm);
+}
+.assistant-bubble {
+  box-shadow: var(--glass-bevel-sm), 0 0 18px rgba(114, 9, 183, 0.6);
+}
+
+/* tarjetas de arte y thumbnails */
+.g-item {
+  background-color: rgba(13, 11, 29, 0.6);
+  border: 1px solid var(--glass-line);
+  border-top: 1px solid var(--glass-line-top);
+  border-left: 1px solid var(--glass-line-left);
+  box-shadow: var(--glass-bevel-sm);
+}
+.g-cap {
+  background-color: rgba(7, 6, 15, 0.62);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  -webkit-backdrop-filter: blur(6px) saturate(150%);
+  backdrop-filter: blur(6px) saturate(150%);
+}
+.banner-wrap {
+  border: 1px solid var(--glass-line);
+  box-shadow: var(--glass-bevel);
+}
+.gal-strip a { border-color: rgba(255, 255, 255, 0.16); }
+.friend-links img { border: 1px solid rgba(255, 255, 255, 0.18); }
+.badge-88 {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: var(--glass-bevel-sm);
+}
+
+/* inputs */
+.copy-source, .dg-bubble textarea, .tx-box textarea {
+  background: rgba(8, 6, 15, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+/* ---------- 23.4 ESTADOS + DESTELLO ESPECULAR ---------- */
+/* anillos interiores P5 sobre cristal */
+.p5-box, .dg-bubble, .tx-box {
+  box-shadow: var(--glass-bevel), inset 0 0 0 3px rgba(114, 9, 183, 0.5), var(--glass-ring);
+}
+/* identidad de estados especiales */
+.warn-strip {
+  border: 1px solid var(--danger);
+  border-top: 1px solid rgba(255, 93, 143, 0.9);
+  border-left: 1px solid rgba(255, 93, 143, 0.7);
+}
+.giscus-fallback { border: 1px dashed rgba(157, 78, 221, 0.55); }
+.react.on {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 12px rgba(114, 9, 183, 0.7);
+}
+
+/* hover moderno: brillo de cristal en vez de sombra dura */
+.site-nav a:hover {
+  background-image: var(--glass-sheen);
+  background-size: 220% 100%;
+  background-position: -60% 0;
+  box-shadow: var(--glass-bevel-sm), 0 0 18px rgba(114, 9, 183, 0.7);
+}
+.site-nav a.active { box-shadow: var(--glass-bevel-sm), 0 0 22px rgba(157, 78, 221, 0.55); }
+.btn:hover {
+  background-image: var(--glass-sheen);
+  background-size: 220% 100%;
+  background-position: -60% 0;
+  filter: none;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.3), 0 14px 28px -12px rgba(0, 0, 0, 0.85), 0 0 18px rgba(157, 78, 221, 0.5);
+}
+.filter:hover {
+  background-image: var(--glass-sheen);
+  background-size: 220% 100%;
+  background-position: -60% 0;
+}
+.filter.active { box-shadow: var(--glass-bevel-sm), 0 0 18px rgba(157, 78, 221, 0.55); }
+.dock-btn:hover, .dock-btn:focus-visible {
+  background-image: var(--glass-sheen);
+  background-size: 220% 100%;
+  background-position: -60% 0;
+  box-shadow: var(--glass-bevel-sm), 0 0 18px rgba(114, 9, 183, 0.6);
+}
+.social-list a:hover { box-shadow: var(--glass-bevel-sm), 0 0 16px rgba(114, 9, 183, 0.55); }
+.comm-card:hover {
+  filter: none;
+  box-shadow: var(--glass-bevel), 0 26px 50px -20px rgba(0, 0, 0, 0.85), 0 0 28px rgba(114, 9, 183, 0.35);
+}
+.comm-card.closed { filter: grayscale(0.8); }
+.oc-card:hover {
+  box-shadow: var(--glass-bevel), 0 26px 48px -18px rgba(0, 0, 0, 0.85), 0 0 26px rgba(157, 78, 221, 0.35);
+}
+.g-item:hover {
+  filter: none;
+  box-shadow: var(--glass-bevel), 0 0 26px rgba(114, 9, 183, 0.4);
+}
+
+/* destello especular: la luz recorre el cristal al hacer hover */
+@keyframes glass-sheen {
+  from { background-position: -90% 0, 0 0; }
+  to   { background-position: 190% 0, 0 0; }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .panel:hover, .p5-box:hover, .comm-card:hover, .post:hover, .oc-card:hover,
+  .dock:hover, .assistant-popup:hover, .tx-box:hover, .lb-stage:hover,
+  .warn-strip:hover, .step:hover, .site-nav a:hover, .btn:hover,
+  .filter:hover, .dock-btn:hover, .liquid-panel:hover, .glass-card:hover {
+    animation: glass-sheen 1.05s var(--ease);
+  }
+}
+
+/* ---------- 23.5 PERFORMANCE ---------- */
+@media (max-width: 720px) {
+  :root {
+    --glass-blur: blur(10px) saturate(140%);
+    --glass-blur-soft: blur(6px) saturate(130%);
+    --sq-panel: 22px;
+    --sq-card: 18px;
+    --sq-button: 14px;
+    --sq-img: 14px;
+  }
+  /* el twinkle de estrellas re-rasteriza todos los backdrops: se pausa en táctil */
+  .space-bg::before { animation: none; opacity: 0.8; }
+  /* superficies grandes sin blur en móvil */
+  .site-footer, .egg-banner { -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .g-cap { -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .dd-wrap { padding: 10px 12px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .space-bg::before { animation: none; }
+}
+
+/* fallback sin backdrop-filter: el tinte sube de opacidad para legibilidad */
+@supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .panel, .p5-box, .dg-bubble, .comm-card, .post, .oc-card, .tx-note, .dock,
+  .assistant-popup, .tx-box, .lb-stage, .warn-strip, .step, .giscus-fallback,
+  .liquid-panel, .glass-card {
+    background-image: var(--glass-sheen), var(--glass-solid);
+  }
+  .marquee-bar { background: rgba(5, 4, 10, 0.9); }
+  .site-footer { background: linear-gradient(180deg, rgba(7, 6, 15, 0.7), rgba(36, 0, 70, 0.85)); }
+}
+
+/* bandejas de utilidad: aire alrededor del contenido */
+.filters { padding: 10px 12px; }
+.badges-block { padding: 12px; }
+.dd-wrap { padding: 10px 12px 12px; }
