@@ -1412,3 +1412,295 @@ h1, h2, h3 { line-height: 1.05; }
   .profile-stats { grid-template-columns: repeat(2, 1fr); }
   .comm-num { font-size: 1.9rem; }
 }
+
+/* ============================================================
+   21. IDENTIDAD / DIARIO / DOCK / EASTER EGG (cumpleaños 17)
+   ============================================================ */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  clip: rect(0 0 0 0); overflow: hidden;
+  white-space: nowrap;
+}
+
+/* --- Badges de identidad del hero --- */
+.hero-badges {
+  margin-top: 1.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.hero-badges .chip { font-size: 0.66rem; padding: 5px 14px; }
+
+/* --- Gatillo del easter egg (luna en barra superior) --- */
+.egg-trigger {
+  position: fixed;
+  top: 58px;
+  right: 14px;
+  z-index: 40;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--line-2);
+  background: var(--panel);
+  color: var(--neon-purple);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  clip-path: var(--cut-arrow);
+  transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), color 0.18s var(--ease);
+}
+.egg-trigger:hover {
+  color: var(--white);
+  transform: rotate(15deg) scale(1.08);
+  box-shadow: 3px 3px 0 var(--space), 0 0 14px var(--glow);
+}
+
+/* --- Daily Transmissions (diario P5) --- */
+.tx-box {
+  position: relative;
+  background: var(--panel);
+  border: 2px solid var(--white);
+  box-shadow: inset 0 0 0 4px var(--space), inset 0 0 0 6px var(--neon-violet), var(--shadow-hard);
+  clip-path: var(--cut-panel);
+  padding: 20px 18px 14px;
+  transform: skewX(-1deg);
+  margin-bottom: 16px;
+}
+.tx-box > * { transform: skewX(1deg); }
+.tx-tab {
+  position: absolute;
+  top: -14px;
+  left: 16px;
+  background: var(--white);
+  color: var(--space);
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  clip-path: var(--cut-tag);
+  box-shadow: 3px 3px 0 var(--neon-violet);
+}
+.tx-box textarea {
+  width: 100%;
+  min-height: 76px;
+  resize: vertical;
+  background: #08060f;
+  border: 2px inset var(--line-2);
+  color: var(--offwhite);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.tx-box textarea:focus { outline: 2px solid var(--neon-purple); outline-offset: -2px; }
+.tx-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+.tx-wall { display: flex; flex-direction: column; gap: 12px; }
+.tx-note {
+  background: linear-gradient(180deg, #0f0c22, #0a0818);
+  border: 1px solid var(--line-2);
+  border-left: 4px solid var(--neon-violet);
+  padding: 12px 14px;
+  clip-path: var(--cut-tag);
+  animation: pop-in 0.24s var(--ease);
+}
+.tx-note:first-child { border-left-color: var(--neon-purple); }
+.tx-head { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.tx-head strong {
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+.tx-head time { font-family: var(--font-mono); font-size: 0.62rem; color: var(--grey-d); }
+.tx-note p { margin: 0 0 10px; color: var(--offwhite); font-size: 0.88rem; }
+.tx-reacts { display: flex; gap: 6px; flex-wrap: wrap; }
+.react {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #130d28;
+  border: 1px solid var(--line-2);
+  color: var(--grey);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 3px 10px;
+  cursor: pointer;
+  transform: skewX(-6deg);
+  transition: background 0.15s var(--ease), border-color 0.15s var(--ease), color 0.15s var(--ease);
+}
+.react > * { transform: skewX(6deg); }
+.react:hover { border-color: var(--neon-purple); color: var(--white); }
+.react.on {
+  background: var(--neon-violet);
+  color: var(--white);
+  border-color: var(--neon-purple);
+  box-shadow: 0 0 10px rgba(114, 9, 183, 0.7);
+}
+.react .n { font-family: var(--font-mono); font-size: 0.7rem; opacity: 0.85; }
+
+/* --- Dock de contacto TRANSMISSION SIGNALS (estilo GG) --- */
+.dock {
+  position: relative;
+  margin: 0 auto 2rem;
+  width: min(1100px, 100%);
+  border: 2px solid var(--line-2);
+  background: linear-gradient(180deg, #0b0919, #08060f);
+  clip-path: var(--cut-panel);
+  padding: 18px;
+  box-shadow: var(--shadow-hard);
+}
+.dock-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: -18px -18px 14px;
+  padding: 12px 18px;
+  background: repeating-linear-gradient(-45deg, #22114e 0 10px, #1a0d3d 10px 20px);
+  border-bottom: 2px solid var(--neon-violet);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+}
+.dock-badge {
+  font-family: var(--font-display);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+  font-size: 0.9rem;
+}
+.dock-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.dock-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 14px;
+  background: var(--panel-2);
+  border: 1px solid var(--line-2);
+  color: var(--offwhite);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  clip-path: var(--cut-tag);
+  text-decoration: none;
+  transition: background 0.16s var(--ease), transform 0.14s var(--ease), box-shadow 0.16s var(--ease);
+}
+.dock-btn:hover,
+.dock-btn:focus-visible {
+  background: var(--neon-violet);
+  color: var(--white);
+  transform: translateY(-3px);
+  box-shadow: 4px 4px 0 var(--space);
+}
+.dock-ico { font-size: 1.15rem; color: var(--neon-purple); }
+.dock-btn:hover .dock-ico, .dock-btn:focus-visible .dock-ico { color: var(--white); }
+.dock-btn strong {
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.dock-btn em {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--grey-d);
+  overflow-wrap: anywhere;
+}
+.dock-btn:hover em, .dock-btn:focus-visible em { color: var(--offwhite); }
+.dock-feedback {
+  margin-top: 12px;
+  color: var(--st-online);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+}
+.dock-feedback[hidden] { display: none; }
+
+/* --- Easter egg de cumpleaños --- */
+.egg-banner {
+  position: fixed;
+  inset: 0;
+  z-index: 98;
+  display: grid;
+  place-items: center;
+  background: rgba(7, 6, 15, 0.72);
+  animation: lb-fade 0.2s var(--ease);
+}
+.egg-banner[hidden] { display: none; }
+.egg-inner {
+  position: relative;
+  text-align: center;
+  background: linear-gradient(160deg, #240046, #0d0b1d);
+  border: 2px solid var(--white);
+  box-shadow: 10px 10px 0 var(--space), 0 0 40px rgba(114, 9, 183, 0.65);
+  clip-path: var(--cut-panel);
+  padding: 38px 44px;
+  max-width: min(660px, 90vw);
+  animation: lb-rise 0.32s var(--ease);
+}
+.egg-kicker {
+  margin: 0;
+  font-family: var(--font-display);
+  letter-spacing: 0.32em;
+  color: var(--neon-purple);
+  font-size: 0.78rem;
+}
+.egg-title {
+  margin: 10px 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 5vw, 2.6rem);
+  text-transform: uppercase;
+  color: var(--white);
+  text-shadow: 4px 4px 0 var(--neon-violet);
+}
+.egg-sub {
+  margin: 0;
+  color: var(--grey);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+.stop-egg {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  background: var(--danger);
+  color: var(--white);
+  border: 2px solid var(--space);
+  cursor: pointer;
+  font-family: var(--font-display);
+  clip-path: var(--cut-arrow);
+}
+.stop-egg:hover { background: var(--warn); }
+.confetti-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99;
+  overflow: hidden;
+}
+.confetti-layer[hidden] { display: none; }
+.confetti {
+  position: absolute;
+  top: -12px;
+  animation: confetti-fall linear forwards;
+}
+@keyframes confetti-fall {
+  0%   { transform: translateY(-12px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(108vh) rotate(720deg); opacity: 0.85; }
+}
+
+/* --- Responsive nuevo bloque --- */
+@media (max-width: 720px) {
+  .egg-trigger { top: 54px; right: 8px; width: 34px; height: 34px; font-size: 0.95rem; }
+  .hero-badges { gap: 6px; }
+  .hero-badges .chip { font-size: 0.6rem; padding: 4px 10px; }
+  .egg-inner { padding: 30px 20px; }
+  .dock-row { grid-template-columns: 1fr; }
+}

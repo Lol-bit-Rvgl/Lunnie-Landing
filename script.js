@@ -8,8 +8,11 @@
      3. Asistente flotante con consejos aleatorios
      4. Webring randomizable
      5. Animaciones de aparición al hacer scroll
-     6. Inyección de Giscus (sólo si está configurado)
-     7. Año automático en el footer
+      6. Inyección de Giscus (sólo si está configurado)
+      7. Año automático en el footer
+      8. Daily Transmissions (muro de notas + reacciones)
+      9. Dock de contacto (copiar tag de Discord)
+      10. Easter egg de cumpleaños (confeti 🌙)
    ============================================================ */
 
 /* ============================================================
@@ -288,4 +291,248 @@
   document.querySelectorAll('[data-year]').forEach((n) => {
     n.textContent = String(new Date().getFullYear());
   });
+})();
+
+/* ============================================================
+   HELPER — copiar texto al portapapeles (clipboard + fallback)
+   ============================================================ */
+async function copyPlain(text) {
+  if (!text) return false;
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch (e) { /* seguimos al fallback */ }
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    ta.setSelectionRange(0, text.length);
+    const ok = document.execCommand('copy');
+    ta.remove();
+    return ok;
+  } catch (e) { return false; }
+}
+
+/* ============================================================
+   8. DAILY TRANSMISIONES — muro de notas con localStorage
+   ------------------------------------------------------------
+   - Notas semilla siempre visibles.
+   - Notas del usuario guardadas en `lunnie-tx` (nuevas arriba).
+   - Reacciones ❤️🔥🌙✨ con delta en `lunnie-tx-reacts`
+     (clave `{id}|{emoji}` → 1/0), contando base + delta.
+   ============================================================ */
+(function initTransmissions() {
+  const input = document.getElementById('tx-input');
+  const post = document.getElementById('tx-post');
+  const wall = document.getElementById('tx-wall');
+  if (!input || !post || !wall) return;
+
+  const STORE = 'lunnie-tx';
+  const REACTS = 'lunnie-tx-reacts';
+  const REACTS_UI = ['❤️', '🔥', '🌙', '✨'];
+
+  const SEED = [
+    {
+      id: 'seed-1',
+      t: 'boceto del día: gato astronauta en su primera órbita 🛸 ¿alguien lo quiere como sticker?',
+      d: 'hace 1 h',
+      base: { '❤️': 12, '🔥': 8, '🌙': 4, '✨': 9 },
+    },
+    {
+      id: 'seed-2',
+      t: 'midnight practicing guilty gear… wrongdoing all night. ¿alguien para el próximo set? ♡',
+      d: 'ayer',
+      base: { '❤️': 6, '🔥': 11, '🌙': 2, '✨': 5 },
+    },
+    {
+      id: 'seed-3',
+      t: "1 semana de este sector y ya siento que es mi casa :')",
+      d: 'hace 3 días',
+      base: { '❤️': 19, '🔥': 3, '🌙': 7, '✨': 12 },
+    },
+  ];
+
+  const loadNotes = () => {
+    try {
+      const raw = JSON.parse(localStorage.getItem(STORE) || '[]');
+      return Array.isArray(raw) ? raw : [];
+    } catch (e) { return []; }
+  };
+  const saveNotes = (list) => {
+    try { localStorage.setItem(STORE, JSON.stringify(list)); } catch (e) {}
+  };
+  const getDelta = (id, rea) => {
+    try {
+      const store = JSON.parse(localStorage.getItem(REACTS) || '{}');
+      return store[id + '|' + rea] ? 1 : 0;
+    } catch (e) { return 0; }
+  };
+  const setDelta = (id, rea, on) => {
+    try {
+      const store = JSON.parse(localStorage.getItem(REACTS) || '{}');
+      store[id + '|' + rea] = on ? 1 : 0;
+      localStorage.setItem(REACTS, JSON.stringify(store));
+    } catch (e) {}
+  };
+
+  function buildNote(note) {
+    const art = document.createElement('article');
+    art.className = 'tx-note';
+    art.dataset.id = note.id;
+
+    const head = document.createElement('div');
+    head.className = 'tx-head';
+    const who = document.createElement('strong');
+    who.textContent = 'LUNNIE';
+    const when = document.createElement('time');
+    when.textContent = note.d || '';
+    head.append(who, when);
+    art.appendChild(head);
+
+    const p = document.createElement('p');
+    p.textContent = note.t;
+    art.appendChild(p);
+
+    const reacts = document.createElement('div');
+    reacts.className = 'tx-reacts';
+    const base = note.base || {};
+    REACTS_UI.forEach((rea) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'react';
+      b.dataset.rea = rea;
+      b.setAttribute('aria-label', 'reaccionar ' + rea);
+      const on = getDelta(note.id, rea) === 1;
+      if (on) b.classList.add('on');
+      const emoji = document.createElement('span');
+      emoji.textContent = rea;
+      const cnt = document.createElement('span');
+      cnt.className = 'n';
+      cnt.textContent = String((base[rea] || 0) + (on ? 1 : 0));
+      b.append(emoji, cnt);
+      b.addEventListener('click', () => {
+        const next = !b.classList.contains('on');
+        b.classList.toggle('on', next);
+        setDelta(note.id, rea, next);
+        cnt.textContent = String((base[rea] || 0) + (next ? 1 : 0));
+      });
+      reacts.appendChild(b);
+    });
+    art.appendChild(reacts);
+    return art;
+  }
+
+  function renderWall() {
+    wall.textContent = '';
+    const mine = loadNotes().map((n) => ({ ...n, isMine: true }));
+    mine.concat(SEED).forEach((n) => wall.appendChild(buildNote(n)));
+  }
+
+  post.addEventListener('click', () => {
+    const text = input.value.trim();
+    if (!text) {
+      input.focus();
+      return;
+    }
+    const list = loadNotes();
+    list.unshift({
+      t: text,
+      d: new Date().toLocaleString('es-MX', {
+        day: '2-digit', month: '2-digit', year: 'numeric',
+        hour: '2-digit', minute: '2-digit',
+      }),
+      id: 'u' + Date.now(),
+    });
+    saveNotes(list);
+    input.value = '';
+    renderWall();
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+      e.preventDefault();
+      post.click();
+    }
+  });
+
+  renderWall();
+})();
+
+/* ============================================================
+   9. DOCK DE CONTACTO — copiar tag de Discord
+   ============================================================ */
+(function initDock() {
+  const btn = document.getElementById('dock-discord');
+  const fb = document.getElementById('dock-feedback');
+  if (!btn) return;
+  btn.addEventListener('click', async () => {
+    const ok = await copyPlain(btn.dataset.copy || '');
+    if (ok && fb) {
+      fb.hidden = false;
+      setTimeout(() => { fb.hidden = true; }, 2600);
+    }
+  });
+})();
+
+/* ============================================================
+   10. EASTER EGG DE CUMPLEAÑOS — 🌙 → confeti + banner
+   ============================================================ */
+(function initEgg() {
+  const trigger = document.getElementById('egg-trigger');
+  const banner = document.getElementById('egg-banner');
+  const closeBtn = document.getElementById('egg-close');
+  const layer = document.getElementById('confetti-layer');
+  if (!trigger || !banner) return;
+
+  const COLORS = ['#ffffff', '#eadaff', '#9d4edd', '#7209b7', '#3a0ca3'];
+  let hideT = null;
+
+  function spawnConfetti() {
+    if (!layer) return;
+    layer.textContent = '';
+    layer.hidden = false;
+    for (let i = 0; i < 80; i++) {
+      const c = document.createElement('span');
+      c.className = 'confetti';
+      c.style.left = (Math.random() * 100) + '%';
+      c.style.width = (5 + Math.random() * 6) + 'px';
+      c.style.height = (8 + Math.random() * 8) + 'px';
+      c.style.backgroundColor = COLORS[i % COLORS.length];
+      c.style.animationDuration = (2.4 + Math.random() * 2.2) + 's';
+      c.style.animationDelay = (Math.random() * 0.9) + 's';
+      c.style.opacity = String(0.7 + Math.random() * 0.3);
+      layer.appendChild(c);
+    }
+  }
+
+  function clearConfetti() {
+    if (!layer) return;
+    layer.textContent = '';
+    layer.hidden = true;
+  }
+
+  function open() {
+    banner.hidden = false;
+    spawnConfetti();
+    if (hideT) clearTimeout(hideT);
+    hideT = setTimeout(close, 6800);
+  }
+
+  function close() {
+    banner.hidden = true;
+    clearConfetti();
+    if (hideT) { clearTimeout(hideT); hideT = null; }
+  }
+
+  trigger.addEventListener('click', open);
+  if (closeBtn) closeBtn.addEventListener('click', close);
+  banner.addEventListener('click', (e) => { if (e.target === banner) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
 })();

@@ -9,8 +9,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Lunnie: rincón espacial de arte, OCs, comisiones y blog. Estética Persona 5 / Guilty Gear / web revival.">
-  <title>LUNNIE ♡ my corner of the space-web</title>
+  <meta name="description" content="Lunnie — 17 y/o digital artist & illustrator from Mexico. Commissions, gallery, blog and a little corner of the space-web.">
+  <title>LUNNIE // Official Space &amp; Commissions</title>
 
   <!-- Favicon púrpura (SVG data-URI, sin archivo extra) -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%233a0ca3%22/><path d=%22M50 14a36 36 0 1 0 0 72z%22 fill=%22%239d4edd%22 opacity=%22.9%22/><circle cx=%2270%22 cy=%2230%22 r=%223%22 fill=%22white%22/></svg>">
@@ -26,6 +26,9 @@
 <body>
   <!-- Capa fija espacial: nebulosas + estrellas + rejilla técnica -->
   <div class="space-bg" aria-hidden="true"></div>
+
+  <!-- Gatillo del easter egg de cumpleaños (luna en barra superior) -->
+  <button type="button" class="egg-trigger" id="egg-trigger" aria-label="secreto" title="*un enigma brilla en la luna*">🌙</button>
 
   <!-- ============================================================
        TICKER / MARQUEE
@@ -43,7 +46,12 @@
   <header class="hero">
     <span class="hero-badge">EST. <i>2026</i> // NEOCITIES SECTOR</span>
     <h1 class="hero-title">LU<span class="hi">NN</span>IE</h1>
-    <p class="hero-sub">my corner of the <em>space-web</em></p>
+    <p class="hero-sub">17 y/o digital artist &amp; illustrator from <em>mexico</em></p>
+    <div class="hero-badges">
+      <span class="chip">mx // 17 y/o</span>
+      <span class="chip">guilty gear / p5 addict</span>
+      <span class="chip chip-open">commissions: open</span>
+    </div>
     <div class="hero-rule" aria-hidden="true"></div>
   </header>
 
@@ -74,8 +82,8 @@
             <img class="profile-avatar shape-oct" src="assets/img/avatar.svg" alt="Avatar espacio de Lunnie" width="132">
           </div>
           <h3 class="profile-name">LUNNIE</h3>
-          <p class="profile-tag">ARTIST // SPACE SECTOR 17</p>
-          <p class="profile-bio">Dibujo munditos, OCs y lo que sale del cosmos. Comisiones y galería en este sector. La web es mi casa otra vez.</p>
+          <p class="profile-tag">17 Y/O · ARTIST · MX</p>
+          <p class="profile-bio">17 y/o artist from Mexico. Obsessed with fighting games, celestial vibes &amp; high-contrast illustrations. Welcome to my space.</p>
           <div class="profile-stats">
             <div><b>42</b><span>obras</span></div>
             <div><b>07</b><span>OCs</span></div>
@@ -204,6 +212,30 @@
           </div>
         </section>
 
+        <!-- ==========================================================
+             DAILY TRANSMISIONES — diario/muro de notas
+             ========================================================== -->
+        <section class="panel" data-reveal aria-labelledby="t-tx">
+          <header class="panel-head">
+            <h2 id="t-tx">daily transmissions</h2>
+            <span class="chip chip-open">auto-log</span>
+          </header>
+
+          <!-- Caja de diálogo estilo P5 para publicar una nota -->
+          <div class="tx-box">
+            <span class="tx-tab">LOG // LUNNIE'S TRANSMISSION</span>
+            <label class="sr-only" for="tx-input">nueva transmisión</label>
+            <textarea id="tx-input" rows="3" placeholder="lanzar señal… (nota o boceto del día)"></textarea>
+            <div class="tx-actions">
+              <button type="button" class="btn btn-blank" id="tx-post">◉ transmitir</button>
+              <span class="dg-note">* se guarda en tu navegador (localStorage), sin servidor.</span>
+            </div>
+          </div>
+
+          <!-- Muro de notas + reacciones (lo puebla script.js) -->
+          <div class="tx-wall" id="tx-wall"></div>
+        </section>
+
         <!-- Changelog -->
         <section class="panel" data-reveal aria-labelledby="t-log">
           <header class="panel-head"><h2 id="t-log">registro de actualizaciones</h2><span class="chip chip-live">live</span></header>
@@ -293,6 +325,7 @@
           <div class="diag-row"><span>FRAMEWORKS CARGADOS</span><b>00</b></div>
           <div class="diag-row"><span>BUILD STEP</span><b>NONE</b></div>
           <div class="diag-row"><span>CAFÉ CONSUMIDO</span><b>∞</b></div>
+          <div class="diag-row"><span>NIVEL DEL OPERADOR</span><b>17</b></div>
           <div class="diag-row"><span>MODO SERENIDAD</span><b class="pos">ON</b></div>
         </section>
 
@@ -310,13 +343,59 @@
   </main>
 
   <!-- ============================================================
+       TRANSMISSION SIGNALS — dock de contacto (estilo GG)
+       ============================================================ -->
+  <section class="dock" data-reveal aria-labelledby="t-dock">
+    <div class="dock-head">
+      <span class="dock-badge" id="t-dock">// TRANSMISSION SIGNALS</span>
+      <span class="chip chip-open">reachable</span>
+    </div>
+    <div class="dock-row">
+      <button type="button" class="dock-btn" id="dock-discord" data-copy="@lunnie">
+        <span class="dock-ico" aria-hidden="true">⛧</span>
+        <strong>discord</strong>
+        <em>@lunnie</em>
+      </button>
+      <a class="dock-btn dock-link" href="mailto:lunnie.commissions@gmail.com">
+        <span class="dock-ico" aria-hidden="true">✉</span>
+        <strong>correo encargos</strong>
+        <em>lunnie.commissions@gmail.com</em>
+      </a>
+      <a class="dock-btn dock-link" href="#" target="_blank" rel="noopener">
+        <span class="dock-ico" aria-hidden="true">𝕏</span>
+        <strong>twitter / x</strong>
+        <em>@lunnieart</em>
+      </a>
+      <a class="dock-btn dock-link" href="https://neocities.org/site/lunnie" target="_blank" rel="noopener">
+        <span class="dock-ico" aria-hidden="true">◈</span>
+        <strong>neocities</strong>
+        <em>lunnie.neocities.org</em>
+      </a>
+    </div>
+    <p class="dock-feedback" id="dock-feedback" hidden>⛧ tag copiado — ¡gracias por el reach!</p>
+  </section>
+
+  <!-- ============================================================
        FOOTER
        ============================================================ -->
   <footer class="site-footer">
     <p class="foot-display">LUNNIE'S CORNER</p>
-    <p>© <span data-year>2026</span> — crafted with ♥ and 0 JS frameworks · estética P5 × GG × space ✦</p>
+    <p>© <span data-year>2026</span> — 17 y/o · crafted with ♥ and 0 JS frameworks · estética P5 × GG × space ✦</p>
     <p>no endorsement of algorithms were given in the making of this site.</p>
   </footer>
+
+  <!-- ============================================================
+       EASTER EGG DE CUMPLEAÑOS (oculto hasta pulsar la luna 🌙)
+       ============================================================ -->
+  <div class="egg-banner" id="egg-banner" hidden>
+    <div class="egg-inner cut-panel">
+      <button type="button" class="stop-egg" id="egg-close" aria-label="cerrar">✕</button>
+      <p class="egg-kicker">TAKE YOUR TIME //</p>
+      <h2 class="egg-title">HAPPY 17TH BIRTHDAY LUNNIE!</h2>
+      <p class="egg-sub">17 y/o · México · fighting games &amp; celestial vibes ♡</p>
+    </div>
+  </div>
+  <div class="confetti-layer" id="confetti-layer" aria-hidden="true" hidden></div>
 
   <!-- ============================================================
        ASISTENTE FLOTANTE
