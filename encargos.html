@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
   LUNNIE ♡ — encargos.html
-  Tarjetas de comisiones estilo P5/GG: 7 categorías con badges
+  Tarjetas de comisiones estilo P5/GG: 6 categorías con badges
   TERMS / STATUS / SLOTS y precios. Página 100% estática.
 -->
 <html lang="es">
@@ -12,22 +12,36 @@
   <meta name="description" content="Encargos de arte de Lunnie: 6 categorías con precios y términos.">
   <title>ENCARGOS ♡ LUNNIE</title>
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%233a0ca3%22/><path d=%22M50 14a36 36 0 1 0 0 72z%22 fill=%22%239d4edd%22 opacity=%22.9%22/><circle cx=%2270%22 cy=%2230%22 r=%223%22 fill=%22white%22/></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ENCARGOS ♡ LUNNIE">
+  <meta property="og:description" content="6 categorías de comisiones con precios y términos del sector.">
+  <meta property="og:url" content="https://lol-bit-rvgl.github.io/Lunnie-Landing/encargos.html">
+  <meta property="og:image" content="https://lol-bit-rvgl.github.io/Lunnie-Landing/assets/img/banner.svg">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="space-system.css">
 </head>
 
 <body>
   <div class="space-bg" aria-hidden="true"></div>
 
+  <div class="fx-layer is-far" aria-hidden="true"></div>
+  <div class="fx-layer is-mid" aria-hidden="true"></div>
+  <div class="fx-layer is-near" aria-hidden="true"></div>
+  <canvas id="field-canvas" aria-hidden="true"></canvas>
+  <div class="progress-hud" id="progress-hud" aria-hidden="true"></div>
+  <div class="glitch-flash" aria-hidden="true"></div>
+
   <!-- Ticker -->
   <div class="marquee-bar" aria-hidden="true">
     <div class="marquee-track">
-      <span><em>✦ COMMISSION TERMS MUST READ ✦</em> <b>SECTOR SFW</b> ✦ <em>PREPAGO POR PAYPAL</em> ✦ <em>ESPERA: 2-4 SEMANAS</em> ✦ <em>HEAVEN OR HELL</em></span>
-      <span><em>✦ COMMISSION TERMS MUST READ ✦</em> <b>SECTOR SFW</b> ✦ <em>PREPAGO POR PAYPAL</em> ✦ <em>ESPERA: 2-4 SEMANAS</em> ✦ <em>HEAVEN OR HELL</em></span>
+      <span><em>✦ COMMISSION TERMS MUST READ ✦</em> ✦ <em>PREPAGO POR PAYPAL</em> ✦ <em>ESPERA: 2-4 SEMANAS</em> ✦ <em>HEAVEN OR HELL</em></span>
+      <span><em>✦ COMMISSION TERMS MUST READ ✦</em> ✦ <em>PREPAGO POR PAYPAL</em> ✦ <em>ESPERA: 2-4 SEMANAS</em> ✦ <em>HEAVEN OR HELL</em></span>
     </div>
   </div>
 
@@ -271,7 +285,13 @@
 
   <!-- Footer -->
   <footer class="site-footer">
+    <p class="foot-status">CONNECTION STABLE // ORDERS OPEN</p>
     <p class="foot-display">LUNNIE'S COMMISSION SECTOR</p>
+    <div class="foot-cta">
+      <a href="#c1">precios</a>
+      <a href="index.html">home</a>
+      <a href="mailto:lunnie.commissions@gmail.com">pedir encargo</a>
+    </div>
     <p>© <span data-year>2026</span> — precios en USD, reajustables con la lista. ♡ hecha a mano</p>
     <p>última revisión de términos: <b>24/09/2026</b></p>
   </footer>
@@ -283,7 +303,7 @@
     </button>
     <div class="assistant-popup" id="assistant-popup" hidden>
       <div class="assistant-head">
-        <span class="title">asistente v2.0</span>
+        <span class="title">asistente del sector</span>
         <button type="button" class="assistant-close" id="assistant-close" aria-label="Cerrar asistente">✕</button>
       </div>
       <div class="assistant-body" id="assistant-body"><p>conectando con el sector…</p></div>
@@ -291,6 +311,13 @@
     </div>
   </div>
 
+  <div class="nebula-friend" aria-label="Nebula, la mascota del sector">
+    <img src="assets/img/nebula/nebgula-idle.svg" alt="Nebula, la mascota del sector" width="76" height="76">
+    <span class="neb-tag is-awake">NEBULA STATUS ● AWAKE</span>
+  </div>
+
   <script src="script.js" defer></script>
+  <script src="lunnie-bg.js" defer></script>
+  <script src="lunnie-fx.js" defer></script>
 </body>
 </html>

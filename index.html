@@ -10,11 +10,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#07060f">
-  <meta name="description" content="Lunnie — 17 y/o digital artist & illustrator from Mexico. Commissions, gallery, blog and a little corner of the space-web.">
-  <title>LUNNIE // Official Space &amp; Commissions</title>
+  <meta name="description" content="Lunnie — 17 y/o digital artist & illustrator from Mexico. Un pequeño universo digital: galería, encargos, radio NEBULA FM, transmisiones y la mascota Nebula.">
+  <title>LUNNIE'S CORNER — un rincón del espacio</title>
 
-  <!-- Favicon púrpura (SVG data-URI, sin archivo extra) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%233a0ca3%22/><path d=%22M50 14a36 36 0 1 0 0 72z%22 fill=%22%239d4edd%22 opacity=%22.9%22/><circle cx=%2270%22 cy=%2230%22 r=%223%22 fill=%22white%22/></svg>">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LUNNIE'S CORNER — un rincón del espacio">
+  <meta property="og:description" content="Lunnie — 17 y/o artist from Mexico. Galería, encargos, radio NEBULA FM y transmisiones. Un pequeño universo digital.">
+  <meta property="og:url" content="https://lol-bit-rvgl.github.io/Lunnie-Landing/">
+  <meta property="og:image" content="https://lol-bit-rvgl.github.io/Lunnie-Landing/assets/img/banner.svg">
+  <meta property="og:site_name" content="LUNNIE'S CORNER">
+  <meta name="twitter:card" content="summary">
+
+  <!-- Favicon propio (luna + estrella, SVG) -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
   <!-- Tipografías: Black Ops One (display HUD/GG) + Rajdhani (UI P5) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,11 +31,47 @@
   <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="space-system.css">
 </head>
 
 <body>
   <!-- Capa fija espacial: nebulosas + estrellas + rejilla técnica -->
   <div class="space-bg" aria-hidden="true"></div>
+
+  <!-- Capas de profundidad para el parallax (lunnie-bg.js) -->
+  <div class="fx-layer is-far" aria-hidden="true"></div>
+  <div class="fx-layer is-mid" aria-hidden="true"></div>
+  <div class="fx-layer is-near" aria-hidden="true"></div>
+
+  <!-- Partículas flotantes (canvas ligero) -->
+  <canvas id="field-canvas" aria-hidden="true"></canvas>
+
+  <!-- Barra de progreso de scroll -->
+  <div class="progress-hud" id="progress-hud" aria-hidden="true"></div>
+
+  <!-- Estrellas clicables (secreto) -->
+  <button type="button" class="star-tap is-far" aria-label="una estrella del sector" title="*brilla*">
+    <img src="assets/decorations/stars/star-01.svg" alt="" loading="lazy" decoding="async">
+  </button>
+  <button type="button" class="star-tap is-mid" aria-label="otra estrella del sector" title="*parpadea*">
+    <img src="assets/decorations/stars/sparkle-02.svg" alt="" loading="lazy" decoding="async">
+  </button>
+
+  <!-- Destello de glitch (scroll rápido / konami) -->
+  <div class="glitch-flash" aria-hidden="true"></div>
+
+  <!-- Índice de sección lateral (desktop) -->
+  <nav class="scroll-index" aria-label="Índice de secciones">
+    <a href="#sec-profile" data-i="01">perfil</a>
+    <a href="#sec-art" data-i="02">arte</a>
+    <a href="#sec-radio" data-i="03">radio</a>
+    <a href="#sec-tx" data-i="04">tx</a>
+    <a href="#sec-gb" data-i="05">guestbook</a>
+    <a href="#sec-dock" data-i="06">contacto</a>
+  </nav>
+
+  <!-- Contador de secretos -->
+  <div class="discovery-count" aria-hidden="true">DISCOVERIES <b>0/10</b></div>
 
   <!-- Gatillo del easter egg de cumpleaños (luna en barra superior) -->
   <button type="button" class="egg-trigger" id="egg-trigger" aria-label="secreto" title="*un enigma brilla en la luna*">🌙</button>
@@ -45,15 +90,32 @@
        HERO
        ============================================================ -->
   <header class="hero">
-    <span class="hero-badge">EST. <i>2026</i> // NEOCITIES SECTOR</span>
+    <!-- Kit hero: estrellas, rejilla, destellos y órbitas (lunnie-kit) -->
+    <span class="hero-deco hero-deco-stars" aria-hidden="true"></span>
+    <span class="hero-deco hero-deco-grid" aria-hidden="true"></span>
+    <span class="hero-deco hero-sparkles" aria-hidden="true"></span>
+    <span class="hero-deco hero-orbit" aria-hidden="true"><img src="assets/hero/hero-orbit.svg" alt=""></span>
+    <span class="hero-deco hero-deco-l" aria-hidden="true"><img src="assets/hero/hero-decor-left.svg" alt=""></span>
+    <span class="hero-deco hero-deco-r" aria-hidden="true"><img src="assets/hero/hero-decor-right.svg" alt=""></span>
+
+    <span class="hero-badge">EST. <i>2026</i> // NEOCITIES SECTOR 17</span>
     <h1 class="hero-title">LU<span class="hi">NN</span>IE</h1>
-    <p class="hero-sub">17 y/o digital artist &amp; illustrator from <em>mexico</em></p>
+
+    <!-- Sticker flotante con la avatar del sector -->
+    <div class="hero-sticker" id="hero-sticker" data-cursor role="img" aria-label="Sector de Lunnie — la receta del rincón">
+      <img src="assets/img/avatar.svg" alt="" width="200" height="200">
+      <span class="stk-tag">01 · sender</span>
+    </div>
+
+    <p class="hero-coords" id="hero-coords"><img src="assets/ui/hud/hud-coordinates.svg" alt="" class="hud-coords-ico">SECTOR <b>17</b> · LUNNIE·CORE // <b>MX</b> · ORIGIN <b>NEOCITIES</b></p>
+    <p class="hero-sub"><strong>digital artist</strong>&amp; illustrator from <em>mexico</em> — este rincón del espacio-web es (sobre todo) mío.</p>
     <div class="hero-badges">
       <span class="chip">mx // 17 y/o</span>
       <span class="chip">guilty gear / p5 addict</span>
       <span class="chip chip-open">commissions: open</span>
     </div>
     <div class="hero-rule" aria-hidden="true"></div>
+    <span class="hero-deco hero-signal" aria-hidden="true"><img src="assets/hero/hero-signal.svg" alt=""></span>
   </header>
 
   <!-- ============================================================
@@ -77,7 +139,7 @@
       <aside class="col stack" style="order: 1">
 
         <!-- Perfil -->
-        <section class="panel" data-reveal aria-labelledby="t-perfil">
+        <section class="panel panel-a" id="sec-profile" data-sec="PROFILE" data-reveal="sys" aria-labelledby="t-perfil">
           <header class="panel-head"><h2 id="t-perfil">perfil</h2><span class="chip chip-live">online</span></header>
           <div class="profile-fig">
             <img class="profile-avatar shape-oct" src="assets/img/avatar.svg" alt="Avatar espacio de Lunnie" width="132">
@@ -93,16 +155,17 @@
         </section>
 
         <!-- Botón 88x31 + copiar -->
-        <section class="panel" data-reveal aria-labelledby="t-button">
+        <section class="panel panel-e" data-reveal="deco" aria-labelledby="t-button">
           <header class="panel-head"><h2 id="t-button">my 88x31</h2><span class="chip">button</span></header>
           <div class="button-block">
             <div class="badge-row">
               <img class="badge-88" src="assets/img/btn-1.svg" alt="Botón 88x31 de LUNNIE">
               <img class="badge-88" src="assets/img/btn-2.svg" alt="Botón 88x31 de LUNNIE variante">
+              <img class="badge-88" src="assets/ui/badges/badge-cosmic.svg" alt="badge Cosmic Web">
             </div>
             <p class="tiny">¿enlazarme? copia el código:</p>
             <textarea id="button-code" class="copy-source" rows="4" readonly>&lt;a href="https://lunnie.neocities.org/" target="_blank"&gt;&lt;img src="https://lunnie.neocities.org/assets/img/btn-1.svg" alt="LUNNIE" width="88" height="31" border="0"&gt;&lt;/a&gt;</textarea>
-            <button type="button" id="copy-btn" class="btn btn-blank">📋 copiar</button>
+            <button type="button" id="copy-btn" class="btn btn-blank"><img class="chip-ico" src="assets/ui/icons/icon-link.svg" alt=""> copiar</button>
             <p id="copy-feedback" class="copy-feedback" hidden>¡copiado! ✨ gracias por el cariño</p>
           </div>
         </section>
@@ -110,7 +173,7 @@
         <!-- ==========================================================
              WIDGET DISCORD EN VIVO (render por discord-widget.js)
              ========================================================== -->
-        <section class="panel" data-reveal aria-labelledby="t-discord">
+        <section class="panel panel-c" data-reveal="win" aria-labelledby="t-discord">
           <header class="panel-head">
             <h2 id="t-discord">estado live</h2>
             <span class="meter live" title="sondeo de Lanyard"></span>
@@ -121,31 +184,15 @@
           </div>
         </section>
 
-        <!-- Redes -->
-        <section class="panel" data-reveal aria-labelledby="t-social">
-          <header class="panel-head"><h2 id="t-social">redes</h2><span class="chip">social</span></header>
-          <ul class="social-list" id="social-list">
-            <li><a href="#" class="is-pending" data-social="twitter" target="_blank" rel="noopener">twitter / x <em>— pendiente —</em></a></li>
-            <li><a href="#" class="is-pending" data-social="tumblr" target="_blank" rel="noopener">tumblr <em>— pendiente —</em></a></li>
-            <li><a href="#" class="is-pending" data-social="artfol" target="_blank" rel="noopener">artfol <em>— pendiente —</em></a></li>
-            <li><a href="https://neocities.org/site/lunnie" target="_blank" rel="noopener">neocities</a></li>
-          </ul>
-        </section>
-
         <!-- Webring -->
-        <section class="panel" data-reveal aria-labelledby="t-webring">
-          <header class="panel-head">
-            <h2 id="t-webring">webring</h2>
-            <button type="button" class="btn btn-ink" id="webring-girar">🎲 random</button>
-          </header>
+        <section class="panel panel-e" data-reveal="deco" aria-labelledby="t-webring">
+          <header class="panel-head"><h2 id="t-webring">webring</h2><span class="chip">próximamente</span></header>
           <ul class="friend-links" id="friend-links">
-            <li><a href="#" target="_blank" rel="noopener" title="amigo 1" data-pending><img src="assets/img/btn-friend.svg" alt="botón amigo pendiente" loading="lazy" decoding="async"></a></li>
-            <li><a href="#" target="_blank" rel="noopener" title="amigo 2" data-pending><img src="assets/img/btn-friend.svg" alt="botón amigo pendiente" loading="lazy" decoding="async"></a></li>
-            <li><a href="#" target="_blank" rel="noopener" title="amigo 3" data-pending><img src="assets/img/btn-friend.svg" alt="botón amigo pendiente" loading="lazy" decoding="async"></a></li>
-            <li><a href="#" target="_blank" rel="noopener" title="amigo 4" data-pending><img src="assets/img/btn-friend.svg" alt="botón amigo pendiente" loading="lazy" decoding="async"></a></li>
-            <li><a href="#" target="_blank" rel="noopener" title="amigo 5" data-pending><img src="assets/img/btn-friend.svg" alt="botón amigo pendiente" loading="lazy" decoding="async"></a></li>
-            <li><a href="#" target="_blank" rel="noopener" title="amigo 6" data-pending><img src="assets/img/btn-friend.svg" alt="botón amigo pendiente" loading="lazy" decoding="async"></a></li>
+            <li><a href="#" target="_blank" rel="noopener" class="is-pending" data-pending title="un hueco del webring — reservado"><img src="assets/ui/badges/badge-space.svg" alt="badge I ♥ SPACE — reservado" loading="lazy" decoding="async"></a></li>
+            <li><a href="#" target="_blank" rel="noopener" class="is-pending" data-pending title="un hueco del webring — reservado"><img src="assets/ui/badges/badge-fm-mono.svg" alt="badge NEBULA FM — reservado" loading="lazy" decoding="async"></a></li>
+            <li><a href="#" target="_blank" rel="noopener" class="is-pending" data-pending title="un hueco del webring — reservado"><img src="assets/ui/badges/badge-exe-mono.svg" alt="badge LUNNIE.EXE — reservado" loading="lazy" decoding="async"></a></li>
           </ul>
+          <p class="tiny">webring del sector en construcción — cada badge va marcando la casa de una alma amiga.</p>
         </section>
       </aside>
 
@@ -155,14 +202,14 @@
       <div class="col stack" style="order: 2">
 
         <!-- Banner ilustrado -->
-        <figure class="banner-wrap" data-reveal>
+        <figure class="banner-wrap" data-reveal="art">
           <figcaption class="banner-status top"><span>SYSTEM STATUS: NORMAL</span><b>//</b><span>SECTOR 17</span></figcaption>
-          <img id="site-banner" src="assets/img/banner.svg" alt="Banner del sector: nebulosa con el nombre LUNNIE">
+          <img id="site-banner" src="assets/img/banner.svg" alt="Banner del sector: nebulosa con el nombre LUNNIE" width="880" height="220">
           <figcaption class="banner-status bottom"><span>SIGNAL: STABLE</span><span>LUNNIE ONLINE</span></figcaption>
         </figure>
 
         <!-- Bienvenida en caja de diálogo P5 -->
-        <section class="p5-box liquid-panel squircle-panel" aria-labelledby="t-welcome" data-reveal>
+        <section class="p5-box liquid-panel squircle-panel" aria-labelledby="t-welcome" data-reveal="tx">
           <span class="speaker-tab">lunnie // entrada</span>
           <p>
             Bienvenid@ a <strong>mi rincón en el espacio</strong>. Aquí no hay algoritmo: hay
@@ -178,7 +225,7 @@
         </section>
 
         <!-- Dibujo destacado -->
-        <section class="panel" data-reveal aria-labelledby="t-featured">
+        <section class="panel panel-d" data-reveal="art" aria-labelledby="t-featured">
           <header class="panel-head">
             <h2 id="t-featured">obra destacada</h2>
             <span class="chip chip-warn">new</span>
@@ -203,7 +250,7 @@
         </section>
 
         <!-- Avance de galería -->
-        <section class="panel" data-reveal aria-labelledby="t-preview">
+        <section class="panel panel-d" id="sec-art" data-reveal="art" aria-labelledby="t-preview">
           <header class="panel-head"><h2 id="t-preview">últimas obras</h2><span class="chip">preview</span></header>
           <div class="gal-strip">
             <a href="galeria.html"><img src="assets/img/art1.svg" alt="planeta con anillo"></a>
@@ -211,14 +258,14 @@
             <a href="galeria.html"><img src="assets/img/art4.svg" alt="cara lunar"></a>
             <a href="galeria.html"><img src="assets/img/art5.svg" alt="página de cómic"></a>
             <a href="galeria.html"><img src="assets/img/art6.svg" alt="animación rough"></a>
-            <a class="more" href="galeria.html">all →</a>
+            <a class="more" href="galeria.html">ver todas →</a>
           </div>
         </section>
 
         <!-- ==========================================================
              DAILY TRANSMISIONES — diario/muro de notas
              ========================================================== -->
-        <section class="panel" data-reveal aria-labelledby="t-tx">
+        <section class="panel panel-b" id="sec-tx" data-reveal="tx" aria-labelledby="t-tx">
           <header class="panel-head">
             <h2 id="t-tx">daily transmissions</h2>
             <span class="chip chip-open">auto-log</span>
@@ -240,7 +287,7 @@
         </section>
 
         <!-- Changelog -->
-        <section class="panel" data-reveal aria-labelledby="t-log">
+        <section class="panel panel-a" data-sec="LOG" data-reveal="sys" aria-labelledby="t-log">
           <header class="panel-head"><h2 id="t-log">registro de actualizaciones</h2><span class="chip chip-live">live</span></header>
           <ol class="timeline" id="changelog" reversed></ol>
         </section>
@@ -248,17 +295,34 @@
         <!-- ==========================================================
              COMENTARIOS: diálogo P5 + hilo Giscus
              ========================================================== -->
-        <section class="panel" data-reveal aria-labelledby="t-comments">
+        <section class="panel panel-b" id="sec-gb" data-reveal="gb" aria-labelledby="t-comments">
           <header class="panel-head">
             <h2 id="t-comments">guestbook // comentarios</h2>
-            <span class="chip">vía github</span>
+            <span class="chip">visitantes</span>
           </header>
+          <!-- Nebula asoma tras el guestbook -->
+          <div class="nebula-peek" aria-hidden="true">
+            <img src="assets/img/nebula/nebgula-curious.svg" alt="">
+          </div>
+
+          <!-- Muro de notas decorativo (kit guestbook) -->
+          <div class="gb-wall" aria-hidden="true">
+            <img class="nw-pin" src="assets/guestbook/pin.svg" alt="">
+            <img class="nw-note nw-pink" src="assets/guestbook/note-pink.svg" alt="">
+            <img class="nw-tape" src="assets/guestbook/tape.svg" alt="">
+            <img class="nw-note nw-blue" src="assets/guestbook/note-blue.svg" alt="">
+            <img class="nw-note nw-yellow" src="assets/guestbook/note-yellow.svg" alt="">
+            <img class="nw-note nw-purple" src="assets/guestbook/note-purple.svg" alt="">
+            <img class="nw-sticker nw-s-star" src="assets/guestbook/sticker-star.svg" alt="">
+            <img class="nw-sticker nw-s-heart" src="assets/guestbook/sticker-heart.svg" alt="">
+            <img class="nw-sticker nw-s-moon" src="assets/guestbook/sticker-moon.svg" alt="">
+          </div>
 
           <!-- Caja de diálogo al estilo P5 -->
           <div class="dg-row">
             <img class="dg-sprite shape-oct" src="assets/img/assistant.svg" alt="asistente Lunnie">
             <div class="dg-bubble">
-              <label for="gb-text">▚ deja tu huella</label>
+              <label for="gb-text"><img class="chip-ico dg-ico" src="assets/decorations/symbols/symbol-moon.svg" alt="">▚ deja tu huella</label>
               <textarea id="gb-text" placeholder="Escribe tu mensaje… se guarda en tu navegador ♡"></textarea>
               <div class="dg-actions">
                 <button type="button" class="btn" id="gb-post">enviar ✎</button>
@@ -269,7 +333,7 @@
 
           <!-- Hilo: script.js inyecta giscus si data-repo está configurado -->
           <div class="giscus" id="giscus-thread">
-            <div class="giscus-fallback" id="giscus-fallback">▧ CARGANDO SISTEMA DE COMENTARIOS…</div>
+            <div class="giscus-fallback" id="giscus-fallback">▧ conectando el hilo del sector…</div>
           </div>
 
           <!-- Huellas locales (fallback del guestbook): las puebla script.js -->
@@ -283,7 +347,7 @@
       <aside class="col stack" style="order: 3">
 
         <!-- Working on -->
-        <section class="panel" data-reveal aria-labelledby="t-work">
+        <section class="panel panel-a" data-sec="WIP" data-reveal="sys" aria-labelledby="t-work">
           <header class="panel-head"><h2 id="t-work">working on rn…</h2><span class="chip chip-open">wip</span></header>
           <div class="working-row"><span class="dot"></span><p>portada del <strong>sketchbook espacial</strong></p></div>
           <div class="working-row"><span class="dot"></span><p>página de <a href="ocs.html"><strong>OCs</strong></a> con tarjetas por personaje</p></div>
@@ -292,35 +356,74 @@
           <p class="panel-foot tiny">actualizado: hoy — el pulso largo vive en el <a href="blog.html">log</a>.</p>
         </section>
 
-        <!-- Música ambiental -->
-        <section class="panel" data-reveal aria-labelledby="t-music">
-          <header class="panel-head"><h2 id="t-music">música ambiente</h2><span class="chip">pad</span></header>
+        <!-- Música ambiental — NEBULA FM -->
+        <section class="panel panel-c nebula-fm" id="sec-radio" data-reveal="win" aria-labelledby="t-music">
+          <div class="fm-scene" aria-hidden="true">
+            <img class="fm-orbit" src="assets/ui/orbits/orbit-small.svg" alt="">
+            <img class="fm-radar" src="assets/ui/hud/hud-radar.svg" alt="">
+            <div class="fm-orb"></div>
+          </div>
+          <i class="fm-crt" aria-hidden="true"></i>
+          <img class="fm-speaker" src="assets/radio/radio-speaker.svg" alt="" aria-hidden="true">
+          <header class="panel-head"><h2 id="t-music">NEBULA FM</h2><span class="chip">pad <img class="chip-ico" src="assets/decorations/symbols/symbol-wave.svg" alt=""></span></header>
           <div class="music-block">
-            <div class="eq" id="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-            <p class="tiny">pad espacial sintetizado en tu navegador (Web Audio API). Cero mp3.</p>
-            <button type="button" class="btn" id="music-toggle" aria-pressed="false">▶ emitir ambiente</button>
+            <div class="fm-dial">
+              <span class="fm-freq">87.9</span>
+              <span>· RADIO DEL SECTOR ·</span>
+              <span class="fm-signal fm-sig" id="fm-signal"><img src="assets/radio/radio-signal.svg" alt="">▚▚▚ DISPONIBLE</span>
+            </div>
+            <div class="eq" id="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <p class="tiny">pad espacial sintetizado al vuelo en tu navegador · cero mp3 · respeta tu gesto de play</p>
+            <div class="music-toggle-row">
+              <button type="button" class="btn" id="music-toggle" aria-pressed="false">▶ emitir ambiente</button>
+              <img class="fm-knob" src="assets/radio/radio-knob.svg" alt="" aria-hidden="true">
+            </div>
             <p class="music-now" id="music-status">SILENCIO CÓSMICO</p>
+            <p class="fm-boot" aria-hidden="true"><img src="assets/loading/loading.svg" alt="">CONNECTING… SIGNAL FOUND?</p>
           </div>
         </section>
 
-        <!-- Diagnósticos (mini widgets GG) -->
-        <section class="panel" data-reveal aria-labelledby="t-diag">
-          <header class="panel-head"><h2 id="t-diag">system diagnostics</h2><span class="chip chip-open">100%</span></header>
-          <div class="diag-row"><span>UPTIME DEL SECTOR</span><b>ESTABLE</b></div>
-          <div class="diag-row"><span>PRÓXIMO UPDATE</span><b>GALERÍA v3</b></div>
-          <div class="diag-row"><span>MASCOTA</span><b>NEBULA</b></div>
-          <div class="diag-row"><span>CAFÉ CONSUMIDO</span><b>∞</b></div>
-          <div class="diag-row"><span>NIVEL DEL OPERADOR</span><b>17</b></div>
-          <div class="diag-row"><span>MODO SERENIDAD</span><b class="pos">ON</b></div>
+        <!-- LUNNIE SYSTEM — estado que respira (mecánica estética) -->
+        <section class="panel panel-a" data-sec="CORE" data-reveal="sys" aria-labelledby="t-diag">
+          <header class="panel-head"><h2 id="t-diag">lunnie system</h2><span class="chip chip-open">live <img class="chip-ico" src="assets/ui/hud/hud-signal-bars.svg" alt=""></span></header>
+          <div class="sys-status" id="sys-status">
+            <div class="sys-status-row">
+              <span>STATUS</span>
+              <span class="sys-bar" data-v="100"><i></i></span>
+              <b>ONLINE</b>
+            </div>
+            <div class="sys-status-row">
+              <span>MOOD</span>
+              <b class="val" data-key="mood">—</b>
+            </div>
+            <div class="sys-status-row">
+              <span>ENERGY</span>
+              <span class="sys-bar" data-v="80"><i></i></span>
+              <b class="val" data-key="energy">—</b>
+            </div>
+            <div class="sys-status-row">
+              <span>SIGNAL</span>
+              <span class="sys-bar" data-v="85"><i></i></span>
+              <b class="val" data-key="signal">—</b>
+            </div>
+            <p class="panel-foot tiny egg-dev-note">mejora, es una lectura del sector — no de mi estado real :)</p>
+          </div>
         </section>
 
         <!-- Badges decorativos -->
-        <section class="panel" data-reveal aria-labelledby="t-badges">
+        <section class="panel panel-e" data-reveal="deco" aria-labelledby="t-badges">
           <header class="panel-head"><h2 id="t-badges">badges</h2><span class="chip">colección</span></header>
           <div class="badges-block glass-card squircle-card" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
-            <img class="badge-88" src="assets/img/btn-1.svg" alt="badge" loading="lazy" decoding="async">
-            <img class="badge-88" src="assets/img/btn-2.svg" alt="badge" loading="lazy" decoding="async">
-            <img class="badge-88" src="assets/img/btn-3.svg" alt="badge" loading="lazy" decoding="async">
+            <img class="badge-88" src="assets/ui/badges/badge-exe.svg" alt="badge LUNNIE.EXE" loading="lazy" decoding="async">
+            <img class="badge-88" src="assets/ui/badges/badge-night.svg" alt="badge best viewed at night" loading="lazy" decoding="async">
+            <img class="badge-88" src="assets/ui/badges/badge-signal.svg" alt="badge signal online" loading="lazy" decoding="async">
+            <img class="badge-88" src="assets/ui/badges/badge-love.svg" alt="badge made with love" loading="lazy" decoding="async">
+            <img class="badge-88" src="assets/ui/badges/badge-fm.svg" alt="badge NEBULA FM" loading="lazy" decoding="async">
+            <img class="badge-88" src="assets/ui/badges/badge-space.svg" alt="badge I love space" loading="lazy" decoding="async">
+            <img class="badge-88" src="assets/ui/badges/badge-artist.svg" alt="badge digital artist" loading="lazy" decoding="async">
+            <img class="badge-88" src="assets/ui/badges/badge-exe-mono.svg" alt="badge LUNNIE.EXE mono" loading="lazy" decoding="async">
+            <img class="badge-88" src="assets/ui/badges/badge-fm-mono.svg" alt="badge NEBULA FM mono" loading="lazy" decoding="async">
+            <img class="badge-88" src="assets/ui/badges/badge-space-mono.svg" alt="badge I love space mono" loading="lazy" decoding="async">
           </div>
         </section>
       </aside>
@@ -330,7 +433,7 @@
   <!-- ============================================================
        TRANSMISSION SIGNALS — dock de contacto (estilo GG)
        ============================================================ -->
-  <section class="dock liquid-panel squircle-panel" data-reveal aria-labelledby="t-dock">
+  <section class="dock liquid-panel squircle-panel" id="sec-dock" aria-labelledby="t-dock">
     <div class="dock-head">
       <span class="dock-badge" id="t-dock">// TRANSMISSION SIGNALS</span>
       <span class="chip chip-open">reachable</span>
@@ -363,8 +466,14 @@
   <!-- ============================================================
        FOOTER
        ============================================================ -->
-  <footer class="site-footer">
+  <footer class="site-footer" data-reveal="sys">
+    <p class="foot-status"><img class="foot-mark" src="assets/favicon/moon-mark.svg" alt="símbolo Luna Lunnie">CONNECTION STABLE // LUNNIE NETWORK</p>
     <p class="foot-display">LUNNIE'S CORNER</p>
+    <div class="foot-cta">
+      <a href="#sec-profile">status</a>
+      <a href="#sec-gb">guestbook</a>
+      <a href="mailto:lunnie.commissions@gmail.com">contacto</a>
+    </div>
     <p>© <span data-year>2026</span> — 17 y/o · crafted with ♥ and 0 JS frameworks · estética P5 × GG × space ✦</p>
     <p>no endorsement of algorithms were given in the making of this site.</p>
   </footer>
@@ -391,12 +500,20 @@
     </button>
     <div class="assistant-popup" id="assistant-popup" hidden>
       <div class="assistant-head">
-        <span class="title">asistente v2.0</span>
+        <span class="title">asistente del sector</span>
         <button type="button" class="assistant-close" id="assistant-close" aria-label="Cerrar asistente">✕</button>
       </div>
       <div class="assistant-body" id="assistant-body"><p>conectando con el sector…</p></div>
-      <button type="button" class="btn btn-ink" id="assistant-otro">🎲 otro consejo</button>
+      <button type="button" class="btn btn-ink" id="assistant-otro"><img class="chip-ico" src="assets/ui/icons/icon-art.svg" alt=""> otro consejo</button>
     </div>
+  </div>
+
+  <!-- ============================================================
+       NEBULA — mascota del sector (estados por lunnie-fx.js)
+       ============================================================ -->
+  <div class="nebula-friend" aria-label="Nebula, la mascota del sector">
+    <img src="assets/img/nebula/nebgula-idle.svg" alt="Nebula, la mascota del sector" width="76" height="76">
+    <span class="neb-tag is-awake">NEBULA STATUS ● AWAKE</span>
   </div>
 
   <!-- Config de Giscus (comentarios). Datos vacíos = aviso elegante.
@@ -412,8 +529,10 @@
        data-category-id=""
        data-mapping="pathname"></div>
 
-  <!-- Scripts: core del sitio + widget de Discord -->
+  <!-- Scripts: core del sitio + widget de Discord + nueva capa viva -->
   <script src="script.js" defer></script>
   <script src="discord-widget.js" defer></script>
+  <script src="lunnie-bg.js" defer></script>
+  <script src="lunnie-fx.js" defer></script>
 </body>
 </html>

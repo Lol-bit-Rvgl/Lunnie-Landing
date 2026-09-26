@@ -336,9 +336,7 @@ const CONFIG = {
   if (!looksConfigured) {
     if (fallback) {
       fallback.textContent =
-        '▧ SISTEMA DE COMENTARIOS SIN CONFIGURAR ▧\n' +
-        'Llena cliente: giscus#giscus-config (data-repo / repo-id / category) ' +
-        'en index.html y los comentarios aparecerán aquí.';
+        '▧ el hilo de comentarios real aún no está conectado — mientras, tus huellas de arriba son bienvenidas ♡';
     }
     return;
   }

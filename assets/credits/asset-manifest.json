@@ -1,0 +1,2327 @@
+{
+  "generated": "2026-09-26",
+  "palette": "extraído de la UI actual: --indigo #3a0ca3, --violet #7209b7, --purple #9d4edd, --amber #ffd166, --rose #ff5d8f, --off #eadaff, --deep #04030a",
+  "notes": "52 assets legacy (assets/img/**) + 180 del kit (lunnie-kit) = 232 registros",
+  "assets": [
+    {
+      "name": "art1",
+      "type": "artwork",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/art1.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "art10",
+      "type": "artwork",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/art10.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "art2",
+      "type": "artwork",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/art2.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "art3",
+      "type": "artwork",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/art3.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "art4",
+      "type": "artwork",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/art4.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "art5",
+      "type": "artwork",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/art5.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "art5b",
+      "type": "artwork",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/art5b.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "art6",
+      "type": "artwork",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/art6.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "art8",
+      "type": "artwork",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/art8.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "art9",
+      "type": "artwork",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/art9.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "assistant",
+      "type": "original",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/assistant.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "avatar",
+      "type": "original",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/avatar.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "banner",
+      "type": "original",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/banner.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "btn-1",
+      "type": "badge",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/btn-1.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "btn-2",
+      "type": "badge",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/btn-2.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "btn-3",
+      "type": "badge",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/btn-3.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "btn-friend",
+      "type": "badge",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/btn-friend.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "button",
+      "type": "original",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/button.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "planet",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/decor/planet.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "satellite",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/decor/satellite.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "star-core",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/decor/star-core.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "tx-divider",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/decor/tx-divider.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "nebgula-curious",
+      "type": "character",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/nebula/nebgula-curious.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "nebgula-excited",
+      "type": "character",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/nebula/nebgula-excited.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "nebgula-idle",
+      "type": "character",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/nebula/nebgula-idle.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "nebgula-sleepy",
+      "type": "character",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/nebula/nebgula-sleepy.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "div-danger-pink",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/div-danger-pink.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "div-danger",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/div-danger.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "div-dotted",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/div-dotted.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "div-stars",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/div-stars.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "frame-hud",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/frame-hud.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "hud-corner-br",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/hud-corner-br.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "hud-corner",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/hud-corner.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "i-blog",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/i-blog.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "i-gallery",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/i-gallery.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "i-home",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/i-home.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "i-mask",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/i-mask.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "i-moon",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/i-moon.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "i-planet",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/i-planet.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "i-star",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/i-star.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "i-tools",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/i-tools.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "i-user",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/i-user.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "pat-dots",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/pat-dots.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "pat-halftone",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/pat-halftone.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "pat-pixelgrid",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/pat-pixelgrid.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "stamp-88x31",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/stamp-88x31.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "stamp-heaven-hell",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/stamp-heaven-hell.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "stamp-warning",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/stamp-warning.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "sticker-moon",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/sticker-moon.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "sticker-planet",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/sticker-planet.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "sticker-star",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/sticker-star.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "window-tab",
+      "type": "retro",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — legacy del sitio (assets/img/**)",
+      "localPath": "assets/img/retro/window-tab.svg",
+      "usage": "legacy — ya integrado en la web"
+    },
+    {
+      "name": "space-base",
+      "type": "background",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/backgrounds/space/space-base.svg",
+      "usage": "bg-layer-main"
+    },
+    {
+      "name": "stars-small",
+      "type": "background",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/backgrounds/space/stars-small.svg",
+      "usage": "bg-layer-stars-small"
+    },
+    {
+      "name": "stars-large",
+      "type": "background",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/backgrounds/space/stars-large.svg",
+      "usage": "bg-layer-stars-large"
+    },
+    {
+      "name": "dust",
+      "type": "background",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/backgrounds/space/dust.svg",
+      "usage": "bg-layer-dust"
+    },
+    {
+      "name": "nebula-primary",
+      "type": "background",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/backgrounds/nebula/nebula-primary.svg",
+      "usage": "bg-layer-nebula-a"
+    },
+    {
+      "name": "nebula-secondary",
+      "type": "background",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/backgrounds/nebula/nebula-secondary.svg",
+      "usage": "bg-layer-nebula-b"
+    },
+    {
+      "name": "bg-dream",
+      "type": "background",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/backgrounds/abstract/bg-dream.svg",
+      "usage": "bg-alt-dream"
+    },
+    {
+      "name": "bg-void",
+      "type": "background",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/backgrounds/abstract/bg-void.svg",
+      "usage": "bg-alt-void"
+    },
+    {
+      "name": "noise",
+      "type": "texture",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/backgrounds/textures/noise.svg",
+      "usage": "texture-grain"
+    },
+    {
+      "name": "scanlines",
+      "type": "texture",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/backgrounds/textures/scanlines.svg",
+      "usage": "texture-scanlines"
+    },
+    {
+      "name": "star-01",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stars/star-01.svg",
+      "usage": "star-tap, hero"
+    },
+    {
+      "name": "star-02",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stars/star-02.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "star-07-bright",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stars/star-07-bright.svg",
+      "usage": "hero, eggs"
+    },
+    {
+      "name": "star-08-glitch",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stars/star-08-glitch.svg",
+      "usage": "glitch"
+    },
+    {
+      "name": "star-03",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stars/star-03.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "star-04",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stars/star-04.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "star-05-dot",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stars/star-05-dot.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "star-06-dim",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stars/star-06-dim.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "sparkle-01",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stars/sparkle-01.svg",
+      "usage": "hero, eggs"
+    },
+    {
+      "name": "sparkle-02",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stars/sparkle-02.svg",
+      "usage": "star-tap"
+    },
+    {
+      "name": "cross-star",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stars/cross-star.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "diamond-star",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stars/diamond-star.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "tiny-star",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stars/tiny-star.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "four-point",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stars/four-point.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "planet-blue",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/planets/planet-blue.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "planet-pink",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/planets/planet-pink.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "planet-purple",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/planets/planet-purple.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "planet-ring",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/planets/planet-ring.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "planet-moon",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/planets/planet-moon.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "planet-strange",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/planets/planet-strange.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "moon-crescent",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/moons/moon-crescent.svg",
+      "usage": "logo, favicon-adjacent"
+    },
+    {
+      "name": "moon-half",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/moons/moon-half.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "moon-full",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/moons/moon-full.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "moon-glitch",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/moons/moon-glitch.svg",
+      "usage": "glitch"
+    },
+    {
+      "name": "moon-small",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/moons/moon-small.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "symbol-plus",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-plus.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "symbol-cross",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-cross.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "symbol-circle",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-circle.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "symbol-circle-out",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-circle-out.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "symbol-diamond",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-diamond.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "symbol-diamond-out",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-diamond-out.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "symbol-triangle",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-triangle.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "symbol-square",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-square.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "symbol-moon",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-moon.svg",
+      "usage": "kit-moon"
+    },
+    {
+      "name": "symbol-star",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-star.svg",
+      "usage": "kit-star"
+    },
+    {
+      "name": "symbol-star-out",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-star-out.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "symbol-dot",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-dot.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "symbol-sparkle",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-sparkle.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "symbol-arrow-r",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-arrow-r.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "symbol-hash",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-hash.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "symbol-asterisk",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-asterisk.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "symbol-wave",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-wave.svg",
+      "usage": "radio, tx"
+    },
+    {
+      "name": "symbol-eye-out",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/symbols/symbol-eye-out.svg",
+      "usage": "secret"
+    },
+    {
+      "name": "stk-hello",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stickers/stk-hello.svg",
+      "usage": "guestbook, hero"
+    },
+    {
+      "name": "stk-online",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stickers/stk-online.svg",
+      "usage": "status"
+    },
+    {
+      "name": "stk-cool",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stickers/stk-cool.svg",
+      "usage": "guestbook"
+    },
+    {
+      "name": "stk-signal",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stickers/stk-signal.svg",
+      "usage": "radio, tx"
+    },
+    {
+      "name": "stk-new",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stickers/stk-new.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "stk-live",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stickers/stk-live.svg",
+      "usage": "status, radio"
+    },
+    {
+      "name": "stk-error",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stickers/stk-error.svg",
+      "usage": "error-ficticio"
+    },
+    {
+      "name": "stk-zzz",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stickers/stk-zzz.svg",
+      "usage": "nexos, kit"
+    },
+    {
+      "name": "stk-lookhere",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stickers/stk-lookhere.svg",
+      "usage": "gitbook"
+    },
+    {
+      "name": "stk-secret",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stickers/stk-secret.svg",
+      "usage": "easter-egg"
+    },
+    {
+      "name": "stk-wow",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stickers/stk-wow.svg",
+      "usage": "guestbook"
+    },
+    {
+      "name": "stk-cosmic",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stickers/stk-cosmic.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "stk-loading",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stickers/stk-loading.svg",
+      "usage": "loading"
+    },
+    {
+      "name": "stk-commission",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stickers/stk-commission.svg",
+      "usage": "encargos"
+    },
+    {
+      "name": "stk-thanks",
+      "type": "decoration",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/decorations/stickers/stk-thanks.svg",
+      "usage": "guestbook, footer"
+    },
+    {
+      "name": "frame-standard",
+      "type": "frame",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/frames/frame-standard.svg",
+      "usage": "gallery, panels"
+    },
+    {
+      "name": "frame-corner",
+      "type": "frame",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/frames/frame-corner.svg",
+      "usage": "gallery-corner"
+    },
+    {
+      "name": "frame-double",
+      "type": "frame",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/frames/frame-double.svg",
+      "usage": "gallery"
+    },
+    {
+      "name": "frame-glitch",
+      "type": "frame",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/frames/frame-glitch.svg",
+      "usage": "glitch, eggs"
+    },
+    {
+      "name": "frame-diagonal",
+      "type": "frame",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/frames/frame-diagonal.svg",
+      "usage": "gallery"
+    },
+    {
+      "name": "frame-soft",
+      "type": "frame",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/frames/frame-soft.svg",
+      "usage": "profiles, soft"
+    },
+    {
+      "name": "border-terminal",
+      "type": "border",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/panels/border-terminal.svg",
+      "usage": "terminal-frame"
+    },
+    {
+      "name": "border-retro",
+      "type": "border",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/panels/border-retro.svg",
+      "usage": "retro-frame"
+    },
+    {
+      "name": "border-scifi",
+      "type": "border",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/panels/border-scifi.svg",
+      "usage": "scifi-frame"
+    },
+    {
+      "name": "border-decor",
+      "type": "border",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/panels/border-decor.svg",
+      "usage": "decor-frame"
+    },
+    {
+      "name": "border-glitch",
+      "type": "border",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/panels/border-glitch.svg",
+      "usage": "glitch-frame"
+    },
+    {
+      "name": "icon-profile",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-profile.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "icon-art",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-art.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "icon-radio",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-radio.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "icon-transmission",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-transmission.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "icon-guestbook",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-guestbook.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "icon-contact",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-contact.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "icon-settings",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-settings.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "icon-signal",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-signal.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "icon-online",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-online.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "icon-offline",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-offline.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "icon-music",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-music.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "icon-star",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-star.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "icon-moon",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-moon.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "icon-secret",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-secret.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "icon-lock",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-lock.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "icon-unlock",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-unlock.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "icon-link",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-link.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "icon-arrow",
+      "type": "icon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/icons/icon-arrow.svg",
+      "usage": "ui, nav, status"
+    },
+    {
+      "name": "status-online",
+      "type": "status",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/indicators/status-online.svg",
+      "usage": "status-online"
+    },
+    {
+      "name": "status-offline",
+      "type": "status",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/indicators/status-offline.svg",
+      "usage": "status-offline"
+    },
+    {
+      "name": "status-idle",
+      "type": "status",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/indicators/status-idle.svg",
+      "usage": "status-idle"
+    },
+    {
+      "name": "status-signal",
+      "type": "status",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/indicators/status-signal.svg",
+      "usage": "status-signal"
+    },
+    {
+      "name": "status-warning",
+      "type": "status",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/indicators/status-warning.svg",
+      "usage": "status-warning"
+    },
+    {
+      "name": "status-error",
+      "type": "status",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/indicators/status-error.svg",
+      "usage": "status-error"
+    },
+    {
+      "name": "status-loading",
+      "type": "status",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/indicators/status-loading.svg",
+      "usage": "loading"
+    },
+    {
+      "name": "badge-exe",
+      "type": "badge",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/badges/badge-exe.svg",
+      "usage": "status, footer"
+    },
+    {
+      "name": "badge-night",
+      "type": "badge",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/badges/badge-night.svg",
+      "usage": "footer, kit"
+    },
+    {
+      "name": "badge-cosmic",
+      "type": "badge",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/badges/badge-cosmic.svg",
+      "usage": "footer, kit"
+    },
+    {
+      "name": "badge-signal",
+      "type": "badge",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/badges/badge-signal.svg",
+      "usage": "status, kit"
+    },
+    {
+      "name": "badge-love",
+      "type": "badge",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/badges/badge-love.svg",
+      "usage": "footer, kit"
+    },
+    {
+      "name": "badge-fm",
+      "type": "badge",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/badges/badge-fm.svg",
+      "usage": "radio, kit"
+    },
+    {
+      "name": "badge-space",
+      "type": "badge",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/badges/badge-space.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "badge-artist",
+      "type": "badge",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/badges/badge-artist.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "badge-exe-mono",
+      "type": "badge",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/badges/badge-exe-mono.svg",
+      "usage": "kit-mono"
+    },
+    {
+      "name": "badge-fm-mono",
+      "type": "badge",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/badges/badge-fm-mono.svg",
+      "usage": "kit-mono"
+    },
+    {
+      "name": "badge-space-mono",
+      "type": "badge",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/badges/badge-space-mono.svg",
+      "usage": "kit-mono"
+    },
+    {
+      "name": "cursor-default",
+      "type": "cursor",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/cursors/cursor-default.svg",
+      "usage": "cursor-default"
+    },
+    {
+      "name": "cursor-link",
+      "type": "cursor",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/cursors/cursor-link.svg",
+      "usage": "cursor-link"
+    },
+    {
+      "name": "cursor-art",
+      "type": "cursor",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/cursors/cursor-art.svg",
+      "usage": "cursor-art"
+    },
+    {
+      "name": "cursor-secret",
+      "type": "cursor",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/cursors/cursor-secret.svg",
+      "usage": "cursor-secret"
+    },
+    {
+      "name": "cursor-drag",
+      "type": "cursor",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/cursors/cursor-drag.svg",
+      "usage": "cursor-drag"
+    },
+    {
+      "name": "orbit-small",
+      "type": "orbit",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/orbits/orbit-small.svg",
+      "usage": "radio, fm"
+    },
+    {
+      "name": "orbit-medium",
+      "type": "orbit",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/orbits/orbit-medium.svg",
+      "usage": "hero, art"
+    },
+    {
+      "name": "orbit-large",
+      "type": "orbit",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/orbits/orbit-large.svg",
+      "usage": "hero, art"
+    },
+    {
+      "name": "orbit-broken",
+      "type": "orbit",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/orbits/orbit-broken.svg",
+      "usage": "glitch, error"
+    },
+    {
+      "name": "hud-coordinates",
+      "type": "hud",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/hud/hud-coordinates.svg",
+      "usage": "hero-coords"
+    },
+    {
+      "name": "hud-crosshair",
+      "type": "hud",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/hud/hud-crosshair.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "hud-scan-target",
+      "type": "hud",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/hud/hud-scan-target.svg",
+      "usage": "kit"
+    },
+    {
+      "name": "hud-signal-bars",
+      "type": "hud",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/hud/hud-signal-bars.svg",
+      "usage": "status-signal"
+    },
+    {
+      "name": "hud-radar",
+      "type": "hud",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/hud/hud-radar.svg",
+      "usage": "radio-fm"
+    },
+    {
+      "name": "hud-status-line",
+      "type": "hud",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/ui/hud/hud-status-line.svg",
+      "usage": "status, progress"
+    },
+    {
+      "name": "glitch-horizontal",
+      "type": "effect",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/effects/glitch/glitch-horizontal.svg",
+      "usage": "glitch-flash"
+    },
+    {
+      "name": "glitch-block",
+      "type": "effect",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/effects/glitch/glitch-block.svg",
+      "usage": "glitch-eggs"
+    },
+    {
+      "name": "glitch-lines",
+      "type": "effect",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/effects/glitch/glitch-lines.svg",
+      "usage": "glitch-lines"
+    },
+    {
+      "name": "glitch-noise",
+      "type": "effect",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/effects/glitch/glitch-noise.svg",
+      "usage": "glitch-noise"
+    },
+    {
+      "name": "hero-stars",
+      "type": "hero",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/hero/hero-stars.svg",
+      "usage": "hero-bg"
+    },
+    {
+      "name": "hero-orbit",
+      "type": "hero",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/hero/hero-orbit.svg",
+      "usage": "hero-orbit"
+    },
+    {
+      "name": "hero-grid",
+      "type": "hero",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/hero/hero-grid.svg",
+      "usage": "hero-grid"
+    },
+    {
+      "name": "hero-sparkles",
+      "type": "hero",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/hero/hero-sparkles.svg",
+      "usage": "hero-sparkles"
+    },
+    {
+      "name": "hero-decor-left",
+      "type": "hero",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/hero/hero-decor-left.svg",
+      "usage": "hero-decor"
+    },
+    {
+      "name": "hero-decor-right",
+      "type": "hero",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/hero/hero-decor-right.svg",
+      "usage": "hero-decor"
+    },
+    {
+      "name": "hero-signal",
+      "type": "hero",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/hero/hero-signal.svg",
+      "usage": "hero-signal"
+    },
+    {
+      "name": "note-pink",
+      "type": "note",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/guestbook/note-pink.svg",
+      "usage": "guestbook"
+    },
+    {
+      "name": "note-blue",
+      "type": "note",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/guestbook/note-blue.svg",
+      "usage": "guestbook"
+    },
+    {
+      "name": "note-yellow",
+      "type": "note",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/guestbook/note-yellow.svg",
+      "usage": "guestbook"
+    },
+    {
+      "name": "note-purple",
+      "type": "note",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/guestbook/note-purple.svg",
+      "usage": "guestbook"
+    },
+    {
+      "name": "sticker-star",
+      "type": "guestbook",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/guestbook/sticker-star.svg",
+      "usage": "guestbook, decor"
+    },
+    {
+      "name": "sticker-heart",
+      "type": "guestbook",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/guestbook/sticker-heart.svg",
+      "usage": "guestbook, footer"
+    },
+    {
+      "name": "sticker-moon",
+      "type": "guestbook",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/guestbook/sticker-moon.svg",
+      "usage": "guestbook, kit"
+    },
+    {
+      "name": "tape",
+      "type": "guestbook",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/guestbook/tape.svg",
+      "usage": "guestbook, notes"
+    },
+    {
+      "name": "pin",
+      "type": "guestbook",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/guestbook/pin.svg",
+      "usage": "guestbook, notes"
+    },
+    {
+      "name": "radio-dial",
+      "type": "radio",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/radio/radio-dial.svg",
+      "usage": "radio-dial"
+    },
+    {
+      "name": "radio-wave",
+      "type": "radio",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/radio/radio-wave.svg",
+      "usage": "radio-signal"
+    },
+    {
+      "name": "radio-speaker",
+      "type": "radio",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/radio/radio-speaker.svg",
+      "usage": "radio-ui"
+    },
+    {
+      "name": "radio-signal",
+      "type": "radio",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/radio/radio-signal.svg",
+      "usage": "radio-ui"
+    },
+    {
+      "name": "radio-knob",
+      "type": "radio",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/radio/radio-knob.svg",
+      "usage": "radio-toggle"
+    },
+    {
+      "name": "terminal-frame",
+      "type": "tx",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/transmissions/terminal-frame.svg",
+      "usage": "terminal-frame"
+    },
+    {
+      "name": "transmission-icon",
+      "type": "tx",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/transmissions/transmission-icon.svg",
+      "usage": "tx-icon"
+    },
+    {
+      "name": "signal-wave",
+      "type": "tx",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/transmissions/signal-wave.svg",
+      "usage": "tx-wave"
+    },
+    {
+      "name": "timestamp-icon",
+      "type": "tx",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/transmissions/timestamp-icon.svg",
+      "usage": "tx-timestamp"
+    },
+    {
+      "name": "message-marker",
+      "type": "tx",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/transmissions/message-marker.svg",
+      "usage": "tx-marker"
+    },
+    {
+      "name": "scroll-star",
+      "type": "scroll",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/scroll/scroll-star.svg",
+      "usage": "scroll-decor"
+    },
+    {
+      "name": "scroll-arrow",
+      "type": "scroll",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/scroll/scroll-arrow.svg",
+      "usage": "scroll-decor"
+    },
+    {
+      "name": "scroll-orbit",
+      "type": "scroll",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/scroll/scroll-orbit.svg",
+      "usage": "scroll-decor"
+    },
+    {
+      "name": "scroll-signal",
+      "type": "scroll",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/scroll/scroll-signal.svg",
+      "usage": "scroll-decor"
+    },
+    {
+      "name": "loading",
+      "type": "loading",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/loading/loading.svg",
+      "usage": "loading-connecting"
+    },
+    {
+      "name": "error-frame",
+      "type": "error",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/error/error-frame.svg",
+      "usage": "error-shell"
+    },
+    {
+      "name": "error-reconnect",
+      "type": "error",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/error/error-reconnect.svg",
+      "usage": "error-btn"
+    },
+    {
+      "name": "secret-star",
+      "type": "secret",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/secret/secret-star.svg",
+      "usage": "easter-egg"
+    },
+    {
+      "name": "secret-door",
+      "type": "secret",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/secret/secret-door.svg",
+      "usage": "easter-egg"
+    },
+    {
+      "name": "secret-eye",
+      "type": "secret",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/secret/secret-eye.svg",
+      "usage": "easter-egg"
+    },
+    {
+      "name": "secret-terminal",
+      "type": "secret",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/secret/secret-terminal.svg",
+      "usage": "easter-egg"
+    },
+    {
+      "name": "secret-message",
+      "type": "secret",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/secret/secret-message.svg",
+      "usage": "easter-egg"
+    },
+    {
+      "name": "nebula-happy",
+      "type": "character",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/characters/nebula/nebula-happy.svg",
+      "usage": "nebula-happy"
+    },
+    {
+      "name": "nebula-wave",
+      "type": "character",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/characters/nebula/nebula-wave.svg",
+      "usage": "nebula-wave"
+    },
+    {
+      "name": "nebula-glitch",
+      "type": "character",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/characters/nebula/nebula-glitch.svg",
+      "usage": "nebula-glitch"
+    },
+    {
+      "name": "lunnie-silhouette",
+      "type": "character",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/characters/lunnie/lunnie-silhouette.svg",
+      "usage": "lunnie-silhouette"
+    },
+    {
+      "name": "lunnie-mono",
+      "type": "character",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/characters/lunnie/lunnie-mono.svg",
+      "usage": "lunnie-mono"
+    },
+    {
+      "name": "lunnie-glow",
+      "type": "character",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/characters/lunnie/lunnie-glow.svg",
+      "usage": "lunnie-glow"
+    },
+    {
+      "name": "lunnie-glitch",
+      "type": "character",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/characters/lunnie/lunnie-glitch.svg",
+      "usage": "lunnie-glitch"
+    },
+    {
+      "name": "moon-mark",
+      "type": "favicon",
+      "source": "original",
+      "author": "Lunnie ♡",
+      "license": "original — Libre de usar en proyectos de Lunnie; preguntar para uso externo",
+      "sourceUrl": "local — generado con tools/build-asset-kit.js",
+      "localPath": "assets/favicon/moon-mark.svg",
+      "usage": "favicon-mark, logo"
+    }
+  ]
+}

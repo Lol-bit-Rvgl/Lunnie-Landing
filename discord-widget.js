@@ -20,6 +20,7 @@
 
   /* ---------- CONFIG ---------- */
   const DISCORD_ID = '123456789012345678'; // ← tu Discord User ID real va aquí
+  const PLACEHOLDER_ID = '123456789012345678'; // el ejemplo del README activa el modo reposo
   const POLL_MS = 30000;                   // re-consulta cada 30s (modo vivo)
   const CDN = 'https://cdn.discordapp.com';
 
@@ -29,7 +30,7 @@
     heading: '// SECTOR EN REPOSO',
     line: 'la artífice anda en su órbita haciendo sketch — la señal vuelve cuando regrese ▂ ▄ █',
     activity: 'emitiendo ambiente… (sin actividad de Discord)',
-    clock: 'PRESENCIA MANUAL // 2026.09.26',
+    clock: 'PRESENCIA DEL SECTOR // EN REPOSO',
   };
 
   /* ---------- estado ---------- */
@@ -217,6 +218,29 @@
     root.append(l);
   }
 
+  function renderError(msg) {
+    const root = $('discord-widget');
+    root.innerHTML = '';
+    const head = el('div', 'dw-head');
+    head.append(
+      el('span', '', '▚ DISCORD // SEÑAL PERDIDA'),
+      (function () {
+        const meter = el('span', 'meter sleep');
+        meter.textContent = '✕ LINK';
+        return meter;
+      })()
+    );
+    root.append(head);
+    root.append(el('p', 'dw-status', '» ' + msg + ' — dejaré de insistir por ahora.'));
+    const foot = el('div', 'dw-foot');
+    foot.append(el('span', 'dw-clock', 'SINCRONIZACIÓN FALLIDA'));
+    const btn = el('button', 'btn btn-ink', '↻ REINTENTAR');
+    btn.type = 'button';
+    btn.addEventListener('click', () => fetchNow());
+    foot.appendChild(btn);
+    root.append(foot);
+  }
+
   /* ---------- fetch real de Lanyard ---------- */
   async function fetchData(id) {
     const ctrl = new AbortController();
@@ -241,7 +265,7 @@
 
   /* ---------- bucle de polling ---------- */
   async function fetchNow() {
-    if (!isValidId(DISCORD_ID)) {
+    if (!isValidId(DISCORD_ID) || DISCORD_ID === PLACEHOLDER_ID) {
       renderManual();
       return;
     }

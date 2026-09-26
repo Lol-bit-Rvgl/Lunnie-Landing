@@ -13,8 +13,13 @@
   <meta name="description" content="Archivo de personajes originales (OC) de Lunnie: fichas de dossier con paleta, elemento y bio de cada OC.">
   <title>OCs // Dossier — LUNNIE</title>
 
-  <!-- Favicon púrpura (SVG data-URI, sin archivo extra) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%233a0ca3%22/><path d=%22M50 14a36 36 0 1 0 0 72z%22 fill=%22%239d4edd%22 opacity=%22.9%22/><circle cx=%2270%22 cy=%2230%22 r=%223%22 fill=%22white%22/></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="OCs // Dossier — LUNNIE">
+  <meta property="og:description" content="Fichas de dossier de los personajes originales del sector.">
+  <meta property="og:url" content="https://lol-bit-rvgl.github.io/Lunnie-Landing/ocs.html">
+  <meta property="og:image" content="https://lol-bit-rvgl.github.io/Lunnie-Landing/assets/img/banner.svg">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
   <!-- Tipografías: Black Ops One (display HUD/GG) + Rajdhani (UI P5) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,11 +27,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="space-system.css">
 </head>
 
 <body>
   <!-- Capa fija espacial: nebulosas + estrellas + rejilla técnica -->
   <div class="space-bg" aria-hidden="true"></div>
+
+  <div class="fx-layer is-far" aria-hidden="true"></div>
+  <div class="fx-layer is-mid" aria-hidden="true"></div>
+  <div class="fx-layer is-near" aria-hidden="true"></div>
+  <canvas id="field-canvas" aria-hidden="true"></canvas>
+  <div class="progress-hud" id="progress-hud" aria-hidden="true"></div>
+  <div class="glitch-flash" aria-hidden="true"></div>
 
   <!-- Gatillo del easter egg de cumpleaños (luna en barra superior) -->
   <button type="button" class="egg-trigger" id="egg-trigger" aria-label="secreto" title="*un enigma brilla en la luna*">🌙</button>
@@ -85,7 +98,7 @@
             <span class="chip chip-open">[dossier active]</span>
           </header>
 
-          <div class="oc-grid">
+          <div class="oc-grid" id="sec-ocs">
 
             <!-- OC_01 -->
             <article class="oc-card" data-reveal>
@@ -94,7 +107,7 @@
                 <span class="chip chip-open">[DOSSIER ACTIVE]</span>
               </header>
               <figure class="oc-fig">
-                <img class="oc-img" src="assets/img/art3.svg" alt="Placeholder del OC_01 Prototype (mecha)" loading="lazy" decoding="async">
+                <img class="oc-img" src="assets/img/art3.svg" alt="Prototype-01 «proto» — boceto de trabajo del OC (mecha)" loading="lazy" decoding="async">
                 <figcaption>retrato del OC · arte final en construcción</figcaption>
               </figure>
               <dl class="oc-data">
@@ -126,7 +139,7 @@
                 <span class="chip chip-open">[DOSSIER ACTIVE]</span>
               </header>
               <figure class="oc-fig">
-                <img class="oc-img" src="assets/img/art1.svg" alt="Placeholder del OC_02 Nebula (planeta con anillo)" loading="lazy" decoding="async">
+                <img class="oc-img" src="assets/img/art1.svg" alt="Nebula — boceto de trabajo del OC (planeta con anillo)" loading="lazy" decoding="async">
                 <figcaption>retrato del OC · arte final en construcción</figcaption>
               </figure>
               <dl class="oc-data">
@@ -157,7 +170,7 @@
                 <span class="chip chip-open">[DOSSIER ACTIVE]</span>
               </header>
               <figure class="oc-fig">
-                <img class="oc-img" src="assets/img/art4.svg" alt="Placeholder del OC_03 Vesper (cara lunar)" loading="lazy" decoding="async">
+                <img class="oc-img" src="assets/img/art4.svg" alt="Vesper — boceto de trabajo del OC (cara lunar)" loading="lazy" decoding="async">
                 <figcaption>retrato del OC · arte final en construcción</figcaption>
               </figure>
               <dl class="oc-data">
@@ -236,7 +249,13 @@
 
   <!-- Footer -->
   <footer class="site-footer">
+    <p class="foot-status">CONNECTION STABLE // ARCHIVE ONLINE</p>
     <p class="foot-display">LUNNIE'S OC ARCHIVE</p>
+    <div class="foot-cta">
+      <a href="#sec-ocs">dossiers</a>
+      <a href="index.html">home</a>
+      <a href="mailto:lunnie.commissions@gmail.com">contacto</a>
+    </div>
     <p>© <span data-year>2026</span> — 17 y/o · dossiers hechos a mano en México ✦</p>
     <p>no endorsement of algorithms were given in the making of this site.</p>
   </footer>
@@ -261,7 +280,7 @@
     </button>
     <div class="assistant-popup" id="assistant-popup" hidden>
       <div class="assistant-head">
-        <span class="title">asistente v2.0</span>
+        <span class="title">asistente del sector</span>
         <button type="button" class="assistant-close" id="assistant-close" aria-label="Cerrar asistente">✕</button>
       </div>
       <div class="assistant-body" id="assistant-body"><p>conectando con el sector…</p></div>
@@ -269,7 +288,14 @@
     </div>
   </div>
 
-  <!-- Scripts: core del sitio -->
+  <div class="nebula-friend" aria-label="Nebula, la mascota del sector">
+    <img src="assets/img/nebula/nebgula-idle.svg" alt="Nebula, la mascota del sector" width="76" height="76">
+    <span class="neb-tag is-awake">NEBULA STATUS ● AWAKE</span>
+  </div>
+
+  <!-- Scripts: core del sitio + capa viva -->
   <script src="script.js" defer></script>
+  <script src="lunnie-bg.js" defer></script>
+  <script src="lunnie-fx.js" defer></script>
 </body>
 </html>
