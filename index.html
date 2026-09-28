@@ -81,8 +81,8 @@
        ============================================================ -->
   <div class="marquee-bar" aria-hidden="true">
     <div class="marquee-track">
-      <span><em>✦ LOOKING FOR A HOME IN THE INTERNET ✦</em> <b>ENCARGOS ABIERTOS</b> :: 6 CATEGORÍAS ✦ <em>GALERÍA CON FILTROS</em> ✦ <em>MÚSICA AMBIENTE</em> ✦ <em>HEAVEN OR HELL ???</em></span>
-      <span><em>✦ LOOKING FOR A HOME IN THE INTERNET ✦</em> <b>ENCARGOS ABIERTOS</b> :: 6 CATEGORÍAS ✦ <em>GALERÍA CON FILTROS</em> ✦ <em>MÚSICA AMBIENTE</em> ✦ <em>HEAVEN OR HELL ???</em></span>
+      <span>✦ LOOKING FOR A HOME IN THE INTERNET ✦ <b>ENCARGOS ABIERTOS</b> :: COMMISSIONS OPEN ✦ NEBULA FM ✦</span>
+      <span>✦ LOOKING FOR A HOME IN THE INTERNET ✦ <b>ENCARGOS ABIERTOS</b> :: COMMISSIONS OPEN ✦ NEBULA FM ✦</span>
     </div>
   </div>
 
@@ -93,12 +93,10 @@
     <!-- Kit hero: estrellas, rejilla, destellos y órbitas (lunnie-kit) -->
     <span class="hero-deco hero-deco-stars" aria-hidden="true"></span>
     <span class="hero-deco hero-deco-grid" aria-hidden="true"></span>
-    <span class="hero-deco hero-sparkles" aria-hidden="true"></span>
     <span class="hero-deco hero-orbit" aria-hidden="true"><img src="assets/hero/hero-orbit.svg" alt=""></span>
     <span class="hero-deco hero-deco-l" aria-hidden="true"><img src="assets/hero/hero-decor-left.svg" alt=""></span>
-    <span class="hero-deco hero-deco-r" aria-hidden="true"><img src="assets/hero/hero-decor-right.svg" alt=""></span>
 
-    <span class="hero-badge">EST. <i>2026</i> // NEOCITIES SECTOR 17</span>
+    <span class="hero-badge">EST. <i>2026</i> // NEOCITIES</span>
     <h1 class="hero-title">LU<span class="hi">NN</span>IE</h1>
 
     <!-- Sticker flotante con la avatar del sector -->
@@ -107,15 +105,12 @@
       <span class="stk-tag">01 · sender</span>
     </div>
 
-    <p class="hero-coords" id="hero-coords"><img src="assets/ui/hud/hud-coordinates.svg" alt="" class="hud-coords-ico">SECTOR <b>17</b> · LUNNIE·CORE // <b>MX</b> · ORIGIN <b>NEOCITIES</b></p>
-    <p class="hero-sub"><strong>digital artist</strong>&amp; illustrator from <em>mexico</em> — este rincón del espacio-web es (sobre todo) mío.</p>
+    <p class="hero-coords" id="hero-coords"><img src="assets/ui/hud/hud-coordinates.svg" alt="" class="hud-coords-ico">SECTOR <b>17</b> // <b>NEOCITIES</b></p>
+    <p class="hero-sub"><strong>digital artist</strong> &amp; illustrator<br>from <em>mexico</em></p>
     <div class="hero-badges">
-      <span class="chip">mx // 17 y/o</span>
-      <span class="chip">guilty gear / p5 addict</span>
       <span class="chip chip-open">commissions: open</span>
     </div>
     <div class="hero-rule" aria-hidden="true"></div>
-    <span class="hero-deco hero-signal" aria-hidden="true"><img src="assets/hero/hero-signal.svg" alt=""></span>
   </header>
 
   <!-- ============================================================
@@ -131,12 +126,48 @@
   </nav>
 
   <main class="page">
+
+    <!-- ==========================================================
+         ENTRADA AL SECTOR — obra destacada como puerta
+         ========================================================== -->
+    <section class="zone zone-art" data-reveal="art" aria-labelledby="t-featured">
+      <h2 class="sr-only" id="t-featured">obra destacada</h2>
+      <div class="path-gate" aria-hidden="true">
+        <span>SECTOR 17</span><i>↓</i><span>SIGNAL DETECTED</span>
+      </div>
+      <div class="entry-wrap">
+        <figure class="featured-art-wrap entry-art">
+          <img class="featured-art shape-hex" src="assets/img/art2.svg" alt="Gatita astronauta — obra destacada">
+          <figcaption class="entry-tag" aria-hidden="true">«gatita astronauta»</figcaption>
+        </figure>
+        <aside class="panel panel-d entry-info">
+          <p class="ft-plate">FEATURED TRANSMISSION // ARTWORK <b>#042</b></p>
+          <h3>«gatita astronauta»</h3>
+          <p class="entry-note">
+            bienvenid@ a mi rincón — un dibujante haciendo casa en la web, sin algoritmo.
+          </p>
+          <p>
+            Mi pedazo favorito del mes: una pequeña exploradora espacial flotando
+            con su casco. (Hecha a mano en este sector, sin IA en el proceso.)
+          </p>
+          <div class="tags-row">
+            <span class="chip">original</span>
+            <span class="chip chip-open">portada</span>
+          </div>
+          <div class="ft-signal" aria-hidden="true">
+            <span>SIGNAL</span><span class="sys-bar" data-v="75"><i></i></span><b>75%</b>
+          </div>
+          <a class="btn" href="galeria.html">ver en galería</a>
+        </aside>
+      </div>
+    </section>
+
     <div class="grid">
 
       <!-- ==========================================================
            COLUMNA IZQUIERDA — PERFIL & TOOLS
            ========================================================== -->
-      <aside class="col stack" style="order: 1">
+      <aside class="col stack col-left">
 
         <!-- Perfil -->
         <section class="panel panel-a" id="sec-profile" data-sec="PROFILE" data-reveal="sys" aria-labelledby="t-perfil">
@@ -175,7 +206,7 @@
              ========================================================== -->
         <section class="panel panel-c" data-reveal="win" aria-labelledby="t-discord">
           <header class="panel-head">
-            <h2 id="t-discord">estado live</h2>
+            <h2 id="t-discord">estado en vivo</h2>
             <span class="meter live" title="sondeo de Lanyard"></span>
           </header>
           <!-- Contenedor que llena discord-widget.js. Necesita tu ID. -->
@@ -199,55 +230,7 @@
       <!-- ==========================================================
            COLUMNA CENTRAL — CONTENIDO
            ========================================================== -->
-      <div class="col stack" style="order: 2">
-
-        <!-- Banner ilustrado -->
-        <figure class="banner-wrap" data-reveal="art">
-          <figcaption class="banner-status top"><span>SYSTEM STATUS: NORMAL</span><b>//</b><span>SECTOR 17</span></figcaption>
-          <img id="site-banner" src="assets/img/banner.svg" alt="Banner del sector: nebulosa con el nombre LUNNIE" width="880" height="220">
-          <figcaption class="banner-status bottom"><span>SIGNAL: STABLE</span><span>LUNNIE ONLINE</span></figcaption>
-        </figure>
-
-        <!-- Bienvenida en caja de diálogo P5 -->
-        <section class="p5-box liquid-panel squircle-panel" aria-labelledby="t-welcome" data-reveal="tx">
-          <span class="speaker-tab">lunnie // entrada</span>
-          <p>
-            Bienvenid@ a <strong>mi rincón en el espacio</strong>. Aquí no hay algoritmo: hay
-            un dibujante que quería volver a tener casa en la web, con 3 columnas, botones
-            88x31 y mucho clip-path. La galería y los encargos están en su sector.
-          </p>
-          <p>
-            Este año decidí tomarlo con calma: <em>dibujar, subir, archivar</em>. El sector
-            va creciendo poco a poco — ahora mismo estoy armando la galería, el archivo de
-            OCs y una tira de cómic que lleva semanas pidiendo salir de mi sketchbook.
-          </p>
-          <span class="skip-mark" aria-hidden="true">▼▼▼</span>
-        </section>
-
-        <!-- Dibujo destacado -->
-        <section class="panel panel-d" data-reveal="art" aria-labelledby="t-featured">
-          <header class="panel-head">
-            <h2 id="t-featured">obra destacada</h2>
-            <span class="chip chip-warn">new</span>
-          </header>
-          <div class="featured-grid">
-            <figure class="featured-art-wrap">
-              <img class="featured-art shape-hex" src="assets/img/art2.svg" alt="Gatita astronauta — obra destacada">
-            </figure>
-            <div class="featured-info">
-              <div class="tags-row">
-                <span class="chip">original</span>
-                <span class="chip chip-open">portada</span>
-              </div>
-              <h3>«gatita astronauta»</h3>
-              <p>
-                Mi pedazo favorito del mes: una pequeña exploradora espacial flotando
-                con su casco. (Hecha a mano en este sector, sin IA en el proceso.)
-              </p>
-              <a class="btn" href="galeria.html">ver en galería</a>
-            </div>
-          </div>
-        </section>
+      <div class="col stack col-center">
 
         <!-- Avance de galería -->
         <section class="panel panel-d" id="sec-art" data-reveal="art" aria-labelledby="t-preview">
@@ -261,6 +244,8 @@
             <a class="more" href="galeria.html">ver todas →</a>
           </div>
         </section>
+
+        <p class="signal-handoff" aria-hidden="true"><b>✦</b>SIGNAL CONTINUES<b>✦</b></p>
 
         <!-- ==========================================================
              DAILY TRANSMISIONES — diario/muro de notas
@@ -344,71 +329,19 @@
       <!-- ==========================================================
            COLUMNA DERECHA — WIDGETS
            ========================================================== -->
-      <aside class="col stack" style="order: 3">
+      <aside class="col stack col-right">
 
         <!-- Working on -->
         <section class="panel panel-a" data-sec="WIP" data-reveal="sys" aria-labelledby="t-work">
           <header class="panel-head"><h2 id="t-work">working on rn…</h2><span class="chip chip-open">wip</span></header>
-          <div class="working-row"><span class="dot"></span><p>portada del <strong>sketchbook espacial</strong></p></div>
-          <div class="working-row"><span class="dot"></span><p>página de <a href="ocs.html"><strong>OCs</strong></a> con tarjetas por personaje</p></div>
-          <div class="working-row"><span class="dot"></span><p>playlist para el <a href="blog.html"><strong>blog</strong></a></p></div>
-          <div class="working-row"><span class="dot"></span><p>página <a href="sobre-mi.html"><strong>sobre mí</strong></a></p></div>
+          <div class="working-row"><span class="dot"></span><p>portada del <strong>sketchbook espacial</strong></p><span class="chip chip-state is-on">ACTIVE</span></div>
+          <div class="working-row"><span class="dot"></span><p>página de <a href="ocs.html"><strong>OCs</strong></a> con tarjetas por personaje</p><span class="chip chip-state">BUILDING</span></div>
+          <div class="working-row"><span class="dot"></span><p>playlist para el <a href="blog.html"><strong>blog</strong></a></p><span class="chip chip-state">NEXT</span></div>
+          <div class="working-row"><span class="dot"></span><p>página <a href="sobre-mi.html"><strong>sobre mí</strong></a></p><span class="chip chip-state">QUEUE</span></div>
           <p class="panel-foot tiny">actualizado: hoy — el pulso largo vive en el <a href="blog.html">log</a>.</p>
         </section>
 
-        <!-- Música ambiental — NEBULA FM -->
-        <section class="panel panel-c nebula-fm" id="sec-radio" data-reveal="win" aria-labelledby="t-music">
-          <div class="fm-scene" aria-hidden="true">
-            <img class="fm-orbit" src="assets/ui/orbits/orbit-small.svg" alt="">
-            <img class="fm-radar" src="assets/ui/hud/hud-radar.svg" alt="">
-            <div class="fm-orb"></div>
-          </div>
-          <i class="fm-crt" aria-hidden="true"></i>
-          <img class="fm-speaker" src="assets/radio/radio-speaker.svg" alt="" aria-hidden="true">
-          <header class="panel-head"><h2 id="t-music">NEBULA FM</h2><span class="chip">pad <img class="chip-ico" src="assets/decorations/symbols/symbol-wave.svg" alt=""></span></header>
-          <div class="music-block">
-            <div class="fm-dial">
-              <span class="fm-freq">87.9</span>
-              <span>· RADIO DEL SECTOR ·</span>
-              <span class="fm-signal fm-sig" id="fm-signal"><img src="assets/radio/radio-signal.svg" alt="">▚▚▚ DISPONIBLE</span>
-            </div>
-            <div class="eq" id="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            <p class="tiny">pad espacial sintetizado al vuelo en tu navegador · cero mp3 · respeta tu gesto de play</p>
-            <div class="music-toggle-row">
-              <button type="button" class="btn" id="music-toggle" aria-pressed="false">▶ emitir ambiente</button>
-              <img class="fm-knob" src="assets/radio/radio-knob.svg" alt="" aria-hidden="true">
-            </div>
-            <p class="music-now" id="music-status">SILENCIO CÓSMICO</p>
-            <p class="fm-boot" aria-hidden="true"><img src="assets/loading/loading.svg" alt="">CONNECTING… SIGNAL FOUND?</p>
-          </div>
-        </section>
-
-        <!-- LUNNIE SYSTEM — estado que respira (mecánica estética) -->
-        <section class="panel panel-a" data-sec="CORE" data-reveal="sys" aria-labelledby="t-diag">
-          <header class="panel-head"><h2 id="t-diag">lunnie system</h2><span class="chip chip-open">live <img class="chip-ico" src="assets/ui/hud/hud-signal-bars.svg" alt=""></span></header>
-          <div class="sys-status" id="sys-status">
-            <div class="sys-status-row">
-              <span>STATUS</span>
-              <span class="sys-bar" data-v="100"><i></i></span>
-              <b>ONLINE</b>
-            </div>
-            <div class="sys-status-row">
-              <span>MOOD</span>
-              <b class="val" data-key="mood">—</b>
-            </div>
-            <div class="sys-status-row">
-              <span>ENERGY</span>
-              <span class="sys-bar" data-v="80"><i></i></span>
-              <b class="val" data-key="energy">—</b>
-            </div>
-            <div class="sys-status-row">
-              <span>SIGNAL</span>
-              <span class="sys-bar" data-v="85"><i></i></span>
-              <b class="val" data-key="signal">—</b>
-            </div>
-            <p class="panel-foot tiny egg-dev-note">mejora, es una lectura del sector — no de mi estado real :)</p>
-          </div>
-        </section>
+        <!-- Música ambiental — NEBULA FM (se mudó a zona propia, abajo) -->
 
         <!-- Badges decorativos -->
         <section class="panel panel-e" data-reveal="deco" aria-labelledby="t-badges">
@@ -428,7 +361,95 @@
         </section>
       </aside>
     </div>
+
+    <!-- ==========================================================
+         ESTACIÓN — NEBULA FM (descubrimiento tras el recorrido)
+         ========================================================== -->
+    <section class="panel panel-c nebula-fm zone zone-radio" id="sec-radio" data-reveal="win" aria-labelledby="t-music">
+      <div class="fm-scene" aria-hidden="true">
+        <img class="fm-orbit" src="assets/ui/orbits/orbit-small.svg" alt="">
+        <img class="fm-radar" src="assets/ui/hud/hud-radar.svg" alt="">
+        <div class="fm-orb"></div>
+      </div>
+      <i class="fm-crt" aria-hidden="true"></i>
+      <img class="fm-speaker" src="assets/radio/radio-speaker.svg" alt="" aria-hidden="true">
+      <header class="panel-head"><h2 id="t-music">NEBULA FM</h2><span class="chip">pad <img class="chip-ico" src="assets/decorations/symbols/symbol-wave.svg" alt=""></span></header>
+      <div class="radio-deck">
+        <div class="fm-console">
+          <div class="fm-dial">
+            <span class="fm-freq">87.9</span>
+            <span>· RADIO DEL SECTOR ·</span>
+            <span class="fm-signal fm-sig" id="fm-signal"><img src="assets/radio/radio-signal.svg" alt="">▚▚▚ DISPONIBLE</span>
+          </div>
+          <div class="eq" id="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <p class="tiny">pad espacial sintetizado al vuelo en tu navegador · cero mp3 · respeta tu gesto de play</p>
+        </div>
+        <div class="music-block">
+          <div class="music-toggle-row">
+            <button type="button" class="btn" id="music-toggle" aria-pressed="false">▶ emitir ambiente</button>
+            <img class="fm-knob" src="assets/radio/radio-knob.svg" alt="" aria-hidden="true">
+          </div>
+          <p class="music-now" id="music-status">SILENCIO CÓSMICO</p>
+          <p class="fm-boot" aria-hidden="true"><img src="assets/loading/loading.svg" alt="">CONNECTING… SIGNAL FOUND?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         SISTEMA — diagnostics como cierre (zona final)
+         ========================================================== -->
+    <section class="panel panel-a zone zone-sys" data-sec="CORE" data-reveal="sys" aria-labelledby="t-diag">
+      <header class="panel-head"><h2 id="t-diag">system diagnostics</h2><span class="chip chip-open">live <img class="chip-ico" src="assets/ui/hud/hud-signal-bars.svg" alt=""></span></header>
+      <div class="sys-deck">
+        <div class="sys-status" id="sys-status">
+          <div class="sys-status-row">
+            <span>STATUS</span>
+            <span class="sys-bar" data-v="100"><i></i></span>
+            <b class="val" data-key="status">ONLINE</b>
+          </div>
+          <div class="sys-status-row">
+            <span>MOOD</span>
+            <b class="val" data-key="mood">—</b>
+          </div>
+          <div class="sys-status-row">
+            <span>ENERGY</span>
+            <span class="sys-bar" data-bar="energy" data-v="80"><i></i></span>
+            <b class="val" data-key="energy">—</b>
+          </div>
+          <div class="sys-status-row">
+            <span>SIGNAL</span>
+            <span class="sys-bar" data-bar="signal" data-v="85"><i></i></span>
+            <b class="val" data-key="signal">—</b>
+          </div>
+          <div class="sys-status-row">
+            <span>SECTOR</span>
+            <b class="val" data-key="sector">STABLE</b>
+          </div>
+          <div class="sys-status-row">
+            <span>NEBULA</span>
+            <b class="val" data-key="nebula">AWAKE</b>
+          </div>
+          <div class="sys-status-row">
+            <span>COFFEE</span>
+            <b class="val">∞</b>
+          </div>
+          <div class="sys-status-row">
+            <span>OPERATOR</span>
+            <b class="val">LV.17</b>
+          </div>
+        </div>
+        <div class="sys-side">
+          <div class="sys-event" aria-live="polite" id="sys-event">
+            <span class="ev-k">LAST EVENT</span>
+            <span class="ev-t" data-key="event">› monitorizando el sector…</span>
+          </div>
+          <p class="panel-foot tiny egg-dev-note">lectura del sector — no de mi estado real :)</p>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <div class="signal-out" aria-hidden="true">END OF MAIN SIGNAL · channels below</div>
 
   <!-- ============================================================
        TRANSMISSION SIGNALS — dock de contacto (estilo GG)

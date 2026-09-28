@@ -109,6 +109,7 @@ const CONFIG = {
   const toggle = document.getElementById('music-toggle');
   const eq = document.getElementById('eq');
   const status = document.getElementById('music-status');
+  const fms = document.getElementById('fm-signal');
   if (!toggle) return;
 
   const engine = (() => {
@@ -198,6 +199,13 @@ const CONFIG = {
     if (status) {
       status.textContent = playing ? 'SONANDO… calibra tu alma' : 'SILENCIO CÓSMICO';
       status.classList.toggle('pos', playing);
+    }
+    if (fms) {
+      fms.textContent = playing ? '▚▚▚ TRANSMISIÓN ACTIVA' : '▚▚▚ DISPONIBLE';
+      fms.classList.toggle('on', playing);
+    }
+    if (playing) {
+      window.dispatchEvent(new CustomEvent('lunnie:event', { detail: { text: 'transmisión de nebula fm recibida' } }));
     }
   };
 

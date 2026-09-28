@@ -14,6 +14,19 @@
   const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
   const finePointer = !coarsePointer && window.matchMedia('(pointer: fine)').matches;
 
+  // gestos recientes → permitir micro-sonidos bajo el umbral de interacción
+  let lastGesture = 0;
+  const markGesture = () => { lastGesture = Date.now(); };
+  document.addEventListener('pointerdown', markGesture, { passive: true });
+  document.addEventListener('keydown', markGesture, { passive: true });
+
+  // bus de eventos del sector (LAST EVENT del system diagnostics)
+  let sysEvent = () => {};
+  const reportNebula = (name) => {
+    const el = document.querySelector('[data-key="nebula"]');
+    if (el) el.textContent = name;
+  };
+
   /* ============================================================
      1. CURSOR PERSONALIZADO (solo puntero fino, sin reduced-motion)
      ============================================================ */
@@ -76,6 +89,7 @@
     try { localStorage.setItem(DISC_KEY, JSON.stringify(list)); } catch (e) {}
     showToast(text);
     updateCount();
+    sysEvent('anomalía registrada · ' + id);
   }
   function updateCount() {
     const el = document.querySelector('.discovery-count b');
@@ -86,13 +100,32 @@
     if (!toast) {
       toast = document.createElement('div');
       toast.className = 'discovery-toast';
-      toast.innerHTML = '<small>✦ DISCOVERY UNLOCKED</small><span></span>';
+      toast.innerHTML = '<small>✦ DISCOVERY UNLOCKED</small><span></span><em>+1 anomalía registrada</em>';
       document.body.appendChild(toast);
     }
     toast.querySelector('span').textContent = '"' + text + '"';
     toast.classList.add('is-on');
     clearTimeout(toast._t);
     toast._t = setTimeout(() => toast.classList.remove('is-on'), 3400);
+    if (!prefersReduced && Date.now() - lastGesture < 2500) blip();
+  }
+  function blip() {
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      const ctx = new AC();
+      const g = ctx.createGain();
+      g.gain.value = 0.035;
+      g.connect(ctx.destination);
+      const o = ctx.createOscillator();
+      o.type = 'sine';
+      o.frequency.setValueAtTime(660, ctx.currentTime);
+      o.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.07);
+      o.connect(g);
+      o.start();
+      o.stop(ctx.currentTime + 0.09);
+      setTimeout(() => { try { ctx.close(); } catch (e) {} }, 300);
+    } catch (e) {}
   }
 
   /* ============================================================
@@ -133,6 +166,7 @@
       img.alt = 'Nebula, la mascota del sector — ' + s.name.toLowerCase();
       tag.textContent = 'NEBULA STATUS ● ' + s.name;
       tag.className = 'neb-tag ' + s.cls;
+      reportNebula(s.name);
       if (friend.classList) {
         friend.classList.remove('is-sleepy', 'is-happy', 'is-wave');
         friend.classList.add(s.cls);
@@ -170,6 +204,8 @@
     img.addEventListener('click', () => {
       clicks++;
       setState(0);
+      reportNebula(STATES[0].name);
+      sysEvent('nebula respondió a tu llamada');
       const pet = ['*suave*', '*Nebula cierra los ojos*', '*ronroneo espacial*', '*te da la cabeza*'];
       say(pet[Math.min(clicks - 1, pet.length - 1)], 'nebula');
       if (clicks === 1) removeTrail();
@@ -205,12 +241,24 @@
     if (!wrap) return;
 
     const MOODS = ['SERENE', 'HYPERFOCUS', 'CURIOUS', 'GROGGY', 'IN THE ZONE', 'SUGAR RUSH'];
+    const SECTORS = ['STABLE', 'STABLE', 'CALIBRATING', 'SYNCING'];
     const labels = wrap.querySelectorAll('[data-key]');
-    const bars = wrap.querySelectorAll('.sys-bar');
+    const bars = wrap.querySelectorAll('[data-bar]');
+    const eventEl = document.querySelector('[data-key="event"]');
 
     let energy = 80;
     let signal = 85;
     let currentMood = 'SERENE';
+
+    sysEvent = (text) => {
+      if (!eventEl) return;
+      eventEl.textContent = '› ' + text;
+      eventEl.classList.remove('flash');
+      requestAnimationFrame(() => eventEl.classList.add('flash'));
+    };
+    window.addEventListener('lunnie:event', (e) => {
+      sysEvent((e && e.detail && e.detail.text) || 'evento puntual del sector');
+    });
 
     const setRow = (key, val) => {
       labels.forEach((el) => {
@@ -235,12 +283,13 @@
 
       // el ánimo cambia despacio: solo 1 de cada 3 respiraciones
       if (Math.random() < 0.3) currentMood = MOODS[Math.floor(Math.random() * MOODS.length)];
+      if (Math.random() < 0.15) setRow('sector', SECTORS[Math.floor(Math.random() * SECTORS.length)]);
       setRow('mood', currentMood);
       setRow('energy', String(Math.round(energy)) + '%');
       setRow('signal', String(Math.round(signal)) + '%');
 
-      if (bars[0]) setBar(bars[0], energy, 'ENERGY');
-      if (bars[1]) setBar(bars[1], signal, 'SIGNAL');
+      if (bars[0]) setBar(bars[0], energy, String(Math.round(energy)) + '%');
+      if (bars[1]) setBar(bars[1], signal, String(Math.round(signal)) + '%');
     };
     tick();
     setInterval(tick, 5600);
@@ -438,6 +487,36 @@
     document.body.appendChild(out);
     setTimeout(() => out.remove(), 3400);
   }
+
+  // 8. Hero-sticker: el avatar flota y se inclina con el cursor
+  (function initStickerTilt() {
+    const sticker = document.getElementById('hero-sticker');
+    if (!sticker || !finePointer || prefersReduced) return;
+    const grab = (e) => {
+      const r = sticker.getBoundingClientRect();
+      const px = (e.clientX - r.left) / Math.max(r.width, 1) - 0.5;
+      const py = (e.clientY - r.top) / Math.max(r.height, 1) - 0.5;
+      sticker.style.transform =
+        'rotate(0deg) rotateY(' + (px * 10).toFixed(2) + 'deg) rotateX(' + (-py * 8).toFixed(2) + 'deg)';
+    };
+    sticker.addEventListener('mousemove', grab, { passive: true });
+    sticker.addEventListener('mouseleave', () => {
+      sticker.style.transform = '';
+    });
+  })();
+
+  // 9. Revelar índice lateral y mascota tras el primer scroll
+  //    (el primer viewport pertenece a LUNNIE: índices = secreto)
+  (function initRevealGate() {
+    const nav = document.querySelector('.scroll-index');
+    const gate = () => {
+      const past = window.scrollY > Math.min(window.innerHeight * 0.4, 420);
+      if (nav) nav.classList.toggle('is-past', past);
+      document.body.classList.toggle('is-scrolled', past);
+    };
+    gate();
+    window.addEventListener('scroll', gate, { passive: true });
+  })();
 
   /* init: pintar contador */
   updateCount();
