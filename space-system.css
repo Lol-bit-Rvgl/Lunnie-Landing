@@ -1528,3 +1528,463 @@ html, body { overflow-x: clip; }
   z-index: 2;
 }
 .featured-art-wrap:hover::after { opacity: 1; transform: translateY(0) rotate(0); }
+
+/* ============================================================
+   28.16 DIRECCIÓN DE ARTE FINAL — cohesión, profundidad, identidad
+   ------------------------------------------------------------
+   - system diagnostics: filas como consola de estación + LAST EVENT
+   - obra destacada → placa FEATURED TRANSMISSION con señal
+   - working on: chips de estado ACTIVE/BUILDING/NEXT/QUEUE
+   - divisores de señal (SIGNAL CONTINUES / END OF MAIN SIGNAL)
+   - hero-sticker flota (propiedad translate) y reacciona al cursor
+   - radio: indicador de transmisión activa
+   ============================================================ */
+
+/* -- transiciones de señal entre sectores -- */
+.signal-handoff {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  margin: 30px 0 2px;
+  font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.3em;
+  color: var(--grey-d);
+}
+.signal-handoff b { color: var(--amber); font-weight: 600; font-size: 0.7rem; }
+.signal-handoff::before, .signal-handoff::after {
+  content: ""; height: 1px; flex: 1; max-width: 130px;
+  background: linear-gradient(90deg, transparent, var(--line-hex));
+}
+.signal-handoff::after { transform: scaleX(-1); }
+
+.signal-out {
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  margin: 30px auto 16px; max-width: 480px;
+  font-family: var(--font-mono); font-size: 0.56rem; letter-spacing: 0.22em;
+  color: var(--grey-d); text-transform: uppercase;
+}
+.signal-out::before, .signal-out::after { content: "— ✦ —"; color: var(--amber); }
+
+/* -- obra destacada: placa de transmisión -- */
+.ft-plate {
+  margin: 0 0 12px;
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.22em;
+  color: var(--grey-d);
+}
+.ft-plate b { color: var(--amber); font-weight: 600; }
+.ft-signal {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px;
+  margin: 0 0 16px; max-width: 260px;
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.18em;
+  color: var(--grey-d);
+}
+.ft-signal b { color: var(--amber); font-weight: 600; }
+.ft-signal .sys-bar { width: 100%; }
+
+/* -- working on: chips de estado -- */
+.working-row { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; }
+.chip-state {
+  justify-self: end;
+  font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.14em;
+  padding: 2px 7px; border: 1px solid var(--line-hex); color: var(--grey-d);
+  border-radius: 2px; white-space: nowrap;
+}
+.chip-state.is-on { color: var(--amber); border-color: var(--amber); }
+
+/* -- system diagnostics: consola de estación + LAST EVENT -- */
+.sys-status-row b { justify-self: end; }
+.sys-event {
+  margin-top: 8px; padding: 8px 2px 3px;
+  border-top: 1px dashed var(--line-hex);
+}
+.sys-event .ev-k {
+  display: block; margin-bottom: 4px;
+  font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.26em;
+  color: var(--grey-d);
+}
+.sys-event .ev-t {
+  display: block; font-family: var(--font-mono); font-size: 0.62rem;
+  color: var(--amber); opacity: 0.92; min-height: 1.1em;
+}
+.sys-event.flash .ev-t { animation: ev-pulse 1.1s var(--ease); }
+@keyframes ev-pulse { 0% { opacity: 0.35; } 45% { opacity: 1; } 100% { opacity: 0.9; } }
+
+/* -- hero-sticker: flota despacio (translate) + tilt del cursor (JS) -- */
+.hero-sticker { transition: transform 0.5s var(--ease); }
+@keyframes stk-drift { 0%, 100% { translate: 0 0; } 50% { translate: 0 -7px; } }
+.hero-sticker { animation: stk-drift 7s ease-in-out infinite; }
+
+/* -- radio: transmisión activa -- */
+.fm-signal.on { color: var(--st-online); }
+
+/* -- discovery toast: línea de confirmación del sector -- */
+.discovery-toast em {
+  display: block;
+  margin-top: 6px;
+  padding-top: 5px;
+  border-top: 1px dashed rgba(20, 15, 36, 0.35);
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 0.56rem;
+  letter-spacing: 0.16em;
+  opacity: 0.75;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-sticker { animation: none; translate: none; }
+  .sys-event.flash .ev-t { animation: none; }
+}
+
+/* ============================================================
+   28.17 SIMPLIFICACIÓN DEL HERO (2026) — RESTAR
+   Primer viewport: LUNNIE → identidad/avatar → nav → decoración.
+   - marquee y cinta = ambientación, nunca titulares
+   - avatar = segundo objeto, discreto (marco + glow sutil)
+   - estrellas respiran lejos del título; 1 fragmento máximo;
+   - scroll-index y Nebula aparecen tras el primer scroll
+   - asistente en reposo (sin flotar); sin tocar funcionalidad
+   ============================================================ */
+
+/* marquee: mensaje corriendo de una web personal, no un titular */
+.marquee-bar {
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  padding: 4px 0;
+  background: rgba(5, 4, 10, 0.55);
+  border-top: 1px solid var(--line-core);
+  border-bottom: 1px solid var(--line-core);
+  color: var(--grey-d);
+}
+.marquee-track span { color: var(--line-hex); padding-right: 3rem; }
+.marquee-track span em { color: var(--grey-d); }
+.marquee-track b { color: var(--amber); font-weight: 600; opacity: 0.85; }
+
+/* cinta EST.2026: detalle de ambientación, sin peso propio */
+.hero-badge {
+  font-size: 0.6rem;
+  letter-spacing: 0.34em;
+  color: var(--grey-d);
+  border-color: var(--line-hex);
+  background: rgba(4, 3, 10, 0.4);
+  padding: 4px 14px 4px 12px;
+}
+.hero-badge i { color: var(--txt); }
+.hero-badge::after { opacity: 0.4; }
+
+/* aire deliberado alrededor del título */
+.hero {
+  row-gap: clamp(4px, 1.4vh, 16px);
+  padding-top: clamp(2.6rem, 7vh, 4.4rem);
+  padding-bottom: clamp(3rem, 8vh, 4.6rem);
+}
+
+/* estrellas: el espacio junto a LUNNIE respira (máscara inversa) */
+.hero-deco-stars {
+  opacity: 0.3;
+  -webkit-mask-image: radial-gradient(ellipse at 22% 30%, transparent 0 34%, #000 68%);
+  mask-image: radial-gradient(ellipse at 22% 30%, transparent 0 34%, #000 68%);
+}
+
+/* fragmentos y centelleos: restar a un solo elemento */
+.hero-deco-r, .hero-signal, .hero-sparkles { display: none; }
+.hero-deco-l { width: 92px; opacity: 0.55; }
+
+/* órbita única: compositiva, lenta, respetuosa */
+.hero-orbit { opacity: 0.38; animation-duration: 38s; }
+
+/* identidad compacta, sin barra decorativa */
+.hero-sub { letter-spacing: 0.3em; }
+.hero-sub::before { display: none; }
+.hero-sub strong { color: var(--txt); }
+
+/* regla divisoria más discreta */
+.hero-rule { margin-top: 1.2rem; }
+.hero-rule::after { opacity: 0.3; width: 38px; height: 38px; }
+
+/* avatar: segundo objeto, marco purgado */
+.hero-sticker {
+  background: transparent;
+  border: 1px dashed var(--line-hex);
+  border-radius: 0;
+  box-shadow: 0 0 30px rgba(157, 78, 221, 0.16);
+}
+.hero-sticker::before, .hero-sticker::after { display: none; }
+.hero-sticker img { mix-blend-mode: normal; opacity: 0.96; }
+
+/* índices y mascota: se revelan como detalle secreto tras el hero */
+.scroll-index { opacity: 0; transition: opacity 0.45s var(--ease); }
+.scroll-index.is-past { opacity: 1; }
+.scroll-index a { font-size: 0.54rem; padding: 3px 6px; gap: 6px; }
+
+.nebula-friend {
+  width: 64px;
+  left: 14px;
+  bottom: 18px;
+  opacity: 0;
+  translate: 0 20px;
+  transition: opacity 0.6s var(--ease), translate 0.6s var(--ease);
+}
+.nebula-friend img { width: 46px; height: 46px; filter: drop-shadow(0 6px 14px rgba(58, 12, 163, 0.5)); }
+.nebula-friend .neb-tag { opacity: 0; transition: opacity 0.3s var(--ease); }
+.nebula-friend:hover .neb-tag { opacity: 1; }
+body.is-scrolled .nebula-friend { opacity: 1; translate: 0 0; }
+
+/* asistente: punto silencioso, sin flotar */
+.assistant-bubble {
+  animation: none;
+  box-shadow: 2px 2px 0 var(--space), 0 0 14px rgba(114, 9, 183, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-index, .nebula-friend { transition: none; }
+  .hero-deco-l { animation: none; }
+}
+
+/* ============================================================
+   28.18 FASE 2 — RECORRIDO POST-HERO (zonas y objetos)
+   ============================================================ */
+
+/* ---- Zonas anchas: ritmo aire → contenido ---- */
+.zone { position: relative; margin-top: 3.2rem; }
+
+/* ---- Entrada: obra destacada como puerta ---- */
+.zone-art { margin-top: 2.4rem; }
+.path-gate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--grey-d);
+}
+.path-gate i { font-style: normal; color: var(--neon-purple); }
+.path-gate::before, .path-gate::after { content: ""; flex: 0 1 90px; height: 1px; background: var(--line-core); }
+
+.entry-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(260px, 0.88fr);
+  gap: 30px;
+  align-items: center;
+}
+.entry-art { margin: 0; position: relative; }
+.zone-art .featured-art {
+  width: min(100%, 560px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  filter: drop-shadow(0 0 18px rgba(114, 9, 183, 0.55));
+  transform: rotate(-1.2deg);
+}
+.zone-art .featured-art:hover { transform: rotate(-1deg) scale(1.03); }
+.entry-info { margin: 0; position: relative; z-index: 1; }
+.entry-info .ft-plate { margin-bottom: 14px; }
+.entry-info h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.entry-note {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--txt);
+  margin: 0 0 14px;
+}
+.entry-info p { color: var(--grey); font-size: 0.92rem; margin: 0 0 14px; }
+.entry-info .tags-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+
+/* ---- Estación FM (objeto ancho) ---- */
+.radio-deck {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 30px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.zone-radio .fm-dial { justify-content: center; }
+.zone-radio .eq { justify-content: center; }
+
+/* ---- Sistema (cierre tras el descubrimiento) ---- */
+.sys-deck {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 28px;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+}
+.sys-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+}
+.sys-side .egg-dev-note { margin: 0; }
+
+/* ---- Recorrido en tablet/móvil ---- */
+@media (max-width: 1160px) {
+  .zone { margin-top: 2.6rem; }
+}
+@media (max-width: 720px) {
+  .zone { margin-top: 2rem; }
+  .grid .col-center { grid-column: auto; order: -1; }
+  .entry-wrap, .radio-deck, .sys-deck { grid-template-columns: 1fr; }
+  .zone-art .featured-art { transform: rotate(0deg) scale(1); width: min(100%, 440px); }
+  .zone-art .featured-art:hover { transform: rotate(-1deg) scale(1.02); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .zone-art .featured-art { transform: rotate(0deg); transition: none; }
+  .radio-deck, .sys-deck { transition: none; }
+}
+
+/* ============================================================
+   28.19 FASE 3 — IDENTIDAD Y TEXTURA (ambientes por zona)
+   ============================================================ */
+
+/* ---- 1. ARTWORK: obra expuesta (EXHIBITION) ---- */
+.zone-art .featured-art {
+  width: min(100%, 660px);
+}
+.entry-art { margin: 0 -6px -10px 0; }
+.entry-tag {
+  position: absolute;
+  left: 8px;
+  bottom: 26px;
+  transform: rotate(-3deg);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--amber);
+  background: var(--ink);
+  border: 1px dashed var(--line-2);
+  padding: 6px 12px 7px;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+  box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.9);
+  z-index: 2;
+}
+
+/* ---- 2. GRID DE OBRAS: ritmo irregular, sin masonry ---- */
+.gal-strip {
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 112px;
+  grid-auto-flow: dense;
+}
+.gal-strip a { aspect-ratio: auto; }
+.gal-strip a img { height: 100%; }
+.gal-strip a:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gal-strip a:nth-child(3) { grid-row: span 2; }
+.gal-strip .more { grid-column: span 2; }
+
+/* ---- 3. TRANSMISSIONS: mensajes encontrados (FOUND MESSAGES) ---- */
+.tx-wall { counter-reset: txmsg; }
+.tx-note { counter-increment: txmsg; }
+.tx-note::before {
+  content: "TX // " counter(txmsg, decimal-leading-zero);
+}
+.tx-note:nth-child(4n+1) { transform: rotate(-0.6deg); }
+.tx-note:nth-child(4n+2) { transform: rotate(0.4deg) translateY(1px); }
+.tx-note:nth-child(4n+3) { transform: rotate(-0.2deg); }
+
+/* ---- 4. CHANGELOG: historial técnico ---- */
+.col-center .panel-a .timeline {
+  font-family: var(--font-mono);
+}
+.col-center .panel-a .timeline li {
+  padding: 0 0 14px 14px;
+  margin-left: 4px;
+  border-left: 1px dashed var(--line-core);
+}
+.col-center .panel-a .timeline li::before {
+  content: "+";
+  left: -8px;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  background: transparent;
+  color: var(--neon-purple);
+  font-size: 0.72rem;
+  font-weight: 700;
+  border: 1px solid var(--line-2);
+  transform: skewX(0deg);
+}
+.col-center .panel-a .timeline time {
+  background: rgba(20, 12, 44, 0.9);
+  color: var(--txt-dim);
+  border: 1px solid var(--line-core);
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  font-size: 0.6rem;
+  margin-bottom: 5px;
+}
+.col-center .panel-a .timeline p { font-size: 0.86rem; }
+
+/* ---- 5. GUESTBOOK: rincón humano (HUMAN CORNER) ---- */
+#sec-gb .panel-head {
+  transform: rotate(-0.7deg);
+  background: linear-gradient(180deg, #251347, #190b33);
+  border-bottom: 2px dashed var(--amber);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  margin-bottom: 20px;
+}
+#sec-gb .gb-list .gb-item { box-shadow: 0 3px 0 var(--ink), 0 12px 24px -14px rgba(0, 0, 0, 0.8); }
+
+/* ---- 6. RADIO: estación (STATION) ---- */
+.zone-radio .fm-freq {
+  font-size: 2.8rem;
+  text-shadow: 0 0 22px rgba(157, 78, 221, 0.65);
+}
+.zone-radio .fm-console {
+  background: rgba(5, 4, 10, 0.4);
+  border: 1px dashed var(--line-core);
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  padding: 16px 14px 12px;
+}
+.zone-radio .fm-dial { margin-bottom: 4px; }
+
+/* ---- 7. SYSTEM: terminal frío (TERMINAL) ---- */
+.zone-sys { overflow: hidden; }
+.zone-sys::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("assets/backgrounds/textures/scanlines.svg");
+  background-size: 100% 100%;
+}
+.zone-sys .sys-status-row:nth-child(2n) { background: rgba(114, 9, 183, 0.06); }
+.zone-sys .sys-side { border-left: 1px dashed var(--line-core); padding-left: 22px; }
+
+/* ---- 8. working-on WIP / badges colección / webring incompleto ---- */
+.working-row:nth-child(odd) { transform: rotate(-0.5deg); }
+.working-row:nth-child(even) { transform: rotate(0.4deg) translateX(2px); }
+.badges-block { gap: 12px 9px; }
+.badges-block .badge-88:nth-child(3n+1) { transform: rotate(-3deg) translateY(3px); }
+.badges-block .badge-88:nth-child(3n+2) { transform: rotate(2.2deg) translateY(-2px); }
+.badges-block .badge-88:nth-child(3n)   { transform: rotate(-2deg) translateY(1px); }
+.friend-links {
+  border: 1px dashed var(--line-core);
+  padding: 12px 10px 10px;
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 6px);
+  gap: 9px;
+}
+
+@media (max-width: 1160px) {
+  .gal-strip { grid-auto-rows: 102px; grid-template-columns: repeat(5, 1fr); }
+  .gal-strip a:nth-child(3) { grid-row: span 1; }
+}
+@media (max-width: 720px) {
+  .gal-strip { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 108px; }
+  .gal-strip a:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+  .gal-strip a:nth-child(3) { grid-row: span 1; }
+  .gal-strip .more { grid-column: span 2; }
+  .zone-radio .fm-freq { font-size: 2.2rem; }
+  .zone-sys .sys-side { border-left: 0; padding-left: 0; border-top: 1px dashed var(--line-core); padding-top: 16px; }
+  .entry-tag { bottom: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .working-row { transform: none !important; }
+  .gal-strip a, .badge-88, .friend-links a { transition: none; }
+}
