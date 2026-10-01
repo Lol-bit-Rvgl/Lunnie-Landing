@@ -1793,6 +1793,24 @@ body.is-scrolled .nebula-friend { opacity: 1; translate: 0 0; }
   box-shadow: 2px 2px 0 var(--space), 0 0 14px rgba(114, 9, 183, 0.4);
 }
 
+/* asistente: el avatar corona el panel — composición intencional.
+   En column-reverse el avatar queda abajo (esquina del viewport) y el
+   panel nace encima; el avatar se asoma 10px por delante del borde. */
+.assistant { flex-direction: column-reverse; }
+.assistant-bubble {
+  position: relative;
+  z-index: 2;
+  margin-top: -20px;
+}
+.assistant-popup {
+  position: relative;
+  z-index: 1;
+}
+@keyframes pop-in {
+  from { transform: translateY(-14px); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-index, .nebula-friend { transition: none; }
   .hero-deco-l { animation: none; }
