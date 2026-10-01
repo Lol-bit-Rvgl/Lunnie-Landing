@@ -192,7 +192,8 @@ body::after {
 .hero-coords b { color: var(--amber); font-weight: 600; }
 .hero-sub {
   grid-column: 2;
-  grid-row: 2 / span 2;
+  grid-row: 2;
+  align-self: center;
   margin: 0;
   font-size: clamp(0.82rem, 1.7vw, 1.05rem);
   letter-spacing: 0.26em;
@@ -215,7 +216,8 @@ body::after {
 .hero-badges {
   grid-column: 2;
   grid-row: 3;
-  margin: 0;
+  margin: 18px 0 0;
+  align-self: start;
   justify-content: flex-start;
   flex-wrap: wrap;
 }
