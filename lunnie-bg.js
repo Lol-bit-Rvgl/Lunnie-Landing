@@ -141,12 +141,25 @@
 
   function makeNear(count) {
     const list = [];
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
     for (let i = 0; i < count; i++) {
+      const r = rand(3.2, 6.5);
+      const color = pick();
+      const box = Math.ceil(r * 8);
+      // sprite pre-renderizado: en el loop solo se hace un drawImage con
+      // globalAlpha (sin crear gradientes ni rutas por frame)
+      const cvs = document.createElement('canvas');
+      cvs.width = cvs.height = Math.round(box * dpr);
+      const c2 = cvs.getContext('2d');
+      c2.scale(dpr, dpr);
+      drawStar(c2, box / 2, box / 2, r, color, 1);
       list.push({
         x: rand(50, w - 50),
         y: rand(70, h - 70),
-        r: rand(3.2, 6.5),
-        color: pick(),
+        r: r,
+        box: box,
+        spr: cvs,
+        color: color,
         tw: rand(0, Math.PI * 2),
         tws: rand(0.012, 0.03),
         p: null,
@@ -178,18 +191,19 @@
     window.__starCounts = { far: counts.far, mid: counts.mid, near: counts.near };
   };
 
-  // solo la banda cercana se redibuja: limpia rects viejos y pintar nuevos
+  // solo la banda cercana se redibuja: limpia rects viejos y blitea sprites
   function nearFrame() {
     for (const s of near) {
-      if (s.p) ctx.clearRect(s.p.x - s.p.r * 4 - 1, s.p.y - s.p.r * 4 - 1, s.p.r * 8 + 2, s.p.r * 8 + 2);
+      if (s.p) ctx.clearRect(s.p.x - s.box / 2, s.p.y - s.box / 2, s.box, s.box);
     }
     for (const s of near) {
       s.tw += s.tws;
       const y = wrap(s.y + scrollY * PARALLAX.near, h);
-      const a = prefersReduced ? 0.7 : 0.5 + (Math.sin(s.tw) + 1) * 0.28;
-      drawStar(ctx, s.x, y, s.r, s.color, a);
+      ctx.globalAlpha = prefersReduced ? 0.7 : 0.5 + (Math.sin(s.tw) + 1) * 0.28;
+      ctx.drawImage(s.spr, s.x - s.box / 2, y - s.box / 2, s.box, s.box);
       s.p = { x: s.x, y: y, r: s.r };
     }
+    ctx.globalAlpha = 1;
   }
 
   /* ---------- 3) PARALLAX AL SCROLL ---------- */
