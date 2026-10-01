@@ -1755,10 +1755,33 @@ html, body { overflow-x: clip; }
   background: transparent;
   border: 1px dashed var(--line-hex);
   border-radius: var(--squircle);
-  box-shadow: 0 0 30px rgba(157, 78, 221, 0.16);
+  box-shadow: 0 0 30px rgba(157, 78, 221, 0.16),
+    inset 0 0 22px rgba(157, 78, 221, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
-.hero-sticker::before, .hero-sticker::after { display: none; }
+.hero-sticker::after { display: none; }
 .hero-sticker img { mix-blend-mode: normal; opacity: 0.96; }
+/* textura de grano sutil sobre la cara clara del sticker (el squircle se
+   conserva con --squircle); la máscara radial difumina el borde para que
+   no aparezca un cuadrado texturado en las esquinas transparentes */
+.hero-sticker::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: block;
+  pointer-events: none;
+  border-radius: var(--squircle);
+  opacity: 0.5;
+  mix-blend-mode: soft-light;
+  background-image:
+    url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='140'%20height='140'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.9'%20numOctaves='2'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20type='saturate'%20values='0'/%3E%3C/filter%3E%3Crect%20width='140'%20height='140'%20filter='url(%23n)'%20opacity='0.55'/%3E%3C/svg%3E"),
+    linear-gradient(155deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.02) 46%, rgba(255, 209, 102, 0.12));
+  background-size: 140px 140px, cover;
+  -webkit-mask-image: radial-gradient(circle at 50% 48%, #000 0 54%, transparent 74%);
+  mask-image: radial-gradient(circle at 50% 48%, #000 0 54%, transparent 74%);
+}
+.hero-sticker .stk-tag { z-index: 3; }
 
 /* índices y mascota: se revelan como detalle secreto tras el hero */
 .scroll-index { opacity: 0; transition: opacity 0.45s var(--ease); }
