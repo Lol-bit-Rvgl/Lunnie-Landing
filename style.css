@@ -1245,6 +1245,10 @@ h1, h2, h3 { line-height: 1.05; }
 }
 @keyframes lb-fade { from { opacity: 0; } to { opacity: 1; } }
 .lightbox[hidden] { display: none; }
+/* Webring oculto hasta que exista la 1ª amistad real (ver CONFIG.WEBRING
+   y el comentario de #sec-webring en index.html). Al desocultarlo, el
+   panel se anima con data-reveal como el resto. */
+#sec-webring[hidden] { display: none; }
 .lb-stage {
   position: relative;
   max-width: min(920px, 92vw);

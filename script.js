@@ -293,46 +293,55 @@ const CONFIG = {
 
 /* ============================================================
    4. WEBRING RANDOMIZABLE
+   ------------------------------------------------------------
+   La sección (#sec-webring) nace `hidden` en el HTML para no mostrar
+   huecos "reservado" vacíos. Este módulo:
+     • sin amistades en CONFIG.WEBRING → la mantiene oculta;
+     • con amistades → la desoculta, pinta los botones reales y (si
+       existe el botón) enlaza el shuffle aleatorio.
+   Al añadir tu 1er amigo solo necesitas tocar CONFIG.WEBRING.
    ============================================================ */
 (function initWebring() {
+  const section = document.getElementById('sec-webring');
   const list = document.getElementById('friend-links');
   const btn = document.getElementById('webring-girar');
-  if (!list || !btn) return;
+  if (!section && !list && !btn) return;
 
-  // Si hay amistades en CONFIG, reemplazan los placeholders "pendiente"
   const entries = CONFIG.WEBRING || [];
-  if (entries.length) {
-    list.textContent = '';
-    entries.forEach((f) => {
-      const li = document.createElement('li');
-      const a = document.createElement('a');
-      a.href = f.url;
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.title = f.name;
-      const img = document.createElement('img');
-      img.src = f.btn || 'assets/img/btn-friend.svg';
-      img.alt = f.name;
-      img.loading = 'lazy';
-      img.decoding = 'async';
-      a.appendChild(img);
-      li.appendChild(a);
-      list.appendChild(li);
-    });
-  } else {
-    list.querySelectorAll('a[data-pending]').forEach((a) => {
-      a.classList.add('is-pending');
-      a.title = 'webring — pendiente de configurar';
-    });
+  if (!entries.length) {
+    if (section) section.hidden = true;
+    return;
   }
 
-  btn.addEventListener('click', () => {
-    const items = Array.from(list.children);
-    for (let k = items.length - 1; k > 0; k--) {
-      const j = Math.floor(Math.random() * (k + 1));
-      list.appendChild(items[j]);
-    }
+  if (section) section.hidden = false;
+  if (!list) return;
+  list.textContent = '';
+  entries.forEach((f) => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = f.url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.title = f.name;
+    const img = document.createElement('img');
+    img.src = f.btn || 'assets/img/btn-friend.svg';
+    img.alt = f.name;
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    a.appendChild(img);
+    li.appendChild(a);
+    list.appendChild(li);
   });
+
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const items = Array.from(list.children);
+      for (let k = items.length - 1; k > 0; k--) {
+        const j = Math.floor(Math.random() * (k + 1));
+        list.appendChild(items[j]);
+      }
+    });
+  }
 })();
 
 /* ============================================================

@@ -234,8 +234,13 @@
           </div>
         </section>
 
-        <!-- Webring -->
-        <section class="panel panel-e" data-reveal="deco" aria-labelledby="t-webring">
+        <!-- Webring — REACTIVAR: cuando tengas al menos 1 sitio amigo real,
+              quita el atributo `hidden` de este panel y añade esa
+              amistad a CONFIG.WEBRING en script.js (script.js lo
+              desoculta solo si la lista tiene entradas). Mientras
+              no haya links reales no se muestra (nada de huecos
+              "reservado" vacíos). -->
+        <section class="panel panel-e" id="sec-webring" data-reveal="deco" aria-labelledby="t-webring" hidden>
           <header class="panel-head"><h2 id="t-webring">webring</h2><span class="chip">próximamente</span></header>
           <ul class="friend-links" id="friend-links">
             <li><a href="#" target="_blank" rel="noopener" class="is-pending" data-pending title="un hueco del webring — reservado"><img src="assets/ui/badges/badge-space.svg" alt="badge I ♥ SPACE — reservado" loading="lazy" decoding="async"></a></li>
