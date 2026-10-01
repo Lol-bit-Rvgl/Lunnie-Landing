@@ -24,8 +24,14 @@
      lo muestra como "pendiente".
    • WEBRING: una entrada por amistad (nombre, URL, botón 88x31).
    • UPDATE_LOG: se renderiza en el timeline del home (#changelog).
-   • COMM_STATUS: estado por tarjeta (clave = data-comm de cada
-     tarjeta en encargos.html): 'open' | 'closed'.
+• COMM_STATUS: estado por tarjeta (clave = data-comm de cada
+      tarjeta en encargos.html): 'open' | 'closed'.
+    • WORKS / OCS: FUENTES DE VERDAD de los contadores de perfil
+      ("n obras" / "n OCs"). Una entrada por obra real de la galería
+      y por OC real del archivo de OCs. Los `<b data-stat>` del
+      perfil (index.html y sobre-mi.html) se rellenan con estas
+      longitudes al cargar; si el conteo del DOM no coincide, un
+      aviso en consola te dice exactamente qué falta actualizar.
    ============================================================ */
 const CONFIG = {
   SOCIAL_LINKS: {
@@ -53,6 +59,34 @@ const CONFIG = {
     c5: 'open',
     c6: 'closed',
   },
+
+  // FUENTE DE VERDAD — contador de obras.
+  // Uno por <figure class="g-item"> de galeria.html (id = data-coord STAR-xx).
+  // Al añadir/quitar una obra, actualiza ESTA lista (y el checker te avisa
+  // si se desincroniza con el grid real). Los <b data-stat="works"> del
+  // perfil se calculan de aquí: CONFIG.WORKS.length.
+  WORKS: [
+    'STAR-01', // planeta anillado
+    'STAR-02', // gatita astronauta
+    'STAR-03', // gearrunner mecha
+    'STAR-04', // lune sonriente
+    'STAR-05', // página de cómic 01
+    'STAR-06', // tira x3 paneles
+    'STAR-07', // rough walk loop
+    'STAR-08', // mecha flicker
+    'STAR-09', // chibi nebulosa
+    'STAR-10', // página de sketchbook
+  ],
+
+  // FUENTE DE VERDAD — contador de OCs.
+  // Uno por <article class="oc-card"> de ocs.html (id = .oc-id).
+  // Al añadir/quitar un OC, actualiza ESTA lista. Los <b data-stat="ocs">
+  // del perfil se calculan de aquí: CONFIG.OCS.length.
+  OCS: [
+    'OC_01 // PROTOTYPE',
+    'OC_02 // NEBULA',
+    'OC_03 // VESPER',
+  ],
   // Destino de los botones "pedir esta ✎" / "lista de espera" por tarjeta
   // (clave = data-comm). null = se muestra como enlace pendiente.
   COMMISSION_ORDER: {
@@ -839,4 +873,45 @@ async function copyPlain(text) {
       btn.removeAttribute('aria-disabled');
     });
   });
+})();
+
+/* ============================================================
+   16. CONTADORES DE PERFIL — obras y OCs desde CONFIG.WORKS/OCS
+   ------------------------------------------------------------
+   • Las páginas declaran un lugar por número:
+       <b data-stat="works">10</b><span>obras</span>
+       <b data-stat="ocs">03</b><span>OCs</span>
+   • Este módulo rellena cada <b data-stat> con la longitud de la
+     fuente de verdad (CONFIG.WORKS / CONFIG.OCS), en el mismo
+     formato de 2 dígitos.
+   • En galeria.html / ocs.html compara el registro contra el DOM
+     real (#gal-grid .g-item / #sec-ocs .oc-card) y avisa en consola
+     si se desincronizan: ahí queda documentado dónde corregir.
+   ============================================================ */
+(function initSiteStats() {
+  const pad = (n) => String(n).padStart(2, '0');
+
+  const stats = {
+    works: (CONFIG.WORKS || []).length,
+    ocs: (CONFIG.OCS || []).length,
+  };
+
+  document.querySelectorAll('[data-stat]').forEach((b) => {
+    const key = b.dataset.stat;
+    if (key in stats) b.textContent = pad(stats[key]);
+  });
+
+  const verify = (selector, list, label, page) => {
+    const n = document.querySelectorAll(selector).length;
+    if (n !== (list || []).length) {
+      console.warn(
+        '[stats] ' + label + ' desincronizado: ' + page + ' tiene ' + n +
+        ' y CONFIG.' + label.toUpperCase() + ' registra ' + (list || []).length +
+        ' → actualiza CONFIG.' + label.toUpperCase() + ' en script.js'
+      );
+    }
+  };
+
+  if (document.getElementById('gal-grid')) verify('#gal-grid .g-item', CONFIG.WORKS, 'works', 'galeria.html');
+  if (document.getElementById('sec-ocs')) verify('#sec-ocs .oc-card', CONFIG.OCS, 'ocs', 'ocs.html');
 })();

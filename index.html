@@ -178,11 +178,13 @@
           <h3 class="profile-name">LUNNIE</h3>
           <p class="profile-tag">17 Y/O · ARTIST · MX</p>
           <p class="profile-bio">17 y/o artist from Mexico. Obsessed with fighting games, celestial vibes &amp; high-contrast illustrations. Welcome to my space.</p>
-          <div class="profile-stats">
-            <div><b>42</b><span>obras</span></div>
-            <div><b>07</b><span>OCs</span></div>
-            <div><b>∞</b><span>café</span></div>
-          </div>
+          <!-- "n obras" y "n OCs" se calculan de CONFIG.WORKS / CONFIG.OCS
+                 (script.js) — js rellena los <b data-stat> al cargar. -->
+            <div class="profile-stats">
+              <div><b data-stat="works">10</b><span>obras</span></div>
+              <div><b data-stat="ocs">03</b><span>OCs</span></div>
+              <div><b>∞</b><span>café</span></div>
+            </div>
         </section>
 
         <!-- Botón 88x31 + copiar -->
