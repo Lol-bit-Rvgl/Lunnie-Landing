@@ -1,62 +1,63 @@
 /* ============================================================
    LUNNIE ♡ — lunnie-bg.js
-   Fondo vivo por capas:
-   1) Parallax suave sobre .fx-layer (decoraciones del kit).
-   2) Campo estelar en canvas con estrellas REALES de 4 puntas
-      (generadas proceduralmente, sin imágenes por estrella):
-      - banda lejana  (puntos + estrellas tiny)  → tile cacheado
-      - banda media   (estrellas medianas)        → tile cacheado
-      - banda cercana (estrellas grandes vivas)   → dibujadas por frame
-   - respeta prefers-reduced-motion (dibuja un frame estático, sin loop)
-   - en táctil / móvil reduce el número de estrellas
+   Fondo vivo por capas, con foco en rendimiento:
+
+   1) Parallax de las decoraciones del kit (.fx-layer) — transform.
+   2) Campo estelar procedural con estrellas REALES de 4 puntas.
+      Para no repintar a pantalla completa cada frame, las bandas
+      se agrupan así:
+        - lejana  → sprite cacheado (background de .px-stars-far)
+        - media   → sprite cacheado (background de .px-stars-mid)
+        - cercana → solo ~14 estrellas vivas en #field-canvas,
+                    redibujadas con dirty-rects (no clearRect total)
+   3) Parallax al scroll por profundidad (transform, GPU):
+        nebulosa 0.06 · lejana 0.10 · media 0.16 · cercana 0.24
+      Nunca se animan top/left/width/height/background-position.
+
+   - respeta prefers-reduced-motion: sin loop y sin scroll (capas
+     quietas; se dibuja un fotograma estático).
+   - en táctil / móvil reduce el número de estrellas.
    ============================================================ */
 (function () {
   'use strict';
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
+  const rand = (a, b) => a + Math.random() * (b - a);
 
-  /* ---------- 1) PARALLAX DE CAPAS ---------- */
+  /* ---------- 1) PARALLAX DE CAPAS DEL KIT ---------- */
   const layers = Array.prototype.slice.call(document.querySelectorAll('.fx-layer'));
   if (layers.length && !prefersReduced && !coarsePointer) {
     let ticking = false;
-    const depth = {
-      'is-far': 0.5,
-      'is-mid': 0.9,
-      'is-near': 1.4,
-    };
+    const depth = { 'is-far': 0.5, 'is-mid': 0.9, 'is-near': 1.4 };
     const update = () => {
       const y = window.scrollY;
       layers.forEach((layer) => {
-        const cls = layer.className;
-        const factor = ['is-far', 'is-mid', 'is-near'].find((c) => cls.includes(c));
+        const factor = ['is-far', 'is-mid', 'is-near'].find((c) => layer.className.includes(c));
         const d = factor ? depth[factor] : 0.8;
         layer.style.transform = `translate3d(0, ${y * d * 0.06}px, 0)`;
       });
       ticking = false;
     };
-    window.addEventListener(
-      'scroll',
-      () => {
-        if (!ticking) {
-          ticking = true;
-          requestAnimationFrame(update);
-        }
-      },
-      { passive: true }
-    );
+    window.addEventListener('scroll', () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
   }
 
-  /* ---------- 2) CAMPO ESTELAR (canvas) ---------- */
+  /* ---------- 2) CAMPO ESTELAR ---------- */
   const cv = document.getElementById('field-canvas');
   if (!cv) return;
   const ctx = cv.getContext('2d');
-
-  const rand = (a, b) => a + Math.random() * (b - a);
+  const elFar = document.querySelector('.px-stars-far');
+  const elMid = document.querySelector('.px-stars-mid');
+  const nebula = document.querySelector('.px-nebula');
 
   const counts = coarsePointer
-    ? { far: 42, mid: 20, near: 7 }
-    : { far: 90, mid: 42, near: 14 };
+    ? { far: 46, mid: 20, near: 7 }
+    : { far: 96, mid: 44, near: 14 };
+
+  const PARALLAX = { nebula: 0.06, far: 0.1, mid: 0.16, near: 0.24 };
+  const wrap = (v, p) => ((v % p) + p) % p;
 
   // tintes de la paleta: blancas de lavanda + toques violeta/ámbar/rosa
   function pick() {
@@ -67,7 +68,7 @@
     return '#ffb3c6';
   }
 
-  // estrella de 4 puntas (tipo ✦), cóncava, de frente
+  // estrella de 4 puntas (tipo ✦), cóncava
   function star4(c, x, y, r) {
     const k = 0.24;
     c.beginPath();
@@ -112,43 +113,43 @@
 
   let w = 0;
   let h = 0;
-  let period = 0;
-  let farTile = null;
-  let midTile = null;
   let near = [];
 
-  // genera un tile periódico (banda cacheada): puntos + estrellas de la banda
-  function makeTile(count, minR, maxR, maxDots) {
+  // sprite de banda cacheado -> dataURL para usar como background
+  function tileURL(count, minR, maxR, maxDots) {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const t = document.createElement('canvas');
-    t.width = w;
-    t.height = period;
+    t.width = Math.round(w * dpr);
+    t.height = Math.round(h * dpr);
     const c = t.getContext('2d');
+    c.scale(dpr, dpr);
     let dots = maxDots;
     for (let i = 0; i < count; i++) {
-      const x = rand(2, w - 2);
-      const y = rand(2, period - 2);
+      const x = rand(4, w - 4);
+      const y = rand(10, h - 10);
       const r = rand(minR, maxR);
       const color = pick();
-      if (dots > 0 && r <= maxR * 0.5 && Math.random() < 0.42) {
+      if (dots > 0 && r <= maxR * 0.55 && Math.random() < 0.42) {
         dots--;
         drawStar(c, x, y, rand(0.6, 1.2), color, rand(0.3, 0.75)); // puntos lejanos
       } else {
         drawStar(c, x, y, r, color, rand(0.45, 0.95));
       }
     }
-    return t;
+    return { url: t.toDataURL('image/png'), css: `${w}px ${h}px` };
   }
 
   function makeNear(count) {
     const list = [];
     for (let i = 0; i < count; i++) {
       list.push({
-        x: rand(60, w - 60),
-        y: rand(80, period - 80),
+        x: rand(50, w - 50),
+        y: rand(70, h - 70),
         r: rand(3.2, 6.5),
         color: pick(),
         tw: rand(0, Math.PI * 2),
         tws: rand(0.012, 0.03),
+        p: null,
       });
     }
     return list;
@@ -157,53 +158,69 @@
   const resize = () => {
     w = window.innerWidth;
     h = window.innerHeight;
-    period = Math.max(h, 700);
-    cv.width = w * Math.min(window.devicePixelRatio || 1, 2);
-    cv.height = h * Math.min(window.devicePixelRatio || 1, 2);
-    ctx.setTransform(Math.min(window.devicePixelRatio || 1, 2), 0, 0, Math.min(window.devicePixelRatio || 1, 2), 0, 0);
-    farTile = makeTile(counts.far, 0.9, 2.2, 6);
-    midTile = makeTile(counts.mid, 1.6, 3.4, 0);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = Math.round(w * dpr);
+    cv.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+
+    if (elFar) {
+      const far = tileURL(counts.far, 0.9, 2.2, 6);
+      elFar.style.backgroundImage = `url("${far.url}")`;
+      elFar.style.backgroundSize = far.css;
+    }
+    if (elMid) {
+      const mid = tileURL(counts.mid, 1.6, 3.4, 0);
+      elMid.style.backgroundImage = `url("${mid.url}")`;
+      elMid.style.backgroundSize = mid.css;
+    }
     near = makeNear(counts.near);
     window.__starCounts = { far: counts.far, mid: counts.mid, near: counts.near };
   };
 
-  let t = 0;
-  function frame() {
-    ctx.clearRect(0, 0, w, h);
-
-    // lejanas: respiran como grupo (agrupación en un blit, sin nodos por estrella)
-    const fa = prefersReduced ? 0.85 : 0.8 + Math.sin(t * 0.62) * 0.14;
-    ctx.globalAlpha = fa;
-    ctx.drawImage(farTile, 0, 0, w, period);
-    ctx.globalAlpha = 1;
-
-    // medias: latido más tenue
-    if (!prefersReduced) {
-      ctx.globalAlpha = 0.9 + Math.sin(t * 0.92 + 1.7) * 0.08;
+  // solo la banda cercana se redibuja: limpia rects viejos y pintar nuevos
+  function nearFrame() {
+    for (const s of near) {
+      if (s.p) ctx.clearRect(s.p.x - s.p.r * 4 - 1, s.p.y - s.p.r * 4 - 1, s.p.r * 8 + 2, s.p.r * 8 + 2);
     }
-    ctx.drawImage(midTile, 0, 0, w, period);
-    ctx.globalAlpha = 1;
-
-    // cercanas: estrellas grandes con parpadeo individual (solo ~14)
     for (const s of near) {
       s.tw += s.tws;
+      const y = wrap(s.y + scrollY * PARALLAX.near, h);
       const a = prefersReduced ? 0.7 : 0.5 + (Math.sin(s.tw) + 1) * 0.28;
-      drawStar(ctx, s.x, s.y, s.r, s.color, a);
+      drawStar(ctx, s.x, y, s.r, s.color, a);
+      s.p = { x: s.x, y: y, r: s.r };
     }
-
-    t += 1;
   }
 
+  /* ---------- 3) PARALLAX AL SCROLL ---------- */
+  let scrollY = 0;
+  let scrollTicking = false;
+  const cap = () => h * 0.38; // el sprite sobresale 40%: sin huecos
+  const sync = () => {
+    scrollY = window.scrollY;
+    const shift = Math.min(scrollY, cap());
+    if (elFar) elFar.style.transform = `translate3d(0, ${shift * PARALLAX.far}px, 0)`;
+    if (elMid) elMid.style.transform = `translate3d(0, ${shift * PARALLAX.mid}px, 0)`;
+    if (nebula) nebula.style.transform = `translate3d(0, ${Math.min(scrollY, h * 0.26) * PARALLAX.nebula}px, 0)`;
+    scrollTicking = false;
+  };
+  if (!prefersReduced) {
+    window.addEventListener('scroll', () => {
+      if (!scrollTicking) { scrollTicking = true; requestAnimationFrame(sync); }
+    }, { passive: true });
+  }
+
+  /* ---------- arranque ---------- */
   if (prefersReduced) {
     resize();
-    frame(); // un fotograma estático: estrellas visibles sin movimiento
+    nearFrame(); // un fotograma estático
     return;
   }
 
   let running = true;
   const loop = () => {
     if (!running) return;
-    frame();
+    nearFrame();
     requestAnimationFrame(loop);
   };
 

@@ -52,6 +52,47 @@ body {
   z-index: -1;
   pointer-events: none;
 }
+/* Nebulosa con parallax propio: se mueve aún más lento que las estrellas
+   (casi estática). Va después del canvas en el DOM, así que en el empate
+   de z-index -1 queda por encima de las estrellas, como antes. */
+.px-nebula {
+  position: fixed;
+  inset: -28% 0;
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  background-image:
+    radial-gradient(120vmax 62vmax at 4% 6%, rgba(157, 78, 221, 0.13), transparent 55%),
+    radial-gradient(96vmax 60vmax at 97% 18%, rgba(114, 9, 183, 0.11), transparent 55%),
+    radial-gradient(120vmax 80vmax at 80% 112%, rgba(14, 0, 40, 0.6), transparent 55%),
+    url("assets/backgrounds/nebula/nebula-primary.svg"),
+    url("assets/backgrounds/nebula/nebula-secondary.svg");
+  background-size: cover, cover, cover, 62% auto, 72% auto;
+  background-position: center, center, center, 12% 16%, 88% 78%;
+  background-repeat: no-repeat;
+}
+@media (prefers-reduced-motion: reduce) {
+  .px-nebula { transform: none !important; will-change: auto; }
+}
+/* Bandas estelares lejana/media como sprites cacheados (los genera
+   lunnie-bg.js) que se mueven por transform, sin repintar el canvas. */
+.px-stars {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: -40%;
+  height: 180%;
+  z-index: -1;
+  pointer-events: none;
+  background-repeat: repeat-y;
+  background-position: center top;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .px-stars { transform: none !important; will-change: auto; }
+}
 .fx-layer {
   position: fixed;
   inset: -12%;
@@ -1230,29 +1271,16 @@ body.debug-mode .hero-sub::after {
    ============================================================ */
 
 /* ---- 28.1 FONDO COMPUESTO por capas SVG (fase §7) ---- */
-/* El orden importa: arriba = nebulosas/estrellas visibles, y la base
-   radial (space-base) queda de fondo — antes la tapaba todo. */
+/* Las nebulosas y sus blobs viven en .px-nebula (parallax casi estático);
+   aquí queda la base + el polvo, con el campo estelar real del canvas
+   por encima. */
 .space-bg {
   background-image:
-    radial-gradient(120vmax 62vmax at 4% 6%, rgba(157, 78, 221, 0.13), transparent 55%),
-    radial-gradient(96vmax 60vmax at 97% 18%, rgba(114, 9, 183, 0.11), transparent 55%),
-    radial-gradient(120vmax 80vmax at 80% 112%, rgba(14, 0, 40, 0.6), transparent 55%),
-    url("assets/backgrounds/nebula/nebula-primary.svg"),
-    url("assets/backgrounds/nebula/nebula-secondary.svg"),
     url("assets/backgrounds/space/dust.svg"),
     url("assets/backgrounds/space/space-base.svg");
-  background-size:
-    cover, cover, cover,
-    62% auto, 72% auto, auto,
-    cover;
-  background-position:
-    center, center, center,
-    12% 16%, 88% 78%, center,
-    center;
-  background-repeat:
-    no-repeat, no-repeat, no-repeat,
-    no-repeat, no-repeat, repeat,
-    no-repeat;
+  background-size: auto, cover;
+  background-position: center, center;
+  background-repeat: repeat, no-repeat;
 }
 /* el grano de la página pasa a usar noise.svg del kit */
 body::before {
