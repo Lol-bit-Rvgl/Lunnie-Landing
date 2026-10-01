@@ -24,6 +24,7 @@
   --oct:         14px;
   --panel-shadow: 0 14px 40px -18px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(157, 78, 221, 0.12);
   --type-flicker: none;
+  --squircle: 24px 8px; /* superelipse del sistema: esquinas alternas reutilizables */
 }
 
 body {
@@ -233,7 +234,7 @@ body::after {
   position: relative;
   display: grid;
   place-items: center;
-  border-radius: 24px;
+  border-radius: var(--squircle);
   background: linear-gradient(160deg, rgba(36, 0, 70, 0.9), rgba(10, 8, 24, 0.95));
   border: 1px solid var(--line-hex);
   box-shadow: var(--panel-shadow), inset 0 0 60px rgba(157, 78, 221, 0.14);
@@ -303,6 +304,7 @@ body::after {
   position: relative;
   margin: 0 -1px;
   overflow: visible;
+  border-radius: var(--squircle);
 }
 .site-nav a + a { border-left: 1px solid var(--line-core); }
 .site-nav a::after {
@@ -321,6 +323,7 @@ body::after {
   content: "";
   position: absolute;
   inset: 0;
+  border-radius: inherit;
   background: var(--neon-violet);
   opacity: 0;
   transition: opacity 0.2s var(--ease);
@@ -348,7 +351,15 @@ body::after {
   text-shadow: 0 0 8px rgba(255, 209, 102, 0.85);
   animation: dot-pulse 2s ease-in-out infinite;
 }
-.site-nav a.active::before { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+
+/* ---- 26.4b HUESO SUPERELIPSE — esquinas alternas del sistema ---- */
+/* Var --squircle: 24px 8px. Se aplica al sticker del hero, a los
+   enlaces del nav (arriba), al panel del asistente y a los 88x31. */
+.assistant-popup {
+  clip-path: none;
+  border-radius: var(--squircle);
+}
+.badge-88 { border-radius: var(--squircle); }
 
 /* ---- 26.5 PANELES TIPADOS A–E ---- */
 /* Cada panel conserva la estructura .panel pero cambia su material.
@@ -1709,7 +1720,7 @@ html, body { overflow-x: clip; }
 .hero-sticker {
   background: transparent;
   border: 1px dashed var(--line-hex);
-  border-radius: 0;
+  border-radius: var(--squircle);
   box-shadow: 0 0 30px rgba(157, 78, 221, 0.16);
 }
 .hero-sticker::before, .hero-sticker::after { display: none; }
