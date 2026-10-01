@@ -209,9 +209,26 @@
             <h2 id="t-discord">estado en vivo</h2>
             <span class="meter live" title="sondeo de Lanyard"></span>
           </header>
-          <!-- Contenedor que llena discord-widget.js. Necesita tu ID. -->
+          <!-- Contenedor que llena discord-widget.js. Necesita tu ID.
+               El contenido inicial escribible reproduce renderManual()
+               ("SECTOR EN REPOSO"): si JS no corre o tarda, el visitante
+               nunca ve un "INICIANDO…" colgado. El estado de conexión se
+               reserva al momento exacto del fetch con un ID real. -->
           <div class="dw" id="discord-widget">
-            <p class="dw-loading">▚ INICIANDO…</p>
+            <div class="dw-head">
+              <span>// SECTOR EN REPOSO</span>
+              <span class="meter sleep">◌ WAVEFORM</span>
+            </div>
+            <div class="dw-user">
+              <span class="dw-avatar st-offline"><span class="dw-avatar-inner">✧</span></span>
+              <div>
+                <strong class="dw-name">LUNNIE</strong>
+                <span class="dw-tag">/ OFFLINE</span>
+              </div>
+            </div>
+            <p class="dw-status">» la artífice anda en su órbita haciendo sketch — la señal vuelve cuando regrese ▂ ▄ █</p>
+            <div class="dw-activity"><div class="art">⌁</div><span class="dw-activity-data">emitiendo ambiente… (sin actividad de Discord)</span></div>
+            <div class="dw-foot"><span class="dw-clock">PRESENCIA DEL SECTOR // EN REPOSO</span></div>
           </div>
         </section>
 
