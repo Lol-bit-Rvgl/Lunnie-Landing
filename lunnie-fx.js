@@ -240,15 +240,25 @@
     const wrap = document.getElementById('sys-status');
     if (!wrap) return;
 
-    const MOODS = ['SERENE', 'HYPERFOCUS', 'CURIOUS', 'GROGGY', 'IN THE ZONE', 'SUGAR RUSH'];
+    const FUN = {
+      mood: ['cafeinada', 'en modo dibujo', 'ignorando el sueño', 'hiperfocus pixel', 'modo pelea', 'de nebulosa en nebulosa'],
+      energy: ['73%', 'baja pero funcional', 'recargando', 'jugo al 90%', 'a media luz'],
+      signal: ['fuerte', 'con estática', 'intermitente', 'cristalina'],
+    };
+    const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
     const SECTORS = ['STABLE', 'STABLE', 'CALIBRATING', 'SYNCING'];
     const labels = wrap.querySelectorAll('[data-key]');
     const bars = wrap.querySelectorAll('[data-bar]');
     const eventEl = document.querySelector('[data-key="event"]');
 
-    let energy = 80;
-    let signal = 85;
-    let currentMood = 'SERENE';
+    let currentMood = pick(FUN.mood);
+
+    // Lectura decorativa del sector: las energías "en palabras" mueven la
+    // barra con un valor ambiente al azar; las que llevan % usan ese número.
+    const barValue = (txt) => {
+      const n = parseFloat(txt);
+      return /%$/.test(txt) ? n : Math.round(40 + Math.random() * 52);
+    };
 
     sysEvent = (text) => {
       if (!eventEl) return;
@@ -278,18 +288,18 @@
 
     const tick = () => {
       if (document.hidden) return;
-      energy = Math.max(15, Math.min(98, energy + Math.round((Math.random() - 0.5) * 8)));
-      signal = Math.max(30, Math.min(97, signal + Math.round((Math.random() - 0.5) * 5)));
-
-      // el ánimo cambia despacio: solo 1 de cada 3 respiraciones
-      if (Math.random() < 0.3) currentMood = MOODS[Math.floor(Math.random() * MOODS.length)];
+      if (Math.random() < 0.3) currentMood = pick(FUN.mood);
       if (Math.random() < 0.15) setRow('sector', SECTORS[Math.floor(Math.random() * SECTORS.length)]);
       setRow('mood', currentMood);
-      setRow('energy', String(Math.round(energy)) + '%');
-      setRow('signal', String(Math.round(signal)) + '%');
 
-      if (bars[0]) setBar(bars[0], energy, String(Math.round(energy)) + '%');
-      if (bars[1]) setBar(bars[1], signal, String(Math.round(signal)) + '%');
+      // Cada respiración elige un estado gracioso nuevo: la lectura jamás
+      // se siente rota ni estática, y cambia en cada recarga de la página.
+      const eTxt = pick(FUN.energy);
+      const sTxt = pick(FUN.signal);
+      setRow('energy', eTxt);
+      setRow('signal', sTxt);
+      if (bars[0]) setBar(bars[0], barValue(eTxt), eTxt);
+      if (bars[1]) setBar(bars[1], barValue(sTxt), sTxt);
     };
     tick();
     setInterval(tick, 5600);
