@@ -288,10 +288,8 @@ body::after {
   margin: 0.2rem auto 2.4rem;
   gap: 0;
   padding: 0 1.2rem;
-  counter-reset: nav;
 }
 .site-nav a {
-  counter-increment: nav;
   background: transparent;
   border: 0;
   border-top: 1px solid var(--line-core);
@@ -306,15 +304,18 @@ body::after {
   margin: 0 -1px;
   overflow: visible;
 }
+.site-nav a + a { border-left: 1px solid var(--line-core); }
 .site-nav a::after {
-  content: "0" counter(nav) "/";
+  content: "✦";
   display: inline-block;
   margin-left: 8px;
   font-family: var(--font-mono);
   font-size: 0.56rem;
-  letter-spacing: 0.1em;
-  color: var(--line-hex);
-  vertical-align: middle;
+  line-height: 1;
+  color: transparent;
+  text-shadow: none;
+  transition: color 0.2s var(--ease), text-shadow 0.2s var(--ease);
+  vertical-align: 2px;
 }
 .site-nav a::before {
   content: "";
@@ -333,7 +334,7 @@ body::after {
   translate: 0 -2px;
   border-color: var(--neon-purple);
 }
-.site-nav a:hover::after { color: var(--amber); }
+.site-nav a:hover::after { color: rgba(255, 209, 102, 0.5); }
 .site-nav a.active {
   background: transparent;
   color: var(--white);
@@ -342,7 +343,11 @@ body::after {
   cursor: default;
 }
 .site-nav a.active::before { opacity: 0.85; }
-.site-nav a.active::after { color: var(--amber); }
+.site-nav a.active::after {
+  color: var(--amber);
+  text-shadow: 0 0 8px rgba(255, 209, 102, 0.85);
+  animation: dot-pulse 2s ease-in-out infinite;
+}
 .site-nav a.active::before { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
 
 /* ---- 26.5 PANELES TIPADOS A–E ---- */
