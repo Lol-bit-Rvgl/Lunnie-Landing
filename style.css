@@ -154,31 +154,8 @@ body {
     radial-gradient(1100px 940px at 55% 112%, rgba(157, 78, 221, 0.26), transparent 60%),
     var(--space);
 }
-/* Capa de estrellas */
-.space-bg::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(1.5px 1.5px at 12% 22%, #fff, transparent),
-    radial-gradient(1px 1px at 28% 74%, #fff, transparent),
-    radial-gradient(1.6px 1.6px at 41% 15%, #eadaff, transparent),
-    radial-gradient(1px 1px at 53% 48%, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 63% 81%, #9d4edd, transparent),
-    radial-gradient(1px 1px at 71% 30%, #fff, transparent),
-    radial-gradient(1.6px 1.6px at 83% 62%, #fff, transparent),
-    radial-gradient(1px 1px at 92% 24%, #eadaff, transparent),
-    radial-gradient(1px 1px at 7% 91%, #fff, transparent),
-    radial-gradient(1.4px 1.4px at 45% 89%, #fff, transparent);
-  background-size: 170px 170px;
-  background-repeat: repeat;
-  opacity: 0.85;
-  animation: star-twinkle 6s ease-in-out infinite alternate;
-}
-@keyframes star-twinkle {
-  from { opacity: 0.55; }
-  to   { opacity: 1; }
-}
+/* Capa de estrellas: las genera proceduralmente lunnie-bg.js en el
+   canvas (#field-canvas), con estrellas reales de 4 puntas. */
 /* Criss-cross técnico muy tenue (GG) */
 .space-bg::after {
   content: "";
