@@ -1124,6 +1124,87 @@ h1, h2, h3 { line-height: 1.05; }
 .warn-strip b { font-family: var(--font-display); letter-spacing: 0.1em; color: var(--danger); }
 .warn-strip span { color: var(--grey); font-size: 0.85rem; flex: 1 1 260px; }
 
+/* términos — dos columnas WILL DO / DON'T (encargos) */
+.terms-cond { margin: 0 0 16px; }
+.terms-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.terms-col {
+  position: relative;
+  padding: 16px 18px 18px;
+  overflow: hidden;
+}
+.terms-col::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+}
+.terms-col--do.terms-col { border-color: var(--bone); }
+.terms-col--do.terms-col::before {
+  background: radial-gradient(120% 90% at 10% 0%, rgba(232, 230, 224, 0.09), transparent 55%);
+}
+.terms-col--dont.terms-col { border-color: var(--blood-bright); }
+.terms-col--dont.terms-col::before {
+  background: radial-gradient(120% 90% at 90% 0%, rgba(196, 30, 58, 0.2), transparent 55%);
+}
+.terms-title {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border-bottom: 1px solid currentColor;
+}
+.terms-col--do .terms-title { color: var(--bone); }
+.terms-col--dont .terms-title { color: var(--blood-bright); }
+.terms-list {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.terms-list li {
+  position: relative;
+  padding-left: 22px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.05em;
+  color: var(--bone);
+}
+.terms-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  line-height: 1;
+}
+.terms-list small {
+  display: block;
+  margin-top: 3px;
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--grey);
+}
+.terms-col--do .terms-list li::before { content: "＋"; color: var(--bone); opacity: 0.85; }
+.terms-col--dont .terms-list li::before { content: "✕"; color: var(--blood-bright); }
+@media (max-width: 660px) {
+  .terms-grid { grid-template-columns: 1fr; }
+}
+
 /* pasos de pedido */
 .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
 .step {
