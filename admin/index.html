@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#140507">
+  <meta name="description" content="Panel de administración local de Lunnie's Graveyard: publicar entradas del blog, subir ilustraciones y cambiar el estado de encargos vía GitHub API.">
+  <title>CONTROL // Admin — LUNNIE</title>
+
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+  <!-- Tipografías: Black Ops One (display HUD/GG) + Rajdhani (UI P5) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../space-system.css">
+
+  <style>
+    /* ============================================================
+       PANEL ADMIN — capa propia sobre los tokens del sitio.
+       Sin dependencias: todo este bloque es el estilo completo.
+       ============================================================ */
+    [hidden] { display: none !important; }
+
+    .adm-rise { animation: admIn 0.45s ease both; }
+    @keyframes admIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* --- puerta de acceso --- */
+    .adm-gate { max-width: 640px; margin: 26px auto; }
+    .adm-sec {
+      border-left: 3px solid var(--blood);
+      padding: 8px 12px;
+      background: rgba(179, 0, 27, 0.08);
+      font-size: 0.86rem;
+      color: var(--grey);
+      margin: 0 0 14px;
+    }
+    .adm-sec b { color: var(--bone); }
+    .adm-err {
+      color: var(--danger);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      margin: 0 0 10px;
+      word-break: break-word;
+    }
+    .adm-help {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--grey-d);
+      margin: 2px 0 14px;
+      line-height: 1.8;
+    }
+    .adm-help a { color: var(--carmine); text-decoration: underline; text-underline-offset: 3px; }
+    .adm-help a:hover { color: var(--blood-bright); }
+
+    /* --- campos --- */
+    .adm-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .adm-grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    @media (max-width: 720px) {
+      .adm-grid2, .adm-grid3 { grid-template-columns: 1fr; }
+      .adm-prev-wrap { grid-template-columns: 1fr !important; }
+    }
+    .adm-field { display: grid; gap: 6px; margin-bottom: 14px; }
+    .adm-field > label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey-d);
+    }
+    .adm-field .hint { font-size: 0.74rem; color: var(--grey-d); line-height: 1.5; }
+    .adm-in {
+      width: 100%;
+      box-sizing: border-box;
+      background: var(--void);
+      color: var(--bone);
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      border-radius: 0;
+      accent-color: var(--blood-bright);
+    }
+    .adm-in:focus {
+      outline: none;
+      border-color: var(--blood-bright);
+      box-shadow: 0 0 0 2px rgba(196, 30, 58, 0.28);
+    }
+    .adm-in::placeholder { color: var(--grey-d); opacity: 0.7; }
+    textarea.adm-in {
+      min-height: 200px;
+      resize: vertical;
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      line-height: 1.6;
+    }
+    input.adm-in[type="file"] {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 8px 10px;
+    }
+    select.adm-in option { background: var(--void); color: var(--bone); }
+
+    /* --- botones --- */
+    .adm-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 16px;
+    }
+    .btn-adm {
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.88rem;
+      background: var(--blood);
+      color: var(--white);
+      border: 2px solid var(--blood-bright);
+      padding: 12px 22px;
+      cursor: pointer;
+      clip-path: polygon(9px 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%, 0 9px);
+      transition: background 0.15s, transform 0.15s;
+    }
+    .btn-adm:hover { background: var(--blood-bright); transform: translateY(-1px); }
+    .btn-adm:disabled {
+      opacity: 0.6;
+      cursor: progress;
+      filter: grayscale(0.45);
+      transform: none;
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--grey);
+      border: 1px solid var(--line);
+      padding: 8px 14px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .btn-ghost:hover { color: var(--bone); border-color: var(--line-2); }
+
+    /* --- barra + pestañas --- */
+    .adm-bar-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2px 4px 14px;
+    }
+    .adm-bar-row .tiny { font-family: var(--font-mono); letter-spacing: 0.06em; }
+    .adm-tabs { display: flex; gap: 8px; flex-wrap: wrap; border-top: 1px dashed var(--line-2); padding-top: 14px; }
+    .adm-tab-btn {
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      color: var(--grey);
+      font-family: var(--font-display);
+      font-size: 0.76rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 9px 16px;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .adm-tab-btn:hover { color: var(--bone); border-color: var(--line-2); }
+    .adm-tab-btn.is-on {
+      color: var(--white);
+      background: var(--blood);
+      border-color: var(--blood-bright);
+      box-shadow: 0 0 10px rgba(196, 30, 58, 0.45);
+    }
+    .adm-tab { margin-top: 18px; }
+    .adm-h3 {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bone);
+      margin: 4px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .adm-h3::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+    /* --- etiquetas rápidas (tags del blog) --- */
+    .adm-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .chip.adm-tg { cursor: pointer; user-select: none; }
+    .chip.adm-tg.is-on {
+      background: var(--blood);
+      border-color: var(--blood-bright);
+      color: var(--white);
+    }
+
+    /* --- preview en vivo (fidelidad de .post) --- */
+    .adm-prev-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .adm-preview { background: var(--panel-2); border: 1px solid var(--line); padding: 16px 18px; min-height: 220px; }
+    .adm-preview .adm-prev-idle {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--grey-d);
+      font-style: italic;
+    }
+
+    /* --- zona de arrastre --- */
+    .adm-drop {
+      display: block;
+      border: 2px dashed var(--line-2);
+      padding: 26px 16px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: var(--grey);
+      cursor: pointer;
+      transition: 0.15s;
+      background: rgba(179, 0, 27, 0.04);
+    }
+    .adm-drop:hover, .adm-drop.is-over {
+      border-color: var(--blood-bright);
+      color: var(--bone);
+      background: rgba(179, 0, 27, 0.1);
+    }
+    .adm-drop .adm-thumb {
+      display: none;
+      max-height: 170px;
+      max-width: 100%;
+      margin: 14px auto 0;
+      border: 1px solid var(--line);
+    }
+    .adm-drop.has-file .adm-thumb { display: block; }
+
+    /* --- interruptores --- */
+    .adm-master {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+    .adm-master .state {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--carmine);
+    }
+    .adm-master .state.is-closed { color: var(--grey-d); }
+    .adm-master .sub { font-family: var(--font-mono); font-size: 0.7rem; color: var(--grey-d); letter-spacing: 0.08em; margin-top: 4px; }
+
+    .sw { position: relative; display: inline-block; width: 56px; height: 30px; flex: 0 0 auto; }
+    .sw input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; z-index: 2; }
+    .sw .track {
+      position: absolute;
+      inset: 0;
+      background: #241418;
+      border: 1px solid var(--line);
+      transition: 0.2s;
+      pointer-events: none;
+    }
+    .sw .knob {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 22px;
+      height: 22px;
+      background: var(--grey-d);
+      transition: 0.2s;
+      pointer-events: none;
+    }
+    .sw input:checked ~ .track { background: rgba(179, 0, 27, 0.35); border-color: var(--blood-bright); }
+    .sw input:checked ~ .knob { left: 29px; background: var(--blood-bright); box-shadow: 0 0 9px var(--glow); }
+    .sw input:focus-visible ~ .track { outline: 2px solid var(--blood-bright); outline-offset: 2px; }
+
+    .adm-comm-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .adm-comm {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+    }
+    .adm-comm b { font-family: var(--font-ui); font-weight: 600; font-size: 0.88rem; color: var(--bone); }
+    .adm-comm em { display: block; font-style: normal; font-family: var(--font-mono); font-size: 0.62rem; color: var(--grey-d); letter-spacing: 0.08em; text-transform: uppercase; }
+
+    .adm-now { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+
+    /* --- bitácora --- */
+    .adm-log { margin-top: 18px; }
+    .logbox {
+      max-height: 270px;
+      overflow-y: auto;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      line-height: 1.8;
+      background: var(--void);
+      border: 1px solid var(--line);
+      padding: 12px 14px;
+    }
+    .logbox p { margin: 0; color: var(--grey); word-break: break-word; }
+    .logbox p.ok { color: var(--bone); }
+    .logbox p.ok::before { content: "✓ "; color: var(--bone); }
+    .logbox p.err { color: var(--danger); }
+    .logbox p.err::before { content: "✕ "; }
+    .logbox p.info::before { content: "▸ "; color: var(--st-idle); }
+    .logbox p.warn { color: var(--st-idle); }
+    .logbox p.warn::before { content: "⚠ "; }
+    .logbox a { color: var(--carmine); }
+    .adm-log-empty { color: var(--grey-d) !important; font-style: italic; }
+
+    .adm-note { font-size: 0.78rem; color: var(--grey-d); line-height: 1.6; margin-top: 10px; }
+  </style>
+</head>
+
+<body>
+  <!-- Capa fija de la cripta: humo + brasas + rejilla técnica -->
+  <div class="space-bg" aria-hidden="true"></div>
+
+  <div class="fx-layer is-far" aria-hidden="true"></div>
+  <div class="fx-layer is-mid" aria-hidden="true"></div>
+  <div class="fx-layer is-near" aria-hidden="true"></div>
+  <div class="px-stars px-stars-far" aria-hidden="true"></div>
+  <div class="px-stars px-stars-mid" aria-hidden="true"></div>
+  <canvas id="field-canvas" aria-hidden="true"></canvas>
+  <div class="px-nebula" aria-hidden="true"></div>
+  <div class="progress-hud" id="progress-hud" aria-hidden="true"></div>
+  <div class="glitch-flash" aria-hidden="true"></div>
+
+  <!-- Ticker -->
+  <div class="marquee-bar" aria-hidden="true">
+    <div class="marquee-track">
+      <span><em>✦ CONTROL DE CRIPTA ✦</em> <b>PANEL DE ADMINISTRACIÓN</b> :: COMMITS DIRECTOS A GITHUB ✦ <em>SIN SERVIDORES INTERMEDIOS</em> ✦ <em>HEAVEN OR HELL ???</em></span>
+      <span><em>✦ CONTROL DE CRIPTA ✦</em> <b>PANEL DE ADMINISTRACIÓN</b> :: COMMITS DIRECTOS A GITHUB ✦ <em>SIN SERVIDORES INTERMEDIOS</em> ✦ <em>HEAVEN OR HELL ???</em></span>
+    </div>
+  </div>
+
+  <!-- Hero de página -->
+  <header class="page-hero">
+    <span class="hero-badge">[CONTROL // ADMIN SYSTEM]</span>
+    <h1>control / cripta</h1>
+    <p>publica · sube · conmuta — sin tocar código</p>
+    <div class="hero-rule" aria-hidden="true"></div>
+  </header>
+
+  <main class="page">
+    <div class="grid">
+      <div class="col stack" style="grid-column: 1 / -1">
+
+        <!-- =====================================================
+             PUERTA DE ACCESO — Personal Access Token de GitHub
+             ===================================================== -->
+        <section class="p5-box liquid-panel squircle-panel adm-gate adm-rise" id="gate" aria-labelledby="t-gate">
+          <span class="speaker-tab" id="t-gate">lunnie // acceso de administración</span>
+          <p>
+            Este panel publica cambios <strong>directo en el repositorio</strong>
+            (blog, galería y estado de encargos) usando la API de GitHub.
+            Se autentica con un <strong>Personal Access Token</strong>: el token se
+            guarda <em>solo en el localStorage de este navegador</em> y viaja
+            únicamente hacia <em>api.github.com</em>.
+          </p>
+          <p class="adm-sec">
+            <b>Seguridad:</b> usa un token con el mínimo permiso posible
+            (fine-grained con <b>Contents: Read and write</b> solo de este repo, o
+            clásico con scope <b>repo</b>). Si usas una computadora prestada, activa
+            el navegador privado y cierra la sesión al terminar.
+          </p>
+
+          <form id="gate-form" autocomplete="off">
+            <div class="adm-field">
+              <label for="f-token">Personal Access Token</label>
+              <input class="adm-in" type="password" id="f-token" name="token"
+                     placeholder="ghp_… o github_pat_…" spellcheck="false" required>
+            </div>
+
+            <p class="adm-help">
+              ¿Sin token? Crea uno aquí:
+              <a href="https://github.com/settings/tokens/new?scopes=repo&amp;description=Lunnie%27s%20Graveyard%20Panel" target="_blank" rel="noopener">token clásico (scope repo) ↗</a>
+              ·
+              <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">token fine-grained (Contents: write) ↗</a>
+            </p>
+
+            <div class="adm-grid3">
+              <div class="adm-field">
+                <label for="f-owner">owner</label>
+                <input class="adm-in" type="text" id="f-owner" value="Lol-bit-Rvgl" spellcheck="false" required>
+              </div>
+              <div class="adm-field">
+                <label for="f-repo">repo</label>
+                <input class="adm-in" type="text" id="f-repo" value="Lunnie-Landing" spellcheck="false" required>
+              </div>
+              <div class="adm-field">
+                <label for="f-branch">branch</label>
+                <input class="adm-in" type="text" id="f-branch" value="main" spellcheck="false" required>
+              </div>
+            </div>
+
+            <p class="adm-err" id="gate-err" hidden></p>
+
+            <div class="adm-actions" style="margin-top: 4px;">
+              <button class="btn-adm" type="submit" id="btn-auth">AUTENTICAR CON GITHUB</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- =====================================================
+             APP — sólo visible con sesión activa
+             ===================================================== -->
+        <div id="app" hidden>
+
+          <!-- Barra de sesión + pestañas -->
+          <section class="panel adm-rise" aria-label="barra de control">
+            <header class="panel-head">
+              <h2>[control // sesión activa]</h2>
+              <span class="chip chip-live" id="bar-user">@…</span>
+            </header>
+            <div class="adm-bar-row">
+              <span class="tiny" id="bar-repo">—</span>
+              <span style="display:flex; gap:8px; flex-wrap:wrap;">
+                <a class="btn-ghost" href="../index.html">← volver al sitio</a>
+                <button class="btn-ghost" type="button" id="btn-logout">olvidar token</button>
+              </span>
+            </div>
+            <div class="adm-tabs" role="tablist" aria-label="módulos">
+              <button class="adm-tab-btn is-on" type="button" data-tab="blog">01 · transmisiones</button>
+              <button class="adm-tab-btn" type="button" data-tab="art">02 · ilustraciones</button>
+              <button class="adm-tab-btn" type="button" data-tab="status">03 · estado</button>
+            </div>
+          </section>
+
+          <!-- ============== MÓDULO 1 · BLOG ============== -->
+          <section class="panel adm-tab adm-rise" id="tab-blog" hidden aria-labelledby="h-blog">
+            <header class="panel-head">
+              <h2 id="h-blog">[01 // REDACTOR DE TRANSMISIONES]</h2>
+              <span class="chip chip-open">nueva entrada</span>
+            </header>
+
+            <div class="adm-field">
+              <label for="f-title">título de la transmisión *</label>
+              <input class="adm-in" type="text" id="f-title" maxlength="120" placeholder="ej: planchando líneas a las 2 a.m.">
+            </div>
+
+            <div class="adm-grid2">
+              <div class="adm-field">
+                <label for="f-date">fecha y hora</label>
+                <input class="adm-in" type="datetime-local" id="f-date">
+              </div>
+              <div class="adm-field">
+                <label for="f-tags">etiquetas libres (separadas por coma)</label>
+                <input class="adm-in" type="text" id="f-tags" placeholder="diary, wip, news">
+              </div>
+            </div>
+
+            <div class="adm-field">
+              <label>etiquetas rápidas</label>
+              <div class="adm-tags" id="quick-tags">
+                <span class="chip adm-tg" data-tg="diary" role="button" tabindex="0">diary</span>
+                <span class="chip adm-tg" data-tg="art notes" role="button" tabindex="0">art notes</span>
+                <span class="chip adm-tg" data-tg="news" role="button" tabindex="0">news</span>
+                <span class="chip adm-tg" data-tg="wip" role="button" tabindex="0">wip</span>
+                <span class="chip adm-tg" data-tg="vida" role="button" tabindex="0">vida</span>
+                <span class="chip adm-tg" data-tg="panteón" role="button" tabindex="0">panteón</span>
+              </div>
+            </div>
+
+            <div class="adm-field">
+              <label for="f-cover">imagen de portada (opcional · se sube a assets/img/art/)</label>
+              <input class="adm-in" type="file" id="f-cover" accept="image/jpeg,image/png">
+            </div>
+
+            <div class="adm-h3">cuerpo · markdown en vivo</div>
+            <div class="adm-prev-wrap">
+              <div class="adm-field" style="margin-bottom:0;">
+                <textarea class="adm-in" id="f-md" spellcheck="true"
+                  placeholder="Escribe aquí. Apoyos:&#10;&#10;## subtítulo&#10;**negrita** · *cursiva* · [link](https://…)&#10;> nota al margen&#10;- lista con guion&#10;![descripción](assets/img/art/…)"></textarea>
+              </div>
+              <div class="adm-preview" id="md-prev" aria-live="polite">
+                <p class="adm-prev-idle">la vista previa aparece aquí…</p>
+              </div>
+            </div>
+
+            <p class="adm-note">
+              La entrada se publica <b>arriba</b> como <b>transmission 01</b> y las
+              anteriores se renumeran solas (01 → 02 → 03…), conservando sus
+              reacciones y sus enlaces. Reacciones e hilo de comentarios nacen en
+              cero. GitHub Pages lo republica en ~1 minuto.
+            </p>
+
+            <div class="adm-actions">
+              <button class="btn-adm" type="button" id="btn-publish">[PUBLICAR EN LA CRIPTA]</button>
+            </div>
+          </section>
+
+          <!-- ============== MÓDULO 2 · ILUSTRACIONES ============== -->
+          <section class="panel adm-tab adm-rise" id="tab-art" hidden aria-labelledby="h-art">
+            <header class="panel-head">
+              <h2 id="h-art">[02 // SUBIDA DE ILUSTRACIONES]</h2>
+              <span class="chip chip-open">drag &amp; drop</span>
+            </header>
+
+            <div class="adm-drop" id="drop" role="button" tabindex="0" aria-label="arrastra o pulsa para elegir imagen">
+              arrastra aquí tu JPG / PNG — o pulsa para elegir
+              <img class="adm-thumb" id="drop-thumb" alt="vista previa">
+            </div>
+            <input type="file" id="f-file" accept="image/jpeg,image/png" hidden>
+
+            <div class="adm-field" style="margin-top:14px;">
+              <label for="f-art-title">título de la obra *</label>
+              <input class="adm-in" type="text" id="f-art-title" maxlength="90" placeholder="ej: LUNNIE — nuevo look">
+            </div>
+
+            <div class="adm-grid2">
+              <div class="adm-field">
+                <label for="f-cat">categoría</label>
+                <select class="adm-in" id="f-cat">
+                  <option value="galeria">Galería</option>
+                  <option value="comision">Comisión</option>
+                  <option value="fondo">Fondo</option>
+                </select>
+              </div>
+              <div class="adm-field">
+                <label for="f-folder">carpeta destino</label>
+                <input class="adm-in" type="text" id="f-folder" value="assets/img/art/" list="dl-folder" spellcheck="false">
+                <datalist id="dl-folder">
+                  <option value="assets/img/art/">
+                  <option value="assets/img/oc/">
+                  <option value="assets/img/decor/">
+                </datalist>
+                <span class="hint">por convención todo vive en assets/img/art/; puedes cambiar la ruta</span>
+              </div>
+            </div>
+
+            <div class="adm-grid2">
+              <div class="adm-field">
+                <label for="f-filter">filtro de galería (data-cat)</label>
+                <select class="adm-in" id="f-filter">
+                  <option value="original">original</option>
+                  <option value="fanart">fanart</option>
+                  <option value="comics">cómics</option>
+                  <option value="animacion">animación</option>
+                </select>
+              </div>
+              <div class="adm-field">
+                <label for="f-register">registro en la galería</label>
+                <label style="display:flex; align-items:center; gap:10px; font-family:var(--font-ui); font-size:.92rem; color:var(--bone); cursor:pointer;">
+                  <input type="checkbox" id="f-register" checked style="width:18px; height:18px; accent-color:var(--blood-bright);">
+                  añadir la pieza a galeria.html + CONFIG.WORKS
+                </label>
+                <span class="hint">si falla a mitad, vuelve a pulsar: la subida es a prueba de reintentos</span>
+              </div>
+            </div>
+
+            <p class="adm-note">
+              El archivo se convierte a Base64 y se commitea vía
+              <b>PUT /repos/…/contents/…</b>. Tamaño máximo 6 MB (mejor &lt; 2 MB
+              para que el sitio cargue rápido). Si el nombre ya existe se le añade
+              un sufijo —2, —3… sin pisar nada.
+            </p>
+
+            <div class="adm-actions">
+              <button class="btn-adm" type="button" id="btn-upload">[SUBIR E IMPULSAR]</button>
+            </div>
+          </section>
+
+          <!-- ============== MÓDULO 3 · ESTADO ============== -->
+          <section class="panel adm-tab adm-rise" id="tab-status" hidden aria-labelledby="h-status">
+            <header class="panel-head">
+              <h2 id="h-status">[03 // ESTADO DEL PANTEÓN]</h2>
+              <span class="chip chip-warn" id="st-chip">—</span>
+            </header>
+
+            <div class="adm-now" id="st-now">
+              <span class="chip">cargando estado…</span>
+            </div>
+
+            <div class="adm-master">
+              <div>
+                <div class="state" id="st-state">—</div>
+                <div class="sub">interruptor maestro · abre o cierra las 6 categorías de encargos</div>
+              </div>
+              <label class="sw" title="comisiones abiertas / cerradas">
+                <input type="checkbox" id="sw-master" aria-label="comisiones abiertas o cerradas">
+                <span class="track"></span><span class="knob"></span>
+              </label>
+            </div>
+
+            <div class="adm-comm-grid" id="comm-grid"><!-- se pinta desde CONFIG.COMM_STATUS --></div>
+
+            <div class="adm-field">
+              <label for="f-asstatus">mensaje del asistente (línea roja del popup)</label>
+              <textarea class="adm-in" id="f-asstatus" maxlength="180" style="min-height:76px;"
+                        placeholder="ej: hoy respondo DMs tarde — estoy cerrando el fanzine ✦"></textarea>
+              <span class="hint">vacío = el asistente solo muestra tips; se actualiza en su próxima página</span>
+            </div>
+
+            <div class="adm-actions">
+              <button class="btn-adm" type="button" id="btn-save-status">[GUARDAR ESTADO]</button>
+            </div>
+
+            <p class="adm-note">
+              Los cambios se escriben en <b>CONFIG.COMM_STATUS</b> y
+              <b>CONFIG.ASSISTANT_STATUS</b> de <b>script.js</b> — la misma fuente
+              de verdad que usa el sitio al cargar. El chip «commissions» del home
+              y los chips por tarjeta se repintan solos.
+            </p>
+          </section>
+
+          <!-- ============== BITÁCORA ============== -->
+          <section class="panel adm-log adm-rise" aria-labelledby="h-log">
+            <header class="panel-head">
+              <h2 id="h-log">[bitácora de operaciones]</h2>
+              <button class="btn-ghost" type="button" id="btn-clear-log">limpiar</button>
+            </header>
+            <div class="logbox" id="logbox" role="log" aria-live="polite">
+              <p class="adm-log-empty">— sin operaciones todavía —</p>
+            </div>
+          </section>
+
+        </div><!-- /#app -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p class="foot-status">CONTROL TERMINAL // ADMIN</p>
+    <p class="foot-display">LUNNIE'S GRAVEYARD PANEL</p>
+    <div class="foot-cta">
+      <a href="../index.html">home</a>
+      <a href="../blog.html">blog</a>
+      <a href="https://github.com/Lol-bit-Rvgl/Lunnie-Landing/commits/main" target="_blank" rel="noopener">commits</a>
+    </div>
+    <p>© <span>2026</span> — sin servidores intermedios: tu token habla directo con GitHub ♡</p>
+    <p>no endorsement of algorithms were given in the making of this site.</p>
+  </footer>
+
+  <!-- Capa viva de la cripta (mismos módulos del sitio, element-guarded) -->
+  <script src="../lunnie-bg.js" defer></script>
+  <script src="../lunnie-fx.js" defer></script>
+
+  <script>
+  /* ==============================================================
+     LUNNIE'S GRAVEYARD — PANEL DE ADMINISTRACIÓN
+     SPA autocontenida · 0 dependencias · GitHub Contents API
+     Módulos: blog (HTML con renumeración) · subidas (Base64) ·
+     estado (CONFIG.COMM_STATUS / ASSISTANT_STATUS en script.js)
+     ============================================================== */
+  (function () {
+    'use strict';
+
+    /* ---------------- utilidades ---------------- */
+    const $ = (s, r) => (r || document).querySelector(s);
+    const $$ = (s, r) => Array.prototype.slice.call((r || document).querySelectorAll(s));
+    const esc = (s) => String(s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    const pad2 = (n) => String(n).padStart(2, '0');
+    const COMMS = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'];
+    const COMM_LABELS = {
+      c1: ['Cuerpo completo', 'full body / lineart'],
+      c2: ['Página de cómic', 'comic page'],
+      c3: ['Full illustration', 'ilustración completa'],
+      c4: ['Chibi', 'chibi'],
+      c5: ['Pack de stickers', 'stickers'],
+      c6: ['Animación rough', 'lista de espera'],
+    };
+    const MARKER = '<!-- NUEVAS TRANSMISIONES: el panel admin (admin/index.html) inserta aquí -->';
+    const MAX_IMG = 6 * 1024 * 1024;
+
+    /* ---------------- bitácora ---------------- */
+    const logbox = $('#logbox');
+    function log(msg, kind) {
+      const empty = $('.adm-log-empty', logbox);
+      if (empty) empty.remove();
+      const p = document.createElement('p');
+      if (kind) p.className = kind;
+      const d = new Date();
+      const t = pad2(d.getHours()) + ':' + pad2(d.getMinutes()) + ':' + pad2(d.getSeconds());
+      p.textContent = '[' + t + '] ' + msg;
+      logbox.insertBefore(p, logbox.firstChild);
+      logbox.scrollTop = 0;
+    }
+    $('#btn-clear-log').addEventListener('click', () => {
+      logbox.innerHTML = '<p class="adm-log-empty">— sin operaciones todavía —</p>';
+    });
+
+    /* ---------------- GitHub API ---------------- */
+    const LS = {
+      t: 'lunnie_admin_token', o: 'lunnie_admin_owner',
+      r: 'lunnie_admin_repo', b: 'lunnie_admin_branch', u: 'lunnie_admin_user',
+    };
+    const state = { token: '', owner: '', repo: '', branch: 'main', login: '' };
+
+    const encPath = (p) => p.split('/').map(encodeURIComponent).join('/');
+    const repoPath = () => '/repos/' + encodeURIComponent(state.owner) + '/' + encodeURIComponent(state.repo);
+
+    async function gh(path, opts) {
+      opts = opts || {};
+      const headers = {
+        Accept: 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+      };
+      if (state.token) headers.Authorization = 'Bearer ' + state.token;
+      if (opts.body !== undefined) headers['Content-Type'] = 'application/json';
+      const res = await fetch('https://api.github.com' + path, {
+        method: opts.method || 'GET',
+        headers,
+        body: opts.body !== undefined ? JSON.stringify(opts.body) : undefined,
+      });
+      let data = null;
+      try { data = await res.json(); } catch (e) { /* sin cuerpo */ }
+      if (!res.ok) {
+        const err = new Error(data && data.message ? data.message : 'HTTP ' + res.status);
+        err.status = res.status;
+        throw err;
+      }
+      return data;
+    }
+
+    async function getFile(path) {
+      const d = await gh(repoPath() + '/contents/' + encPath(path) + '?ref=' + encodeURIComponent(state.branch));
+      return { text: d.content ? b64ToStr(d.content) : '', sha: d.sha, size: d.size || 0 };
+    }
+
+    async function putFile(path, b64, message, sha) {
+      const body = { message, content: b64, branch: state.branch };
+      if (sha) body.sha = sha;
+      const d = await gh(repoPath() + '/contents/' + encPath(path), { method: 'PUT', body });
+      return d.commit && d.commit.sha ? d.commit.sha : '';
+    }
+
+    /* base64 <-> utf-8 */
+    function strToB64(str) {
+      const bytes = new TextEncoder().encode(str);
+      let bin = '';
+      const CH = 0x8000;
+      for (let i = 0; i < bytes.length; i += CH) {
+        bin += String.fromCharCode.apply(null, bytes.subarray(i, i + CH));
+      }
+      return btoa(bin);
+    }
+    function b64ToStr(b64) {
+      const bin = atob(String(b64).replace(/\s/g, ''));
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return new TextDecoder().decode(bytes);
+    }
+    function blobToB64(file) {
+      return new Promise((resolve, reject) => {
+        const fr = new FileReader();
+        fr.onload = () => resolve(String(fr.result).split(',')[1]);
+        fr.onerror = () => reject(new Error('No pude leer el archivo local.'));
+        fr.readAsDataURL(file);
+      });
+    }
+
+    /* ---------------- errores amables ---------------- */
+    function humanError(e) {
+      if (e && e.status === 401) return 'Token inválido o revocado (401). Revísalo en github.com/settings/tokens.';
+      if (e && e.status === 403) return '403: permiso denegado (scope insuficiente) o límite de tasa de GitHub.';
+      if (e && e.status === 404) return '404: no existe ese archivo/repositorio, o el token no lo ve.';
+      if (e && e.status === 409) return '409: conflicto de versión — recarga el módulo e inténtalo de nuevo.';
+      if (e && e.status === 422) return '422: GitHub rechazó los datos (¿archivo demasiado grande o sha caducado?).';
+      if (e && e instanceof TypeError) return 'Sin red o bloqueado por el navegador (fetch falló).';
+      return e && e.message ? e.message : String(e);
+    }
+
+    async function busy(btn, label, fn) {
+      const old = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = label;
+      try {
+        await fn();
+      } catch (e) {
+        log('✕ ' + humanError(e), 'err');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = old;
+      }
+    }
+
+    function commitLine(sha, what) {
+      const url = 'https://github.com/' + state.owner + '/' + state.repo + '/commit/' + sha;
+      log('✓ ' + what + ' — commit ' + sha.slice(0, 7) + ' · ' + url, 'ok');
+      log('  GitHub Pages lo republica en ~1 min.', 'info');
+    }
+
+    /* ---------------- puerta de acceso ---------------- */
+    const gate = $('#gate');
+    const app = $('#app');
+    const gateErr = $('#gate-err');
+
+    function failGate(msg) {
+      gateErr.textContent = msg;
+      gateErr.hidden = false;
+    }
+
+    async function verifySession() {
+      const user = await gh('/user');
+      const repo = await gh(repoPath());
+      if (repo.permissions && repo.permissions.push === false && repo.permissions.admin === false) {
+        throw Object.assign(new Error('El token no tiene permiso de escritura en este repositorio.'), { status: 403 });
+      }
+      state.login = user.login;
+      localStorage.setItem(LS.u, user.login);
+      return user.login;
+    }
+
+    function openApp() {
+      gate.hidden = true;
+      app.hidden = false;
+      $('#bar-user').textContent = '@' + state.login;
+      $('#bar-repo').textContent = state.owner + '/' + state.repo + ' @ ' + state.branch + ' · token guardado en este navegador ✓';
+      setDefaultDate();
+      refreshStatusTab();
+      log('Sesión activa como @' + state.login + ' → ' + state.owner + '/' + state.repo + '@' + state.branch, 'ok');
+    }
+
+    $('#gate-form').addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      gateErr.hidden = true;
+      state.token = $('#f-token').value.trim();
+      state.owner = $('#f-owner').value.trim();
+      state.repo = $('#f-repo').value.trim();
+      state.branch = $('#f-branch').value.trim() || 'main';
+      if (!state.token) return failGate('Pega tu Personal Access Token primero.');
+      if (!state.owner || !state.repo) return failGate('Faltan owner o repo.');
+      const btn = $('#btn-auth');
+      btn.disabled = true;
+      const oldLabel = btn.textContent;
+      btn.textContent = 'VERIFICANDO…';
+      try {
+        log('Verificando credenciales contra api.github.com…', 'info');
+        await verifySession();
+        localStorage.setItem(LS.t, state.token);
+        localStorage.setItem(LS.o, state.owner);
+        localStorage.setItem(LS.r, state.repo);
+        localStorage.setItem(LS.b, state.branch);
+        openApp();
+      } catch (e) {
+        log('✕ ' + humanError(e), 'err');
+        failGate(humanError(e));
+      } finally {
+        btn.disabled = false;
+        btn.textContent = oldLabel;
+      }
+    });
+
+    $('#btn-logout').addEventListener('click', () => {
+      [LS.t, LS.o, LS.r, LS.b, LS.u].forEach((k) => localStorage.removeItem(k));
+      log('Token borrado de este navegador.', 'info');
+      location.reload();
+    });
+
+    /* ---------------- pestañas ---------------- */
+    $$('.adm-tab-btn').forEach((b) => {
+      b.addEventListener('click', () => {
+        $$('.adm-tab-btn').forEach((x) => x.classList.toggle('is-on', x === b));
+        $$('.adm-tab').forEach((t) => { t.hidden = t.id !== 'tab-' + b.dataset.tab; });
+        if (b.dataset.tab === 'status') refreshStatusTab();
+      });
+    });
+
+    /* ==============================================================
+       MÓDULO 1 · BLOG — markdown + renumeración + inserción
+       ============================================================== */
+
+    /* --- markdown (subconjunto) — puro, testeable --- */
+    function inlineMd(t) {
+      let s = esc(t);
+      s = s.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, '<img src="$2" alt="$1">');
+      s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+      s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+      s = s.replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>');
+      s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
+      return s;
+    }
+
+    function mdToHtml(md) {
+      const blocks = String(md).replace(/\r/g, '').split(/\n{2,}/);
+      let out = '';
+      for (const raw of blocks) {
+        const block = raw.trim();
+        if (!block) continue;
+        const lines = block.split('\n');
+        if (/^### /.test(block)) {
+          out += '<h4>' + inlineMd(block.replace(/^### /, '').replace(/\n/g, ' ')) + '</h4>\n';
+        } else if (/^## /.test(block)) {
+          out += '<h3>' + inlineMd(block.replace(/^## /, '').replace(/\n/g, ' ')) + '</h3>\n';
+        } else if (/^> /.test(block)) {
+          const body = lines.map((l) => l.replace(/^>\s?/, '')).join(' ');
+          out += '<aside class="post-note"><b>▚ nota al margen</b><p>' + inlineMd(body) + '</p></aside>\n';
+        } else if (lines.every((l) => /^[-*] /.test(l))) {
+          out += '<ul>' + lines.map((l) => '<li>' + inlineMd(l.replace(/^[-*] /, '')) + '</li>').join('') + '</ul>\n';
+        } else if (/^---+$/.test(block)) {
+          out += '<hr>\n';
+        } else {
+          out += '<p>' + lines.map((l) => inlineMd(l)).join('<br>') + '</p>\n';
+        }
+      }
+      return out;
+    }
+
+    function slugify(s) {
+      return String(s).toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .slice(0, 60) || 'obra';
+    }
+
+    /* --- plantilla de la entrada — pura --- */
+    function buildPost(o) {
+      const dt = o.when;
+      const iso = dt.getFullYear() + '-' + pad2(dt.getMonth() + 1) + '-' + pad2(dt.getDate()) +
+        'T' + pad2(dt.getHours()) + ':' + pad2(dt.getMinutes());
+      /* clave estable de reacciones: fecha, no número de transmisión
+         (así la renumeración posterior no le roba el estado a otra entrada) */
+      const rkey = 'p' + iso.slice(0, 10).replace(/-/g, '') + '-' + iso.slice(11, 16).replace(':', '');
+      const shown = dt.getFullYear() + '.' + pad2(dt.getMonth() + 1) + '.' + pad2(dt.getDate()) +
+        ' // ' + pad2(dt.getHours()) + ':' + pad2(dt.getMinutes());
+      const tagHtml = o.tags.map((t) => '\n            <span class="chip">' + esc(t) + '</span>').join('');
+      const reacts = [['heart', '❤️', 'corazón'], ['fire', '🔥', 'fuego'], ['moon', '🌙', 'luna'], ['spark', '✨', 'destello']]
+        .map((r) => [
+          '              <button type="button" class="react" data-key="' + rkey + ':' + r[0] + '" data-base="0" aria-label="reaccionar con ' + r[2] + '">',
+          '                <span>' + r[1] + '</span><span class="n">0</span>',
+          '              </button>',
+        ].join('\n')).join('\n');
+      const bodyIndented = o.bodyHtml.split('\n').map((l) => (l ? '            ' + l : l)).join('\n');
+      return [
+        '        <!-- POST 01 -->',
+        '        <article class="post" data-reveal id="post-01">',
+        '          <div class="post-meta">',
+        '            <time datetime="' + iso + '">' + shown + '</time>',
+        '            <span class="chip chip-open">transmission 01</span>' + tagHtml,
+        '          </div>',
+        '          <h2 class="post-title">' + esc(o.title) + '</h2>',
+        '          <div class="post-body">',
+        bodyIndented,
+        '          </div>',
+        '          <footer class="post-foot">',
+        '            <div class="post-reacts" role="group" aria-label="Reacciones a la entrada">',
+        reacts,
+        '            </div>',
+        '            <div class="post-comments">',
+        '              <span class="tiny">hilo de comentarios // post-01</span>',
+        '              <div class="giscus">',
+        '                <div class="giscus-fallback">▧ el hilo de esta entrada se conecta cuando el panteón tenga guestbook real ✓ — mientras, deja tu huella en la portada ♡</div>',
+        '              </div>',
+        '            </div>',
+        '          </footer>',
+        '        </article>',
+      ].join('\n');
+    }
+
+    /* --- renumeración — pura --- */
+    function applyRenumber(html) {
+      let out = html;
+      const protectedHrefs = [];
+      out = out.replace(/href="#post-\d+"/g, (m) => { protectedHrefs.push(m); return '\u0000HP' + (protectedHrefs.length - 1) + '\u0000'; });
+      out = out.replace(/post-(\d+)/g, (m, n) => 'post-' + pad2(parseInt(n, 10) + 1));
+      out = out.replace(/POST (\d+)/g, (m, n) => 'POST ' + pad2(parseInt(n, 10) + 1));
+      out = out.replace(/transmission (\d+)/gi, (m, n) => 'transmission ' + pad2(parseInt(n, 10) + 1));
+      out = out.replace(/\u0000HP(\d+)\u0000/g, (m, i) => protectedHrefs[parseInt(i, 10)]);
+      return out;
+    }
+
+    /* --- inserción tras el marcador — pura --- */
+    function composeBlog(html, articleHtml) {
+      const times = html.split(MARKER).length - 1;
+      if (times !== 1) {
+        throw new Error('El marcador de blog.html aparece ' + times + ' veces (debe ser 1). Actualiza el panel o blog.html.');
+      }
+      const oldCount = (html.match(/<article class="post"/g) || []).length;
+      let out = applyRenumber(html);
+      out = out.replace(MARKER, MARKER + '\n' + articleHtml);
+      return { html: out, expect: oldCount + 1 };
+    }
+
+    /* --- validación (espejo de check-site) — pura --- */
+    function assertBalanced(html) {
+      const tags = ['article', 'div', 'section', 'header', 'footer', 'nav', 'main', 'aside',
+        'figure', 'button', 'a', 'p', 'ul', 'li', 'table', 'tr', 'td', 'th', 'dl', 'dd',
+        'dt', 'time', 'span'];
+      for (const t of tags) {
+        const o = (html.match(new RegExp('<' + t + '(\\s|>)', 'g')) || []).length;
+        const c = (html.match(new RegExp('</' + t + '>', 'g')) || []).length;
+        if (o !== c) throw new Error('HTML desbalanceado en <' + t + '>: ' + o + '/' + c + ' — no se publica.');
+      }
+    }
+
+    function validateBlog(html, expect) {
+      assertBalanced(html);
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const posts = doc.querySelectorAll('article.post').length;
+      if (posts !== expect) throw new Error('Se esperaban ' + expect + ' entradas y el parseo da ' + posts + ' — abortado.');
+      if (!doc.getElementById('post-01')) throw new Error('La nueva entrada post-01 no aparece — abortado.');
+      const all = Array.prototype.slice.call(doc.querySelectorAll('[id]')).map((el) => el.id);
+      const dup = all.filter((v, i) => all.indexOf(v) !== i);
+      if (dup.length) throw new Error('Ids duplicados tras insertar: ' + dup.join(', ') + ' — abortado.');
+    }
+
+    /* --- preview en vivo --- */
+    const fTitle = $('#f-title');
+    const fDate = $('#f-date');
+    const fMd = $('#f-md');
+    const fTags = $('#f-tags');
+    const mdPrev = $('#md-prev');
+
+    function selectedQuickTags() {
+      return $$('#quick-tags .adm-tg.is-on').map((c) => c.dataset.tg);
+    }
+    function allTags() {
+      const libres = fTags.value.split(',').map((t) => t.trim()).filter(Boolean);
+      return selectedQuickTags().concat(libres).slice(0, 6);
+    }
+    function setDefaultDate() {
+      if (fDate.value) return;
+      const d = new Date();
+      fDate.value = d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()) +
+        'T' + pad2(d.getHours()) + ':' + pad2(d.getMinutes());
+    }
+
+    function renderPreview() {
+      const md = fMd.value.trim();
+      if (!md && !fTitle.value.trim()) {
+        mdPrev.innerHTML = '<p class="adm-prev-idle">la vista previa aparece aquí…</p>';
+        return;
+      }
+      const dt = fDate.value ? new Date(fDate.value) : new Date();
+      const shown = dt.getFullYear() + '.' + pad2(dt.getMonth() + 1) + '.' + pad2(dt.getDate()) +
+        ' // ' + pad2(dt.getHours()) + ':' + pad2(dt.getMinutes());
+      const tags = allTags().map((t) => '<span class="chip">' + esc(t) + '</span>').join('');
+      mdPrev.innerHTML =
+        '<div class="post-meta"><time>' + shown + '</time>' +
+        '<span class="chip chip-open">transmission 01</span>' + tags + '</div>' +
+        '<h2 class="post-title">' + esc(fTitle.value || 'sin título') + '</h2>' +
+        '<div class="post-body">' + (md ? mdToHtml(md) : '<p class="adm-prev-idle">…</p>') + '</div>';
+    }
+
+    [fTitle, fDate, fMd, fTags].forEach((el) => el.addEventListener('input', renderPreview));
+    $$('#quick-tags .adm-tg').forEach((chip) => {
+      const toggle = () => { chip.classList.toggle('is-on'); renderPreview(); };
+      chip.addEventListener('click', toggle);
+      chip.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+    });
+
+    /* --- publicar --- */
+    $('#btn-publish').addEventListener('click', () => {
+      busy($('#btn-publish'), 'PUBLICANDO COMMIT EN GITHUB…', async () => {
+        const title = fTitle.value.trim();
+        const bodyMd = fMd.value.trim();
+        if (!title) throw new Error('Falta el título de la transmisión.');
+        if (!bodyMd) throw new Error('El cuerpo está vacío — escribe algo antes de publicar.');
+        const when = fDate.value ? new Date(fDate.value) : new Date();
+        if (isNaN(when.getTime())) throw new Error('La fecha no es válida.');
+        setDefaultDate();
+
+        log('Preparando la transmisión «' + title + '»…', 'info');
+        let bodyHtml = mdToHtml(bodyMd);
+
+        /* portada opcional (commit 1) */
+        const cover = $('#f-cover').files[0];
+        if (cover) {
+          if (!/^image\/(jpeg|png)$/.test(cover.type)) throw new Error('La portada debe ser JPG o PNG.');
+          if (cover.size > MAX_IMG) throw new Error('La portada supera 6 MB.');
+          const ymd = when.getFullYear() + pad2(when.getMonth() + 1) + pad2(when.getDate());
+          let path = 'assets/img/art/post-' + ymd + '-' + slugify(title) + (cover.type === 'image/png' ? '.png' : '.jpg');
+          path = await uniquePath(path);
+          const b64 = await blobToB64(cover);
+          log('Subiendo portada → ' + path + ' …', 'info');
+          const shaCover = await putFile(path, b64, 'blog: portada de «' + title + '»');
+          commitLine(shaCover, 'portada subida');
+          bodyHtml = '<p><img src="' + path + '" alt="' + esc(title) + '"></p>\n' + bodyHtml;
+        }
+
+        /* blog.html (commit 2) */
+        log('Leyendo blog.html del repositorio…', 'info');
+        const cur = await getFile('blog.html');
+        const article = buildPost({ title, when, tags: allTags(), bodyHtml });
+        const composed = composeBlog(cur.text, article);
+        validateBlog(composed.html, composed.expect);
+        log('Publicando commit en GitHub…', 'info');
+        const sha = await putFile('blog.html', strToB64(composed.html),
+          'blog: nueva transmisión «' + title + '»', cur.sha);
+        commitLine(sha, 'transmisión publicada (' + composed.expect + ' entradas en el archivo)');
+        log('Hecho — ' + title + ' ya está arriba del blog como transmission 01.', 'ok');
+        fMd.value = '';
+        fTitle.value = '';
+        renderPreview();
+      });
+    });
+
+    async function uniquePath(path) {
+      let candidate = path;
+      let n = 2;
+      for (;;) {
+        try {
+          await getFile(candidate);
+          const dot = candidate.lastIndexOf('.');
+          candidate = candidate.slice(0, dot) + '-' + n + candidate.slice(dot);
+          n += 1;
+        } catch (e) {
+          if (e.status === 404) return candidate;
+          throw e;
+        }
+      }
+    }
+
+    /* ==============================================================
+       MÓDULO 2 · ILUSTRACIONES — drag&drop + registro en galería
+       ============================================================== */
+    const drop = $('#drop');
+    const fFile = $('#f-file');
+    const dropThumb = $('#drop-thumb');
+    let artFile = null;
+
+    drop.addEventListener('click', () => fFile.click());
+    drop.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fFile.click(); } });
+    ['dragenter', 'dragover'].forEach((ev) => drop.addEventListener(ev, (e) => {
+      e.preventDefault(); drop.classList.add('is-over');
+    }));
+    ['dragleave', 'drop'].forEach((ev) => drop.addEventListener(ev, (e) => {
+      e.preventDefault(); drop.classList.remove('is-over');
+    }));
+    drop.addEventListener('drop', (e) => {
+      const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if (f) pickFile(f);
+    });
+    fFile.addEventListener('change', () => { if (fFile.files[0]) pickFile(fFile.files[0]); });
+
+    function pickFile(f) {
+      if (!/^image\/(jpeg|png)$/.test(f.type)) {
+        log('✕ Eso no es un JPG/PNG: ' + (f.type || 'tipo desconocido'), 'err');
+        return;
+      }
+      if (f.size > MAX_IMG) {
+        log('✕ Imagen demasiado grande (máx. 6 MB): ' + (f.size / 1048576).toFixed(1) + ' MB', 'err');
+        return;
+      }
+      if (f.size > 2 * 1024 * 1024) {
+        log('⚠ ' + (f.size / 1048576).toFixed(1) + ' MB — pesado para la web; si puedes, comprímela antes.', 'warn');
+      }
+      artFile = f;
+      dropThumb.src = URL.createObjectURL(f);
+      drop.classList.add('has-file');
+      if (!$('#f-art-title').value) $('#f-art-title').value = f.name.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ');
+      log('Imagen lista: ' + f.name + ' (' + (f.size / 1024).toFixed(0) + ' KB)', 'info');
+    }
+
+    /* --- pieza de galería — pura --- */
+    function makeFigure(o) {
+      const tagMap = { galeria: 'nuevo', comision: 'encargo', fondo: 'fondo' };
+      const labelMap = { galeria: 'GALERÍA', comision: 'COMISIÓN', fondo: 'FONDO' };
+      return [
+        '',
+        '          <figure class="g-item" data-reveal tabindex="0" data-frame="' + o.frame + '"',
+        '                  data-cat="' + esc(o.filtro) + '" data-title="' + esc(o.title) + '" data-cat-label="' + labelMap[o.cat] + '" data-coord="' + o.coord + '">',
+        '            <span class="g-frame" aria-hidden="true"></span>',
+        '            <span class="g-coord">' + o.coord + '</span>',
+        '            <span class="g-tag">' + tagMap[o.cat] + '</span>',
+        '            <img class="g-img" src="' + esc(o.path) + '" alt="' + esc(o.title) + '" loading="lazy" decoding="async">',
+        '            <span class="g-cap"><b>' + esc(o.title) + '</b><span class="ico">✦ ' + tagMap[o.cat] + '</span></span>',
+        '          </figure>',
+      ].join('\n');
+    }
+
+    /* --- insercción tras la primera figura (la destacada) — pura --- */
+    function insertAfterFirstFigure(html, figureHtml) {
+      const gridAt = html.indexOf('id="gal-grid"');
+      if (gridAt < 0) throw new Error('No encuentro #gal-grid en galeria.html.');
+      const figEnd = html.indexOf('</figure>', gridAt);
+      if (figEnd < 0) throw new Error('No encuentro la primera obra de la galería.');
+      const cut = figEnd + '</figure>'.length;
+      return html.slice(0, cut) + '\n' + figureHtml + html.slice(cut);
+    }
+
+    /* --- WORKS: entrada nueva — pura --- */
+    function addWorksEntry(scriptText, coord, title) {
+      if (!/WORKS: \[/.test(scriptText)) throw new Error('No encuentro CONFIG.WORKS en script.js.');
+      if (scriptText.indexOf("'" + coord + "'") !== -1) return scriptText;
+      const cleanTitle = String(title).replace(/\s+/g, ' ').trim();
+      return scriptText.replace(/WORKS: \[/, "WORKS: [\n    '" + coord + "', // " + cleanTitle + " (panel admin)");
+    }
+
+    /* --- WORKS: entradas huérfanas (reparación a prueba de fallos) — pura --- */
+    function addMissingWorks(scriptText, entries) {
+      let out = scriptText;
+      entries.forEach((e) => {
+        if (out.indexOf("'" + e.coord + "'") !== -1) return;
+        const cleanTitle = String(e.title).replace(/\s+/g, ' ').trim();
+        out = out.replace(/WORKS: \[/, "WORKS: [\n    '" + e.coord + "', // " + cleanTitle + " (reparado por panel)");
+      });
+      return out;
+    }
+
+    function parseGalFigures(html) {
+      const re = /<figure class="g-item"[\s\S]*?<\/figure>/g;
+      const out = [];
+      let m;
+      while ((m = re.exec(html))) {
+        const coord = (m[0].match(/data-coord="(STAR-\d+)"/) || [])[1];
+        const title = (m[0].match(/data-title="([^"]*)"/) || [])[1] || '';
+        if (coord) out.push({ coord, title });
+      }
+      return out;
+    }
+
+    function starNums(text) {
+      const nums = [];
+      const re = /STAR-(\d+)/g;
+      let m;
+      while ((m = re.exec(text))) nums.push(parseInt(m[1], 10));
+      return nums;
+    }
+
+    $('#btn-upload').addEventListener('click', () => {
+      busy($('#btn-upload'), 'PUBLICANDO COMMIT EN GITHUB…', async () => {
+        const title = $('#f-art-title').value.trim();
+        const folder = $('#f-folder').value.trim();
+        const cat = $('#f-cat').value;
+        const filtro = $('#f-filter').value;
+        const registrar = $('#f-register').checked;
+
+        if (!artFile) throw new Error('Ninguna imagen elegida — arrastra un JPG/PNG primero.');
+        if (!title) throw new Error('Falta el título de la obra.');
+        if (!/^assets\/[a-z0-9_\-\/]+\/$/i.test(folder) || folder.indexOf('..') !== -1) {
+          throw new Error('La carpeta debe ser relativa dentro de assets/ y terminar en / (ej: assets/img/art/).');
+        }
+
+        /* nombre único */
+        const ext = artFile.type === 'image/png' ? '.png' : '.jpg';
+        let path = folder + slugify(title) + ext;
+        path = await uniquePath(path);
+
+        const b64 = await blobToB64(artFile);
+        log('Convirtiendo a Base64 (' + Math.ceil(b64.length * 0.75 / 1024) + ' KB) y subiendo…', 'info');
+        const shaImg = await putFile(path, b64, 'admin: sube «' + title + '» (' + cat + ')');
+        commitLine(shaImg, 'imagen en ' + path);
+
+        if (!registrar) {
+          log('Registro en galería desactivado — solo quedó el archivo.', 'info');
+          artFile = null;
+          drop.classList.remove('has-file');
+          fFile.value = '';
+          return;
+        }
+
+        /* registro: galeria.html + script.js con reparación a prueba de fallos */
+        log('Leyendo galeria.html y script.js…', 'info');
+        const g = await getFile('galeria.html');
+        const s = await getFile('script.js');
+
+        const galFigs = parseGalFigures(g.text);
+        const galCoords = galFigs.map((f) => f.coord);
+        const workCoords = starNums(s.text);
+        const all = galCoords.concat(workCoords).map((c) => parseInt(c.replace('STAR-', ''), 10));
+        const nextNum = (all.length ? Math.max.apply(null, all) : 0) + 1;
+        const coord = 'STAR-' + pad2(nextNum);
+        const frames = (g.text.match(/data-frame="[abc]"/g) || []);
+        const frame = ['a', 'b', 'c'][frames.length % 3];
+
+        /* 1) reparar huérfanas: figuras en galería sin entrada en WORKS */
+        const orphans = galFigs.filter((f) => workCoords.indexOf(parseInt(f.coord.replace('STAR-', ''), 10)) === -1);
+        let newScript = s.text;
+        if (orphans.length) {
+          newScript = addMissingWorks(newScript, orphans);
+          log('Reparando ' + orphans.length + ' entrada(s) huérfana(s) en CONFIG.WORKS…', 'warn');
+        }
+
+        /* 2) insertar la figura nueva si no existe */
+        let newGal = g.text;
+        const galHasNew = galCoords.indexOf(coord) !== -1;
+        if (!galHasNew) {
+          newGal = insertAfterFirstFigure(g.text, makeFigure({ coord, frame, cat, filtro, title, path }));
+        }
+
+        /* 3) entrada WORKS nueva si no existe */
+        const workHasNew = workCoords.indexOf(nextNum) !== -1;
+        if (!workHasNew && !orphans.some((o) => o.coord === coord)) {
+          newScript = addWorksEntry(newScript, coord, title);
+        }
+
+        if (newGal !== g.text) {
+          assertBalanced(newGal);
+          log('Registrando ' + coord + ' en galeria.html…', 'info');
+          const shaG = await putFile('galeria.html', strToB64(newGal),
+            'admin: añade «' + title + '» a la galería (' + coord + ')', g.sha);
+          commitLine(shaG, 'figura ' + coord + ' en la galería');
+        }
+        if (newScript !== s.text) {
+          const bracesBefore = (s.text.match(/\{/g) || []).length + (s.text.match(/\}/g) || []).length;
+          const bracesAfter = (newScript.match(/\{/g) || []).length + (newScript.match(/\}/g) || []).length;
+          if (bracesBefore !== bracesAfter) throw new Error('script.js quedaría con llaves desbalanceadas — abortado.');
+          try { new Function(newScript); } catch (e) { throw new Error('script.js ya no sería JS válido: ' + e.message); }
+          log('Registrando ' + coord + ' en CONFIG.WORKS…', 'info');
+          const shaS = await putFile('script.js', strToB64(newScript),
+            'admin: registra ' + coord + ' en CONFIG.WORKS (' + title + ')', s.sha);
+          commitLine(shaS, 'CONFIG.WORKS actualizado');
+        }
+
+        log('Listo: «' + title + '» → ' + path + ' + galería (' + coord + ').', 'ok');
+        artFile = null;
+        drop.classList.remove('has-file');
+        fFile.value = '';
+        $('#f-art-title').value = '';
+      });
+    });
+
+    /* ==============================================================
+       MÓDULO 3 · ESTADO — COMM_STATUS + ASSISTANT_STATUS en script.js
+       ============================================================== */
+    function parseComm(text) {
+      const m = text.match(/COMM_STATUS:\s*\{([\s\S]*?)\}/);
+      if (!m) throw new Error('No encuentro CONFIG.COMM_STATUS en script.js.');
+      const obj = {};
+      const re = /([a-z]\d+)\s*:\s*'(open|closed)'/g;
+      let x;
+      while ((x = re.exec(m[1]))) obj[x[1]] = x[2];
+      if (!obj.c1) throw new Error('COMM_STATUS sin claves c1..c6 legibles.');
+      return obj;
+    }
+
+    function parseAssistant(text) {
+      const m = text.match(/ASSISTANT_STATUS:\s*'((?:\\.|[^'\\])*)'/);
+      if (!m) return '';
+      return m[1].replace(/\\'/g, "'").replace(/\\n/g, ' ').replace(/\\\\/g, '\\');
+    }
+
+    function renderComm(comm) {
+      const grid = $('#comm-grid');
+      grid.innerHTML = '';
+      COMMS.forEach((k) => {
+        const open = comm[k] === 'open';
+        const row = document.createElement('div');
+        row.className = 'adm-comm';
+        row.innerHTML =
+          '<span><b>' + esc(COMM_LABELS[k][0]) + '</b><em>' + k + ' · ' + esc(COMM_LABELS[k][1]) + '</em></span>' +
+          '<label class="sw"><input type="checkbox" data-comm="' + k + '"' + (open ? ' checked' : '') +
+          ' aria-label="' + esc(COMM_LABELS[k][0]) + ' abierto o cerrado"><span class="track"></span><span class="knob"></span></label>';
+        grid.appendChild(row);
+      });
+      $$('#comm-grid input[data-comm]').forEach((cb) => cb.addEventListener('change', syncMaster));
+      syncMaster();
+      syncNow(comm);
+    }
+
+    function currentComm() {
+      const out = {};
+      COMMS.forEach((k) => {
+        const cb = $('#comm-grid input[data-comm="' + k + '"]');
+        out[k] = cb && cb.checked ? 'open' : 'closed';
+      });
+      return out;
+    }
+
+    function syncMaster() {
+      const comm = currentComm();
+      const allOpen = COMMS.every((k) => comm[k] === 'open');
+      const allClosed = COMMS.every((k) => comm[k] === 'closed');
+      const master = $('#sw-master');
+      master.checked = allOpen;
+      const st = $('#st-state');
+      st.textContent = allOpen ? 'comisiones: abiertas' : (allClosed ? 'comisiones: cerradas' : 'comisiones: mixtas');
+      st.classList.toggle('is-closed', !allOpen);
+      const chip = $('#st-chip');
+      const openCount = COMMS.filter((k) => comm[k] === 'open').length;
+      chip.textContent = openCount + '/6 abiertas';
+      chip.className = 'chip ' + (openCount === 0 ? 'chip-closed' : (openCount === 6 ? 'chip-open' : 'chip-warn'));
+    }
+
+    function syncNow(comm) {
+      const now = $('#st-now');
+      now.innerHTML = '';
+      COMMS.forEach((k) => {
+        const open = comm[k] === 'open';
+        const c = document.createElement('span');
+        c.className = 'chip ' + (open ? 'chip-open' : 'chip-closed');
+        c.textContent = k + ' ' + COMM_LABELS[k][0] + ' · ' + (open ? 'open' : 'closed');
+        now.appendChild(c);
+      });
+    }
+
+    $('#sw-master').addEventListener('change', (e) => {
+      const on = e.target.checked;
+      $$('#comm-grid input[data-comm]').forEach((cb) => { cb.checked = on; });
+      syncMaster();
+    });
+
+    let statusLoaded = false;
+    async function refreshStatusTab() {
+      if (!state.token || statusLoaded) return;
+      try {
+        log('Leyendo estado actual de script.js…', 'info');
+        const s = await getFile('script.js');
+        const comm = parseComm(s.text);
+        renderComm(comm);
+        $('#f-asstatus').value = parseAssistant(s.text);
+        statusLoaded = true;
+        const openCount = COMMS.filter((k) => comm[k] === 'open').length;
+        log('Estado leído: ' + openCount + '/6 categorías abiertas.', 'ok');
+      } catch (e) {
+        log('✕ No pude leer el estado: ' + humanError(e), 'err');
+      }
+    }
+
+    /* --- reescritura pura de script.js: COMM_STATUS + ASSISTANT_STATUS ---
+       Valida antes de devolver: llaves idénticas, roundtrip del estado,
+       roundtrip del mensaje y sintaxis JS. Si algo no cuadra, lanza. */
+    function rewriteStatus(text, comm, msg) {
+      const m = text.match(/COMM_STATUS:\s*\{[\s\S]*?\}/);
+      if (!m) throw new Error('No encuentro CONFIG.COMM_STATUS en script.js.');
+      const rebuilt = 'COMM_STATUS: {\n' +
+        COMMS.map((k) => "    " + k + ": '" + comm[k] + "',").join('\n') + '\n  }';
+      let out = text.slice(0, m.index) + rebuilt + text.slice(m.index + m[0].length);
+
+      const escMsg = String(msg).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+      const aRe = /ASSISTANT_STATUS:\s*'(?:\\.|[^'\\])*'/;
+      if (aRe.test(out)) {
+        out = out.replace(aRe, "ASSISTANT_STATUS: '" + escMsg + "'");
+      } else {
+        const anchor = out.match(/COMM_STATUS:\s*\{[\s\S]*?\},/);
+        if (!anchor) throw new Error('No encuentro dónde insertar ASSISTANT_STATUS.');
+        out = out.slice(0, anchor.index + anchor[0].length) +
+          "\n  // Mensaje de estado del asistente (editado por el panel admin).\n  ASSISTANT_STATUS: '" + escMsg + "'," +
+          out.slice(anchor.index + anchor[0].length);
+      }
+
+      const countBraces = (t) => (t.match(/\{/g) || []).length + (t.match(/\}/g) || []).length;
+      if (countBraces(out) !== countBraces(text)) throw new Error('Llaves desbalanceadas en script.js — abortado.');
+      const back = parseComm(out);
+      const mismatch = COMMS.filter((k) => back[k] !== comm[k]);
+      if (mismatch.length) throw new Error('El estado no se reescribió bien (' + mismatch.join(',') + ') — abortado.');
+      if (parseAssistant(out) !== msg) throw new Error('El mensaje del asistente no cuadra tras reescribir — abortado.');
+      try { new Function(out); } catch (e) { throw new Error('script.js ya no sería JS válido: ' + e.message); }
+      return out;
+    }
+
+    $('#btn-save-status').addEventListener('click', () => {
+      busy($('#btn-save-status'), 'PUBLICANDO COMMIT EN GITHUB…', async () => {
+        const comm = currentComm();
+        const msg = $('#f-asstatus').value.trim().replace(/\r?\n/g, ' ');
+        log('Leyendo script.js (sha fresco)…', 'info');
+        const s = await getFile('script.js');
+        const text = rewriteStatus(s.text, comm, msg);
+
+        log('Publicando commit en GitHub…', 'info');
+        const sha = await putFile('script.js', strToB64(text),
+          'admin: estado de encargos y asistente', s.sha);
+        statusLoaded = false;
+        commitLine(sha, 'estado guardado (' + COMMS.filter((k) => comm[k] === 'open').length + '/6 abiertas)');
+        await refreshStatusTab();
+        log('El sitio repintará los chips en la próxima carga.', 'ok');
+      });
+    });
+
+    /* ==============================================================
+       ARRANQUE — sesión silenciosa si hay token guardado
+       ============================================================== */
+    (async function init() {
+      const token = localStorage.getItem(LS.t);
+      state.owner = localStorage.getItem(LS.o) || 'Lol-bit-Rvgl';
+      state.repo = localStorage.getItem(LS.r) || 'Lunnie-Landing';
+      state.branch = localStorage.getItem(LS.b) || 'main';
+      $('#f-owner').value = state.owner;
+      $('#f-repo').value = state.repo;
+      $('#f-branch').value = state.branch;
+      if (!token) {
+        log('Sin sesión — pega tu PAT para entrar al panel.', 'info');
+        return;
+      }
+      state.token = token;
+      $('#f-token').value = token;
+      log('Retomando sesión guardada…', 'info');
+      try {
+        await verifySession();
+        openApp();
+      } catch (e) {
+        log('La sesión guardada ya no sirve: ' + humanError(e), 'err');
+        failGate('La sesión guardada no sirve (' + humanError(e) + '). Pega un token nuevo.');
+        localStorage.removeItem(LS.t);
+      }
+    })();
+
+    /* --- ganchos de prueba internos (uso en consola / tests) --- */
+    window.__adm = {
+      mdToHtml, slugify, buildPost, applyRenumber, composeBlog, validateBlog,
+      makeFigure, insertAfterFirstFigure, addWorksEntry, addMissingWorks,
+      parseGalFigures, parseComm, parseAssistant, assertBalanced, renderComm, rewriteStatus,
+      MARKER, COMMS,
+    };
+  })();
+  </script>
+</body>
+</html>

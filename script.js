@@ -59,6 +59,9 @@ const CONFIG = {
     c5: 'open',
     c6: 'closed',
   },
+  // Mensaje de estado que el asistente muestra al abrir su popup
+  // (vacío = sin mensaje). Lo edita el panel admin (admin/index.html).
+  ASSISTANT_STATUS: '',
 
   // FUENTE DE VERDAD — contador de obras.
   // Uno por <figure class="g-item"> de galeria.html (id = data-coord STAR-xx).
@@ -284,6 +287,13 @@ const CONFIG = {
   let i = 0;
   const showTip = () => {
     body.innerHTML = '';
+    const estado = (CONFIG.ASSISTANT_STATUS || '').trim();
+    if (estado) {
+      const aviso = document.createElement('p');
+      aviso.className = 'as-status';
+      aviso.textContent = estado;
+      body.appendChild(aviso);
+    }
     const p = document.createElement('p');
     p.textContent = TIPS[i % TIPS.length];
     body.appendChild(p);
@@ -780,6 +790,13 @@ async function copyPlain(text) {
       chip.className = 'chip ' + (isOpen ? 'chip-open' : 'chip-closed');
       chip.textContent = 'status: ' + (isOpen ? 'open' : 'closed');
     }
+  });
+  // Chips globales [data-live="commissions"] (p.ej. el hero del home):
+  // abiertas si al menos una categoría está open.
+  const algunaAbierta = Object.values(status).some((v) => v === 'open');
+  document.querySelectorAll('[data-live="commissions"]').forEach((chip) => {
+    chip.className = 'chip ' + (algunaAbierta ? 'chip-open' : 'chip-closed');
+    chip.textContent = 'commissions: ' + (algunaAbierta ? 'open' : 'closed');
   });
 })();
 

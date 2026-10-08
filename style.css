@@ -1435,6 +1435,11 @@ h1, h2, h3 { line-height: 1.05; }
 }
 .assistant-body { padding: 12px 14px 8px; font-size: 0.86rem; color: var(--offwhite); }
 .assistant-body p { margin: 0 0 8px; }
+.assistant-body .as-status {
+  border-left: 3px solid var(--blood);
+  padding-left: 8px;
+  color: var(--bone);
+}
 .assistant-popup .btn { margin: 0 14px 14px; }
 
 /* ============================================================
@@ -1961,6 +1966,35 @@ h1, h2, h3 { line-height: 1.05; }
 }
 .post-body p strong { color: var(--white); }
 .post-body p em { color: var(--carmine); font-style: normal; }
+.post-body img {
+  display: block;
+  max-width: 100%;
+  margin: 4px auto 14px;
+  border: 2px solid var(--line-2);
+}
+.post-body ul {
+  margin: 0 0 13px;
+  padding-left: 22px;
+  color: var(--offwhite);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.post-body ul li::marker { color: var(--carmine); }
+.post-body h3, .post-body h4 {
+  font-family: var(--font-display);
+  color: var(--bone);
+  letter-spacing: 0.05em;
+  margin: 6px 0 8px;
+}
+.post-body h3 { font-size: 1.05rem; }
+.post-body h4 { font-size: 0.92rem; color: var(--carmine); }
+.post-body blockquote {
+  border-left: 4px solid var(--line-2);
+  padding-left: 14px;
+  margin: 0 0 13px;
+  color: var(--grey);
+  font-style: italic;
+}
 .post-note {
   background: #141416;
   border-left: 4px solid var(--carmine);
