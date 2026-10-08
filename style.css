@@ -33,29 +33,29 @@
    1. VARIABLES
    ============================================================ */
 :root {
-  /* Cripta */
-  --void:      #0a0a0c;   /* negro profundo - fondo */
-  --ink:       #0a0a0c;   /* negro base (alias semántico) */
-  --panel:      #141416;   /* panel ligeramente más claro */
-  --panel-2:    #17171a;   /* hover / alto */
-  --line:       #33282b;   /* borde tenue */
-  --line-2:     #6b1a24;   /* borde carmesí */
+  /* ---- BASE GRAFITO / PAPEL ENVEJECIDO (editorial) ---- */
+  --void:      #0d0d0f;   /* base más profunda - fondo */
+  --ink:       #0d0d0f;   /* negro base (alias semántico) */
+  --panel:      #151518;   /* panel ligeramente más claro */
+  --panel-2:    #202024;   /* hover / alto */
+  --line:       #2a2929;   /* borde tenue (gris cálido) */
+  --line-2:     #7a1821;   /* borde carmesí (acento, no dominante) */
 
-  /* Rojos góticos */
-  --oxblood-deep:#3a0008;
-  --oxblood:     #8b0000;
-  --blood:#b3001b;
-  --blood-bright:#c41e3a;  /* rojo vivo - hover/acentos */
-  --carmine:#e63946;
-  --bone:#e8e6e0;          /* blanco hueso - texto (no blanco puro) */
-  --neon-lilac:#f5ccd2;   /* rosa pálido - nombres del guestbook */
-  --glow:       rgba(230, 57, 70, 0.8);
+  /* Rojos góticos — escala carmesí de acento */
+  --oxblood-deep:#2e080d;
+  --oxblood:     #7a1821;
+  --blood:#9b1e2b;
+  --blood-bright:#c13a45;  /* hover / acentos vivos */
+  --carmine:#c13a45;
+  --bone:#e8e4dc;          /* neutro claro - texto principal */
+  --neon-lilac:#d9a8b0;   /* rosa apagado - nombres del guestbook */
+  --glow:       rgba(193, 58, 69, 0.55);
 
-  /* Neutros */
-  --white:      #ffffff;
-  --offwhite:   #f0eaea;
-  --grey:       #b0b0b8;
-  --grey-d:     #6f6b73;
+  /* Neutros (papel impreso, nunca blanco puro) */
+  --white:      #f1eee8;
+  --offwhite:   #f1eee8;
+  --grey:       #a7a29a;
+  --grey-d:     #857f77;   /* metadatos: contraste mínimo legible */
 
   /* Estados de Discord */
   --st-online:  #00ff9f;
@@ -63,9 +63,9 @@
   --st-dnd:     #c0236b;
   --st-offline: #41434f;
 
-  /* Acentos de alerta GG */
-  --warn:       #ff4d63;
-  --danger:     #ff1a40;
+  /* Acentos de alerta */
+  --warn:       #c13a45;
+  --danger:     #9b1e2b;
 
   /* Tipografías: Black Ops One (display HUD/GG) + Rajdhani (UI P5) */
   --font-display: 'Black Ops One', 'Oswald', 'Arial Black', Impact, sans-serif;
@@ -73,7 +73,7 @@
   --font-mono:    'Courier New', monospace;
 
   /* Medidas de corte P5: esquinas recortadas */
-  --notch: 18px;
+  --notch: 11px;
 
   /* Cortes poligonales reutilizables */
   --cut-panel: polygon(
@@ -100,7 +100,7 @@
 
   /* Sombras */
   --shadow-hard: 6px 6px 0 rgba(0, 0, 0, 0.9);
-  --shadow-glow: 0 0 18px rgba(230, 57, 70, 0.55);
+  --shadow-glow: 0 0 14px rgba(122, 24, 33, 0.4);
 
   /* --- Superelipses (squircles): radios continuos --- */
   --sq-panel:  28px;   /* paneles grandes */
@@ -109,20 +109,20 @@
   --sq-chip:   12px;   /* chips, tags, inputs */
   --sq-img:    18px;   /* miniaturas e imágenes */
 
-  /* --- Liquid Glass (estilo Nux-Glass) --- */
-  --glass-tint:      linear-gradient(135deg, rgba(52, 0, 10, 0.45) 0%, rgba(10, 10, 12, 0.65) 100%);
-  --glass-tint-deep: linear-gradient(135deg, rgba(52, 0, 10, 0.62) 0%, rgba(10, 10, 12, 0.78) 100%);
-  --glass-solid:     linear-gradient(135deg, rgba(52, 0, 10, 0.92) 0%, rgba(10, 10, 12, 0.97) 100%);
-  --glass-blur:      blur(16px) saturate(160%);
-  --glass-blur-soft: blur(10px) saturate(140%);
-  --glass-line:      rgba(255, 255, 255, 0.15);
-  --glass-line-top:  rgba(255, 255, 255, 0.35);
-  --glass-line-left: rgba(230, 57, 70, 0.35);
-  --glass-bevel: inset 0 1px 1px 0 rgba(255, 255, 255, 0.2), 0 20px 40px -15px rgba(0, 0, 0, 0.7);
-  --glass-bevel-sm: inset 0 1px 1px 0 rgba(255, 255, 255, 0.16), 0 8px 18px -10px rgba(0, 0, 0, 0.75);
-  --glass-ring: inset 0 0 0 1px rgba(230, 57, 70, 0.28);
-  --glass-sheen: linear-gradient(105deg, rgba(255, 255, 255, 0) 26%, rgba(255, 255, 255, 0.26) 42%,
-                  rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 66%);
+  /* --- Liquid Glass (carbón, sin rojo dominante) --- */
+  --glass-tint:      linear-gradient(135deg, rgba(32, 32, 36, 0.55) 0%, rgba(13, 13, 15, 0.72) 100%);
+  --glass-tint-deep: linear-gradient(135deg, rgba(26, 26, 30, 0.72) 0%, rgba(13, 13, 15, 0.85) 100%);
+  --glass-solid:     linear-gradient(135deg, rgba(28, 28, 32, 0.95) 0%, rgba(13, 13, 15, 0.98) 100%);
+  --glass-blur:      blur(16px) saturate(120%);
+  --glass-blur-soft: blur(10px) saturate(110%);
+  --glass-line:      rgba(241, 238, 232, 0.14);
+  --glass-line-top:  rgba(241, 238, 232, 0.3);
+  --glass-line-left: rgba(193, 58, 69, 0.4);
+  --glass-bevel: inset 0 1px 1px 0 rgba(255, 255, 255, 0.14), 0 20px 40px -15px rgba(0, 0, 0, 0.75);
+  --glass-bevel-sm: inset 0 1px 1px 0 rgba(255, 255, 255, 0.1), 0 8px 18px -10px rgba(0, 0, 0, 0.8);
+  --glass-ring: inset 0 0 0 1px rgba(122, 24, 33, 0.5);
+  --glass-sheen: linear-gradient(105deg, rgba(255, 255, 255, 0) 26%, rgba(255, 255, 255, 0.16) 42%,
+                  rgba(255, 255, 255, 0.04) 50%, rgba(255, 255, 255, 0) 66%);
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -147,32 +147,29 @@ body {
   overflow-x: hidden;
 }
 
-/* Capa fija: humo de cripta + resplandor carmesí + abismo tinto */
+/* Capa fija: papel carbón + marcas de impresión (base editorial) */
 .space-bg {
   position: fixed;
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(1200px 820px at 82% -12%, rgba(139, 0, 0, 0.55), transparent 62%),
-    radial-gradient(980px 720px at 8% 28%, rgba(179, 0, 27, 0.3), transparent 58%),
-    radial-gradient(1100px 940px at 55% 118%, rgba(230, 57, 70, 0.28), transparent 60%),
-    radial-gradient(150vmax 92vmax at 50% 124%, rgba(58, 0, 8, 0.92), transparent 62%),
-    linear-gradient(180deg, #0c0c0e 0%, var(--void) 52%, #170409 100%);
+    radial-gradient(1100px 700px at 50% -18%, rgba(232, 228, 220, 0.055), transparent 68%),
+    radial-gradient(1000px 780px at 104% 104%, rgba(122, 24, 33, 0.12), transparent 68%),
+    radial-gradient(760px 620px at -8% 64%, rgba(122, 24, 33, 0.07), transparent 70%),
+    linear-gradient(180deg, #111114 0%, var(--void) 46%, #0b0b0d 100%);
 }
-/* Capa de estrellas: las genera proceduralmente lunnie-bg.js en el
-   canvas (#field-canvas), con estrellas reales de 4 puntas. */
-/* Tapecrí de cruces † muy tenue + criss-cross técnico (GG gótico) */
+/* Tapecrí de marcas de registro + rejilla de impresión muy tenue */
 .space-bg::after {
   content: "";
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(230, 57, 70, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(230, 57, 70, 0.04) 1px, transparent 1px),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cpath d='M26 8v40M8 26h40' stroke='%23e63946' stroke-width='1.6' fill='none' opacity='0.055'/%3E%3C/svg%3E");
-  background-size: 60px 60px, 60px 60px, 56px 56px;
-  mask-image: radial-gradient(ellipse at center, black 18%, transparent 88%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 18%, transparent 88%);
+    linear-gradient(rgba(241, 238, 232, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(241, 238, 232, 0.028) 1px, transparent 1px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cpath d='M32 12v16M32 36v16M12 32h16M36 32h16' stroke='%23e8e4dc' stroke-width='0.17' fill='none' opacity='0.13'/%3E%3C/svg%3E");
+  background-size: 96px 96px, 96px 96px, 384px 384px;
+  mask-image: radial-gradient(ellipse at center, transparent 30%, black 95%);
+  -webkit-mask-image: radial-gradient(ellipse at center, transparent 30%, black 95%);
 }
 
 ::selection { background: var(--carmine); color: var(--void); }
@@ -180,6 +177,12 @@ img { max-width: 100%; }
 a  { color: var(--offwhite); text-decoration: none; }
 a:hover { color: var(--white); }
 h1, h2, h3 { line-height: 1.05; }
+
+/* Controles: sin estilo nativo (el botón secreto del hero se veía como
+   un recuadro blanco del sistema). Las clases (.btn, .chip…) pisan esto. */
+button { font: inherit; color: inherit; background: transparent; border: 0; padding: 0; }
+input, textarea, select { font: inherit; color: inherit; }
+textarea { background: none; border: 0; }
 
 /* ============================================================
    3. UTILIDADES P5 / GG

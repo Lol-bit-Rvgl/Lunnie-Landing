@@ -10,19 +10,19 @@
 
 /* ---- 26.1 TOKENS DEL NUEVO SISTEMA ---- */
 :root {
-  --ember:       #ff4557;
-  --ember-deep:  #b3001b;
-  --grave-rose:   #ff9aa5;
-  --deep:        #0a0a0c;
-  --panel-core:  #141416;
-  --panel-deep:  #141416;
-  --line-core:   #33282b;
-  --line-hex:    #7a1f28;
-  --txt:         #e8e8e8;
-  --txt-dim:     #b0b0b8;
-  --ink:         #0a0a0c;
+  --ember:       #c13a45;
+  --ember-deep:  #9b1e2b;
+  --grave-rose:   #d9a8b0;
+  --deep:        #0d0d0f;
+  --panel-core:  #151518;
+  --panel-deep:  #141417;
+  --line-core:   #2a2929;
+  --line-hex:    #7a1821;
+  --txt:         #e8e4dc;
+  --txt-dim:     #a7a29a;
+  --ink:         #0d0d0f;
   --oct:         14px;
-  --panel-shadow: 0 14px 40px -18px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(230, 57, 70, 0.12);
+  --panel-shadow: 0 14px 40px -18px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(122, 24, 33, 0.18);
   --type-flicker: none;
   --squircle: 24px 8px; /* superelipse del sistema: esquinas alternas reutilizables */
 }
@@ -32,21 +32,16 @@ body {
 }
 
 /* ---- 26.2 CAPAS DE FONDO + PARALLAX ---- */
-/* Fondo base: ahora con nebulosa extra + grano sutil + rejilla tenue */
+/* Fondo base: papel carbón + marcas de registro (editorial, sin nebulosa) */
 .space-bg {
   background:
-    radial-gradient(1200px 780px at 14% 18%, rgba(139, 0, 0, 0.6), transparent 60%),
-    radial-gradient(1000px 760px at 86% 32%, rgba(179, 0, 27, 0.5), transparent 62%),
-    radial-gradient(1120px 720px at 74% -8%, rgba(196, 30, 58, 0.22), transparent 60%),
-    radial-gradient(760px 620px at 30% 92%, rgba(52, 0, 10, 0.92), transparent 64%),
-    radial-gradient(520px 420px at 64% 60%, rgba(230, 57, 70, 0.18), transparent 66%),
-    repeating-linear-gradient(0deg, rgba(230, 57, 70, 0.035) 0 1px, transparent 1px 26px),
-    repeating-linear-gradient(90deg, rgba(230, 57, 70, 0.035) 0 1px, transparent 1px 26px),
-    radial-gradient(150vmax 96vmax at 50% 126%, rgba(58, 0, 8, 0.9), transparent 64%),
-    linear-gradient(180deg, #0c0c0e 0%, transparent 52%, #170409 100%),
-    var(--deep);
+    repeating-linear-gradient(0deg, rgba(241, 238, 232, 0.015) 0 1px, transparent 1px 4px),
+    radial-gradient(1100px 720px at 50% -16%, rgba(232, 228, 220, 0.06), transparent 66%),
+    radial-gradient(1020px 800px at 106% 102%, rgba(122, 24, 33, 0.13), transparent 68%),
+    radial-gradient(780px 640px at -10% 58%, rgba(122, 24, 33, 0.07), transparent 70%),
+    linear-gradient(180deg, #111114 0%, var(--deep) 46%, #0b0b0d 100%);
 }
-.space-bg::after  { background-size: 60px 60px, 60px 60px, 56px 56px; }
+.space-bg::after  { background-size: 96px 96px, 96px 96px, 384px 384px; }
 
 /* Capa decorativa de profundidad que maneja lunnie-bg.js */
 #field-canvas {
@@ -54,78 +49,16 @@ body {
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  opacity: 0.32; /* polvo de papel: la estrellada ya no es protagonista */
 }
-/* Nebulosa con parallax propio: se mueve aún más lento que las estrellas
-   (casi estática). Va después del canvas en el DOM, así que en el empate
-   de z-index -1 queda por encima de las estrellas, como antes. */
-.px-nebula {
-  position: fixed;
-  inset: -28% 0;
-  z-index: -1;
-  pointer-events: none;
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-  background-image:
-    radial-gradient(120vmax 62vmax at 4% 6%, rgba(230, 57, 70, 0.16), transparent 58%),
-    radial-gradient(96vmax 60vmax at 97% 18%, rgba(179, 0, 27, 0.14), transparent 55%),
-    radial-gradient(110vmax 70vmax at 64% 6%, rgba(196, 30, 58, 0.1), transparent 60%),
-    radial-gradient(120vmax 80vmax at 80% 112%, rgba(24, 0, 5, 0.8), transparent 55%),
-    url("assets/backgrounds/nebula/nebula-primary.svg"),
-    url("assets/backgrounds/nebula/nebula-secondary.svg");
-  background-size: cover, cover, cover, cover, 62% auto, 72% auto;
-  background-position: center, center, center, 12% 16%, 88% 78%;
-  background-repeat: no-repeat;
-}
-@media (prefers-reduced-motion: reduce) {
-  .px-nebula { transform: none !important; will-change: auto; }
-}
-/* Bandas estelares lejana/media como sprites cacheados (los genera
-   lunnie-bg.js) que se mueven por transform, sin repintar el canvas. */
-.px-stars {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: -40%;
-  height: 180%;
-  z-index: -1;
-  pointer-events: none;
-  background-repeat: repeat-y;
-  background-position: center top;
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-}
-@media (prefers-reduced-motion: reduce) {
-  .px-stars { transform: none !important; will-change: auto; }
-}
-.fx-layer {
-  position: fixed;
-  inset: -12%;
-  z-index: -1;
-  pointer-events: none;
-  transform: translate3d(0, 0, 0);
-}
-.fx-layer.is-far   { z-index: -3; }
-.fx-layer.is-mid   { z-index: -1; opacity: 0.8; }
-.fx-layer.is-near  { z-index: 0; }
-.fx-layer.is-far   { background: url("assets/img/decor/star-core.svg") 8% 20% / 70px auto no-repeat,
-                               url("assets/img/decor/star-core.svg") 68% 12% / 44px auto no-repeat,
-                               url("assets/img/decor/star-core.svg") 40% 78% / 60px auto no-repeat; }
-.fx-layer.is-mid   { background: url("assets/img/decor/planet.svg") 74% 8% / 150px auto no-repeat,
-                               url("assets/img/decor/satellite.svg") 6% 55% / auto 130px no-repeat; }
-.fx-layer.is-near  { background: url("assets/img/decor/planet.svg") 20% 118% / 190px auto no-repeat,
-                               url("assets/img/decor/star-core.svg") 90% 75% / 58px auto no-repeat; }
-.fx-layer.is-near::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(1px 1px at 15% 30%, #fffafa, transparent),
-    radial-gradient(1.4px 1.4px at 55% 18%, #fffafa, transparent),
-    radial-gradient(1px 1px at 82% 41%, #f0eaea, transparent),
-    radial-gradient(1.2px 1.2px at 35% 68%, #ff4557, transparent),
-    radial-gradient(1px 1px at 66% 82%, #fffafa, transparent);
-  background-size: 400px 400px;
-}
+/* Nebulosa: retirada del nuevo sistema visual (el fondo es papel/carbón).
+   Se conserva el nodo por si lunnie-bg.js sigue referenciándolo. */
+.px-nebula { display: none; }
+/* Bandas estelares: fuera del nuevo fondo editorial. */
+.px-stars { display: none; }
+/* Capas de parallax con planetas/lunas: fuera del fondo editorial. */
+.fx-layer { display: none; }
+
 /* grano muy sutil para que el fondo no luzca liso */
 body::before {
   content: "";
@@ -142,7 +75,7 @@ body::after {
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  background: radial-gradient(120% 90% at 50% 0%, transparent 55%, rgba(6, 6, 7, 0.5));
+  background: radial-gradient(130% 100% at 50% 40%, transparent 62%, rgba(6, 6, 7, 0.42));
 }
 
 /* ---- 26.3 HERO — pieza gráfica asimétrica ---- */
@@ -1071,14 +1004,17 @@ body.debug-mode .hero-sub::after {
 .egg-dev-note { font-size: 0.62rem; color: var(--grey-d); }
 
 /* ---- 26.14b REVEALS VARIADOS (cada tipo entra distinto) ---- */
-/* el JS solo alterna .pre-reveal → .revealed; aquí damos forma por variante */
+/* el JS solo alterna .pre-reveal → .revealed; aquí damos forma por variante.
+   NOTA: el estado inicial NO usa clip-path: Chrome deja de reportar la
+   intersección de un elemento recortado a cero y el panel nunca se
+   revelaba (perfil, changelog, WIP, diagnósticos y footer salían vacíos). */
 [data-reveal="sys"].pre-reveal {
   opacity: 0;
-  clip-path: inset(0 0 100% 0);
-  transition: opacity 0.6s var(--ease), clip-path 0.7s var(--ease);
+  transform: translateY(16px);
+  transition: opacity 0.6s var(--ease), transform 0.7s var(--ease);
 }
 [data-reveal="sys"].revealed {
-  clip-path: inset(0 0 0% 0);
+  transform: none;
   opacity: 1;
 }
 [data-reveal="tx"].pre-reveal {
@@ -1276,43 +1212,16 @@ body.debug-mode .hero-sub::after {
    identidad (Lunnie/RIP), badges, HUD, textos.
    ============================================================ */
 
-/* ---- 28.1 FONDO COMPUESTO por capas SVG (fase §7) ---- */
-/* Las nebulosas y sus blobs viven en .px-nebula (parallax casi estático);
-   aquí queda la base + el polvo, con el campo estelar real del canvas
-   por encima. */
-.space-bg {
-  background-image:
-    url("assets/backgrounds/space/dust.svg"),
-    url("assets/backgrounds/space/space-base.svg");
-  background-size: auto, cover;
-  background-position: center, center;
-  background-repeat: repeat, no-repeat;
-}
+/* ---- 28.1 FONDO COMPUESTO (papel editorial) ---- */
+/* El fondo ya no se arma con capas espaciales: base de 26.2 (papel carbón
+   + rejilla + marcas de registro) más grano fino y canvas de polvo. */
 /* el grano de la página pasa a usar noise.svg del kit */
 body::before {
   background-image: url("assets/backgrounds/textures/noise.svg");
   background-size: 210px 210px;
+  opacity: 0.045;
 }
 
-/* capas de parallax: planetas, lunas y estrellas del kit */
-.fx-layer.is-mid {
-  background-image:
-    url("assets/decorations/planets/planet-purple.svg"),
-    url("assets/decorations/moons/moon-half.svg"),
-    url("assets/decorations/stars/star-04.svg");
-  background-size: 130px auto, 92px auto, 40px auto;
-  background-position: 78% 6%, 8% 62%, 55% 18%;
-  background-repeat: no-repeat;
-}
-.fx-layer.is-near {
-  background-image:
-    url("assets/decorations/planets/planet-ring.svg"),
-    url("assets/decorations/stars/cross-star.svg"),
-    url("assets/decorations/stars/sparkle-01.svg");
-  background-size: 180px auto, 44px auto, 34px auto;
-  background-position: 16% 118%, 88% 70%, 48% 40%;
-  background-repeat: no-repeat;
-}
 
 /* ---- 28.2 HERO kit (fase §22 §23 §24) ---- */
 .hero { position: relative; }
@@ -2116,4 +2025,474 @@ body.is-scrolled .nebula-friend { opacity: 1; translate: 0 0; }
 @media (prefers-reduced-motion: reduce) {
   .working-row { transform: none !important; }
   .gal-strip a, .badge-88, .friend-links a { transition: none; }
+}
+
+/* ============================================================
+   29. DIRECCIÓN EDITORIAL — portada, lámina, ritmo y colofón
+   ------------------------------------------------------------
+   Objetivo: pasar de "panel cósmico" a folio de artista.
+   Papel de carbón, rejilla de impresión, la obra como pieza
+   central y el rojo reducido a tinta de acento. Esta sección
+   va al final del archivo para poder reescribir lo anterior
+   sin romper el sistema que ya funciona.
+   ============================================================ */
+
+/* ---- 29.1 GRID: riel de identidad + columna de lectura ---- */
+.grid {
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  gap: clamp(22px, 2.4vw, 32px);
+}
+.zone-widgets { margin-top: clamp(1.8rem, 3vw, 2.6rem); }
+.widget-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 2vw, 26px);
+  align-items: start;
+}
+
+/* ---- 29.2 HERO: portada del folio (LU NN IE) ---- */
+.hero {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: clamp(2rem, 4vw, 3.2rem) clamp(1.2rem, 3vw, 2.2rem) clamp(1rem, 2vw, 1.6rem);
+  text-align: left;
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(190px, 0.75fr);
+  column-gap: clamp(20px, 4vw, 56px);
+  row-gap: 0;
+  align-items: start;
+}
+.hero-deco-grid { opacity: 0.16; }
+.hero-badge {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  justify-self: start;
+  margin: 0 0 clamp(0.7rem, 1.6vw, 1.2rem);
+  transform: none;
+  clip-path: none;
+  border: 0;
+  border-left: 3px solid var(--ember);
+  background: transparent;
+  padding: 3px 0 3px 12px;
+  color: var(--txt-dim);
+  letter-spacing: 0.42em;
+}
+.hero-badge i { color: var(--ember); font-style: normal; }
+.hero-badge::after { display: none; }
+.hero-title {
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
+  font-size: clamp(3.2rem, 10.5vw, 8.4rem);
+  line-height: 0.84;
+  letter-spacing: 0.005em;
+  color: var(--white);
+  text-shadow: none;
+  transform: rotate(-0.9deg);
+}
+.hero-title::before {
+  content: "LUNNIE";
+  left: -7px;
+  top: 7px;
+  color: transparent;
+  -webkit-text-stroke: 1.6px rgba(122, 24, 33, 0.8);
+  opacity: 1;
+}
+.hero-title::after { content: none; }
+.hero-title .hi {
+  color: var(--carmine);
+  text-shadow: 4px 4px 0 rgba(13, 13, 15, 0.92);
+  -webkit-text-stroke: 0;
+}
+.hero-sub {
+  grid-column: 1;
+  grid-row: 3;
+  align-self: start;
+  margin: clamp(1.1rem, 2vw, 1.6rem) 0 0;
+  max-width: none;
+  padding-left: 16px;
+  font-size: clamp(0.76rem, 1.3vw, 0.95rem);
+  letter-spacing: 0.34em;
+  color: var(--grey);
+}
+.hero-sub::before { display: block; width: 1px; top: 4px; bottom: 4px; background: var(--line-core); }
+.hero-sub strong { display: inline; font-family: var(--font-ui); color: var(--txt); letter-spacing: 0.3em; }
+.hero-sub em { color: var(--ember); }
+.hero-badges {
+  grid-column: 1;
+  grid-row: 4;
+  margin: clamp(1rem, 1.8vw, 1.3rem) 0 0;
+  justify-self: start;
+  align-self: start;
+}
+.hero-coords {
+  grid-column: 1;
+  grid-row: 5;
+  width: auto;
+  max-width: 420px;
+  margin: clamp(1rem, 1.8vw, 1.4rem) 0 0;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line-core);
+}
+.hero-rule {
+  grid-column: 1 / -1;
+  grid-row: 6;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  margin: clamp(1.4rem, 2.6vw, 2.2rem) 0 0;
+  transform: none;
+  filter: none;
+  border-top: 1px solid var(--line-core);
+  background: none;
+  position: relative;
+}
+.hero-rule::before,
+.hero-rule::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  width: 7px;
+  height: 7px;
+  background: var(--ember);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  opacity: 0.9;
+}
+.hero-rule::before { left: 0; }
+.hero-rule::after { right: 0; left: auto; width: 7px; height: 7px; transform: none; background-size: auto; opacity: 0.9; }
+/* lámina de portada: la obra enmarcada, sin órbitas ni stickers flotantes */
+.hero-sticker {
+  grid-column: 2;
+  grid-row: 2 / span 4;
+  justify-self: end;
+  align-self: start;
+  width: min(300px, 100%);
+  aspect-ratio: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 11px 11px 13px;
+  position: relative;
+  border-radius: 0;
+  background: linear-gradient(180deg, #17171b, #131316);
+  border: 1px solid var(--line-hex);
+  box-shadow: 0 34px 60px -42px rgba(0, 0, 0, 0.95);
+  transform: rotate(1.4deg);
+  transition: transform 0.4s var(--ease);
+  cursor: pointer;
+  z-index: 2;
+}
+.hero-sticker:hover { transform: rotate(0deg) translateY(-4px); }
+.hero-sticker img {
+  order: 1;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 14%;
+  mix-blend-mode: normal;
+  filter: none;
+  border-radius: 0;
+}
+.hero-sticker::before,
+.hero-sticker::after {
+  position: static;
+  inset: auto;
+  transform: none;
+  padding: 0;
+  background: none;
+  border: 0;
+  clip-path: none;
+  opacity: 1;
+  display: block;
+  z-index: auto;
+  mix-blend-mode: normal;
+  -webkit-mask-image: none;
+  mask-image: none;
+  font-family: var(--font-mono);
+  font-size: 0.54rem;
+  letter-spacing: 0.24em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+.hero-sticker::before { content: "lunnie // goth bunny"; order: 0; color: var(--txt-dim); }
+.hero-sticker::after { content: "042 · crypt 17"; order: 3; align-self: flex-end; color: var(--carmine); }
+.hero-sticker .stk-tag {
+  order: 2;
+  position: static;
+  left: auto;
+  bottom: auto;
+  transform: none;
+  background: transparent;
+  color: var(--grey-d);
+  padding: 0;
+  clip-path: none;
+  letter-spacing: 0.16em;
+}
+
+/* ---- 29.3 NAV: reglas finas, el rojo sólo marca el activo ---- */
+.site-nav { max-width: 1100px; margin: 0.6rem auto 2rem; }
+.site-nav a::before { background: transparent; }
+.site-nav a:hover { text-shadow: none; border-color: var(--txt); }
+.site-nav a:hover::after { text-shadow: none; }
+.site-nav a.active::before { opacity: 0; }
+.site-nav a.active { color: var(--carmine); border-color: var(--line-core); border-bottom-color: var(--carmine); }
+.site-nav a.active::after { color: var(--carmine); text-shadow: none; }
+
+/* ---- 29.4 PANELES: material de archivo, no de consola ---- */
+.panel,
+.p5-box,
+.tx-box,
+.giscus-fallback,
+.dg-bubble { box-shadow: 0 26px 50px -36px rgba(0, 0, 0, 0.95); }
+.panel::after,
+.p5-box::after { border-color: rgba(232, 228, 220, 0.1); }
+.panel-head,
+.comm-head,
+.dock-head,
+.oc-head,
+.assistant-head {
+  background: repeating-linear-gradient(-45deg, rgba(241, 238, 232, 0.035) 0 9px, transparent 9px 18px),
+              linear-gradient(180deg, #1a1a1e, #161619);
+  border-bottom: 1px solid var(--line-hex);
+}
+/* la etiqueta SYS_ salía recortada por el clip del panel: se retira
+   (el chip del cabecero ya nombra la sección) */
+.panel-a::before { content: none; }
+.panel-c > .panel-head {
+  background: linear-gradient(90deg, rgba(241, 238, 232, 0.05), rgba(20, 20, 23, 0.6));
+  border-bottom: 1px solid var(--line-hex);
+}
+.panel-d {
+  border: 1px solid var(--line-core);
+  background: linear-gradient(160deg, #17171b, #141417);
+}
+.panel-e {
+  background: repeating-linear-gradient(45deg, rgba(241, 238, 232, 0.03) 0 8px, transparent 8px 16px),
+              linear-gradient(160deg, rgba(32, 32, 36, 0.55), rgba(20, 20, 22, 0.75));
+}
+/* la pestaña LOG se salía recortada: la caja ya no la encierra */
+.tx-box { clip-path: none; transform: none; }
+.tx-box > * { transform: none; }
+.tx-tab { top: -15px; left: 14px; background: var(--bone); color: var(--void); box-shadow: 3px 3px 0 var(--oxblood); }
+/* widget de Discord: nada de texto cortado en el riel */
+.dw-head {
+  gap: 10px;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+}
+.dw-head > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dw-status { font-size: 0.8rem; overflow-wrap: anywhere; }
+
+/* ---- 29.5 OBRA DESTACADA: lámina central + nota al margen ---- */
+.zone-art .entry-wrap {
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: clamp(24px, 3vw, 52px);
+  align-items: center;
+}
+.entry-art { margin: 0; position: relative; }
+.entry-no {
+  position: absolute;
+  top: -0.35em;
+  left: -6px;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: 0.06em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--line-hex);
+  pointer-events: none;
+}
+.entry-mat {
+  background: #101013;
+  border: 1px solid var(--line-core);
+  padding: clamp(12px, 2vw, 26px);
+}
+.zone-art .featured-art {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 12%;
+  filter: none;
+  transform: none;
+}
+.zone-art .featured-art:hover { transform: none; filter: none; }
+.entry-cap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  align-items: baseline;
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--grey-d);
+}
+.entry-cap b { color: var(--txt); font-weight: 600; letter-spacing: 0.1em; }
+.entry-info {
+  margin: 0;
+  padding-top: 10px;
+  border-top: 2px solid var(--line-hex);
+  position: relative;
+  z-index: 1;
+}
+.entry-info h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); color: var(--white); }
+.entry-note { font-family: var(--font-ui); font-weight: 700; letter-spacing: 0.04em; color: var(--txt); }
+.entry-meta {
+  display: grid;
+  gap: 7px;
+  margin: 0 0 16px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.entry-meta > div {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: 12px;
+  padding-bottom: 7px;
+  border-bottom: 1px dashed var(--line-core);
+}
+.entry-meta dt { color: var(--grey-d); }
+.entry-meta dd { margin: 0; color: var(--txt); }
+.path-gate { color: var(--grey-d); letter-spacing: 0.4em; }
+
+/* ---- 29.6 COLOFÓN: badges como archivo, filas sin inclinación ---- */
+.badges-block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 9px;
+  padding: 6px 0 2px;
+}
+.badges-block .badge-88:nth-child(3n+1) { transform: rotate(-1.6deg) translateY(2px); }
+.badges-block .badge-88:nth-child(3n+2) { transform: rotate(1.4deg) translateY(-1px); }
+.badges-block .badge-88:nth-child(3n)   { transform: rotate(-1.2deg); }
+.working-row:nth-child(odd),
+.working-row:nth-child(even) { transform: none; }
+
+/* ---- 29.7 ESTACIÓN Y TERMINAL: composición serena ---- */
+.zone-radio .fm-dial .fm-signal { margin-right: 0; }
+@media (min-width: 1121px) {
+  .zone-radio .fm-dial .fm-signal { margin-right: 68px; }
+}
+@media (max-width: 1120px) {
+  .zone-radio .fm-dial::after { display: none; }
+}
+@media (max-width: 560px) {
+  .site-footer { padding-bottom: 54px; }
+}
+.zone-radio .fm-freq { text-shadow: 0 14px 26px rgba(0, 0, 0, 0.7); color: var(--white); }
+.zone-radio .music-block {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  text-align: center;
+}
+.zone-radio .music-toggle-row { justify-content: center; }
+.zone-sys .sys-status-row:nth-child(2n) { background: rgba(241, 238, 232, 0.03); }
+.zone-sys .sys-side { justify-content: center; gap: 16px; }
+
+/* ---- 29.8 TIMELINE en su nueva columna (riel izquierdo) ---- */
+.col-left .panel-a .timeline { font-family: var(--font-mono); }
+.col-left .panel-a .timeline li {
+  padding: 0 0 14px 14px;
+  margin-left: 4px;
+  border-left: 1px dashed var(--line-core);
+}
+.col-left .panel-a .timeline li::before {
+  content: "+";
+  left: -8px;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  background: transparent;
+  color: var(--carmine);
+  font-size: 0.72rem;
+  font-weight: 700;
+  border: 1px solid var(--line-2);
+  transform: none;
+}
+.col-left .panel-a .timeline time {
+  background: rgba(28, 12, 16, 0.9);
+  color: var(--txt-dim);
+  border: 1px solid var(--line-core);
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 100%);
+  font-size: 0.6rem;
+  margin-bottom: 5px;
+}
+.col-left .panel-a .timeline p { font-size: 0.86rem; }
+
+/* ---- 29.9 ACCESIBILIDAD: foco visible en todo control ---- */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--carmine);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   29.10 RESPONSIVE — recomponer, no encoger
+   ============================================================ */
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .hero > * { grid-column: 1; grid-row: auto; }
+  .hero-badge { order: 1; }
+  .hero-title { order: 2; font-size: clamp(3rem, 14vw, 5.6rem); }
+  .hero-sub { order: 3; max-width: none; }
+  .hero-badges { order: 4; }
+  .hero-coords { order: 5; max-width: none; }
+  .hero-sticker {
+    order: 6;
+    justify-self: start;
+    width: min(300px, 84vw);
+    margin-top: 1.4rem;
+  }
+  .hero-rule { order: 7; }
+  .star-tap.is-far { top: 26%; left: auto; right: 5%; }
+  .zone-art .entry-wrap { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  .widget-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 1160px) {
+  .grid { grid-template-columns: minmax(240px, 300px) minmax(0, 1fr); }
+  .grid .col-center { grid-column: auto; order: 0; }
+}
+@media (max-width: 720px) {
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .grid .col-center { grid-column: auto; order: -1; }
+  .widget-row { grid-template-columns: minmax(0, 1fr); }
+  .hero { padding-top: 1.8rem; }
+  .hero-badge { font-size: 0.6rem; letter-spacing: 0.18em; }
+  .hero-sticker { width: min(280px, 90vw); }
+  .entry-mat { padding: 10px; }
+  .entry-info > div:first-child { margin-top: 0; }
+}
+@media (max-width: 440px) {
+  .entry-cap { font-size: 0.56rem; letter-spacing: 0.14em; }
+}
+
+/* ---- 29.11 RAIL: el índice lateral tiene calle propia ---- */
+@media (min-width: 1121px) {
+  .page { padding-right: 7rem; }
+  .scroll-index { right: 18px; max-width: 110px; }
+}
+
+/* ---- 29.12 MOVIMIENTO REDUCIDO ---- */
+@media (prefers-reduced-motion: reduce) {
+  .hero-sticker,
+  .hero-title,
+  .zone-art .featured-art,
+  .working-row,
+  .badges-block .badge-88 { transform: none !important; transition: none !important; animation: none !important; }
 }

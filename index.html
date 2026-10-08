@@ -90,28 +90,27 @@
   </div>
 
   <!-- ============================================================
-       HERO
+       HERO — portada editorial del folio
        ============================================================ -->
   <header class="hero">
-    <!-- Kit hero: brasas, rejilla, destellos y órbitas (lunnie-kit) -->
-    <span class="hero-deco hero-deco-stars" aria-hidden="true"></span>
+    <!-- Rejilla de impresión de fondo -->
     <span class="hero-deco hero-deco-grid" aria-hidden="true"></span>
-    <span class="hero-deco hero-orbit" aria-hidden="true"><img src="assets/hero/hero-orbit.svg" alt=""></span>
-    <span class="hero-deco hero-deco-l" aria-hidden="true"><img src="assets/hero/hero-decor-left.svg" alt=""></span>
 
-    <span class="hero-badge">EST. <i>2026</i> // NEOCITIES</span>
+    <p class="hero-badge">ARCHIVO DEL PANTEÓN <i>N.º 17</i> // NEOCITIES</p>
+
     <h1 class="hero-title">LU<span class="hi">NN</span>IE</h1>
 
-    <!-- Sticker flotante con la avatar del panteón -->
-    <div class="hero-sticker" id="hero-sticker" data-cursor role="img" aria-label="Cripta de Lunnie — la receta del panteón">
-      <img src="assets/img/oc/avatar.jpg" alt="Avatar de Lunnie" width="200" height="200" loading="lazy" decoding="async" style="object-fit:cover; object-position:50% 18%;">
+    <!-- Lámina de portada: la obra enmarcada -->
+    <figure class="hero-sticker" id="hero-sticker" data-cursor>
+      <img src="assets/img/oc/avatar.jpg" alt="LUNNIE // GOTH BUNNY — retrato de Lunnie, el conejo gótico" width="200" height="200" decoding="async" style="object-fit:cover; object-position:50% 16%;">
       <span class="stk-tag">01 · sender</span>
-    </div>
+    </figure>
 
     <p class="hero-coords" id="hero-coords"><img src="assets/ui/hud/hud-coordinates.svg" alt="" class="hud-coords-ico">CRYPT <b>17</b> // <b>NEOCITIES</b></p>
     <p class="hero-sub"><strong>digital artist</strong> &amp; illustrator<br>from <em>mexico</em></p>
     <div class="hero-badges">
       <span class="chip chip-open" data-live="commissions">commissions: open</span>
+      <span class="chip">est. 2026</span>
     </div>
     <div class="hero-rule" aria-hidden="true"></div>
   </header>
@@ -131,7 +130,7 @@
   <main class="page">
 
     <!-- ==========================================================
-         ENTRADA AL PANTEÓN — obra destacada como puerta
+         ENTRADA AL PANTEÓN — la obra destacada como lámina central
          ========================================================== -->
     <section class="zone zone-art" data-reveal="art" aria-labelledby="t-featured">
       <h2 class="sr-only" id="t-featured">obra destacada</h2>
@@ -139,20 +138,33 @@
         <span>CRYPT 17</span><i>↓</i><span>SIGNAL DETECTED</span>
       </div>
       <div class="entry-wrap">
-        <figure class="featured-art-wrap entry-art">
-          <img class="featured-art shape-hex" src="assets/img/oc/avatar.jpg" alt="LUNNIE // GOTH BUNNY — conejo gótico a color con fondo carmesí">
-          <figcaption class="entry-tag" aria-hidden="true">«LUNNIE // GOTH BUNNY»</figcaption>
+        <figure class="entry-art">
+          <span class="entry-no" aria-hidden="true">042</span>
+          <div class="entry-mat">
+            <img class="featured-art" src="assets/img/oc/avatar.jpg" alt="LUNNIE // GOTH BUNNY — conejo gótico a color con fondo carmesí">
+          </div>
+          <figcaption class="entry-cap">
+            <b>«LUNNIE // GOTH BUNNY»</b>
+            <span>digital · busto a color · hecha a mano</span>
+          </figcaption>
         </figure>
-        <aside class="panel panel-d entry-info">
+        <aside class="entry-info">
           <p class="ft-plate">FEATURED TRANSMISSION // ARTWORK <b>#042</b></p>
           <h3>«LUNNIE // GOTH BUNNY»</h3>
           <p class="entry-note">
             bienvenid@ a mi panteón — un dibujante haciendo casa en la web, sin algoritmo.
           </p>
           <p>
-            Mi personaje principal y único OC canónico: el conejo gótico — pelaje blanco y negro, piercing de cruz, collar de púas y mirada caída, sobre fondo carmesí.
+            Mi personaje principal y único OC canónico: el conejo gótico — pelaje blanco y negro,
+            piercing de cruz, collar de púas y mirada caída, sobre fondo carmesí.
             (Busto a color de Lunnie — hecho a mano, sin IA en el proceso.)
           </p>
+          <dl class="entry-meta">
+            <div><dt>obra</dt><dd>LUNNIE // GOTH BUNNY</dd></div>
+            <div><dt>técnica</dt><dd>digital · busto a color</dd></div>
+            <div><dt>serie</dt><dd>CRYPT 17 · N.º 042</dd></div>
+            <div><dt>proceso</dt><dd>0 % IA · trazo propio</dd></div>
+          </dl>
           <div class="tags-row">
             <span class="chip">original</span>
             <span class="chip chip-open">featured</span>
@@ -190,22 +202,6 @@
             </div>
         </section>
 
-        <!-- Botón 88x31 + copiar -->
-        <section class="panel panel-e" data-reveal="deco" aria-labelledby="t-button">
-          <header class="panel-head"><h2 id="t-button">my 88x31</h2><span class="chip">button</span></header>
-          <div class="button-block">
-            <div class="badge-row">
-              <img class="badge-88" src="assets/img/btn-1.svg" alt="Botón 88x31 de LUNNIE">
-              <img class="badge-88" src="assets/img/btn-2.svg" alt="Botón 88x31 de LUNNIE variante">
-              <img class="badge-88" src="assets/ui/badges/badge-cosmic.svg" alt="badge Cosmic Web">
-            </div>
-            <p class="tiny">¿enlazarme? copia el código:</p>
-            <textarea id="button-code" class="copy-source" rows="4" readonly>&lt;a href="https://lunnie.neocities.org/" target="_blank"&gt;&lt;img src="https://lunnie.neocities.org/assets/img/btn-1.svg" alt="LUNNIE" width="88" height="31" border="0"&gt;&lt;/a&gt;</textarea>
-            <button type="button" id="copy-btn" class="btn btn-blank"><img class="chip-ico" src="assets/ui/icons/icon-link.svg" alt=""> copiar</button>
-            <p id="copy-feedback" class="copy-feedback" hidden>¡copiado! ✨ gracias por el cariño</p>
-          </div>
-        </section>
-
         <!-- ==========================================================
              WIDGET DISCORD EN VIVO (render por discord-widget.js)
              ========================================================== -->
@@ -235,6 +231,12 @@
             <div class="dw-activity"><div class="art">⌁</div><span class="dw-activity-data">emitiendo ambiente… (sin actividad de Discord)</span></div>
             <div class="dw-foot"><span class="dw-clock">PRESENCIA DEL PANTEÓN // EN REPOSO</span></div>
           </div>
+        </section>
+
+        <!-- Changelog -->
+        <section class="panel panel-a" data-sec="LOG" data-reveal="sys" aria-labelledby="t-log">
+          <header class="panel-head"><h2 id="t-log">registro de actualizaciones</h2><span class="chip chip-live">live</span></header>
+          <ol class="timeline" id="changelog" reversed></ol>
         </section>
 
         <!-- Webring — REACTIVAR: cuando tengas al menos 1 sitio amigo real,
@@ -298,11 +300,7 @@
           <div class="tx-wall" id="tx-wall"></div>
         </section>
 
-        <!-- Changelog -->
-        <section class="panel panel-a" data-sec="LOG" data-reveal="sys" aria-labelledby="t-log">
-          <header class="panel-head"><h2 id="t-log">registro de actualizaciones</h2><span class="chip chip-live">live</span></header>
-          <ol class="timeline" id="changelog" reversed></ol>
-        </section>
+        <!-- Changelog vive en el raíl izquierdo (ritmo editorial del grid) -->
 
         <!-- ==========================================================
              COMENTARIOS: diálogo P5 + hilo Giscus
@@ -353,10 +351,14 @@
         </section>
       </div>
 
-      <!-- ==========================================================
-           COLUMNA DERECHA — WIDGETS
-           ========================================================== -->
-      <aside class="col stack col-right">
+    </div>
+
+    <!-- ==========================================================
+         COLOFÓN — cinta de módulos (working on · botón · archivo)
+         ========================================================== -->
+    <section class="zone zone-widgets" aria-labelledby="t-widgets">
+      <h2 class="sr-only" id="t-widgets">notas y archivo del panteón</h2>
+      <div class="widget-row">
 
         <!-- Working on -->
         <section class="panel panel-a" data-sec="WIP" data-reveal="sys" aria-labelledby="t-work">
@@ -368,12 +370,26 @@
           <p class="panel-foot tiny">actualizado: hoy — el pulso largo vive en el <a href="blog.html">log</a>.</p>
         </section>
 
-        <!-- Música ambiental — GRAVE FM (se mudó a zona propia, abajo) -->
+        <!-- Botón 88x31 + copiar -->
+        <section class="panel panel-e" data-reveal="deco" aria-labelledby="t-button">
+          <header class="panel-head"><h2 id="t-button">my 88x31</h2><span class="chip">button</span></header>
+          <div class="button-block">
+            <div class="badge-row">
+              <img class="badge-88" src="assets/img/btn-1.svg" alt="Botón 88x31 de LUNNIE">
+              <img class="badge-88" src="assets/img/btn-2.svg" alt="Botón 88x31 de LUNNIE variante">
+              <img class="badge-88" src="assets/ui/badges/badge-cosmic.svg" alt="badge Cosmic Web">
+            </div>
+            <p class="tiny">¿enlazarme? copia el código:</p>
+            <textarea id="button-code" class="copy-source" rows="4" readonly>&lt;a href="https://lunnie.neocities.org/" target="_blank"&gt;&lt;img src="https://lunnie.neocities.org/assets/img/btn-1.svg" alt="LUNNIE" width="88" height="31" border="0"&gt;&lt;/a&gt;</textarea>
+            <button type="button" id="copy-btn" class="btn btn-blank"><img class="chip-ico" src="assets/ui/icons/icon-link.svg" alt=""> copiar</button>
+            <p id="copy-feedback" class="copy-feedback" hidden>¡copiado! ✨ gracias por el cariño</p>
+          </div>
+        </section>
 
         <!-- Badges decorativos -->
         <section class="panel panel-e" data-reveal="deco" aria-labelledby="t-badges">
-          <header class="panel-head"><h2 id="t-badges">badges</h2><span class="chip">colección</span></header>
-          <div class="badges-block glass-card squircle-card" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+          <header class="panel-head"><h2 id="t-badges">archivo 88×31</h2><span class="chip">colección</span></header>
+          <div class="badges-block">
             <img class="badge-88" src="assets/ui/badges/badge-exe.svg" alt="badge LUNNIE.EXE" loading="lazy" decoding="async">
             <img class="badge-88" src="assets/ui/badges/badge-night.svg" alt="badge best viewed at night" loading="lazy" decoding="async">
             <img class="badge-88" src="assets/ui/badges/badge-signal.svg" alt="badge signal online" loading="lazy" decoding="async">
@@ -386,8 +402,8 @@
             <img class="badge-88" src="assets/ui/badges/badge-space-mono.svg" alt="badge I ♥ RIP mono" loading="lazy" decoding="async">
           </div>
         </section>
-      </aside>
-    </div>
+      </div>
+    </section>
 
     <!-- ==========================================================
          ESTACIÓN — GRAVE FM (descubrimiento tras el recorrido)

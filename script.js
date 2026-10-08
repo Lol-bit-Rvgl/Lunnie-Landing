@@ -372,7 +372,9 @@ const CONFIG = {
 (function initReveal() {
   const targets = document.querySelectorAll('[data-reveal]');
   if (!targets.length) return;
-  if (!('IntersectionObserver' in window)) {
+  // Sin movimiento (o sin observer) nada se queda oculto.
+  const still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (still || !('IntersectionObserver' in window)) {
     targets.forEach((t) => t.classList.add('revealed'));
     return;
   }
@@ -383,8 +385,16 @@ const CONFIG = {
         io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
   targets.forEach((t) => { t.classList.add('pre-reveal'); io.observe(t); });
+  // Red de seguridad: lo que ya está en pantalla se revela aunque el
+  // observer falle (p. ej. por recortes o por un scroll programático).
+  window.addEventListener('load', () => {
+    targets.forEach((t) => {
+      const r = t.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) t.classList.add('revealed');
+    });
+  });
 })();
 
 /* ============================================================
