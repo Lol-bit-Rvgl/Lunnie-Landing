@@ -66,6 +66,20 @@ const CONFIG = {
   // si se desincroniza con el grid real). Los <b data-stat="works"> del
   // perfil se calculan de aquí: CONFIG.WORKS.length.
   WORKS: [
+    'STAR-16', // torii al atardecer (featured)
+    'STAR-17', // Kasane Teto — fullbody
+    'STAR-18', // Toph Beifong — combate
+    'STAR-19', // Toph Beifong — retrato
+    'STAR-20', // DEMONKOPIA
+    'STAR-21', // Withered Bonnie
+    'STAR-22', // edificios urbanos
+    'STAR-23', // sonrisa creepy — WIP
+    'STAR-24', // Jax — chibi
+    'STAR-11', // LUNNIE — collar de púas
+    'STAR-12', // LUNNIE — ojos otoñales
+    'STAR-13', // LUNNIE — boceto oscuro
+    'STAR-14', // LUNNIE — lineart limpio
+    'STAR-15', // LUNNIE — sticker enojado
     'STAR-01', // planeta anillado
     'STAR-02', // gatita astronauta
     'STAR-03', // gearrunner mecha
