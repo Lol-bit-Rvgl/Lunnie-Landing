@@ -1,20 +1,20 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--
-  LUNNIE ♡ — galeria.html
-  Cuadrícula responsiva con filtros por categoría + lightbox
-  "TAKE YOUR TIME / HEAVEN OR HELL". Página 100% estática.
+  LUNNIE â™¡ â€” galeria.html
+  CuadrÃ­cula responsiva con filtros por categorÃ­a + lightbox
+  "TAKE YOUR TIME / HEAVEN OR HELL". PÃ¡gina 100% estÃ¡tica.
 -->
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#140507">
-  <meta name="description" content="Galería de arte de Lunnie: original, fanart, cómics y animación. Un archivo gótico en construcción eterna.">
-  <title>GALERÍA ♡ LUNNIE</title>
+  <meta name="description" content="GalerÃ­a de arte de Lunnie: original, fanart, cÃ³mics y animaciÃ³n. Un archivo gÃ³tico en construcciÃ³n eterna.">
+  <title>GALERÃA â™¡ LUNNIE</title>
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="GALERÍA ♡ LUNNIE">
-  <meta property="og:description" content="Original · fanart · cómics · animación. El archivo de arte del panteón.">
+  <meta property="og:title" content="GALERÃA â™¡ LUNNIE">
+  <meta property="og:description" content="Original Â· fanart Â· cÃ³mics Â· animaciÃ³n. El archivo de arte del panteÃ³n.">
   <meta property="og:url" content="https://lol-bit-rvgl.github.io/Lunnie-Landing/galeria.html">
   <meta property="og:image" content="https://lol-bit-rvgl.github.io/Lunnie-Landing/assets/img/banner.svg">
 
@@ -43,27 +43,27 @@
   <!-- Ticker -->
   <div class="marquee-bar" aria-hidden="true">
     <div class="marquee-track">
-      <span><em>✦ SELECT YOUR ART ✦</em> <b>FILTRA POR CATEGORÍA</b> ✦ <em>TAKE YOUR TIME</em> ✦ <em>TODO ORIGINAL</em> ✦ <em>HEAVEN OR HELL</em></span>
-      <span><em>✦ SELECT YOUR ART ✦</em> <b>FILTRA POR CATEGORÍA</b> ✦ <em>TAKE YOUR TIME</em> ✦ <em>TODO ORIGINAL</em> ✦ <em>HEAVEN OR HELL</em></span>
+      <span><em>âœ¦ SELECT YOUR ART âœ¦</em> <b>FILTRA POR CATEGORÃA</b> âœ¦ <em>TAKE YOUR TIME</em> âœ¦ <em>TODO ORIGINAL</em> âœ¦ <em>HEAVEN OR HELL</em></span>
+      <span><em>âœ¦ SELECT YOUR ART âœ¦</em> <b>FILTRA POR CATEGORÃA</b> âœ¦ <em>TAKE YOUR TIME</em> âœ¦ <em>TODO ORIGINAL</em> âœ¦ <em>HEAVEN OR HELL</em></span>
     </div>
   </div>
 
   <!-- Hero -->
   <header class="page-hero">
-    <span class="hero-badge">ART ARCHIVE // <i>EN CONSTRUCCIÓN</i></span>
-    <h1>galería</h1>
-    <p>original · fanart · cómics · animación</p>
+    <span class="hero-badge">ART ARCHIVE // <i>EN CONSTRUCCIÃ“N</i></span>
+    <h1>galerÃ­a</h1>
+    <p>original Â· fanart Â· cÃ³mics Â· animaciÃ³n</p>
     <div class="hero-rule" aria-hidden="true"></div>
   </header>
 
   <!-- Nav -->
-  <nav class="site-nav" aria-label="Navegación principal">
+  <nav class="site-nav" aria-label="NavegaciÃ³n principal">
     <a href="index.html">home</a>
-    <a href="galeria.html" class="active">galería</a>
+    <a href="galeria.html" class="active">galerÃ­a</a>
     <a href="encargos.html">encargos</a>
     <a href="ocs.html">OCs</a>
     <a href="blog.html">blog</a>
-    <a href="sobre-mi.html">sobre mí</a>
+    <a href="sobre-mi.html">sobre mÃ­</a>
   </nav>
 
   <main class="page">
@@ -71,113 +71,157 @@
       <div class="col" style="grid-column: 1 / -1">
 
         <!-- Filtros -->
-        <div class="filters glass-card squircle-card" role="group" aria-label="Filtros de categoría">
+        <div class="filters glass-card squircle-card" role="group" aria-label="Filtros de categorÃ­a">
           <button type="button" class="filter active" data-filter="all">todo</button>
           <button type="button" class="filter" data-filter="original">original</button>
           <button type="button" class="filter" data-filter="fanart">fanart</button>
-          <button type="button" class="filter" data-filter="comics">cómics</button>
-          <button type="button" class="filter" data-filter="animacion">animación</button>
+          <button type="button" class="filter" data-filter="comics">cÃ³mics</button>
+          <button type="button" class="filter" data-filter="animacion">animaciÃ³n</button>
         </div>
 
         <!-- Aviso honesto: los assets actuales son de muestra -->
-        <p class="assets-note" data-reveal>🚧 estas piezas son <b>assets de muestra</b> con dirección de arte, no obra terminada — el arte final está en construcción y llegará a este archivo pronto.</p>
+        <p class="assets-note" data-reveal>ðŸš§ estas piezas son <b>assets de muestra</b> con direcciÃ³n de arte, no obra terminada â€” el arte final estÃ¡ en construcciÃ³n y llegarÃ¡ a este archivo pronto.</p>
 
-        <!-- Grid: cada .g-item lleva data-cat (categorías separadas por espacio) -->
+        <!-- Grid: cada .g-item lleva data-cat (categorÃ­as separadas por espacio) -->
         <div class="gal-grid" id="gal-grid">
+          <figure class="g-item" data-reveal tabindex="0" data-frame="d"
+                  data-cat="original" data-title="LUNNIE — collar de púas" data-cat-label="ORIGINAL" data-coord="CRYPT 17">
+            <span class="g-frame" aria-hidden="true"></span>
+            <span class="g-coord">OC-01</span>
+            <span class="g-tag">lunnie</span>
+            <img class="g-img" src="assets/img/oc/avatar.jpg" alt="LUNNIE — collar de púas" loading="lazy" decoding="async" style="object-fit:cover; object-position:50% 20%;">
+            <span class="g-cap"><b>LUNNIE</b><span class="ico">✦ orig</span></span>
+          </figure>
+
+          <figure class="g-item" data-reveal tabindex="0" data-frame="d"
+                  data-cat="original" data-title="LUNNIE — ojos otoñales" data-cat-label="ORIGINAL" data-coord="CRYPT 17">
+            <span class="g-frame" aria-hidden="true"></span>
+            <span class="g-coord">OC-02</span>
+            <span class="g-tag">lunnie</span>
+            <img class="g-img" src="assets/img/oc/banner-eyes.jpg" alt="LUNNIE — ojos otoñales" loading="lazy" decoding="async" style="object-fit:cover; object-position:50% 40%;">
+            <span class="g-cap"><b>LUNNIE</b><span class="ico">✦ orig</span></span>
+          </figure>
 
           <figure class="g-item" data-reveal tabindex="0" data-frame="a"
-                  data-cat="original" data-title="planeta anillado" data-cat-label="ORIGINAL" data-coord="17.04 · -0.11">
+                  data-cat="original" data-title="LUNNIE — boceto oscuro" data-cat-label="ORIGINAL" data-coord="CRYPT 17">
+            <span class="g-frame" aria-hidden="true"></span>
+            <span class="g-coord">SK-01</span>
+            <span class="g-tag">sketch</span>
+            <img class="g-img" src="assets/img/oc/dark-line.jpg" alt="LUNNIE — boceto oscuro" loading="lazy" decoding="async" style="object-fit:cover; object-position:50% 30%;">
+            <span class="g-cap"><b>LUNNIE</b><span class="ico">✦ sketch</span></span>
+          </figure>
+
+          <figure class="g-item" data-reveal tabindex="0" data-frame="c"
+                  data-cat="original" data-title="LUNNIE — lineart limpio" data-cat-label="ORIGINAL" data-coord="CRYPT 17">
+            <span class="g-frame" aria-hidden="true"></span>
+            <span class="g-coord">LT-01</span>
+            <span class="g-tag">lineart</span>
+            <img class="g-img" src="assets/img/oc/clean-line.jpg" alt="LUNNIE — lineart limpio" loading="lazy" decoding="async" style="object-fit:cover; object-position:50% 25%;">
+            <span class="g-cap"><b>LUNNIE</b><span class="ico">✦ lineart</span></span>
+          </figure>
+
+          <figure class="g-item" data-reveal tabindex="0" data-frame="b"
+                  data-cat="original" data-title="LUNNIE — sticker enojado" data-cat-label="ORIGINAL" data-coord="CRYPT 17">
+            <span class="g-frame" aria-hidden="true"></span>
+            <span class="g-coord">STK-01</span>
+            <span class="g-tag">sticker</span>
+            <img class="g-img" src="assets/img/oc/angry-sticker.jpg" alt="LUNNIE — sticker enojado" loading="lazy" decoding="async" style="object-fit:cover; object-position:50% 25%;">
+            <span class="g-cap"><b>LUNNIE</b><span class="ico">✦ sticker</span></span>
+          </figure>
+
+          <figure class="g-item" data-reveal tabindex="0" data-frame="a"
+                  data-cat="original" data-title="planeta anillado" data-cat-label="ORIGINAL" data-coord="17.04 Â· -0.11">
             <span class="g-frame" aria-hidden="true"></span>
             <span class="g-coord">STAR-01</span>
             <span class="g-tag">orig</span>
             <img class="g-img" src="assets/img/art1.svg" alt="planeta anillado" loading="lazy" decoding="async">
-            <span class="g-cap"><b>planeta anillado</b><span class="ico">◆ orig</span></span>
+            <span class="g-cap"><b>planeta anillado</b><span class="ico">â—† orig</span></span>
           </figure>
 
           <figure class="g-item" data-reveal tabindex="0" data-frame="b"
-                  data-cat="original fanart" data-title="gatita astronauta" data-cat-label="ORIGINAL / FANART" data-coord="0.01 · 0.17">
+                  data-cat="original fanart" data-title="gatita astronauta" data-cat-label="ORIGINAL / FANART" data-coord="0.01 Â· 0.17">
             <span class="g-frame" aria-hidden="true"></span>
             <span class="g-coord">STAR-02</span>
             <span class="g-tag">orig/fan</span>
             <img class="g-img" src="assets/img/art2.svg" alt="gatita astronauta" loading="lazy" decoding="async">
-            <span class="g-cap"><b>gatita astronauta</b><span class="ico">◆ orig</span></span>
+            <span class="g-cap"><b>gatita astronauta</b><span class="ico">â—† orig</span></span>
           </figure>
 
           <figure class="g-item" data-reveal tabindex="0" data-frame="c"
-                  data-cat="original fanart" data-title="gearrunner mecha" data-cat-label="ORIGINAL / FANART" data-coord="0.71 · 3.03">
+                  data-cat="original fanart" data-title="gearrunner mecha" data-cat-label="ORIGINAL / FANART" data-coord="0.71 Â· 3.03">
             <span class="g-frame" aria-hidden="true"></span>
             <span class="g-coord">STAR-03</span>
             <span class="g-tag">mech</span>
             <img class="g-img" src="assets/img/art3.svg" alt="gearrunner mecha" loading="lazy" decoding="async">
-            <span class="g-cap"><b>gearrunner</b><span class="ico">◆ mech</span></span>
+            <span class="g-cap"><b>gearrunner</b><span class="ico">â—† mech</span></span>
           </figure>
 
           <figure class="g-item" data-reveal tabindex="0" data-frame="b"
-                  data-cat="fanart" data-title="lune sonriente" data-cat-label="FANART" data-coord="3.40 · 26.9">
+                  data-cat="fanart" data-title="lune sonriente" data-cat-label="FANART" data-coord="3.40 Â· 26.9">
             <span class="g-frame" aria-hidden="true"></span>
             <span class="g-coord">STAR-04</span>
             <span class="g-tag">fan</span>
             <img class="g-img" src="assets/img/art4.svg" alt="lune sonriente" loading="lazy" decoding="async">
-            <span class="g-cap"><b>lune sonriente</b><span class="ico">◆ fan</span></span>
+            <span class="g-cap"><b>lune sonriente</b><span class="ico">â—† fan</span></span>
           </figure>
 
           <figure class="g-item" data-reveal tabindex="0" data-frame="a"
-                  data-cat="comics" data-title="página de cómic 01" data-cat-label="CÓMIC" data-coord="5.5 · -0.5">
+                  data-cat="comics" data-title="pÃ¡gina de cÃ³mic 01" data-cat-label="CÃ“MIC" data-coord="5.5 Â· -0.5">
             <span class="g-frame" aria-hidden="true"></span>
             <span class="g-coord">STAR-05</span>
             <span class="g-tag">comic</span>
-            <img class="g-img" src="assets/img/art5.svg" alt="página de cómic 01" loading="lazy" decoding="async">
-            <span class="g-cap"><b>página 01: prólogo</b><span class="ico">◆ comic</span></span>
+            <img class="g-img" src="assets/img/art5.svg" alt="pÃ¡gina de cÃ³mic 01" loading="lazy" decoding="async">
+            <span class="g-cap"><b>pÃ¡gina 01: prÃ³logo</b><span class="ico">â—† comic</span></span>
           </figure>
 
           <figure class="g-item" data-reveal tabindex="0" data-frame="c"
-                  data-cat="comics" data-title="tira x3 paneles" data-cat-label="CÓMIC" data-coord="-0.31 · 1.05">
+                  data-cat="comics" data-title="tira x3 paneles" data-cat-label="CÃ“MIC" data-coord="-0.31 Â· 1.05">
             <span class="g-frame" aria-hidden="true"></span>
             <span class="g-coord">STAR-06</span>
             <span class="g-tag">comic</span>
             <img class="g-img" src="assets/img/art5b.svg" alt="tira x3 paneles" loading="lazy" decoding="async">
-            <span class="g-cap"><b>tira de 3 paneles</b><span class="ico">◆ comic</span></span>
+            <span class="g-cap"><b>tira de 3 paneles</b><span class="ico">â—† comic</span></span>
           </figure>
 
           <figure class="g-item" data-reveal tabindex="0" data-frame="a"
-                  data-cat="animacion" data-title="rough walk loop" data-cat-label="ANIMACIÓN" data-coord="24fps · 0:04">
+                  data-cat="animacion" data-title="rough walk loop" data-cat-label="ANIMACIÃ“N" data-coord="24fps Â· 0:04">
             <span class="g-frame" aria-hidden="true"></span>
             <span class="g-coord">STAR-07</span>
             <span class="g-tag">anim</span>
             <img class="g-img" src="assets/img/art6.svg" alt="rough walk loop" loading="lazy" decoding="async">
-            <span class="g-cap"><b>rough walk — 24fps</b><span class="ico">◆ anim</span></span>
+            <span class="g-cap"><b>rough walk â€” 24fps</b><span class="ico">â—† anim</span></span>
           </figure>
 
           <figure class="g-item" data-reveal tabindex="0" data-frame="b"
-                  data-cat="animacion" data-title="mecha flicker" data-cat-label="ANIMACIÓN" data-coord="30fps · glitch">
+                  data-cat="animacion" data-title="mecha flicker" data-cat-label="ANIMACIÃ“N" data-coord="30fps Â· glitch">
             <span class="g-frame" aria-hidden="true"></span>
             <span class="g-coord">STAR-08</span>
             <span class="g-tag">anim</span>
             <img class="g-img" src="assets/img/art10.svg" alt="mecha flicker" loading="lazy" decoding="async">
-            <span class="g-cap"><b>mecha flicker test</b><span class="ico">◆ anim</span></span>
+            <span class="g-cap"><b>mecha flicker test</b><span class="ico">â—† anim</span></span>
           </figure>
 
           <figure class="g-item" data-reveal tabindex="0" data-frame="c"
-                  data-cat="original" data-title="chibi nebulosa" data-cat-label="ORIGINAL" data-coord="1 · ∞ · nebulosa">
+                  data-cat="original" data-title="chibi nebulosa" data-cat-label="ORIGINAL" data-coord="1 Â· âˆž Â· nebulosa">
             <span class="g-frame" aria-hidden="true"></span>
             <span class="g-coord">STAR-09</span>
             <span class="g-tag">sticker</span>
             <img class="g-img" src="assets/img/art8.svg" alt="chibi nebulosa" loading="lazy" decoding="async">
-            <span class="g-cap"><b>chibi nebulosa</b><span class="ico">◆ sticker</span></span>
+            <span class="g-cap"><b>chibi nebulosa</b><span class="ico">â—† sticker</span></span>
           </figure>
 
           <figure class="g-item" data-reveal tabindex="0" data-frame="b"
-                  data-cat="original" data-title="página de sketchbook" data-cat-label="ORIGINAL" data-coord="sketchbook · 09">
+                  data-cat="original" data-title="pÃ¡gina de sketchbook" data-cat-label="ORIGINAL" data-coord="sketchbook Â· 09">
             <span class="g-frame" aria-hidden="true"></span>
             <span class="g-coord">STAR-10</span>
             <span class="g-tag">rough</span>
-            <img class="g-img" src="assets/img/art9.svg" alt="página de sketchbook" loading="lazy" decoding="async">
-            <span class="g-cap"><b>sketchbook 09</b><span class="ico">◆ rough</span></span>
+            <img class="g-img" src="assets/img/art9.svg" alt="pÃ¡gina de sketchbook" loading="lazy" decoding="async">
+            <span class="g-cap"><b>sketchbook 09</b><span class="ico">â—† rough</span></span>
           </figure>
         </div>
 
-        <!-- Vacío cuando el filtro no casa con nada -->
-        <p class="g-empty" id="gal-empty">— no hay obras de esa categoría (todavía) —</p>
+        <!-- VacÃ­o cuando el filtro no casa con nada -->
+        <p class="g-empty" id="gal-empty">â€” no hay obras de esa categorÃ­a (todavÃ­a) â€”</p>
       </div>
     </div>
   </main>
@@ -187,7 +231,7 @@
        ============================================================ -->
   <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Visor de obra">
     <span class="lb-splash" aria-hidden="true">take your time // heaven or hell</span>
-    <button type="button" class="lb-close" aria-label="Cerrar visor">✕</button>
+    <button type="button" class="lb-close" aria-label="Cerrar visor">âœ•</button>
 
     <figure class="lb-stage">
       <img class="lb-img" id="lb-img" src="" alt="">
@@ -196,8 +240,8 @@
         <span class="chip" id="lb-cat"></span>
       </figcaption>
 
-      <button type="button" class="lb-nav prev" aria-label="Anterior">‹</button>
-      <button type="button" class="lb-nav next" aria-label="Siguiente">›</button>
+      <button type="button" class="lb-nav prev" aria-label="Anterior">â€¹</button>
+      <button type="button" class="lb-nav next" aria-label="Siguiente">â€º</button>
     </figure>
   </div>
 
@@ -210,8 +254,8 @@
       <a href="#gal-grid">archivo</a>
       <a href="mailto:lunnie.commissions@gmail.com">contacto</a>
     </div>
-    <p>© <span data-year>2026</span> — galería en construcción eterna ♡</p>
-    <p>clic en cualquier obra para visitarla · flechas para navegar</p>
+    <p>Â© <span data-year>2026</span> â€” galerÃ­a en construcciÃ³n eterna â™¡</p>
+    <p>clic en cualquier obra para visitarla Â· flechas para navegar</p>
   </footer>
 
   <!-- Asistente flotante -->
@@ -221,17 +265,17 @@
     </button>
     <div class="assistant-popup" id="assistant-popup" hidden>
       <div class="assistant-head">
-        <span class="title">asistente del panteón</span>
-        <button type="button" class="assistant-close" id="assistant-close" aria-label="Cerrar asistente">✕</button>
+        <span class="title">asistente del panteÃ³n</span>
+        <button type="button" class="assistant-close" id="assistant-close" aria-label="Cerrar asistente">âœ•</button>
       </div>
-      <div class="assistant-body" id="assistant-body"><p>conectando con el panteón…</p></div>
-      <button type="button" class="btn btn-ink" id="assistant-otro">🎲 otro consejo</button>
+      <div class="assistant-body" id="assistant-body"><p>conectando con el panteÃ³nâ€¦</p></div>
+      <button type="button" class="btn btn-ink" id="assistant-otro">ðŸŽ² otro consejo</button>
     </div>
   </div>
 
-  <div class="nebula-friend" aria-label="RIP, la mascota del panteón">
-    <img src="assets/img/nebula/nebgula-idle.svg" alt="RIP, la mascota del panteón" width="76" height="76">
-    <span class="neb-tag is-awake">RIP STATUS ● AWAKE</span>
+  <div class="nebula-friend" aria-label="RIP, la mascota del panteÃ³n">
+    <img src="assets/img/nebula/nebgula-idle.svg" alt="RIP, la mascota del panteÃ³n" width="76" height="76">
+    <span class="neb-tag is-awake">RIP STATUS â— AWAKE</span>
   </div>
 
   <script src="script.js" defer></script>
