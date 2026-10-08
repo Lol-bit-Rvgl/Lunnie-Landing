@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" renderer-info="lunnie-retro">
-  <path d="M2 27 V8 A6 6 0 0 1 8 2 H27" stroke="#9d4edd" stroke-width="2.5" fill="none"/>
+  <path d="M2 27 V8 A6 6 0 0 1 8 2 H27" stroke="#e63946" stroke-width="2.5" fill="none"/>
   <path d="M6 27 V10 A4 4 0 0 1 10 6 H27" stroke="#ffffff" stroke-width="1" opacity="0.35" fill="none"/>
-  <g stroke="#eadaff" stroke-width="1.6" stroke-linecap="square">
+  <g stroke="#f0eaea" stroke-width="1.6" stroke-linecap="square">
     <path d="M7 4 H15 M11 0 V8"/>
   </g>
 </svg>

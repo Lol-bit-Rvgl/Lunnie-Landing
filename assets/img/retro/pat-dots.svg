@@ -3,7 +3,7 @@
   <defs>
     <pattern id="d" width="6" height="6" patternUnits="userSpaceOnUse">
       <rect x="0" y="0" width="1" height="1" fill="#ffffff" opacity="0.05"/>
-      <rect x="3" y="3" width="1" height="1" fill="#9d4edd" opacity="0.10"/>
+      <rect x="3" y="3" width="1" height="1" fill="#e63946" opacity="0.10"/>
     </pattern>
   </defs>
   <rect width="18" height="18" fill="url(#d)"/>

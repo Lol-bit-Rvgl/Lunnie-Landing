@@ -23,16 +23,16 @@ const written = [];
 
 /* ---------- paleta retro ---------- */
 const P = {
-  P: '#9d4edd', // neon purple
-  V: '#7209b7', // deep violet
-  I: '#3a0ca3', // indigo
+  P: '#b3001b', // neon purple
+  V: '#8b0000', // deep violet
+  I: '#3a0008', // indigo
   W: '#ffffff', // white
-  O: '#eadaff', // offwhite
-  K: '#0d0b1d', // panel near-black
+  O: '#f0eaea', // offwhite
+  K: '#141416', // panel near-black
   B: '#05040c', // outer dark
   G: '#2b2840', // grid line
   A: '#ffbf00', // amber (danger tape)
-  R: '#ff5d8f', // pink accent
+  R: '#ff9aa5', // pink accent
   D: '#ff2d55', // danger red
 };
 
@@ -81,8 +81,8 @@ write('pat-halftone.svg', svg(
     <pattern id="h" width="20" height="20" patternUnits="userSpaceOnUse">
       <circle cx="5"  cy="5"  r="1.6" fill="#ffffff" opacity="0.07"/>
       <circle cx="15" cy="15" r="2.6" fill="#ffffff" opacity="0.05"/>
-      <circle cx="5"  cy="15" r="1.0" fill="#9d4edd" opacity="0.10"/>
-      <circle cx="15" cy="5"  r="1.0" fill="#9d4edd" opacity="0.10"/>
+      <circle cx="5"  cy="15" r="1.0" fill="#b3001b" opacity="0.10"/>
+      <circle cx="15" cy="5"  r="1.0" fill="#b3001b" opacity="0.10"/>
     </pattern>
   </defs>
   <rect width="80" height="80" fill="url(#h)"/>`,
@@ -101,7 +101,7 @@ write('pat-dots.svg', svg(
   `  <defs>
     <pattern id="d" width="6" height="6" patternUnits="userSpaceOnUse">
       <rect x="0" y="0" width="1" height="1" fill="#ffffff" opacity="0.05"/>
-      <rect x="3" y="3" width="1" height="1" fill="#9d4edd" opacity="0.10"/>
+      <rect x="3" y="3" width="1" height="1" fill="#b3001b" opacity="0.10"/>
     </pattern>
   </defs>
   <rect width="18" height="18" fill="url(#d)"/>`,
@@ -120,7 +120,7 @@ write('div-danger.svg', svg(
     </pattern>
   </defs>
   <rect width="48" height="16" fill="url(#haz)"/>
-  <rect width="48" height="16" fill="none" stroke="#eadaff" stroke-width="0.6" opacity="0.55"/>`,
+  <rect width="48" height="16" fill="none" stroke="#f0eaea" stroke-width="0.6" opacity="0.55"/>`,
   { w: 48, h: 16 }
 ));
 
@@ -129,19 +129,19 @@ write('div-danger-pink.svg', svg(
   `  <defs>
     <pattern id="haz" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
       <rect width="10" height="10" fill="#05040c"/>
-      <rect width="5" height="10" fill="#ff5d8f"/>
+      <rect width="5" height="10" fill="#ff9aa5"/>
     </pattern>
   </defs>
   <rect width="48" height="16" fill="url(#haz)"/>
-  <rect width="48" height="16" fill="none" stroke="#eadaff" stroke-width="0.6" opacity="0.55"/>`,
+  <rect width="48" height="16" fill="none" stroke="#f0eaea" stroke-width="0.6" opacity="0.55"/>`,
   { w: 48, h: 16 }
 ));
 
 // b3. línea punteada neón
 write('div-dotted.svg', svg(
-  `  <circle cx="8"  cy="4" r="2" fill="#9d4edd"/>
-  <circle cx="24" cy="4" r="2" fill="#7209b7"/>
-  <circle cx="40" cy="4" r="2" fill="#9d4edd"/>`,
+  `  <circle cx="8"  cy="4" r="2" fill="#b3001b"/>
+  <circle cx="24" cy="4" r="2" fill="#8b0000"/>
+  <circle cx="40" cy="4" r="2" fill="#b3001b"/>`,
   { w: 48, h: 8 }
 ));
 
@@ -254,8 +254,8 @@ const ICONS = {
 // planeta con anillo: cuerpo pixel + anillo vector inclinado
 write('i-planet.svg', svg(
   pxArt(ICONS['i-planet-rects.svg']) + '\n' +
-    `    <g transform="rotate(-16 8 8)"><rect x="-0.5" y="7.4" width="17" height="1" fill="#eadaff"/></g>\n` +
-    `    <g transform="rotate(-16 8 8)"><rect x="-0.5" y="9.2" width="17" height="1" fill="#7209b7" opacity="0.7"/></g>`,
+    `    <g transform="rotate(-16 8 8)"><rect x="-0.5" y="7.4" width="17" height="1" fill="#f0eaea"/></g>\n` +
+    `    <g transform="rotate(-16 8 8)"><rect x="-0.5" y="9.2" width="17" height="1" fill="#8b0000" opacity="0.7"/></g>`,
   { w: 16, h: 16 }
 ));
 
@@ -269,9 +269,9 @@ for (const [name, list] of Object.entries(ICONS)) {
    ============================================================ */
 // d1. esquina de mira táctica superior-izquierda
 write('hud-corner.svg', svg(
-  `  <path d="M2 27 V8 A6 6 0 0 1 8 2 H27" stroke="#9d4edd" stroke-width="2.5" fill="none"/>
+  `  <path d="M2 27 V8 A6 6 0 0 1 8 2 H27" stroke="#b3001b" stroke-width="2.5" fill="none"/>
   <path d="M6 27 V10 A4 4 0 0 1 10 6 H27" stroke="#ffffff" stroke-width="1" opacity="0.35" fill="none"/>
-  <g stroke="#eadaff" stroke-width="1.6" stroke-linecap="square">
+  <g stroke="#f0eaea" stroke-width="1.6" stroke-linecap="square">
     <path d="M7 4 H15 M11 0 V8"/>
   </g>`,
   { w: 28, h: 28 }
@@ -279,9 +279,9 @@ write('hud-corner.svg', svg(
 
 // d2. esquina de mira táctica inferior-derecha (espejo)
 write('hud-corner-br.svg', svg(
-  `  <path d="M26 1 V20 A6 6 0 0 1 20 26 H1" stroke="#9d4edd" stroke-width="2.5" fill="none"/>
+  `  <path d="M26 1 V20 A6 6 0 0 1 20 26 H1" stroke="#b3001b" stroke-width="2.5" fill="none"/>
   <path d="M22 1 V18 A4 4 0 0 1 18 22 H1" stroke="#ffffff" stroke-width="1" opacity="0.35" fill="none"/>
-  <g stroke="#eadaff" stroke-width="1.6" stroke-linecap="square">
+  <g stroke="#f0eaea" stroke-width="1.6" stroke-linecap="square">
     <path d="M13 24 H21 M17 20 V28"/>
   </g>`,
   { w: 28, h: 28 }
@@ -289,7 +289,7 @@ write('hud-corner-br.svg', svg(
 
 // d3. frame HUD completo (para banner)
 write('frame-hud.svg', svg(
-  `  <rect x="1.5" y="1.5" width="237" height="87" fill="none" stroke="#9d4edd" stroke-width="2.5" rx="6"/>
+  `  <rect x="1.5" y="1.5" width="237" height="87" fill="none" stroke="#b3001b" stroke-width="2.5" rx="6"/>
   <rect x="6" y="6" width="228" height="78" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.3" rx="3"/>
   <g stroke="#ffffff" stroke-width="1.4" stroke-linecap="square" opacity="0.85">
     <path d="M4 20 H12 M8 16 V24"/>
@@ -298,11 +298,11 @@ write('frame-hud.svg', svg(
     <path d="M228 70 H236 M232 66 V74"/>
   </g>
   <g>
-    <rect x="88" y="0" width="64" height="16" fill="#0d0b1d" stroke="#9d4edd" stroke-width="1.5"/>
+    <rect x="88" y="0" width="64" height="16" fill="#141416" stroke="#b3001b" stroke-width="1.5"/>
     <rect x="90" y="2" width="60" height="12" fill="none" stroke="#ffffff" opacity="0.3"/>
-    <text x="120" y="11.5" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" letter-spacing="2" fill="#eadaff">SECTOR</text>
+    <text x="120" y="11.5" text-anchor="middle" font-family="'Courier New',monospace" font-size="8" letter-spacing="2" fill="#f0eaea">CRYPT</text>
   </g>
-  <text x="232" y="86" text-anchor="end" font-family="'Courier New',monospace" font-size="7" letter-spacing="1" fill="#ff5d8f">LUNNIE // ONLINE</text>
+  <text x="232" y="86" text-anchor="end" font-family="'Courier New',monospace" font-size="7" letter-spacing="1" fill="#ff9aa5">LUNNIE // ONLINE</text>
   <rect x="8" y="82" width="8" height="4" fill="#00ff9f" opacity="0.9"/>
   <rect x="18" y="82" width="4" height="4" fill="#ffbf00" opacity="0.7"/>`,
   { w: 240, h: 90 }
@@ -318,9 +318,9 @@ write('window-tab.svg', svg(
   <rect width="200" height="28" fill="#0a0816"/>
   <rect x="1" y="1" width="198" height="26" fill="none" stroke="#3a2a63"/>
   <rect x="3" y="3" width="194" height="13" fill="#120e26"/>
-  <text x="8" y="12.5" font-family="'Courier New',monospace" font-size="8" letter-spacing="2" fill="#9d4edd">◆ TRANSMISSION ▸ SECTOR 17</text>
+  <text x="8" y="12.5" font-family="'Courier New',monospace" font-size="8" letter-spacing="2" fill="#b3001b">◆ TRANSMISSION ▸ CRYPT 17</text>
   <rect y="17" width="200" height="10" fill="url(#wd)"/>
-  <rect x="176" y="4" width="6" height="6" fill="#ff5d8f"/>
+  <rect x="176" y="4" width="6" height="6" fill="#ff9aa5"/>
   <rect x="184" y="4" width="6" height="6" fill="#ffbf00"/>
   <rect x="192" y="4" width="6" height="6" fill="#00ff9f"/>`,
   { w: 200, h: 28 }
@@ -350,10 +350,10 @@ const STAR_RECTS = [
 
 // e1. luna pixel sticker (64px con halo + sombra)
 write('sticker-moon.svg', svg(
-  `  <ellipse cx="36" cy="36" rx="30" ry="30" fill="#7209b7" opacity="0.22"/>
+  `  <ellipse cx="36" cy="36" rx="30" ry="30" fill="#8b0000" opacity="0.22"/>
   <g transform="translate(2,2)" opacity="0.55">\n${pxArt(scale(MOON_RECTS, 4, 8, 12))}
   </g>
-${pxArt(scale(MOON_RECTS, 4, 8, 12, { '#eadaff': '#b9a6e8', '#9d4edd': '#7209b7' }))}
+${pxArt(scale(MOON_RECTS, 4, 8, 12, { '#f0eaea': '#ffb3c6', '#b3001b': '#8b0000' }))}
   <circle cx="57" cy="14" r="2.5" fill="#ffffff"/>
   <circle cx="62" cy="48" r="1.6" fill="#ffbf00"/>`,
   { w: 64, h: 64 }
@@ -361,25 +361,25 @@ ${pxArt(scale(MOON_RECTS, 4, 8, 12, { '#eadaff': '#b9a6e8', '#9d4edd': '#7209b7'
 
 // e2. estrella pixel sticker
 write('sticker-star.svg', svg(
-  `  <ellipse cx="32" cy="32" rx="26" ry="26" fill="#3a0ca3" opacity="0.25"/>
+  `  <ellipse cx="32" cy="32" rx="26" ry="26" fill="#3a0008" opacity="0.25"/>
   <g transform="translate(2,2)" opacity="0.55">\n${pxArt(scale(STAR_RECTS, 3, 8, 12))}
   </g>
 ${pxArt(scale(STAR_RECTS, 3, 8, 12))}
-  <circle cx="14" cy="50" r="2" fill="#9d4edd"/>
-  <circle cx="52" cy="10" r="2" fill="#eadaff"/>
-  <circle cx="58" cy="26" r="1.4" fill="#ff5d8f"/>`,
+  <circle cx="14" cy="50" r="2" fill="#b3001b"/>
+  <circle cx="52" cy="10" r="2" fill="#f0eaea"/>
+  <circle cx="58" cy="26" r="1.4" fill="#ff9aa5"/>`,
   { w: 64, h: 64 }
 ));
 
 // e3. planeta con anillo
 write('sticker-planet.svg', svg(
-  `  <ellipse cx="34" cy="34" rx="28" ry="28" fill="#3a0ca3" opacity="0.22"/>
+  `  <ellipse cx="34" cy="34" rx="28" ry="28" fill="#3a0008" opacity="0.22"/>
   <g transform="translate(2,2)" opacity="0.55">\n${pxArt(scale(PLANET_RECTS, 3, 8, 16))}
   </g>
-${pxArt(scale(PLANET_RECTS, 3, 8, 16, { '#eadaff': '#b9a6e8' }))}
+${pxArt(scale(PLANET_RECTS, 3, 8, 16, { '#f0eaea': '#ffb3c6' }))}
   <g transform="rotate(-18 34 34)">
-    <rect x="6" y="30.5" width="56" height="3" fill="#eadaff" opacity="0.9"/>
-    <rect x="6" y="36.5" width="56" height="2" fill="#7209b7" opacity="0.6"/>
+    <rect x="6" y="30.5" width="56" height="3" fill="#f0eaea" opacity="0.9"/>
+    <rect x="6" y="36.5" width="56" height="2" fill="#8b0000" opacity="0.6"/>
   </g>
   <circle cx="56" cy="14" r="2.5" fill="#ffffff"/>`,
   { w: 64, h: 64 }
@@ -387,21 +387,21 @@ ${pxArt(scale(PLANET_RECTS, 3, 8, 16, { '#eadaff': '#b9a6e8' }))}
 
 // e4. sello WARNING
 write('stamp-warning.svg', svg(
-  `  <rect x="1.5" y="1.5" width="137" height="41" rx="7" fill="#0d0b1d" opacity="0.88" stroke="#ff2d55" stroke-width="2" stroke-dasharray="7 4"/>
+  `  <rect x="1.5" y="1.5" width="137" height="41" rx="7" fill="#141416" opacity="0.88" stroke="#ff2d55" stroke-width="2" stroke-dasharray="7 4"/>
   <path d="M30 13 L48 31 H12 Z" fill="#ffbf00"/>
   <text x="30" y="27" text-anchor="middle" font-family="'Courier New',monospace" font-weight="bold" font-size="17" fill="#05040c">!</text>
-  <text x="60" y="27" font-family="'Courier New',monospace" font-weight="bold" font-size="19" letter-spacing="5" fill="#ff5d8f">WARNING</text>`,
+  <text x="60" y="27" font-family="'Courier New',monospace" font-weight="bold" font-size="19" letter-spacing="5" fill="#ff9aa5">WARNING</text>`,
   { w: 140, h: 44 }
 ));
 
 // e5. sello HEAVEN OR HELL (GG)
 write('stamp-heaven-hell.svg', svg(
-  `  <rect x="1.5" y="1.5" width="237" height="47" rx="5" fill="#0d0b1d" opacity="0.9" stroke="#9d4edd" stroke-width="2" stroke-dasharray="9 4"/>
+  `  <rect x="1.5" y="1.5" width="237" height="47" rx="5" fill="#141416" opacity="0.9" stroke="#b3001b" stroke-width="2" stroke-dasharray="9 4"/>
   <rect x="5" y="5" width="230" height="40" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.3"/>
-  <text x="120" y="22" text-anchor="middle" font-family="'Arial Black','Courier New',monospace" font-weight="bold" font-size="14" letter-spacing="3" fill="#ffffff" stroke="#7209b7" stroke-width="0.5">HEAVEN OR HELL</text>
+  <text x="120" y="22" text-anchor="middle" font-family="'Arial Black','Courier New',monospace" font-weight="bold" font-size="14" letter-spacing="3" fill="#ffffff" stroke="#8b0000" stroke-width="0.5">HEAVEN OR HELL</text>
   <text x="120" y="38" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" letter-spacing="5" fill="#ffbf00">LET'S ROCK!</text>
-  <path d="M14 10 L18 8 L16 13 L20 13 L13 20 L15 14 L11 14 Z" fill="#ff5d8f"/>
-  <path d="M218 32 L226 22 L222 30 L230 30 L224 40 L228 32 Z" fill="#7209b7"/>`,
+  <path d="M14 10 L18 8 L16 13 L20 13 L13 20 L15 14 L11 14 Z" fill="#ff9aa5"/>
+  <path d="M218 32 L226 22 L222 30 L230 30 L224 40 L228 32 Z" fill="#8b0000"/>`,
   { w: 240, h: 50 }
 ));
 
@@ -409,15 +409,15 @@ write('stamp-heaven-hell.svg', svg(
 write('stamp-88x31.svg', svg(
   `  <defs>
     <pattern id="px" width="4" height="4" patternUnits="userSpaceOnUse">
-      <rect width="4" height="4" fill="#240046"/>
-      <rect width="2" height="2" fill="#3a0ca3"/>
+      <rect width="4" height="4" fill="#14040a"/>
+      <rect width="2" height="2" fill="#3a0008"/>
     </pattern>
   </defs>
   <rect width="88" height="31" fill="url(#px)"/>
-  <rect x="0.5" y="0.5" width="87" height="30" fill="none" stroke="#9d4edd" stroke-width="2"/>
+  <rect x="0.5" y="0.5" width="87" height="30" fill="none" stroke="#b3001b" stroke-width="2"/>
   <rect x="2.5" y="2.5" width="83" height="26" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
   <text x="44" y="13" text-anchor="middle" font-family="'Arial Black','Courier New',monospace" font-weight="bold" font-size="10" fill="#ffffff">LUNNIE</text>
-  <text x="44" y="24" text-anchor="middle" font-family="'Courier New',monospace" font-size="6" letter-spacing="2" fill="#eadaff">★ p5 × gg ★</text>`,
+  <text x="44" y="24" text-anchor="middle" font-family="'Courier New',monospace" font-size="6" letter-spacing="2" fill="#f0eaea">★ p5 × gg ★</text>`,
   { w: 88, h: 31 }
 ));
 

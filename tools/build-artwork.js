@@ -1,6 +1,6 @@
 /* ============================================================
    LUNNIE ♡ — tools/build-artwork.js
-   Generador offline de assets de muestra para el sector.
+   Generador offline de assets de muestra para el panteón.
    ------------------------------------------------------------
    Cada pieza tiene composición propia: gradientes, ruido
    (feTurbulence) y formas orgánicas. NO son obra final — son
@@ -19,10 +19,10 @@ const OUT = path.join(__dirname, '..', 'assets', 'img');
 
 /* ---------- paleta ---------- */
 const P = {
-  space: '#07060f', indigo: '#240046', deep: '#3a0ca3',
-  violet: '#7209b7', purple: '#9d4edd', off: '#eadaff',
-  white: '#ffffff', pink: '#ff5d8f', danger: '#ff2d55',
-  grey: '#8a86a8', paper: '#ece4f5', ink: '#140f24',
+  space: '#0a0a0c', indigo: '#14040a', deep: '#3a0008',
+  violet: '#8b0000', purple: '#b3001b', off: '#f0eaea',
+  white: '#ffffff', pink: '#ff9aa5', danger: '#ff2d55',
+  grey: '#b0b0b8', paper: '#ece4f5', ink: '#140f24',
 };
 
 /* ---------- helpers ---------- */
@@ -172,7 +172,7 @@ function art4() {
   const defs =
     '<defs>' +
     radial('bg4', [[0, P.indigo], [1, P.space]], 0.6, 0.7) +
-    radial('moon4', [[0, P.off], [0.6, '#b78ae6'], [1, P.purple]], 0.35, 0.3) +
+    radial('moon4', [[0, P.off], [0.6, '#ffb3c6'], [1, P.purple]], 0.35, 0.3) +
     grain('g4', 1.0) + '</defs>';
   const eyes =
     '<path d="M296 196 Q306 184 322 196" fill="none" stroke="' + P.deep +
@@ -300,7 +300,7 @@ function art8() {
   const defs =
     '<defs>' +
     radial('bg8', [[0, P.deep], [1, P.space]], 0.5, 0.3) +
-    radial('face8', [[0, P.off], [1, '#c9a8f0']], 0.4, 0.35) +
+    radial('face8', [[0, P.off], [1, '#f5ccd2']], 0.4, 0.35) +
     grain('g8', 1.1) + '</defs>';
   return wrap('480 480',
     defs +
@@ -386,7 +386,7 @@ function avatar() {
     '<defs>' +
     radial('bgA', [[0, P.deep], [1, P.space]], 0.5, 0.4) +
     lin('hairA', [[0, P.pink], [1, P.violet]]) +
-    radial('faceA', [[0, P.off], [1, '#c9a8f0']], 0.4, 0.35) +
+    radial('faceA', [[0, P.off], [1, '#f5ccd2']], 0.4, 0.35) +
     grain('gA', 1.3) + '</defs>';
   return wrap('240 240',
     defs +
@@ -425,7 +425,7 @@ function assistant() {
 }
 
 /* ============================================================
-   13. BANNER — cabecera de sector
+   13. BANNER — cabecera de cripta
    ============================================================ */
 function banner() {
   const defs =
@@ -481,7 +481,7 @@ function btn3() {
   return wrap('88 31',
     btnBase('<rect width="88" height="31" fill="' + P.indigo + '"/>' +
       '<path d="M0 0 H22 V16 H44 V0 H66 V16 H88 M0 31 H22 V16 H0 M44 31 H66 V16 H44 M88 16 H66 M22 31 H44 V16 H22" fill="' + P.purple + '" opacity="0.7"/>',
-      'EL RINCÓN DEL ESPACIO'));
+      'EL RINCÓN DEL PANTEÓN'));
 }
 function btnFriend() {
   return wrap('88 31',

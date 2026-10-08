@@ -5,12 +5,12 @@
       <rect width="1" height="1" fill="#ffffff" opacity="0.10"/>
     </pattern>
   </defs>
-  <rect width="200" height="28" fill="#0a0816"/>
-  <rect x="1" y="1" width="198" height="26" fill="none" stroke="#3a2a63"/>
-  <rect x="3" y="3" width="194" height="13" fill="#120e26"/>
-  <text x="8" y="12.5" font-family="'Courier New',monospace" font-size="8" letter-spacing="2" fill="#9d4edd">◆ TRANSMISSION ▸ SECTOR 17</text>
+  <rect width="200" height="28" fill="#141416"/>
+  <rect x="1" y="1" width="198" height="26" fill="none" stroke="#6b1a24"/>
+  <rect x="3" y="3" width="194" height="13" fill="#17171a"/>
+  <text x="8" y="12.5" font-family="'Courier New',monospace" font-size="8" letter-spacing="2" fill="#e63946">◆ TRANSMISSION ▸ CRYPT 17</text>
   <rect y="17" width="200" height="10" fill="url(#wd)"/>
-  <rect x="176" y="4" width="6" height="6" fill="#ff5d8f"/>
+  <rect x="176" y="4" width="6" height="6" fill="#ff4d63"/>
   <rect x="184" y="4" width="6" height="6" fill="#ffbf00"/>
   <rect x="192" y="4" width="6" height="6" fill="#00ff9f"/>
 </svg>

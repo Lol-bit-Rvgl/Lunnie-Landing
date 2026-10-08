@@ -27,10 +27,10 @@
   // Estado manual mostrado mientras DISCORD_ID sea el placeholder.
   const MANUAL = {
     status: 'offline',
-    heading: '// SECTOR EN REPOSO',
-    line: 'la artífice anda en su órbita haciendo sketch — la señal vuelve cuando regrese ▂ ▄ █',
+    heading: '// CRYPT IN REPOSE',
+    line: 'la artífice anda en su cripta haciendo sketch — la señal vuelve cuando regrese ▂ ▄ █',
     activity: 'emitiendo ambiente… (sin actividad de Discord)',
-    clock: 'PRESENCIA DEL SECTOR // EN REPOSO',
+    clock: 'PRESENCIA DEL PANTEÓN // EN REPOSO',
   };
 
   /* ---------- estado ---------- */
@@ -138,7 +138,7 @@
     const box = el('div', 'dw-activity');
     if (!act) {
       box.append(el('div', 'art', '🌌'));
-      box.append(el('span', 'dw-activity-data', 'navegando el espacio… (sin actividad)'));
+      box.append(el('span', 'dw-activity-data', 'deambulando por el panteón… (sin actividad)'));
       return box;
     }
 

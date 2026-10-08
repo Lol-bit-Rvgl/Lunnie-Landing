@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" renderer-info="lunnie-retro">
-  <ellipse cx="32" cy="32" rx="26" ry="26" fill="#3a0ca3" opacity="0.25"/>
+  <ellipse cx="32" cy="32" rx="26" ry="26" fill="#8b0000" opacity="0.25"/>
   <g transform="translate(2,2)" opacity="0.55">
-    <rect x="29" y="21" width="6" height="30" fill="#9d4edd"/>
-    <rect x="17" y="33" width="30" height="6" fill="#9d4edd"/>
+    <rect x="29" y="21" width="6" height="30" fill="#e63946"/>
+    <rect x="17" y="33" width="30" height="6" fill="#e63946"/>
     <rect x="29" y="33" width="6" height="6" fill="#ffffff"/>
-    <rect x="29" y="18" width="6" height="6" fill="#9d4edd"/>
-    <rect x="29" y="48" width="6" height="6" fill="#9d4edd"/>
-    <rect x="14" y="33" width="6" height="6" fill="#9d4edd"/>
-    <rect x="44" y="33" width="6" height="6" fill="#9d4edd"/>
+    <rect x="29" y="18" width="6" height="6" fill="#e63946"/>
+    <rect x="29" y="48" width="6" height="6" fill="#e63946"/>
+    <rect x="14" y="33" width="6" height="6" fill="#e63946"/>
+    <rect x="44" y="33" width="6" height="6" fill="#e63946"/>
   </g>
-    <rect x="29" y="21" width="6" height="30" fill="#9d4edd"/>
-    <rect x="17" y="33" width="30" height="6" fill="#9d4edd"/>
+    <rect x="29" y="21" width="6" height="30" fill="#e63946"/>
+    <rect x="17" y="33" width="30" height="6" fill="#e63946"/>
     <rect x="29" y="33" width="6" height="6" fill="#ffffff"/>
-    <rect x="29" y="18" width="6" height="6" fill="#9d4edd"/>
-    <rect x="29" y="48" width="6" height="6" fill="#9d4edd"/>
-    <rect x="14" y="33" width="6" height="6" fill="#9d4edd"/>
-    <rect x="44" y="33" width="6" height="6" fill="#9d4edd"/>
-  <circle cx="14" cy="50" r="2" fill="#9d4edd"/>
-  <circle cx="52" cy="10" r="2" fill="#eadaff"/>
-  <circle cx="58" cy="26" r="1.4" fill="#ff5d8f"/>
+    <rect x="29" y="18" width="6" height="6" fill="#e63946"/>
+    <rect x="29" y="48" width="6" height="6" fill="#e63946"/>
+    <rect x="14" y="33" width="6" height="6" fill="#e63946"/>
+    <rect x="44" y="33" width="6" height="6" fill="#e63946"/>
+  <circle cx="14" cy="50" r="2" fill="#e63946"/>
+  <circle cx="52" cy="10" r="2" fill="#f0eaea"/>
+  <circle cx="58" cy="26" r="1.4" fill="#ff4d63"/>
 </svg>

@@ -17,7 +17,7 @@
    ============================================================ */
 
 /* ============================================================
-   CONFIG DEL SECTOR — lo que editas a mano, en un solo lugar.
+   CONFIG DEL PANTEÓN — lo que editas a mano, en un solo lugar.
    ------------------------------------------------------------
    • SOCIAL_LINKS: claves = data-social de los enlaces (social-list
      y dock). Deja null mientras no tengas el enlace real → la UI
@@ -84,7 +84,7 @@ const CONFIG = {
   // del perfil se calculan de aquí: CONFIG.OCS.length.
   OCS: [
     'OC_01 // PROTOTYPE',
-    'OC_02 // NEBULA',
+    'OC_02 // RIP',
     'OC_03 // VESPER',
   ],
   // Destino de los botones "pedir esta ✎" / "lista de espera" por tarjeta
@@ -150,7 +150,7 @@ const CONFIG = {
     let ctx = null;
     let master = null;
     let voices = [];
-    const NOTES = [110.0, 164.81, 220.0, 329.63];  // A2 · E3 · A3 · E4 (pad espacial)
+    const NOTES = [110.0, 164.81, 220.0, 329.63];  // A2 · E3 · A3 · E4 (pad del panteón)
 
     function build() {
       ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
@@ -239,7 +239,7 @@ const CONFIG = {
       fms.classList.toggle('on', playing);
     }
     if (playing) {
-      window.dispatchEvent(new CustomEvent('lunnie:event', { detail: { text: 'transmisión de nebula fm recibida' } }));
+      window.dispatchEvent(new CustomEvent('lunnie:event', { detail: { text: 'transmisión de grave fm recibida' } }));
     }
   };
 
@@ -260,12 +260,12 @@ const CONFIG = {
   if (!bubble || !popup) return;
 
   const TIPS = [
-    'Hola ♡ Soy tu asistente de este rincón del espacio. La nav te mueve de sector.',
+    'Hola ♡ Soy tu asistente de este panteón. La nav te mueve de cripta.',
     '¿Buscas arte? La galería tiene filtros: original, fanart, cómics, animación…',
     'Encargos abiertos: 6 categorías en la página de comisiones, cada una con sus términos.',
     'El widget de Discord (columna del home) muestra si estoy online en directo.',
     'Deja tu huella en el guestbook del home — se guarda en tu navegador y existe igual ♡',
-    'Prueba el botón “emitir ambiente”: un pad espacial generado en tu navegador 🎧',
+    'Prueba el botón “emitir ambiente”: un pad del panteón generado en tu navegador 🎧',
     'Tip de dibujo: si el boceto no te hace sonreír al desbloquear la capa, bórralo sin culpa.',
   ];
 
@@ -468,7 +468,7 @@ async function copyPlain(text) {
   const SEED = [
     {
       id: 'seed-1',
-      t: 'boceto del día: gato astronauta en su primera órbita 🛸 ¿alguien lo quiere como sticker?',
+      t: 'boceto del día: gato explorador en su primera cacería nocturna 🕯️ ¿alguien lo quiere como sticker?',
       d: 'hace 1 h',
       base: { '❤️': 12, '🔥': 8, '🌙': 4, '✨': 9 },
     },
@@ -480,7 +480,7 @@ async function copyPlain(text) {
     },
     {
       id: 'seed-3',
-      t: "1 semana de este sector y ya siento que es mi casa :')",
+      t: "1 semana en este panteón y ya siento que es mi casa :')",
       d: 'hace 3 días',
       base: { '❤️': 19, '🔥': 3, '🌙': 7, '✨': 12 },
     },
@@ -660,7 +660,7 @@ async function copyPlain(text) {
   const layer = document.getElementById('confetti-layer');
   if (!trigger || !banner) return;
 
-  const COLORS = ['#ffffff', '#eadaff', '#9d4edd', '#7209b7', '#3a0ca3'];
+  const COLORS = ['#ffffff', '#f0eaea', '#e63946', '#b3001b', '#8b0000'];
   let hideT = null;
 
   function spawnConfetti() {

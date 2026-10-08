@@ -3,20 +3,20 @@
    Fondo vivo por capas, con foco en rendimiento:
 
    1) Parallax de las decoraciones del kit (.fx-layer) — transform.
-   2) Campo estelar procedural con estrellas REALES de 4 puntas.
+   2) Campo de brasas procedural con brasas/ceniza REALES de 4 puntas.
       Para no repintar a pantalla completa cada frame, las bandas
       se agrupan así:
         - lejana  → sprite cacheado (background de .px-stars-far)
         - media   → sprite cacheado (background de .px-stars-mid)
-        - cercana → solo ~14 estrellas vivas en #field-canvas,
+        - cercana → solo ~14 brasas vivas en #field-canvas,
                     redibujadas con dirty-rects (no clearRect total)
    3) Parallax al scroll por profundidad (transform, GPU):
-        nebulosa 0.06 · lejana 0.10 · media 0.16 · cercana 0.24
+        brasa 0.06 · lejana 0.10 · media 0.16 · cercana 0.24
       Nunca se animan top/left/width/height/background-position.
 
    - respeta prefers-reduced-motion: sin loop y sin scroll (capas
      quietas; se dibuja un fotograma estático).
-   - en táctil / móvil reduce el número de estrellas.
+   - en táctil / móvil reduce el número de brasas.
    ============================================================ */
 (function () {
   'use strict';
@@ -44,7 +44,7 @@
     }, { passive: true });
   }
 
-  /* ---------- 2) CAMPO ESTELAR ---------- */
+  /* ---------- 2) CAMPO DE BRASAS ---------- */
   const cv = document.getElementById('field-canvas');
   if (!cv) return;
   const ctx = cv.getContext('2d');
@@ -59,16 +59,16 @@
   const PARALLAX = { nebula: 0.06, far: 0.1, mid: 0.16, near: 0.24 };
   const wrap = (v, p) => ((v % p) + p) % p;
 
-  // tintes de la paleta: blancas de lavanda + toques violeta/ámbar/rosa
+  // tintes carmesí: ceniza hueso + brasas + destellos ember/rosa
   function pick() {
     const r = Math.random();
-    if (r < 0.58) return r < 0.2 ? '#efe9ff' : r < 0.42 ? '#ffffff' : '#eadaff';
-    if (r < 0.82) return Math.random() < 0.5 ? '#9d4edd' : '#c8b6ff';
-    if (r < 0.92) return '#ffd166';
-    return '#ffb3c6';
+    if (r < 0.4) return r < 0.16 ? '#f0eaea' : r < 0.34 ? '#ffffff' : '#e8e8e8';
+    if (r < 0.78) return Math.random() < 0.5 ? '#e63946' : '#f2d9dc';
+    if (r < 0.92) return '#ff4557';
+    return '#ff9aa5';
   }
 
-  // estrella de 4 puntas (tipo ✦), cóncava
+  // brasa de 4 puntas (tipo ✦), cóncava
   function star4(c, x, y, r) {
     const k = 0.24;
     c.beginPath();

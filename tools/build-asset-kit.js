@@ -3,7 +3,7 @@
    Generador offline del LUNNIE VISUAL ASSET KIT (2ª fase).
    ------------------------------------------------------------
    Todo es arte SVG propio, construido con una sola paleta y un
-   solo lenguaje visual: luna + estrella + HUD retro-sideral.
+   solo lenguaje visual: luna + cruce + HUD retro-tumular.
    NO usa imágenes externas. Reorganiza/crea la estructura
    /assets/{backgrounds,decorations,ui,effects,hero,guestbook,
    radio,transmissions,scroll,loading,error,secret,characters,
@@ -23,21 +23,21 @@ const ROOT = path.join(__dirname, '..', 'assets');
 
 /* ---------- paleta KIT (extraída de la UI y el arte actual) ---------- */
 const P = {
-  space:   '#07060f',
-  deep:    '#04030a',
+  space:   '#0a0a0c',
+  deep:    '#0a0a0c',
   panel:   '#0f0b22',
-  panel2:  '#0a0818',
+  panel2:  '#141416',
   ink:     '#140f24',
-  indigo:  '#3a0ca3',
-  violet:  '#7209b7',
-  purple:  '#9d4edd',
-  amber:   '#ffd166',
+  indigo:  '#3a0008',
+  violet:  '#8b0000',
+  purple:  '#b3001b',
+  amber:   '#ff4557',
   amberD:  '#b8862e',
-  rose:    '#ff5d8f',
+  rose:    '#ff9aa5',
   roseL:   '#ffb3c6',
   txt:     '#efe9ff',
-  off:     '#eadaff',
-  dim:     '#9b94c0',
+  off:     '#f0eaea',
+  dim:     '#b0b0b8',
   line:    '#2e2a4a',
   hex:     '#4a3a7a',
   white:   '#ffffff',
@@ -105,7 +105,7 @@ function reg(rel, type, usage, svg) {
 reg('backgrounds/space/space-base.svg', 'background', 'bg-layer-main',
   W(
     '<defs>' +
-    rad('sBg', [[0, '#241848'], [0.35, '#140f2e'], [0.7, '#0a0818'], [1, P.space]], 0.5, 0.3) + '</defs>' +
+    rad('sBg', [[0, '#241848'], [0.35, '#140f2e'], [0.7, '#141416'], [1, P.space]], 0.5, 0.3) + '</defs>' +
     '<rect width="1000" height="640" fill="url(#sBg)"/>' +
     '<path d="M0 0 H1000 V640 H0 Z" fill="none" stroke="' + P.hex + '" stroke-opacity="0.06" stroke-width="1"/>',
     '0 0 1000 640'
@@ -157,10 +157,10 @@ reg('backgrounds/nebula/nebula-primary.svg', 'background', 'bg-layer-nebula-a',
   W(
     '<g opacity="0.55">' +
     '<defs><filter id="nP"><feGaussianBlur stdDeviation="40"/></filter></defs>' +
-    blob(190, 180, 210, 150, '#3a0ca3', ' filter="url(#nP)"') +
-    blob(470, 120, 150, 190, '#7209b7', ' filter="url(#nP)" opacity="0.7"') +
-    blob(520, 420, 200, 130, '#240046', ' filter="url(#nP)" opacity="0.8"') +
-    blob(120, 420, 160, 120, '#3a0ca3', ' filter="url(#nP)" opacity="0.6"') +
+    blob(190, 180, 210, 150, '#3a0008', ' filter="url(#nP)"') +
+    blob(470, 120, 150, 190, '#8b0000', ' filter="url(#nP)" opacity="0.7"') +
+    blob(520, 420, 200, 130, '#14040a', ' filter="url(#nP)" opacity="0.8"') +
+    blob(120, 420, 160, 120, '#3a0008', ' filter="url(#nP)" opacity="0.6"') +
     '</g>',
     '0 0 640 520'
   ));
@@ -169,9 +169,9 @@ reg('backgrounds/nebula/nebula-secondary.svg', 'background', 'bg-layer-nebula-b'
   W(
     '<g opacity="0.5">' +
     '<defs><filter id="nS"><feGaussianBlur stdDeviation="46"/></filter></defs>' +
-    blob(460, 150, 190, 170, '#ff5d8f', ' filter="url(#nS)" opacity="0.5"') +
-    blob(600, 380, 200, 150, '#9d4edd', ' filter="url(#nS)" opacity="0.55"') +
-    blob(150, 60, 140, 120, '#7209b7', ' filter="url(#nS)" opacity="0.6"') +
+    blob(460, 150, 190, 170, '#ff9aa5', ' filter="url(#nS)" opacity="0.5"') +
+    blob(600, 380, 200, 150, '#b3001b', ' filter="url(#nS)" opacity="0.55"') +
+    blob(150, 60, 140, 120, '#8b0000', ' filter="url(#nS)" opacity="0.6"') +
     '</g>',
     '0 0 640 520'
   ));
@@ -179,7 +179,7 @@ reg('backgrounds/nebula/nebula-secondary.svg', 'background', 'bg-layer-nebula-b'
 reg('backgrounds/abstract/bg-dream.svg', 'background', 'bg-alt-dream',
   W(
     '<defs>' +
-    rad('d1', [[0, '#3a0ca3'], [0.55, '#240046'], [1, P.space]], 0.35, 0.3) +
+    rad('d1', [[0, '#3a0008'], [0.55, '#14040a'], [1, P.space]], 0.35, 0.3) +
     '<filter id="dG"><feGaussianBlur stdDeviation="38"/></filter></defs>' +
     '<rect width="640" height="420" fill="url(#d1)"/>' +
     blob(210, 110, 120, 90, '#ffb3c6', ' filter="url(#dG)" opacity="0.35"') +
@@ -189,9 +189,9 @@ reg('backgrounds/abstract/bg-dream.svg', 'background', 'bg-alt-dream',
 
 reg('backgrounds/abstract/bg-void.svg', 'background', 'bg-alt-void',
   W(
-    '<rect width="640" height="420" fill="#04030a"/>' +
+    '<rect width="640" height="420" fill="#0a0a0c"/>' +
     '<defs><filter id="vG"><feGaussianBlur stdDeviation="30"/></filter></defs>' +
-    blob(320, 210, 160, 120, '#0a0818', ' filter="url(#vG)"') +
+    blob(320, 210, 160, 120, '#141416', ' filter="url(#vG)"') +
     (function () {
       let s = '';
       for (let i = 0; i < 30; i++) {
@@ -282,7 +282,7 @@ function planetBody(body, shade, accent, opts) {
 }
 reg('decorations/planets/planet-blue.svg', 'decoration', 'kit', planetBody('#241848', P.indigo, P.purple,
   cir(40, 40, 6, P.off, ' opacity="0.4"') + cir(64, 34, 4, P.off, ' opacity="0.5"') + cir(56, 60, 8, P.off, ' opacity="0.2"')));
-reg('decorations/planets/planet-pink.svg', 'decoration', 'kit', planetBody('#3a0ca3', P.rose, P.roseL,
+reg('decorations/planets/planet-pink.svg', 'decoration', 'kit', planetBody('#3a0008', P.rose, P.roseL,
   dk(60, 38, 7, P.roseL, ' opacity="0.9"') + cir(42, 62, 5, P.roseL, ' opacity="0.5"')));
 reg('decorations/planets/planet-purple.svg', 'decoration', 'kit', planetBody(P.violet, P.purple, P.off,
   blob(35, 42, 12, 6, P.deep, ' opacity="0.3"') + blob(62, 58, 9, 5, P.deep, ' opacity="0.3"')));
@@ -293,7 +293,7 @@ reg('decorations/planets/planet-ring.svg', 'decoration', 'kit', W(
   '<circle cx="0" cy="0" r="20" fill="' + P.purple + '" stroke="' + P.off + '" stroke-width="2"/>' +
   '</g>'));
 reg('decorations/planets/planet-moon.svg', 'decoration', 'kit', W(
-  '<defs>' + rad('pm', [[0, '#cfc7e8'], [0.75, '#8a86a8'], [1, P.hex]], 0.4, 0.4) + '</defs>' +
+  '<defs>' + rad('pm', [[0, '#f0eaea'], [0.75, '#b0b0b8'], [1, P.hex]], 0.4, 0.4) + '</defs>' +
   cir(50, 50, 30, 'url(#pm)', '') +
   cir(40, 38, 7, P.hex, ' opacity="0.35"') + cir(60, 60, 5, P.hex, ' opacity="0.3"') + cir(56, 36, 4, P.hex, ' opacity="0.25"')));
 reg('decorations/planets/planet-strange.svg', 'decoration', 'kit', W(
@@ -317,7 +317,7 @@ reg('decorations/moons/moon-half.svg', 'decoration', 'kit', W(
   cir(60, 40, 5, P.purple, ' opacity="0.6"') + cir(72, 56, 4, P.purple, ' opacity="0.5"')));
 reg('decorations/moons/moon-full.svg', 'decoration', 'kit', W(
   '<circle cx="50" cy="50" r="36" fill="' + P.off + '" stroke="' + P.hex + '" stroke-width="2.5"/>' +
-  cir(38, 38, 8, '#8a86a8', ' opacity="0.3"') + cir(62, 60, 6, '#8a86a8', ' opacity="0.3"') + cir(56, 34, 5, '#8a86a8', ' opacity="0.25"')));
+  cir(38, 38, 8, '#b0b0b8', ' opacity="0.3"') + cir(62, 60, 6, '#b0b0b8', ' opacity="0.3"') + cir(56, 34, 5, '#b0b0b8', ' opacity="0.25"')));
 reg('decorations/moons/moon-glitch.svg', 'decoration', 'glitch', W(
   '<g>' +
   '<path d="M34 8 a34 34 0 1 0 0 84 a26 26 0 1 1 0 -84 z" fill="' + P.purple + '"/>' +
@@ -456,24 +456,24 @@ const IX = (blocks) => {
   return W(b, '0 0 16 16');
 };
 const Ic = {};
-Ic.profile = ['r 3 3 10 10 #9d4edd', 'd 5 5 #eadaff'];
-Ic.art = ['r 3 3 10 10 #9d4edd', 'd 5 5 #ff5d8f', 'r 5 4 6 6 #ffd166'];
-Ic.radio = ['r 3 5 10 9 #9d4edd', 'r 6 2 4 2 #eadaff', 'd 6 8 #ffd166', 'r 8 8 4 4 #07060f'];
-Ic.transmission = ['r 3 3 10 10 #9d4edd', 'r 5 5 6 1 #ffd166', 'r 5 7 6 2 #eadaff'];
-Ic.guestbook = ['r 3 6 10 7 #9d4edd', 'r 5 3 6 3 #eadaff', 'd 12 5 #ff5d8f'];
-Ic.contact = ['r 3 2 10 8 #9d4edd', 'd 8 4 #eadaff', 'r 5 8 6 6 #9d4edd', 'd 8 11 #ffd166'];
-Ic.settings = ['d 8 8 #ffd166', 'd 8 2 #9d4edd', 'd 2 8 #9d4edd', 'd 14 8 #9d4edd', 'd 8 14 #9d4edd'];
-Ic.signal = ['d 8 3 #9d4edd', 'd 8 13 #9d4edd', 'r 3 8 10 1 #ffd166', 'd 5 5 #eadaff'];
+Ic.profile = ['r 3 3 10 10 #b3001b', 'd 5 5 #f0eaea'];
+Ic.art = ['r 3 3 10 10 #b3001b', 'd 5 5 #ff9aa5', 'r 5 4 6 6 #ff4557'];
+Ic.radio = ['r 3 5 10 9 #b3001b', 'r 6 2 4 2 #f0eaea', 'd 6 8 #ff4557', 'r 8 8 4 4 #0a0a0c'];
+Ic.transmission = ['r 3 3 10 10 #b3001b', 'r 5 5 6 1 #ff4557', 'r 5 7 6 2 #f0eaea'];
+Ic.guestbook = ['r 3 6 10 7 #b3001b', 'r 5 3 6 3 #f0eaea', 'd 12 5 #ff9aa5'];
+Ic.contact = ['r 3 2 10 8 #b3001b', 'd 8 4 #f0eaea', 'r 5 8 6 6 #b3001b', 'd 8 11 #ff4557'];
+Ic.settings = ['d 8 8 #ff4557', 'd 8 2 #b3001b', 'd 2 8 #b3001b', 'd 14 8 #b3001b', 'd 8 14 #b3001b'];
+Ic.signal = ['d 8 3 #b3001b', 'd 8 13 #b3001b', 'r 3 8 10 1 #ff4557', 'd 5 5 #f0eaea'];
 Ic.online = ['d 8 8 #00ff9f', 'r 5 3 1 1 #00ff9f', 'r 11 3 1 1 #00ff9f', 'r 8 2 1 1 #00ff9f'];
-Ic.offline = ['d 8 8 #41434f', 'r 4 8 8 1 #9b94c0', 'r 8 4 1 8 #9b94c0'];
-Ic.music = ['r 5 2 2 10 #9d4edd', 'r 12 3 2 8 #ffd166', 'd 10 5 #eadaff'];
-Ic.star = ['d 8 3 #ffd166', 'd 8 13 #ffd166', 'd 3 8 #ffd166', 'd 13 8 #ffd166'];
-Ic.moon = ['d 8 5 #eadaff', 'd 6 5 #eadaff', 'd 9 12 #9d4edd'];
-Ic.secret = ['d 8 5 #ff5d8f', 'r 5 10 6 3 #9d4edd', 'd 8 6 #07060f'];
-Ic.lock = ['r 5 6 6 7 #eadaff', 'r 6 4 4 3 #ffd166', 'd 8 9 #9d4edd'];
-Ic.unlock = ['r 5 6 6 7 #eadaff', 'r 4 4 5 3 #ffd166', 'd 8 9 #9d4edd'];
-Ic.link = ['d 6 4 #9d4edd', 'd 10 12 #9d4edd', 'r 5 5 6 6 #ffd166'];
-Ic.arrow = ['d 8 3 #eadaff', 'd 8 13 #eadaff', 'r 3 8 12 1 #eadaff', 'd 10 8 #ffd166'];
+Ic.offline = ['d 8 8 #41434f', 'r 4 8 8 1 #b0b0b8', 'r 8 4 1 8 #b0b0b8'];
+Ic.music = ['r 5 2 2 10 #b3001b', 'r 12 3 2 8 #ff4557', 'd 10 5 #f0eaea'];
+Ic.star = ['d 8 3 #ff4557', 'd 8 13 #ff4557', 'd 3 8 #ff4557', 'd 13 8 #ff4557'];
+Ic.moon = ['d 8 5 #f0eaea', 'd 6 5 #f0eaea', 'd 9 12 #b3001b'];
+Ic.secret = ['d 8 5 #ff9aa5', 'r 5 10 6 3 #b3001b', 'd 8 6 #0a0a0c'];
+Ic.lock = ['r 5 6 6 7 #f0eaea', 'r 6 4 4 3 #ff4557', 'd 8 9 #b3001b'];
+Ic.unlock = ['r 5 6 6 7 #f0eaea', 'r 4 4 5 3 #ff4557', 'd 8 9 #b3001b'];
+Ic.link = ['d 6 4 #b3001b', 'd 10 12 #b3001b', 'r 5 5 6 6 #ff4557'];
+Ic.arrow = ['d 8 3 #f0eaea', 'd 8 13 #f0eaea', 'r 3 8 12 1 #f0eaea', 'd 10 8 #ff4557'];
 Object.keys(Ic).forEach((k) => {
   reg('ui/icons/icon-' + k + '.svg', 'icon', 'ui, nav, status', IX(Ic[k]));
 });
@@ -514,27 +514,27 @@ const badge = (text, sub, bg, fg, mono) => {
     '</svg>\n';
 };
 reg('ui/badges/badge-exe.svg', 'badge', 'status, footer',
-  badge('LUNNIE.EXE', 'COSMIC SYSTEM · V1.5', '#240046', '#ffffff', false));
+  badge('LUNNIE.EXE', 'COSMIC SYSTEM · V1.5', '#14040a', '#ffffff', false));
 reg('ui/badges/badge-night.svg', 'badge', 'footer, kit',
-  badge('BEST VIEWED', 'AT NIGHT ♡', '#0a0818', '#eadaff', false));
+  badge('BEST VIEWED', 'AT NIGHT ♡', '#141416', '#f0eaea', false));
 reg('ui/badges/badge-cosmic.svg', 'badge', 'footer, kit',
-  badge('COSMIC WEB', 'NEOCITIES SECTOR 17', '#3a0ca3', '#ffd166', false));
+  badge('COSMIC WEB', 'NEOCITIES CRYPT 17', '#3a0008', '#ff4557', false));
 reg('ui/badges/badge-signal.svg', 'badge', 'status, kit',
   badge('SIGNAL ONLINE', '●●● TRANSMITTING', '#0f0b22', '#00ff9f', false));
 reg('ui/badges/badge-love.svg', 'badge', 'footer, kit',
   badge('MADE WITH ♥', 'LUNNIE · MX', '#c0236b', '#ffffff', false));
 reg('ui/badges/badge-fm.svg', 'badge', 'radio, kit',
-  badge('NEBULA FM', '★ RADIO DEL SECTOR', '#240046', '#ffd166', false));
+  badge('GRAVE FM', '★ RADIO DEL PANTEÓN', '#14040a', '#ff4557', false));
 reg('ui/badges/badge-space.svg', 'badge', 'kit',
-  badge('I ♥ SPACE', 'EST. 2026', '#0a0818', '#9d4edd', false));
+  badge('I ♥ RIP', 'EST. 2026', '#141416', '#b3001b', false));
 reg('ui/badges/badge-artist.svg', 'badge', 'kit',
-  badge('DIGITAL ARTIST', 'GG / P5 ADDICT', '#7209b7', '#ffffff', false));
+  badge('DIGITAL ARTIST', 'GG / P5 ADDICT', '#8b0000', '#ffffff', false));
 reg('ui/badges/badge-exe-mono.svg', 'badge', 'kit-mono',
-  badge('LUNNIE.EXE', 'V1.5', '#04030a', '#9b94c0', true));
+  badge('LUNNIE.EXE', 'V1.5', '#0a0a0c', '#b0b0b8', true));
 reg('ui/badges/badge-fm-mono.svg', 'badge', 'kit-mono',
-  badge('NEBULA FM', '87.9', '#04030a', '#9b94c0', true));
+  badge('GRAVE FM', '87.9', '#0a0a0c', '#b0b0b8', true));
 reg('ui/badges/badge-space-mono.svg', 'badge', 'kit-mono',
-  badge('I ♥ SPACE', 'MX', '#04030a', '#9b94c0', true));
+  badge('I ♥ RIP', 'MX', '#0a0a0c', '#b0b0b8', true));
 
 /* ============================================================
    11. UI / CURSORS (fase §19)
@@ -675,10 +675,10 @@ const note = (color, shade, text) =>
   '<rect x="6" y="8" width="88" height="86" rx="6" fill="' + color + '" stroke="' + P.ink + '" stroke-width="2.5"/>' +
   '<path d="M14 24 H86 M14 44 H86 M14 64 H86" stroke="' + shade + '" stroke-width="2" opacity="0.6"/>' +
   '</g>';
-reg('guestbook/note-pink.svg', 'note', 'guestbook', W(note('#ffb3c6', '#ff5d8f', '')));
-reg('guestbook/note-blue.svg', 'note', 'guestbook', W(note('#9dbbff', '#5b7bff', '')));
+reg('guestbook/note-pink.svg', 'note', 'guestbook', W(note('#ffb3c6', '#ff9aa5', '')));
+reg('guestbook/note-blue.svg', 'note', 'guestbook', W(note('#e8e8e8', '#b0b0b8', '')));
 reg('guestbook/note-yellow.svg', 'note', 'guestbook', W(note('#ffe08a', '#e0a800', '')));
-reg('guestbook/note-purple.svg', 'note', 'guestbook', W(note('#c9a8f0', '#8a5cd0', '')));
+reg('guestbook/note-purple.svg', 'note', 'guestbook', W(note('#f5ccd2', '#b3001b', '')));
 reg('guestbook/sticker-star.svg', 'guestbook', 'guestbook, decor', W(dk(50, 50, 34, P.amber, ' stroke="' + P.ink + '" stroke-width="2"')));
 reg('guestbook/sticker-heart.svg', 'guestbook', 'guestbook, footer', W(
   '<path d="M50 82 C38 70 16 60 16 42 C16 30 26 20 38 22 C38 30 44 26 50 22 C56 26 62 30 62 22 C74 20 84 30 84 42 C84 60 62 70 50 82 Z" fill="' + P.rose + '" stroke="' + P.ink + '" stroke-width="2"/>'));
@@ -735,7 +735,7 @@ reg('transmissions/terminal-frame.svg', 'tx', 'terminal-frame', W(
   '<g>' +
   '<rect x="4" y="4" width="92" height="92" fill="' + P.panel + '" opacity="0.9" stroke="' + P.hex + '" stroke-width="2"/>' +
   '<path d="M10 12 H90 M10 88 H90 M12 10 V90 M88 10 V90" stroke="' + P.online + '" stroke-width="2" opacity="0.6"/>' +
-  '<rect x="16" y="20" width="8" height="8" fill="' + P.dnd + '"/><text x="30" y="28" font-family="monospace" font-size="8" fill="' + P.off + '">NEBULA//TX</text></g>'));
+  '<rect x="16" y="20" width="8" height="8" fill="' + P.dnd + '"/><text x="30" y="28" font-family="monospace" font-size="8" fill="' + P.off + '">RIP//TX</text></g>'));
 reg('transmissions/transmission-icon.svg', 'tx', 'tx-icon', W(
   '<rect x="10" y="14" width="56" height="72" fill="' + P.purple + '" stroke="' + P.off + '" stroke-width="2"/>' +
   '<path d="M66 26 L88 16 L84 40 L80 44 L92 60 L70 64 Z" fill="' + P.amber + '" opacity="0.9"/>' +
@@ -829,13 +829,13 @@ reg('secret/secret-message.svg', 'secret', 'easter-egg', W(
 const nebulaBase = (opts) => {
   const o = opts || {};
   const body = o.body || P.indigo;
-  const grad = o.grad || ['#3a0ca3', '#120b2e'];
-  const eyes = o.eyes || ['#ffd166'];
+  const grad = o.grad || ['#3a0008', '#14040a'];
+  const eyes = o.eyes || ['#ff4557'];
   const ear = o.ear || P.violet;
   const defs = '<linearGradient id="nD" x1="0" y1="0" x2="1" y2="1">' +
     '<stop offset="0" stop-color="' + grad[0] + '"/><stop offset="1" stop-color="' + grad[1] + '"/></linearGradient>';
   let core =
-    '<ellipse cx="100" cy="168" rx="46" ry="9" fill="#0a0818" opacity=".6"/>' +
+    '<ellipse cx="100" cy="168" rx="46" ry="9" fill="#141416" opacity=".6"/>' +
     (o.tail ? '<path d="M170 108 q16 -12 8 -26 q4 18 -8 26z" fill="' + P.purple + '"/>' : '') +
     '<path d="M78 52 L88 26 L104 48z" fill="' + ear + '" stroke="' + P.purple + '" stroke-width="3" stroke-linejoin="round"/>' +
     '<path d="M122 52 L112 26 L96 48z" fill="' + ear + '" stroke="' + P.purple + '" stroke-width="3" stroke-linejoin="round"/>' +
@@ -866,7 +866,7 @@ reg('characters/nebula/nebula-happy.svg', 'character', 'nebula-happy',
 reg('characters/nebula/nebula-wave.svg', 'character', 'nebula-wave',
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" renderer-info="lunnie-kit">' + nebulaBase({ face: 'wave' }));
 reg('characters/nebula/nebula-glitch.svg', 'character', 'nebula-glitch',
-  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" renderer-info="lunnie-kit">' + nebulaBase({ face: 'glitch', grad: ['#3a0ca3', '#240046'] }));
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" renderer-info="lunnie-kit">' + nebulaBase({ face: 'glitch', grad: ['#3a0008', '#14040a'] }));
 
 /* ============================================================
    24. CHARACTERS / LUNNIE — variaciones (fase §21)
@@ -942,7 +942,7 @@ function writeAll() {
 
   const manifest = {
     generated: new Date().toISOString().slice(0, 10),
-    palette: 'extraído de la UI actual: --indigo #3a0ca3, --violet #7209b7, --purple #9d4edd, --amber #ffd166, --rose #ff5d8f, --off #eadaff, --deep #04030a',
+    palette: 'goticos: oxblood-deep #3a0008, oxblood #8b0000, blood #b3001b, carmine #e63946, ember #ff4557, off #f0eaea, deep #0a0a0c',
     notes: indexLegacy().length + ' assets legacy (assets/img/**) + ' + assets.length + ' del kit (lunnie-kit) = ' + (indexLegacy().length + assets.length) + ' registros',
     assets: [
       ...indexLegacy(),

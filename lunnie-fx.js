@@ -1,7 +1,7 @@
 /* ============================================================
    LUNNIE ♡ — lunnie-fx.js
-   La capa "viva" del sector: cursor personalizado, mascota
-   Nebula con estados, LUNNIE SYSTEM (valores estéticos que
+   La capa "viva" del panteón: cursor personalizado, mascota
+   RIP con estados, LUNNIE SYSTEM (valores estéticos que
    fluctúan), scroll index, descubrimientos y secretos.
 
    Todo es estética y mecánica de juego — no datos reales ni
@@ -20,7 +20,7 @@
   document.addEventListener('pointerdown', markGesture, { passive: true });
   document.addEventListener('keydown', markGesture, { passive: true });
 
-  // bus de eventos del sector (LAST EVENT del system diagnostics)
+  // bus de eventos del panteón (LAST EVENT del system diagnostics)
   let sysEvent = () => {};
   const reportNebula = (name) => {
     const el = document.querySelector('[data-key="nebula"]');
@@ -129,7 +129,7 @@
   }
 
   /* ============================================================
-     3. NEBULA — mascota con estados
+     3. RIP — mascota con estados
      ============================================================ */
   function initNebula() {
     const friend = document.querySelector('.nebula-friend');
@@ -155,7 +155,7 @@
       bubble = document.createElement('div');
       bubble.className = 'nebula-bubble';
       bubble.setAttribute('role', 'status');
-      bubble.innerHTML = '<span>' + (kicker || 'nebula') + ' //</span>' + text;
+      bubble.innerHTML = '<span>' + (kicker || 'rip') + ' //</span>' + text;
       document.body.appendChild(bubble);
       setTimeout(() => bubble.remove(), 4200);
     }
@@ -163,8 +163,8 @@
       stateIdx = idx;
       const s = STATES[idx];
       img.src = s.img;
-      img.alt = 'Nebula, la mascota del sector — ' + s.name.toLowerCase();
-      tag.textContent = 'NEBULA STATUS ● ' + s.name;
+      img.alt = 'RIP, la mascota del panteón — ' + s.name.toLowerCase();
+      tag.textContent = 'RIP STATUS ● ' + s.name;
       tag.className = 'neb-tag ' + s.cls;
       reportNebula(s.name);
       if (friend.classList) {
@@ -190,14 +190,14 @@
       if (next === stateIdx) return;
       setState(next, true);
       const msgs = [
-        '*Nebula mira el sector*',
-        '*Nebula huele algo raro en el arte*',
+        '*RIP mira el panteón*',
+        '*RIP huele algo raro en el arte*',
         '*zzz*',
-        '*Nebula gira la cola de emoción*',
-        '*Nebula sonríe más brillante que el sol*',
-        '*Nebula saluda al visitante*',
+        '*RIP gira la cola de emoción*',
+        '*RIP sonríe entre las velas*',
+        '*RIP saluda al visitante*',
       ];
-      if (Math.random() < 0.12) say(msgs[next], 'nebula');
+      if (Math.random() < 0.12) say(msgs[next], 'rip');
     }, 8000);
 
     // clics: acumulan cariño
@@ -205,16 +205,16 @@
       clicks++;
       setState(0);
       reportNebula(STATES[0].name);
-      sysEvent('nebula respondió a tu llamada');
-      const pet = ['*suave*', '*Nebula cierra los ojos*', '*ronroneo espacial*', '*te da la cabeza*'];
-      say(pet[Math.min(clicks - 1, pet.length - 1)], 'nebula');
+      sysEvent('rip respondió a tu llamada');
+      const pet = ['*suave*', '*RIP cierra los ojos*', '*ronroneo tumular*', '*te da la cabeza*'];
+      say(pet[Math.min(clicks - 1, pet.length - 1)], 'rip');
       if (clicks === 1) removeTrail();
       trail.push(Date.now());
       if (trail.length >= 5) {
         if (trail[trail.length - 1] - trail[trail.length - 5] < 7000) {
           setState(3);
-          say('¡WOW! ¡Encontraste algo juntos!', 'nebula');
-          discover('nebula-5', 'Nebula encontró algo. +1 secreto.');
+          say('¡WOW! ¡Encontraste algo juntos!', 'rip');
+          discover('nebula-5', 'RIP encontró algo. +1 secreto.');
           clicks = 0;
           trail = [];
         } else {
@@ -227,8 +227,8 @@
     // primera visita: se presenta
     setTimeout(() => {
       if (getDiscovered().includes('nebula-first')) return;
-      say('Hola, soy Nebula. Cuida este rinconcito ♡', 'nebula');
-      discover('nebula-first', 'Conociste a Nebula.');
+      say('Hola, soy RIP. Cuida este rinconcito ♡', 'rip');
+      discover('nebula-first', 'Conociste a RIP.');
     }, 2200);
   }
   initNebula();
@@ -241,7 +241,7 @@
     if (!wrap) return;
 
     const FUN = {
-      mood: ['cafeinada', 'en modo dibujo', 'ignorando el sueño', 'hiperfocus pixel', 'modo pelea', 'de nebulosa en nebulosa'],
+      mood: ['cafeinada', 'en modo dibujo', 'ignorando el sueño', 'hiperfocus pixel', 'modo pelea', 'de brasa en brasa'],
       energy: ['73%', 'baja pero funcional', 'recargando', 'jugo al 90%', 'a media luz'],
       signal: ['fuerte', 'con estática', 'intermitente', 'cristalina'],
     };
@@ -253,7 +253,7 @@
 
     let currentMood = pick(FUN.mood);
 
-    // Lectura decorativa del sector: las energías "en palabras" mueven la
+    // Lectura decorativa del panteón: las energías "en palabras" mueven la
     // barra con un valor ambiente al azar; las que llevan % usan ese número.
     const barValue = (txt) => {
       const n = parseFloat(txt);
@@ -267,7 +267,7 @@
       requestAnimationFrame(() => eventEl.classList.add('flash'));
     };
     window.addEventListener('lunnie:event', (e) => {
-      sysEvent((e && e.detail && e.detail.text) || 'evento puntual del sector');
+      sysEvent((e && e.detail && e.detail.text) || 'evento puntual del panteón');
     });
 
     const setRow = (key, val) => {
@@ -405,7 +405,7 @@
         discover('key-l', 'Presionaste L. Como en Lumière.');
         const t = document.createElement('div');
         t.className = 'nebula-bubble';
-        t.innerHTML = '<span>heartbeat //</span>el sector late ♡';
+        t.innerHTML = '<span>heartbeat //</span>el panteón late ♡';
         document.body.appendChild(t);
         setTimeout(() => t.remove(), 3600);
       }
@@ -438,11 +438,11 @@
     );
   })();
 
-  // 7.5 Clic en estrella decorativa
+  // 7.5 Clic en brasa decorativa
   (function initStarTap() {
     document.querySelectorAll('.star-tap').forEach((star) => {
       star.addEventListener('click', () => {
-        discover('star-click', 'Tocaste una estrella del sector.');
+        discover('star-click', 'Tocaste una brasa del panteón.');
         showSysNote('SYS // ESTRELLA " +1 ORO" RECOGIDA ✦');
       });
     });
@@ -454,7 +454,7 @@
     if (!toggle) return;
     const once = () => {
       if (!getDiscovered().includes('radio')) {
-        discover('radio', 'NEBULA FM sintonizada.');
+        discover('radio', 'GRAVE FM sintonizada.');
       }
     };
     toggle.addEventListener('click', once, { once: true });
@@ -493,7 +493,7 @@
     out.style.left = '50%';
     out.style.bottom = 'auto';
     out.style.top = '18%';
-    out.innerHTML = '<span>sector core //</span>' + text;
+    out.innerHTML = '<span>crypt core //</span>' + text;
     document.body.appendChild(out);
     setTimeout(() => out.remove(), 3400);
   }

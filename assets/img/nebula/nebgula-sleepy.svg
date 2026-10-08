@@ -2,19 +2,19 @@
   <!-- Nebula // durmiendo -->
   <defs>
     <linearGradient id="ngs" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#3a0ca3"/>
-      <stop offset="1" stop-color="#120b2e"/>
+      <stop offset="0" stop-color="#8b0000"/>
+      <stop offset="1" stop-color="#1a1114"/>
     </linearGradient>
   </defs>
-  <ellipse cx="100" cy="171" rx="46" ry="9" fill="#0a0818" opacity=".5"/>
-  <path d="M168 112 q14 -12 8 -24 q4 16 -8 24z" fill="#9d4edd"/>
-  <path d="M80 52 L90 30 L104 48z" fill="#3a0ca3" stroke="#9d4edd" stroke-width="3" stroke-linejoin="round"/>
-  <path d="M120 52 L110 30 L96 48z" fill="#3a0ca3" stroke="#9d4edd" stroke-width="3" stroke-linejoin="round"/>
-  <circle cx="100" cy="106" r="54" fill="url(#ngs)" stroke="#9d4edd" stroke-width="3.5"/>
-  <ellipse cx="100" cy="120" rx="26" ry="16" fill="#0b0a18" opacity=".55"/>
-  <path d="M74 96 q8 -8 16 0" fill="none" stroke="#ffd166" stroke-width="3.4" stroke-linecap="round"/>
-  <path d="M110 96 q8 -8 16 0" fill="none" stroke="#ffd166" stroke-width="3.4" stroke-linecap="round"/>
-  <path d="M96 122 h8 q-4 5 -4 9 q0 5 4 9 h-8" fill="none" stroke="#9d4edd" stroke-width="2.4" stroke-linecap="round"/>
-  <text x="152" y="52" font-family="monospace" font-size="24" fill="#ffd166" text-anchor="middle" font-weight="bold">z</text>
-  <text x="170" y="78" font-family="monospace" font-size="18" fill="#9d4edd" text-anchor="middle" font-weight="bold">z</text>
+  <ellipse cx="100" cy="171" rx="46" ry="9" fill="#141416" opacity=".5"/>
+  <path d="M168 112 q14 -12 8 -24 q4 16 -8 24z" fill="#e63946"/>
+  <path d="M80 52 L90 30 L104 48z" fill="#8b0000" stroke="#e63946" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M120 52 L110 30 L96 48z" fill="#8b0000" stroke="#e63946" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="100" cy="106" r="54" fill="url(#ngs)" stroke="#e63946" stroke-width="3.5"/>
+  <ellipse cx="100" cy="120" rx="26" ry="16" fill="#101012" opacity=".55"/>
+  <path d="M74 96 q8 -8 16 0" fill="none" stroke="#ff4557" stroke-width="3.4" stroke-linecap="round"/>
+  <path d="M110 96 q8 -8 16 0" fill="none" stroke="#ff4557" stroke-width="3.4" stroke-linecap="round"/>
+  <path d="M96 122 h8 q-4 5 -4 9 q0 5 4 9 h-8" fill="none" stroke="#e63946" stroke-width="2.4" stroke-linecap="round"/>
+  <text x="152" y="52" font-family="monospace" font-size="24" fill="#ff4557" text-anchor="middle" font-weight="bold">z</text>
+  <text x="170" y="78" font-family="monospace" font-size="18" fill="#e63946" text-anchor="middle" font-weight="bold">z</text>
 </svg>

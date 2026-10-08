@@ -1,6 +1,6 @@
 {
   "generated": "2026-09-26",
-  "palette": "extraído de la UI actual: --indigo #3a0ca3, --violet #7209b7, --purple #9d4edd, --amber #ffd166, --rose #ff5d8f, --off #eadaff, --deep #04030a",
+  "palette": "paleta gótica: --oxblood-deep #3a0008, --oxblood #8b0000, --blood #b3001b, --carmine #e63946, --ember #ff4557, --off #f0eaea, --deep #0a0a0c",
   "notes": "52 assets legacy (assets/img/**) + 180 del kit (lunnie-kit) = 232 registros",
   "assets": [
     {

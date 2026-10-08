@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
   LUNNIE ♡ — index.html
-  Dirección de arte: SPACE × PERSONA 5 × GUILTY GEAR
+  Dirección de arte: CRYPT × PERSONA 5 × GUILTY GEAR
   3 columnas: perfil & tools | contenido central | widgets.
   Stack: HTML5 semántico + CSS Grid/clip-path + JS vanilla.
 -->
@@ -9,17 +9,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#07060f">
-  <meta name="description" content="Lunnie — 17 y/o digital artist & illustrator from Mexico. Un pequeño universo digital: galería, encargos, radio NEBULA FM, transmisiones y la mascota Nebula.">
-  <title>LUNNIE'S CORNER — un rincón del espacio</title>
+  <meta name="theme-color" content="#0a0a0c">
+  <meta name="description" content="Lunnie — 17 y/o digital artist &amp; illustrator from Mexico. Un pequeño panteón digital: galería, encargos, radio GRAVE FM, transmisiones y la mascota RIP.">
+  <title>LUNNIE'S GRAVEYARD</title>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="LUNNIE'S CORNER — un rincón del espacio">
-  <meta property="og:description" content="Lunnie — 17 y/o artist from Mexico. Galería, encargos, radio NEBULA FM y transmisiones. Un pequeño universo digital.">
+  <meta property="og:title" content="LUNNIE'S GRAVEYARD">
+  <meta property="og:description" content="Lunnie — 17 y/o artist from Mexico. Galería, encargos, radio GRAVE FM y transmisiones. Un pequeño panteón digital.">
   <meta property="og:url" content="https://lol-bit-rvgl.github.io/Lunnie-Landing/">
   <meta property="og:image" content="https://lol-bit-rvgl.github.io/Lunnie-Landing/assets/img/banner.svg">
-  <meta property="og:site_name" content="LUNNIE'S CORNER">
+  <meta property="og:site_name" content="LUNNIE'S GRAVEYARD">
   <meta name="twitter:card" content="summary">
 
   <!-- Favicon propio (luna + estrella, SVG) -->
@@ -35,7 +35,7 @@
 </head>
 
 <body>
-  <!-- Capa fija espacial: nebulosas + estrellas + rejilla técnica -->
+  <!-- Capa fija: humo de cripta + brasas + rejilla técnica -->
   <div class="space-bg" aria-hidden="true"></div>
 
   <!-- Capas de profundidad para el parallax (lunnie-bg.js) -->
@@ -43,7 +43,7 @@
   <div class="fx-layer is-mid" aria-hidden="true"></div>
   <div class="fx-layer is-near" aria-hidden="true"></div>
 
-  <!-- Bandas estelares (sprites con parallax) + banda cercana viva -->
+  <!-- Bandas de brasas (sprites con parallax) + banda cercana viva -->
   <div class="px-stars px-stars-far" aria-hidden="true"></div>
   <div class="px-stars px-stars-mid" aria-hidden="true"></div>
   <canvas id="field-canvas" aria-hidden="true"></canvas>
@@ -53,10 +53,10 @@
   <div class="progress-hud" id="progress-hud" aria-hidden="true"></div>
 
   <!-- Estrellas clicables (secreto) -->
-  <button type="button" class="star-tap is-far" aria-label="una estrella del sector" title="*brilla*">
+  <button type="button" class="star-tap is-far" aria-label="una brasa del panteón" title="*brilla*">
     <img src="assets/decorations/stars/star-01.svg" alt="" loading="lazy" decoding="async">
   </button>
-  <button type="button" class="star-tap is-mid" aria-label="otra estrella del sector" title="*parpadea*">
+  <button type="button" class="star-tap is-mid" aria-label="otra brasa del panteón" title="*parpadea*">
     <img src="assets/decorations/stars/sparkle-02.svg" alt="" loading="lazy" decoding="async">
   </button>
 
@@ -84,8 +84,8 @@
        ============================================================ -->
   <div class="marquee-bar" aria-hidden="true">
     <div class="marquee-track">
-      <span>✦ LOOKING FOR A HOME IN THE INTERNET ✦ <b>ENCARGOS ABIERTOS</b> :: COMMISSIONS OPEN ✦ NEBULA FM ✦</span>
-      <span>✦ LOOKING FOR A HOME IN THE INTERNET ✦ <b>ENCARGOS ABIERTOS</b> :: COMMISSIONS OPEN ✦ NEBULA FM ✦</span>
+      <span>✦ LOOKING FOR A HOME IN THE INTERNET ✦ <b>ENCARGOS ABIERTOS</b> :: COMMISSIONS OPEN ✦ GRAVE FM ✦</span>
+      <span>✦ LOOKING FOR A HOME IN THE INTERNET ✦ <b>ENCARGOS ABIERTOS</b> :: COMMISSIONS OPEN ✦ GRAVE FM ✦</span>
     </div>
   </div>
 
@@ -93,7 +93,7 @@
        HERO
        ============================================================ -->
   <header class="hero">
-    <!-- Kit hero: estrellas, rejilla, destellos y órbitas (lunnie-kit) -->
+    <!-- Kit hero: brasas, rejilla, destellos y órbitas (lunnie-kit) -->
     <span class="hero-deco hero-deco-stars" aria-hidden="true"></span>
     <span class="hero-deco hero-deco-grid" aria-hidden="true"></span>
     <span class="hero-deco hero-orbit" aria-hidden="true"><img src="assets/hero/hero-orbit.svg" alt=""></span>
@@ -102,13 +102,13 @@
     <span class="hero-badge">EST. <i>2026</i> // NEOCITIES</span>
     <h1 class="hero-title">LU<span class="hi">NN</span>IE</h1>
 
-    <!-- Sticker flotante con la avatar del sector -->
-    <div class="hero-sticker" id="hero-sticker" data-cursor role="img" aria-label="Sector de Lunnie — la receta del rincón">
+    <!-- Sticker flotante con la avatar del panteón -->
+    <div class="hero-sticker" id="hero-sticker" data-cursor role="img" aria-label="Cripta de Lunnie — la receta del panteón">
       <img src="assets/img/avatar.svg" alt="" width="200" height="200">
       <span class="stk-tag">01 · sender</span>
     </div>
 
-    <p class="hero-coords" id="hero-coords"><img src="assets/ui/hud/hud-coordinates.svg" alt="" class="hud-coords-ico">SECTOR <b>17</b> // <b>NEOCITIES</b></p>
+    <p class="hero-coords" id="hero-coords"><img src="assets/ui/hud/hud-coordinates.svg" alt="" class="hud-coords-ico">CRYPT <b>17</b> // <b>NEOCITIES</b></p>
     <p class="hero-sub"><strong>digital artist</strong> &amp; illustrator<br>from <em>mexico</em></p>
     <div class="hero-badges">
       <span class="chip chip-open">commissions: open</span>
@@ -131,12 +131,12 @@
   <main class="page">
 
     <!-- ==========================================================
-         ENTRADA AL SECTOR — obra destacada como puerta
+         ENTRADA AL PANTEÓN — obra destacada como puerta
          ========================================================== -->
     <section class="zone zone-art" data-reveal="art" aria-labelledby="t-featured">
       <h2 class="sr-only" id="t-featured">obra destacada</h2>
       <div class="path-gate" aria-hidden="true">
-        <span>SECTOR 17</span><i>↓</i><span>SIGNAL DETECTED</span>
+        <span>CRYPT 17</span><i>↓</i><span>SIGNAL DETECTED</span>
       </div>
       <div class="entry-wrap">
         <figure class="featured-art-wrap entry-art">
@@ -147,11 +147,11 @@
           <p class="ft-plate">FEATURED TRANSMISSION // ARTWORK <b>#042</b></p>
           <h3>«gatita astronauta»</h3>
           <p class="entry-note">
-            bienvenid@ a mi rincón — un dibujante haciendo casa en la web, sin algoritmo.
+            bienvenid@ a mi panteón — un dibujante haciendo casa en la web, sin algoritmo.
           </p>
           <p>
             Mi pedazo favorito del mes: una pequeña exploradora espacial flotando
-            con su casco. (Hecha a mano en este sector, sin IA en el proceso.)
+            con su casco. (Hecha a mano en este panteón, sin IA en el proceso.)
           </p>
           <div class="tags-row">
             <span class="chip">original</span>
@@ -176,11 +176,11 @@
         <section class="panel panel-a" id="sec-profile" data-sec="PROFILE" data-reveal="sys" aria-labelledby="t-perfil">
           <header class="panel-head"><h2 id="t-perfil">perfil</h2><span class="chip chip-live">online</span></header>
           <div class="profile-fig">
-            <img class="profile-avatar shape-oct" src="assets/img/avatar.svg" alt="Avatar espacio de Lunnie" width="132">
+            <img class="profile-avatar shape-oct" src="assets/img/avatar.svg" alt="Avatar de Lunnie" width="132">
           </div>
           <h3 class="profile-name">LUNNIE</h3>
           <p class="profile-tag">17 Y/O · ARTIST · MX</p>
-          <p class="profile-bio">17 y/o artist from Mexico. Obsessed with fighting games, celestial vibes &amp; high-contrast illustrations. Welcome to my space.</p>
+          <p class="profile-bio">17 y/o artist from Mexico. Obsessed with fighting games, gothic vibes &amp; high-contrast illustrations. Welcome to my grave.</p>
           <!-- "n obras" y "n OCs" se calculan de CONFIG.WORKS / CONFIG.OCS
                  (script.js) — js rellena los <b data-stat> al cargar. -->
             <div class="profile-stats">
@@ -216,12 +216,12 @@
           </header>
           <!-- Contenedor que llena discord-widget.js. Necesita tu ID.
                El contenido inicial escribible reproduce renderManual()
-               ("SECTOR EN REPOSO"): si JS no corre o tarda, el visitante
+               ("CRYPT IN REPOSE"): si JS no corre o tarda, el visitante
                nunca ve un "INICIANDO…" colgado. El estado de conexión se
                reserva al momento exacto del fetch con un ID real. -->
           <div class="dw" id="discord-widget">
             <div class="dw-head">
-              <span>// SECTOR EN REPOSO</span>
+              <span>// CRYPT IN REPOSE</span>
               <span class="meter sleep">◌ WAVEFORM</span>
             </div>
             <div class="dw-user">
@@ -231,9 +231,9 @@
                 <span class="dw-tag">/ OFFLINE</span>
               </div>
             </div>
-            <p class="dw-status">» la artífice anda en su órbita haciendo sketch — la señal vuelve cuando regrese ▂ ▄ █</p>
+            <p class="dw-status">» la artífice anda en su cripta haciendo sketch — la señal vuelve cuando regrese ▂ ▄ █</p>
             <div class="dw-activity"><div class="art">⌁</div><span class="dw-activity-data">emitiendo ambiente… (sin actividad de Discord)</span></div>
-            <div class="dw-foot"><span class="dw-clock">PRESENCIA DEL SECTOR // EN REPOSO</span></div>
+            <div class="dw-foot"><span class="dw-clock">PRESENCIA DEL PANTEÓN // EN REPOSO</span></div>
           </div>
         </section>
 
@@ -246,11 +246,11 @@
         <section class="panel panel-e" id="sec-webring" data-reveal="deco" aria-labelledby="t-webring" hidden>
           <header class="panel-head"><h2 id="t-webring">webring</h2><span class="chip">próximamente</span></header>
           <ul class="friend-links" id="friend-links">
-            <li><a href="#" target="_blank" rel="noopener" class="is-pending" data-pending title="un hueco del webring — reservado"><img src="assets/ui/badges/badge-space.svg" alt="badge I ♥ SPACE — reservado" loading="lazy" decoding="async"></a></li>
-            <li><a href="#" target="_blank" rel="noopener" class="is-pending" data-pending title="un hueco del webring — reservado"><img src="assets/ui/badges/badge-fm-mono.svg" alt="badge NEBULA FM — reservado" loading="lazy" decoding="async"></a></li>
+            <li><a href="#" target="_blank" rel="noopener" class="is-pending" data-pending title="un hueco del webring — reservado"><img src="assets/ui/badges/badge-space.svg" alt="badge I ♥ RIP — reservado" loading="lazy" decoding="async"></a></li>
+            <li><a href="#" target="_blank" rel="noopener" class="is-pending" data-pending title="un hueco del webring — reservado"><img src="assets/ui/badges/badge-fm-mono.svg" alt="badge GRAVE FM — reservado" loading="lazy" decoding="async"></a></li>
             <li><a href="#" target="_blank" rel="noopener" class="is-pending" data-pending title="un hueco del webring — reservado"><img src="assets/ui/badges/badge-exe-mono.svg" alt="badge LUNNIE.EXE — reservado" loading="lazy" decoding="async"></a></li>
           </ul>
-          <p class="tiny">webring del sector en construcción — cada badge va marcando la casa de una alma amiga.</p>
+          <p class="tiny">webring del panteón en construcción — cada badge va marcando la casa de una alma amiga.</p>
         </section>
       </aside>
 
@@ -272,7 +272,7 @@
           </div>
         </section>
 
-        <p class="signal-handoff" aria-hidden="true"><b>✦</b>SIGNAL CONTINUES<b>✦</b></p>
+        <p class="signal-handoff" aria-hidden="true"><b>†</b>SIGNAL CONTINUES<b>†</b></p>
 
         <!-- ==========================================================
              DAILY TRANSMISIONES — diario/muro de notas
@@ -312,7 +312,7 @@
             <h2 id="t-comments">guestbook // comentarios</h2>
             <span class="chip">visitantes</span>
           </header>
-          <!-- Nebula asoma tras el guestbook -->
+          <!-- RIP asoma tras el guestbook -->
           <div class="nebula-peek" aria-hidden="true">
             <img src="assets/img/nebula/nebgula-curious.svg" alt="">
           </div>
@@ -345,7 +345,7 @@
 
           <!-- Hilo: script.js inyecta giscus si data-repo está configurado -->
           <div class="giscus" id="giscus-thread">
-            <div class="giscus-fallback" id="giscus-fallback">▧ conectando el hilo del sector…</div>
+            <div class="giscus-fallback" id="giscus-fallback">▧ conectando el hilo del panteón…</div>
           </div>
 
           <!-- Huellas locales (fallback del guestbook): las puebla script.js -->
@@ -361,14 +361,14 @@
         <!-- Working on -->
         <section class="panel panel-a" data-sec="WIP" data-reveal="sys" aria-labelledby="t-work">
           <header class="panel-head"><h2 id="t-work">working on rn…</h2><span class="chip chip-open">wip</span></header>
-          <div class="working-row"><span class="dot"></span><p>portada del <strong>sketchbook espacial</strong></p><span class="chip chip-state is-on">ACTIVE</span></div>
+          <div class="working-row"><span class="dot"></span><p>portada del <strong>sketchbook de la cripta</strong></p><span class="chip chip-state is-on">ACTIVE</span></div>
           <div class="working-row"><span class="dot"></span><p>página de <a href="ocs.html"><strong>OCs</strong></a> con tarjetas por personaje</p><span class="chip chip-state">BUILDING</span></div>
           <div class="working-row"><span class="dot"></span><p>playlist para el <a href="blog.html"><strong>blog</strong></a></p><span class="chip chip-state">NEXT</span></div>
           <div class="working-row"><span class="dot"></span><p>página <a href="sobre-mi.html"><strong>sobre mí</strong></a></p><span class="chip chip-state">QUEUE</span></div>
           <p class="panel-foot tiny">actualizado: hoy — el pulso largo vive en el <a href="blog.html">log</a>.</p>
         </section>
 
-        <!-- Música ambiental — NEBULA FM (se mudó a zona propia, abajo) -->
+        <!-- Música ambiental — GRAVE FM (se mudó a zona propia, abajo) -->
 
         <!-- Badges decorativos -->
         <section class="panel panel-e" data-reveal="deco" aria-labelledby="t-badges">
@@ -378,21 +378,21 @@
             <img class="badge-88" src="assets/ui/badges/badge-night.svg" alt="badge best viewed at night" loading="lazy" decoding="async">
             <img class="badge-88" src="assets/ui/badges/badge-signal.svg" alt="badge signal online" loading="lazy" decoding="async">
             <img class="badge-88" src="assets/ui/badges/badge-love.svg" alt="badge made with love" loading="lazy" decoding="async">
-            <img class="badge-88" src="assets/ui/badges/badge-fm.svg" alt="badge NEBULA FM" loading="lazy" decoding="async">
-            <img class="badge-88" src="assets/ui/badges/badge-space.svg" alt="badge I love space" loading="lazy" decoding="async">
+            <img class="badge-88" src="assets/ui/badges/badge-fm.svg" alt="badge GRAVE FM" loading="lazy" decoding="async">
+            <img class="badge-88" src="assets/ui/badges/badge-space.svg" alt="badge I ♥ RIP" loading="lazy" decoding="async">
             <img class="badge-88" src="assets/ui/badges/badge-artist.svg" alt="badge digital artist" loading="lazy" decoding="async">
             <img class="badge-88" src="assets/ui/badges/badge-exe-mono.svg" alt="badge LUNNIE.EXE mono" loading="lazy" decoding="async">
-            <img class="badge-88" src="assets/ui/badges/badge-fm-mono.svg" alt="badge NEBULA FM mono" loading="lazy" decoding="async">
-            <img class="badge-88" src="assets/ui/badges/badge-space-mono.svg" alt="badge I love space mono" loading="lazy" decoding="async">
+            <img class="badge-88" src="assets/ui/badges/badge-fm-mono.svg" alt="badge GRAVE FM mono" loading="lazy" decoding="async">
+            <img class="badge-88" src="assets/ui/badges/badge-space-mono.svg" alt="badge I ♥ RIP mono" loading="lazy" decoding="async">
           </div>
         </section>
       </aside>
     </div>
 
     <!-- ==========================================================
-         ESTACIÓN — NEBULA FM (descubrimiento tras el recorrido)
+         ESTACIÓN — GRAVE FM (descubrimiento tras el recorrido)
          ========================================================== -->
-    <section class="panel panel-c nebula-fm zone zone-radio" id="sec-radio" data-reveal="win" aria-labelledby="t-music">
+    <section class="panel panel-c grave-fm zone zone-radio" id="sec-radio" data-reveal="win" aria-labelledby="t-music">
       <div class="fm-scene" aria-hidden="true">
         <img class="fm-orbit" src="assets/ui/orbits/orbit-small.svg" alt="">
         <img class="fm-radar" src="assets/ui/hud/hud-radar.svg" alt="">
@@ -400,23 +400,23 @@
       </div>
       <i class="fm-crt" aria-hidden="true"></i>
       <img class="fm-speaker" src="assets/radio/radio-speaker.svg" alt="" aria-hidden="true">
-      <header class="panel-head"><h2 id="t-music">NEBULA FM</h2><span class="chip">pad <img class="chip-ico" src="assets/decorations/symbols/symbol-wave.svg" alt=""></span></header>
+      <header class="panel-head"><h2 id="t-music">GRAVE FM</h2><span class="chip">pad <img class="chip-ico" src="assets/decorations/symbols/symbol-wave.svg" alt=""></span></header>
       <div class="radio-deck">
         <div class="fm-console">
           <div class="fm-dial">
             <span class="fm-freq">87.9</span>
-            <span>· RADIO DEL SECTOR ·</span>
+            <span>· RADIO DEL PANTEÓN ·</span>
             <span class="fm-signal fm-sig" id="fm-signal"><img src="assets/radio/radio-signal.svg" alt="">▚▚▚ DISPONIBLE</span>
           </div>
           <div class="eq" id="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          <p class="tiny">pad espacial sintetizado al vuelo en tu navegador · cero mp3 · respeta tu gesto de play</p>
+          <p class="tiny">pad fantasma sintetizado al vuelo en tu navegador · cero mp3 · respeta tu gesto de play</p>
         </div>
         <div class="music-block">
           <div class="music-toggle-row">
             <button type="button" class="btn" id="music-toggle" aria-pressed="false">▶ emitir ambiente</button>
             <img class="fm-knob" src="assets/radio/radio-knob.svg" alt="" aria-hidden="true">
           </div>
-          <p class="music-now" id="music-status">SILENCIO CÓSMICO</p>
+          <p class="music-now" id="music-status">SILENCIO TUMULAR</p>
           <p class="fm-boot" aria-hidden="true"><img src="assets/loading/loading.svg" alt="">CONNECTING… SIGNAL FOUND?</p>
         </div>
       </div>
@@ -449,11 +449,11 @@
             <b class="val" data-key="signal">—</b>
           </div>
           <div class="sys-status-row">
-            <span>SECTOR</span>
+            <span>CRYPT</span>
             <b class="val" data-key="sector">STABLE</b>
           </div>
           <div class="sys-status-row">
-            <span>NEBULA</span>
+            <span>RIP</span>
             <b class="val" data-key="nebula">AWAKE</b>
           </div>
           <div class="sys-status-row">
@@ -468,9 +468,9 @@
         <div class="sys-side">
           <div class="sys-event" aria-live="polite" id="sys-event">
             <span class="ev-k">LAST EVENT</span>
-            <span class="ev-t" data-key="event">› monitorizando el sector…</span>
+            <span class="ev-t" data-key="event">› monitorizando el panteón…</span>
           </div>
-          <p class="panel-foot tiny egg-dev-note">lectura del sector — no de mi estado real :)</p>
+          <p class="panel-foot tiny egg-dev-note">lectura del panteón — no de mi estado real :)</p>
         </div>
       </div>
     </section>
@@ -516,13 +516,13 @@
        ============================================================ -->
   <footer class="site-footer" data-reveal="sys">
     <p class="foot-status"><img class="foot-mark" src="assets/favicon/moon-mark.svg" alt="símbolo Luna Lunnie">CONNECTION STABLE // LUNNIE NETWORK</p>
-    <p class="foot-display">LUNNIE'S CORNER</p>
+    <p class="foot-display">LUNNIE'S GRAVEYARD</p>
     <div class="foot-cta">
       <a href="#sec-profile">status</a>
       <a href="#sec-gb">guestbook</a>
       <a href="mailto:lunnie.commissions@gmail.com">contacto</a>
     </div>
-    <p>© <span data-year>2026</span> — 17 y/o · crafted with ♥ and 0 JS frameworks · estética P5 × GG × space ✦</p>
+    <p>© <span data-year>2026</span> — 17 y/o · crafted with ♥ and 0 JS frameworks · estética P5 × GG × crypt ✦</p>
     <p>no endorsement of algorithms were given in the making of this site.</p>
   </footer>
 
@@ -534,7 +534,7 @@
       <button type="button" class="stop-egg" id="egg-close" aria-label="cerrar">✕</button>
       <p class="egg-kicker">TAKE YOUR TIME //</p>
       <h2 class="egg-title">HAPPY 17TH BIRTHDAY LUNNIE!</h2>
-      <p class="egg-sub">17 y/o · México · fighting games &amp; celestial vibes ♡</p>
+      <p class="egg-sub">17 y/o · México · fighting games &amp; gothic vibes ♡</p>
     </div>
   </div>
   <div class="confetti-layer" id="confetti-layer" aria-hidden="true" hidden></div>
@@ -548,20 +548,20 @@
     </button>
     <div class="assistant-popup" id="assistant-popup" hidden>
       <div class="assistant-head">
-        <span class="title">asistente del sector</span>
+        <span class="title">asistente del panteón</span>
         <button type="button" class="assistant-close" id="assistant-close" aria-label="Cerrar asistente">✕</button>
       </div>
-      <div class="assistant-body" id="assistant-body"><p>conectando con el sector…</p></div>
+      <div class="assistant-body" id="assistant-body"><p>conectando con el panteón…</p></div>
       <button type="button" class="btn btn-ink" id="assistant-otro"><img class="chip-ico" src="assets/ui/icons/icon-art.svg" alt=""> otro consejo</button>
     </div>
   </div>
 
   <!-- ============================================================
-       NEBULA — mascota del sector (estados por lunnie-fx.js)
+       RIP — mascota del panteón (estados por lunnie-fx.js)
        ============================================================ -->
-  <div class="nebula-friend" aria-label="Nebula, la mascota del sector">
-    <img src="assets/img/nebula/nebgula-idle.svg" alt="Nebula, la mascota del sector" width="76" height="76">
-    <span class="neb-tag is-awake">NEBULA STATUS ● AWAKE</span>
+  <div class="nebula-friend" aria-label="RIP, la mascota del panteón">
+    <img src="assets/img/nebula/nebgula-idle.svg" alt="RIP, la mascota del panteón" width="76" height="76">
+    <span class="neb-tag is-awake">RIP STATUS ● AWAKE</span>
   </div>
 
   <!-- Config de Giscus (comentarios). Datos vacíos = aviso elegante.

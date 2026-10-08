@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="8" viewBox="0 0 48 8" renderer-info="lunnie-retro">
-  <circle cx="8"  cy="4" r="2" fill="#9d4edd"/>
-  <circle cx="24" cy="4" r="2" fill="#7209b7"/>
-  <circle cx="40" cy="4" r="2" fill="#9d4edd"/>
+  <circle cx="8"  cy="4" r="2" fill="#e63946"/>
+  <circle cx="24" cy="4" r="2" fill="#b3001b"/>
+  <circle cx="40" cy="4" r="2" fill="#e63946"/>
 </svg>

@@ -47,11 +47,11 @@ se resuelve con CSS o se prescinde. (60 assets excelentes > 500 genéricos.)
 | `ui/badges/` | badges 88×31 (color y mono) | `#sec-badges`, barra 88x31 |
 | `ui/cursors/` | cursores pixel (link/art/secret) | `@media (hover:hover)` |
 | `ui/orbits/` | órbitas UI | `.fm-orbit`, `.hero-orbit` |
-| `ui/hud/` | radar, coordenadas, barras de señal | LUNNIE SYSTEM / NEBULA FM |
+| `ui/hud/` | radar, coordenadas, barras de señal | LUNNIE SYSTEM / GRAVE FM |
 | `effects/glitch/` | glitch estáticos | easter egg Konami |
 | `hero/` | estrellas, rejilla, destellos, decor l/r, señal, órbita | hero de index |
 | `guestbook/` | notas, pins, cinta, stickers de muro | `.gb-wall` |
-| `radio/` | dial, perilla, altavoz, señal, onda | NEBULA FM |
+| `radio/` | dial, perilla, altavoz, señal, onda | GRAVE FM |
 | `transmissions/` | icono, señal, terminal, timestamp | sección TX |
 | `scroll/` | flechas/órbitas de scroll | reserva |
 | `loading/` | spinner de carga | línea `fm-boot` |
@@ -78,7 +78,7 @@ Se registran en el manifest con `type` y su `localPath` real (`assets/img/…`).
 ## 5. Cómo reemplazar / añadir un asset
 
 1. Edita `tools/build-asset-kit.js`: añade `reg('ruta/tipo-nombre.svg', 'tipo', 'uso', svg)`
-   con un SVG construido por los helpers (paleta de `--panel-core`, `--amber`, `--rose`, …).
+   con un SVG construido por los helpers (paleta de `--panel-core`, `--ember`, `--grave-rose`, …).
 2. Ejecuta `node tools/build-asset-kit.js` → regenera el SVG y reescribe el manifest.
 3. Si es para integrar: enlaza la ruta en `index.html`/CSS y registra el `usage`
    en la entrada del manifest.
@@ -90,8 +90,8 @@ Se registran en el manifest con `type` y su `localPath` real (`assets/img/…`).
 | fondo + texturas + parallax | sección 28.1 de `space-system.css` |
 | hero kit | 28.2 (`.hero-deco*`, `.hero-orbit`) |
 | identidad Lunnie | 28.3 (`.profile-fig::after`, `.hero-rule::after`) |
-| estados Nebula | 28.4 + `lunnie-fx.js` (STATES 5–6) |
-| NEBULA FM | 28.5 (órbita, radar, perilla, dial, CRT, boot) |
+| estados RIP | 28.4 + `lunnie-fx.js` (STATES 5–6) |
+| GRAVE FM | 28.5 (órbita, radar, perilla, dial, CRT, boot) |
 | LUNNIE SYSTEM / HUD | 28.6 (chip-ico, hud-status-line) |
 | transmisiones | 28.7 (`.tx-tab::before`, `.tx-actions::after`, timestamp) |
 | guestbook muro | 28.8 (`.gb-wall`) |
