@@ -97,9 +97,7 @@ const CONFIG = {
   // Al añadir/quitar un OC, actualiza ESTA lista. Los <b data-stat="ocs">
   // del perfil se calculan de aquí: CONFIG.OCS.length.
   OCS: [
-    'OC_01 // PROTOTYPE',
-    'OC_02 // RIP',
-    'OC_03 // VESPER',
+    'OC_01 // LUNNIE // GOTH BUNNY',
   ],
   // Destino de los botones "pedir esta ✎" / "lista de espera" por tarjeta
   // (clave = data-comm). null = se muestra como enlace pendiente.

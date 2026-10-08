@@ -1795,6 +1795,19 @@ h1, h2, h3 { line-height: 1.05; }
   gap: 22px;
   margin-top: 4px;
 }
+/* Expediente único: tarjeta centrada (evita que auto-fill la reduzca a 1 track) */
+.oc-grid--single {
+  grid-template-columns: minmax(min(300px, 100%), 640px);
+  justify-content: center;
+}
+/* 4 estilos de representación del OC en una sola ficha */
+.oc-variants {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 14px 14px 0;
+}
+.oc-variants .oc-fig { margin: 0; }
 .oc-card {
   position: relative;
   background: linear-gradient(180deg, #141416, #141416);
@@ -2104,6 +2117,7 @@ h1, h2, h3 { line-height: 1.05; }
   .stat-grid { grid-template-columns: 1fr; }
   .oc-data div { flex-direction: column; align-items: flex-start; gap: 3px; }
   .oc-data dd { text-align: left; }
+  .oc-variants { grid-template-columns: 1fr; }
   .dd-table { min-width: 0; }
 }
 
