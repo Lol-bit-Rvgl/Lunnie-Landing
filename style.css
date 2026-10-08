@@ -35,6 +35,7 @@
 :root {
   /* Cripta */
   --void:      #0a0a0c;   /* negro profundo - fondo */
+  --ink:       #0a0a0c;   /* negro base (alias semántico) */
   --panel:      #141416;   /* panel ligeramente más claro */
   --panel-2:    #17171a;   /* hover / alto */
   --line:       #33282b;   /* borde tenue */
@@ -44,7 +45,9 @@
   --oxblood-deep:#3a0008;
   --oxblood:     #8b0000;
   --blood:#b3001b;
+  --blood-bright:#c41e3a;  /* rojo vivo - hover/acentos */
   --carmine:#e63946;
+  --bone:#e8e6e0;          /* blanco hueso - texto (no blanco puro) */
   --neon-lilac:#f5ccd2;   /* rosa pálido - nombres del guestbook */
   --glow:       rgba(230, 57, 70, 0.8);
 
@@ -475,9 +478,9 @@ h1, h2, h3 { line-height: 1.05; }
 }
 .btn > * { transform: skewX(8deg); }
 .btn:hover {
-  background: var(--carmine);
+  background: var(--blood-bright);
   transform: skewX(-8deg) translateY(-2px);
-  filter: drop-shadow(0 0 12px var(--glow));
+  filter: drop-shadow(0 0 14px rgba(196, 30, 58, 0.75));
 }
 .btn:active { transform: skewX(-8deg) translateY(1px); }
 .btn-ink { background: var(--void); border: 1px solid var(--line-2); }

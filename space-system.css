@@ -20,7 +20,7 @@
   --line-hex:    #7a1f28;
   --txt:         #e8e8e8;
   --txt-dim:     #b0b0b8;
-  --ink:         #101012;
+  --ink:         #0a0a0c;
   --oct:         14px;
   --panel-shadow: 0 14px 40px -18px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(230, 57, 70, 0.12);
   --type-flicker: none;
@@ -35,10 +35,11 @@ body {
 /* Fondo base: ahora con nebulosa extra + grano sutil + rejilla tenue */
 .space-bg {
   background:
-    radial-gradient(900px 620px at 14% 18%, rgba(139, 0, 0, 0.55), transparent 60%),
-    radial-gradient(1000px 760px at 86% 32%, rgba(179, 0, 27, 0.4), transparent 62%),
-    radial-gradient(760px 620px at 30% 92%, rgba(52, 0, 10, 0.9), transparent 64%),
-    radial-gradient(520px 420px at 64% 60%, rgba(230, 57, 70, 0.16), transparent 66%),
+    radial-gradient(1200px 780px at 14% 18%, rgba(139, 0, 0, 0.6), transparent 60%),
+    radial-gradient(1000px 760px at 86% 32%, rgba(179, 0, 27, 0.5), transparent 62%),
+    radial-gradient(1120px 720px at 74% -8%, rgba(196, 30, 58, 0.22), transparent 60%),
+    radial-gradient(760px 620px at 30% 92%, rgba(52, 0, 10, 0.92), transparent 64%),
+    radial-gradient(520px 420px at 64% 60%, rgba(230, 57, 70, 0.18), transparent 66%),
     repeating-linear-gradient(0deg, rgba(230, 57, 70, 0.035) 0 1px, transparent 1px 26px),
     repeating-linear-gradient(90deg, rgba(230, 57, 70, 0.035) 0 1px, transparent 1px 26px),
     radial-gradient(150vmax 96vmax at 50% 126%, rgba(58, 0, 8, 0.9), transparent 64%),
@@ -65,12 +66,13 @@ body {
   will-change: transform;
   transform: translate3d(0, 0, 0);
   background-image:
-    radial-gradient(120vmax 62vmax at 4% 6%, rgba(230, 57, 70, 0.13), transparent 55%),
-    radial-gradient(96vmax 60vmax at 97% 18%, rgba(179, 0, 27, 0.11), transparent 55%),
-    radial-gradient(120vmax 80vmax at 80% 112%, rgba(24, 0, 5, 0.74), transparent 55%),
+    radial-gradient(120vmax 62vmax at 4% 6%, rgba(230, 57, 70, 0.16), transparent 58%),
+    radial-gradient(96vmax 60vmax at 97% 18%, rgba(179, 0, 27, 0.14), transparent 55%),
+    radial-gradient(110vmax 70vmax at 64% 6%, rgba(196, 30, 58, 0.1), transparent 60%),
+    radial-gradient(120vmax 80vmax at 80% 112%, rgba(24, 0, 5, 0.8), transparent 55%),
     url("assets/backgrounds/nebula/nebula-primary.svg"),
     url("assets/backgrounds/nebula/nebula-secondary.svg");
-  background-size: cover, cover, cover, 62% auto, 72% auto;
+  background-size: cover, cover, cover, cover, 62% auto, 72% auto;
   background-position: center, center, center, 12% 16%, 88% 78%;
   background-repeat: no-repeat;
 }
@@ -273,15 +275,16 @@ body::after {
   place-items: center;
   border-radius: var(--squircle);
   background: linear-gradient(160deg, rgba(52, 0, 10, 0.9), rgba(20, 20, 22, 0.95));
-  border: 1px solid var(--line-hex);
-  box-shadow: var(--panel-shadow), inset 0 0 60px rgba(230, 57, 70, 0.14);
+  border: 1px solid rgba(196, 30, 58, 0.55);
+  box-shadow: var(--panel-shadow), 0 0 38px -6px rgba(196, 30, 58, 0.5),
+              inset 0 0 60px rgba(230, 57, 70, 0.14);
   transform: rotate(3deg);
   transition: transform 0.5s var(--ease);
   cursor: pointer;
 }
 .hero-sticker:hover { transform: rotate(0deg) scale(1.03); }
 .hero-sticker::before {
-  content: "⋆ SECTOR LIVING";
+  content: "⋆ GRAVEYARD LIVE";
   position: absolute;
   top: 12px;
   left: 14px;
@@ -372,9 +375,10 @@ body::after {
   transform: none;
   box-shadow: none;
   translate: 0 -2px;
-  border-color: var(--carmine);
+  border-color: var(--blood-bright);
+  text-shadow: 0 0 12px rgba(196, 30, 58, 0.45);
 }
-.site-nav a:hover::after { color: rgba(255, 69, 87, 0.5); }
+.site-nav a:hover::after { color: var(--blood-bright); }
 .site-nav a.active {
   background: transparent;
   color: var(--white);
@@ -520,9 +524,9 @@ body::after {
   clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
 }
 .btn:hover {
-  background: var(--carmine);
+  background: var(--blood-bright);
   transform: translateY(-2px);
-  box-shadow: 0 7px 0 var(--void), 0 0 18px rgba(230, 57, 70, 0.4);
+  box-shadow: 0 7px 0 var(--void), 0 0 18px rgba(196, 30, 58, 0.5);
   filter: none;
 }
 .btn:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--void); }
@@ -587,7 +591,7 @@ body::after {
   width: 100%;
   z-index: 70;
   pointer-events: none;
-  background: linear-gradient(90deg, var(--carmine), var(--ember));
+  background: linear-gradient(90deg, var(--blood), var(--blood-bright));
   transform-origin: 0 50%;
   transform: scaleX(0);
   opacity: 0.85;
@@ -1701,14 +1705,14 @@ html, body { overflow-x: clip; }
   font-size: 0.62rem;
   letter-spacing: 0.2em;
   padding: 4px 0;
-  background: rgba(8, 8, 9, 0.55);
-  border-top: 1px solid var(--line-core);
-  border-bottom: 1px solid var(--line-core);
-  color: var(--grey-d);
+  background: linear-gradient(180deg, rgba(58, 0, 8, 0.55), rgba(8, 8, 9, 0.6));
+  border-top: 1px solid var(--line-hex);
+  border-bottom: 1px solid var(--line-hex);
+  color: var(--txt-dim);
 }
-.marquee-track span { color: var(--line-hex); padding-right: 3rem; }
-.marquee-track span em { color: var(--grey-d); }
-.marquee-track b { color: var(--ember); font-weight: 600; opacity: 0.85; }
+.marquee-track span { color: var(--blood-bright); padding-right: 3rem; }
+.marquee-track span em { color: var(--txt-dim); }
+.marquee-track b { color: var(--ember); font-weight: 600; opacity: 0.9; }
 
 /* cinta EST.2026: detalle de ambientación, sin peso propio */
 .hero-badge {
