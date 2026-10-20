@@ -445,6 +445,9 @@
               <button class="adm-tab-btn is-on" type="button" data-tab="blog">01 · transmisiones</button>
               <button class="adm-tab-btn" type="button" data-tab="art">02 · ilustraciones</button>
               <button class="adm-tab-btn" type="button" data-tab="status">03 · estado</button>
+              <button class="adm-tab-btn" type="button" data-tab="tx">04 · micro-mensajes</button>
+              <button class="adm-tab-btn" type="button" data-tab="wip">05 · proyectos</button>
+              <button class="adm-tab-btn" type="button" data-tab="profile">06 · perfil</button>
             </div>
           </section>
 
@@ -622,6 +625,109 @@
               <b>CONFIG.ASSISTANT_STATUS</b> de <b>script.js</b> — la misma fuente
               de verdad que usa el sitio al cargar. El chip «commissions» del home
               y los chips por tarjeta se repintan solos.
+            </p>
+          </section>
+
+
+          <!-- ============== MODULO 04 - MICRO-MENSAJES (TX) ============== -->
+          <section class="panel adm-tab adm-rise" id="tab-tx" hidden aria-labelledby="h-tx">
+            <header class="panel-head">
+              <h2 id="h-tx">[04 // MICRO-MENSAJES (TX)]</h2>
+              <span class="chip chip-open">nueva nota</span>
+            </header>
+
+            <div class="adm-field">
+              <label for="f-tx-text">texto de la transmision *</label>
+              <textarea class="adm-in" id="f-tx-text" maxlength="300" style="min-height:80px;"
+                        placeholder="ej: hoy termine el boceto de Toph"></textarea>
+              <span class="hint">aparece en el muro de notas del home, arriba de las anteriores</span>
+            </div>
+
+            <div class="adm-actions">
+              <button class="btn-adm" type="button" id="btn-tx-add">[PUBLICAR NOTA]</button>
+              <button class="btn-adm" type="button" id="btn-tx-save">[GUARDAR NOTAS]</button>
+            </div>
+
+            <div style="margin-top:18px;">
+              <h3 style="font-family:var(--font-mono);font-size:0.8rem;letter-spacing:0.12em;color:var(--grey-d);margin:0 0 10px;">NOTAS PUBLICADAS</h3>
+              <div id="tx-list"></div>
+            </div>
+
+            <p class="adm-note">
+              Las notas se guardan en <b>CONFIG.TRANSMISSIONS</b> de <b>script.js</b> y
+              se renderizan en el muro del home. Puedes eliminar notas desde aqui.
+            </p>
+          </section>
+
+          <!-- ============== MODULO 05 - PROYECTOS ACTUALES (WIP) ============== -->
+          <section class="panel adm-tab adm-rise" id="tab-wip" hidden aria-labelledby="h-wip">
+            <header class="panel-head">
+              <h2 id="h-wip">[05 // PROYECTOS ACTUALES (WIP)]</h2>
+              <span class="chip chip-open">gestionar</span>
+            </header>
+
+            <div id="wip-list"></div>
+
+            <div class="adm-actions" style="margin-top:14px;">
+              <button class="btn-ghost" type="button" id="btn-wip-add">[+ AGREGAR PROYECTO]</button>
+              <button class="btn-adm" type="button" id="btn-wip-save">[GUARDAR CAMBIOS]</button>
+            </div>
+
+            <p class="adm-note">
+              Los proyectos se guardan en <b>CONFIG.WIP_TASKS</b> de <b>script.js</b> y
+              se renderizan en el panel "working on rn..." del home.
+            </p>
+          </section>
+
+          <!-- ============== MODULO 06 - EDITAR PERFIL ============== -->
+          <section class="panel adm-tab adm-rise" id="tab-profile" hidden aria-labelledby="h-profile">
+            <header class="panel-head">
+              <h2 id="h-profile">[06 // EDITAR PERFIL Y BIO]</h2>
+              <span class="chip chip-open">actualizar</span>
+            </header>
+
+            <div class="adm-field">
+              <label for="f-bio-home">bio del home (corta)</label>
+              <textarea class="adm-in" id="f-bio-home" maxlength="200" style="min-height:60px;"
+                        placeholder="17 y/o digital artist from Mexico..."></textarea>
+            </div>
+
+            <div class="adm-field">
+              <label for="f-bio-about">bio extendida (sobre mi) - un parrafo por linea</label>
+              <textarea class="adm-in" id="f-bio-about" style="min-height:140px;"
+                        placeholder="Hola, soy Lunnie..."></textarea>
+            </div>
+
+            <div class="adm-grid2">
+              <div class="adm-field">
+                <label for="f-location">ubicacion</label>
+                <input class="adm-in" type="text" id="f-location" maxlength="60" placeholder="Mexico">
+              </div>
+              <div class="adm-field">
+                <label for="f-role">rol</label>
+                <input class="adm-in" type="text" id="f-role" maxlength="60" placeholder="digital artist &amp; illustrator">
+              </div>
+            </div>
+
+            <div class="adm-field">
+              <label for="f-tools">herramientas - una por linea</label>
+              <textarea class="adm-in" id="f-tools" style="min-height:80px;"
+                        placeholder="Clip Studio Paint&#10;ibis Paint&#10;MediBang"></textarea>
+            </div>
+
+            <div class="adm-field">
+              <label for="f-interests">intereses - uno por linea</label>
+              <textarea class="adm-in" id="f-interests" style="min-height:100px;"
+                        placeholder="Guilty Gear Strive&#10;Persona 5&#10;musica: lo-fi, city pop"></textarea>
+            </div>
+
+            <div class="adm-actions">
+              <button class="btn-adm" type="button" id="btn-profile-save">[ACTUALIZAR PERFIL]</button>
+            </div>
+
+            <p class="adm-note">
+              Los cambios se guardan en <b>CONFIG.PROFILE</b> de <b>script.js</b> y se
+              renderizan automaticamente en home y sobre-mi.
             </p>
           </section>
 
@@ -878,11 +984,334 @@
         $$('.adm-tab-btn').forEach((x) => x.classList.toggle('is-on', x === b));
         $$('.adm-tab').forEach((t) => { t.hidden = t.id !== 'tab-' + b.dataset.tab; });
         if (b.dataset.tab === 'status') refreshStatusTab();
+        if (b.dataset.tab === 'tx') refreshTxTab();
+        if (b.dataset.tab === 'wip') refreshWipTab();
+        if (b.dataset.tab === 'profile') refreshProfileTab();
       });
     });
 
     /* ==============================================================
-       MÓDULO 1 · BLOG — markdown + renumeración + inserción
+       MÓDULO 04 · MICRO-MENSAJES (TX) — CONFIG.TRANSMISSIONS
+       ============================================================== */
+
+    function parseTransmissions(text) {
+      const m = text.match(/TRANSMISSIONS:\s*\[([\s\S]*?)\n\s*\]/);
+      if (!m) throw new Error('No encuentro CONFIG.TRANSMISSIONS en script.js.');
+      const arr = [];
+      const entryRe = /\{\s*id\s*:\s*'([^']*)'\s*,\s*t\s*:\s*'([^']*)'\s*,\s*d\s*:\s*'([^']*)'\s*,\s*base\s*:\s*\{([^}]*)\}\s*,?\s*\}/g;
+      let x;
+      while ((x = entryRe.exec(m[1]))) {
+        const base = {};
+        const baseRe = /'([^']+)'\s*:\s*(\d+)/g;
+        let b;
+        while ((b = baseRe.exec(x[4]))) base[b[1]] = parseInt(b[2], 10);
+        arr.push({ id: x[1], t: x[2], d: x[3], base: base });
+      }
+      return arr;
+    }
+
+    function renderTxList(notes) {
+      const box = $('#tx-list');
+      box.textContent = '';
+      if (!notes.length) {
+        const p = document.createElement('p');
+        p.className = 'adm-note';
+        p.textContent = 'Sin notas todavía.';
+        box.appendChild(p);
+        return;
+      }
+      notes.forEach((n, i) => {
+        const row = document.createElement('div');
+        row.className = 'adm-comm';
+        const baseKeys = Object.keys(n.base || {});
+        const baseSummary = baseKeys.length ? baseKeys.map((k) => k + '×' + n.base[k]).join(' · ') : 'sin reacciones';
+        row.innerHTML =
+          '<span><b>' + esc(n.t) + '</b><em>' + esc(n.d) + ' · id: ' + esc(n.id) + ' · ' + esc(baseSummary) + '</em></span>' +
+          '<button class="btn-ghost" type="button" data-tx-del="' + i + '">[Eliminar]</button>';
+        box.appendChild(row);
+      });
+      $$('#tx-list [data-tx-del]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const idx = parseInt(btn.dataset.txDel, 10);
+          txCache.splice(idx, 1);
+          renderTxList(txCache);
+          log('Nota eliminada de la lista (no guardada aún).', 'warn');
+        });
+      });
+    }
+
+    let txCache = [];
+    let txLoaded = false;
+    async function refreshTxTab() {
+      if (!state.token || txLoaded) return;
+      try {
+        log('Leyendo TRANSMISSIONS de script.js…', 'info');
+        const s = await getFile('script.js');
+        txCache = parseTransmissions(s.text);
+        renderTxList(txCache);
+        txLoaded = true;
+        log('Transmisiones leídas: ' + txCache.length + '.', 'ok');
+      } catch (e) {
+        log('No pude leer transmisiones: ' + humanError(e), 'err');
+      }
+    }
+
+    function rewriteTransmissions(text, notes) {
+      const m = text.match(/TRANSMISSIONS:\s*\[[\s\S]*?\n\s*\]/);
+      if (!m) throw new Error('No encuentro CONFIG.TRANSMISSIONS en script.js.');
+      const rebuilt = 'TRANSMISSIONS: [\n' +
+        notes.map((n) => {
+          const baseEntries = Object.keys(n.base || {}).map((k) =>
+            "        '" + k + "': " + n.base[k]
+          ).join(',\n');
+          return '    {\n' +
+            "      id: '" + n.id.replace(/'/g, "\\'") + "',\n" +
+            "      t: '" + n.t.replace(/'/g, "\\'") + "',\n" +
+            "      d: '" + n.d.replace(/'/g, "\\'") + "',\n" +
+            '      base: {\n' + baseEntries + ',\n      },\n' +
+            '    },';
+        }).join('\n') + '\n  ]';
+      const out = text.slice(0, m.index) + rebuilt + text.slice(m.index + m[0].length);
+      const back = parseTransmissions(out);
+      if (back.length !== notes.length) throw new Error('TRANSMISSIONS no reescribió bien — abortado.');
+      try { new Function(out); } catch (e) { throw new Error('script.js ya no sería JS válido: ' + e.message); }
+      return out;
+    }
+
+    $('#btn-tx-add').addEventListener('click', () => {
+      const txt = $('#f-tx-text').value.trim();
+      if (!txt) return log('Escribe un texto primero.', 'err');
+      const now = new Date();
+      const id = 'tx-' + Date.now();
+      const d = now.toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: 'numeric' });
+      txCache.unshift({ id: id, t: txt, d: d, base: {} });
+      $('#f-tx-text').value = '';
+      renderTxList(txCache);
+      log('Nota añadida a la lista (no guardada aún). Guarda para publicar.', 'info');
+    });
+
+    $('#btn-tx-save').addEventListener('click', () => {
+      busy($('#btn-tx-save'), 'PUBLICANDO NOTAS…', async () => {
+        log('Leyendo script.js (sha fresco)…', 'info');
+        const s = await getFile('script.js');
+        const text = rewriteTransmissions(s.text, txCache);
+        log('Publicando commit en GitHub…', 'info');
+        const sha = await putFile('script.js', strToB64(text),
+          'admin: actualiza micro-mensajes (TRANSMISSIONS)', s.sha);
+        commitLine(sha, 'notas TX guardadas (' + txCache.length + ')');
+        log('Muro de notas actualizado.', 'ok');
+      });
+    });
+
+    /* ==============================================================
+       MÓDULO 05 · PROYECTOS ACTUALES (WIP) — CONFIG.WIP_TASKS
+       ============================================================== */
+
+    const WIP_STATUSES = ['ACTIVE', 'BUILDING', 'NEXT', 'DONE'];
+
+    function parseWipTasks(text) {
+      const m = text.match(/WIP_TASKS:\s*\[([\s\S]*?)\]/);
+      if (!m) throw new Error('No encuentro CONFIG.WIP_TASKS en script.js.');
+      const arr = [];
+      const re = /\{\s*title\s*:\s*'([^']*)'\s*,\s*status\s*:\s*'([^']*)'\s*\}/g;
+      let x;
+      while ((x = re.exec(m[1]))) arr.push({ title: x[1], status: x[2] });
+      return arr;
+    }
+
+    function renderWipList(tasks) {
+      const box = $('#wip-list');
+      box.textContent = '';
+      if (!tasks.length) {
+        const p = document.createElement('p');
+        p.className = 'adm-note';
+        p.textContent = 'Sin proyectos. Pulsa [+ Agregar Proyecto].';
+        box.appendChild(p);
+        return;
+      }
+      tasks.forEach((task, i) => {
+        const row = document.createElement('div');
+        row.className = 'adm-comm';
+        const sel = WIP_STATUSES.map((s) =>
+          '<option value="' + s + '"' + (task.status === s ? ' selected' : '') + '>' + s + '</option>'
+        ).join('');
+        row.innerHTML =
+          '<span style="flex:1;"><input class="adm-in" type="text" data-wip-title="' + i + '" value="' +
+          esc(task.title) + '" maxlength="120" style="width:100%;"></span>' +
+          '<select class="adm-in" data-wip-status="' + i + '" style="width:auto;min-width:110px;">' + sel + '</select>' +
+          '<button class="btn-ghost" type="button" data-wip-del="' + i + '">[x]</button>';
+        box.appendChild(row);
+      });
+      $$('#wip-list [data-wip-del]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          wipCache.splice(parseInt(btn.dataset.wipDel, 10), 1);
+          renderWipList(wipCache);
+        });
+      });
+    }
+
+    function collectWipCache() {
+      $$('#wip-list [data-wip-title]').forEach((inp) => {
+        const i = parseInt(inp.dataset.wipTitle, 10);
+        if (wipCache[i]) wipCache[i].title = inp.value.trim();
+      });
+      $$('#wip-list [data-wip-status]').forEach((sel) => {
+        const i = parseInt(sel.dataset.wipStatus, 10);
+        if (wipCache[i]) wipCache[i].status = sel.value;
+      });
+    }
+
+    let wipCache = [];
+    let wipLoaded = false;
+    async function refreshWipTab() {
+      if (!state.token || wipLoaded) return;
+      try {
+        log('Leyendo WIP_TASKS de script.js…', 'info');
+        const s = await getFile('script.js');
+        wipCache = parseWipTasks(s.text);
+        renderWipList(wipCache);
+        wipLoaded = true;
+        log('Proyectos leídos: ' + wipCache.length + '.', 'ok');
+      } catch (e) {
+        log('No pude leer proyectos: ' + humanError(e), 'err');
+      }
+    }
+
+    function rewriteWipTasks(text, tasks) {
+      const m = text.match(/WIP_TASKS:\s*\[[\s\S]*?\]/);
+      if (!m) throw new Error('No encuentro CONFIG.WIP_TASKS en script.js.');
+      const rebuilt = 'WIP_TASKS: [\n' +
+        tasks.map((t) =>
+          "    { title: '" + t.title.replace(/'/g, "\\'") + "', status: '" + t.status + "' },"
+        ).join('\n') + '\n  ]';
+      const out = text.slice(0, m.index) + rebuilt + text.slice(m.index + m[0].length);
+      const back = parseWipTasks(out);
+      if (back.length !== tasks.length) throw new Error('WIP_TASKS no reescribió bien — abortado.');
+      try { new Function(out); } catch (e) { throw new Error('script.js ya no sería JS válido: ' + e.message); }
+      return out;
+    }
+
+    $('#btn-wip-add').addEventListener('click', () => {
+      collectWipCache();
+      wipCache.push({ title: 'nuevo proyecto', status: 'NEXT' });
+      renderWipList(wipCache);
+    });
+
+    $('#btn-wip-save').addEventListener('click', () => {
+      busy($('#btn-wip-save'), 'PUBLICANDO PROYECTOS…', async () => {
+        collectWipCache();
+        wipCache = wipCache.filter((t) => t.title);
+        log('Leyendo script.js (sha fresco)…', 'info');
+        const s = await getFile('script.js');
+        const text = rewriteWipTasks(s.text, wipCache);
+        log('Publicando commit en GitHub…', 'info');
+        const sha = await putFile('script.js', strToB64(text),
+          'admin: actualiza proyectos WIP', s.sha);
+        commitLine(sha, 'proyectos WIP guardados (' + wipCache.length + ')');
+        log('Panel "working on" actualizado.', 'ok');
+      });
+    });
+
+    /* ==============================================================
+       MÓDULO 06 · EDITAR PERFIL — CONFIG.PROFILE
+       ============================================================== */
+
+    function parseProfile(text) {
+      const m = text.match(/PROFILE:\s*\{([\s\S]*?)\n\s*\}/);
+      if (!m) throw new Error('No encuentro CONFIG.PROFILE en script.js.');
+      const body = m[1];
+      const grab = (key) => {
+        const sm = body.match(new RegExp(key + ":\\s*'((?:\\\\.|[^'\\\\])*)'"));
+        return sm ? sm[1].replace(/\\'/g, "'").replace(/\\\\/g, '\\') : '';
+      };
+      const grabArr = (key) => {
+        const sm = body.match(new RegExp(key + ":\\s*\\[([\\s\\S]*?)\\]"));
+        if (!sm) return [];
+        const items = [];
+        const re = /'((?:\\.|[^'\\])*)'/g;
+        let x;
+        while ((x = re.exec(sm[1]))) items.push(x[1].replace(/\\'/g, "'").replace(/\\\\/g, '\\'));
+        return items;
+      };
+      return {
+        bioHome: grab('bioHome'),
+        bioAbout: grabArr('bioAbout'),
+        interests: grabArr('interests'),
+        tools: grabArr('tools'),
+        location: grab('location'),
+        role: grab('role'),
+      };
+    }
+
+    function renderProfileForm(p) {
+      $('#f-bio-home').value = p.bioHome;
+      $('#f-bio-about').value = p.bioAbout.join('\n\n');
+      $('#f-location').value = p.location;
+      $('#f-role').value = p.role;
+      $('#f-tools').value = p.tools.join('\n');
+      $('#f-interests').value = p.interests.join('\n');
+    }
+
+    function escStr(s) {
+      return String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    }
+
+    function rewriteProfile(text, p) {
+      const m = text.match(/PROFILE:\s*\{[\s\S]*?\n\s*\}/);
+      if (!m) throw new Error('No encuentro CONFIG.PROFILE en script.js.');
+      const arr = (items) => '[\n' + items.map((s) => "    '" + escStr(s) + "'").join(',\n') + '\n  ]';
+      const rebuilt = 'PROFILE: {\n' +
+        "    bioHome: '" + escStr(p.bioHome) + "',\n" +
+        '    bioAbout: ' + arr(p.bioAbout) + ',\n' +
+        '    interests: ' + arr(p.interests) + ',\n' +
+        '    tools: ' + arr(p.tools) + ',\n' +
+        "    location: '" + escStr(p.location) + "',\n" +
+        "    role: '" + escStr(p.role) + "',\n" +
+        '  }';
+      const out = text.slice(0, m.index) + rebuilt + text.slice(m.index + m[0].length);
+      const back = parseProfile(out);
+      if (back.role !== p.role || back.location !== p.location) throw new Error('PROFILE no reescribió bien — abortado.');
+      try { new Function(out); } catch (e) { throw new Error('script.js ya no sería JS válido: ' + e.message); }
+      return out;
+    }
+
+    let profileLoaded = false;
+    async function refreshProfileTab() {
+      if (!state.token || profileLoaded) return;
+      try {
+        log('Leyendo PROFILE de script.js…', 'info');
+        const s = await getFile('script.js');
+        renderProfileForm(parseProfile(s.text));
+        profileLoaded = true;
+        log('Perfil leído.', 'ok');
+      } catch (e) {
+        log('No pude leer el perfil: ' + humanError(e), 'err');
+      }
+    }
+
+    $('#btn-profile-save').addEventListener('click', () => {
+      busy($('#btn-profile-save'), 'PUBLICANDO PERFIL…', async () => {
+        const p = {
+          bioHome: $('#f-bio-home').value.trim(),
+          bioAbout: $('#f-bio-about').value.split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean),
+          interests: $('#f-interests').value.split('\n').map((s) => s.trim()).filter(Boolean),
+          tools: $('#f-tools').value.split('\n').map((s) => s.trim()).filter(Boolean),
+          location: $('#f-location').value.trim(),
+          role: $('#f-role').value.trim(),
+        };
+        log('Leyendo script.js (sha fresco)…', 'info');
+        const s = await getFile('script.js');
+        const text = rewriteProfile(s.text, p);
+        log('Publicando commit en GitHub…', 'info');
+        const sha = await putFile('script.js', strToB64(text),
+          'admin: actualiza perfil (CONFIG.PROFILE)', s.sha);
+        commitLine(sha, 'perfil actualizado');
+        log('Perfil sincronizado con home y sobre-mí.', 'ok');
+      });
+    });
+
+    /* ==============================================================
+       ARRANQUE — sesión silenciosa si hay token guardado
        ============================================================== */
 
     /* --- markdown (subconjunto) — puro, testeable --- */

@@ -113,6 +113,57 @@ const CONFIG = {
     c6: 'mailto:lunnie.commissions@gmail.com?subject=Lista de espera — animación rough',
   },
   GUESTBOOK_MAX: 12,
+
+  // ── TRANSMISIONES (muro de notas del home) ──────────────────
+  // Cada entrada: { id, t: texto, d: fecha, base: {emoji: n} }
+  // El panel admin (pestaña 04) gestiona esta lista.
+  TRANSMISSIONS: [
+    {
+      id: 'tx-001',
+      t: 'bienvenid@ a mi panteón — un rincón de internet hecho a mano, sin algoritmo. subo bocetos, proceso y lo que salga ✦',
+      d: '2026-10-01',
+      base: { '❤️': 5, '🔥': 2, '🌙': 3, '✨': 4 },
+    },
+    {
+      id: 'tx-002',
+      t: 'estoy trabajando en stickers góticos del conejo — si quieres que te avise cuando estén listos, escríbeme por discord ✦',
+      d: '2026-10-10',
+      base: { '❤️': 3, '🔥': 1, '🌙': 2, '✨': 2 },
+    },
+  ],
+
+  // ── PROYECTOS EN CURSO (WORKING ON RN…) ────────────────────
+  // status: 'ACTIVE' | 'BUILDING' | 'NEXT' | 'DONE'
+  // El panel admin (pestaña 05) gestiona esta lista.
+  WIP_TASKS: [
+    { title: 'stickers góticos del conejo', status: 'ACTIVE' },
+    { title: 'ilustración de Toph Beifong', status: 'ACTIVE' },
+    { title: 'nueva página de encargos', status: 'BUILDING' },
+    { title: 'playlist para el blog', status: 'NEXT' },
+  ],
+
+  // ── PERFIL (bio, intereses, herramientas) ──────────────────
+  // El panel admin (pestaña 06) gestiona este objeto.
+  PROFILE: {
+    bioHome: '17 y/o digital artist from Mexico. Obsessed with fighting games, gothic vibes & high-contrast illustrations. Welcome to my grave.',
+    bioAbout: [
+      'Hola, soy Lunnie: tengo 17, vivo en México y dibujo casi todos los días desde que aprendí a sostener un lápiz sin romperlo. Me muevo entre el ilustrado digital y el boceto sucio — lo que más busco en un dibujo no es que sea bonito, sino que tenga actitud: diagonales, contraste, un personaje que parezca que acaba de entrar en pantalla.',
+      'Hace un año quería volver a tener casa en internet, de las de antes: una web hecha a mano, con botones 88x31, muro de notas y sin un algoritmo decidiendo qué ves. Por eso existe este panteón — lo escribí yo, línea por línea, y cada rincón tiene algo de mí: mis OCs, mi diario, mis encargos.',
+      'En la vida "real" soy estudiante, llevo un portafolio que intento alimentar entre tareas y turno de sueño irregular. Si me ves a las 2 a.m. probablemente esté planchando líneas en Clip Studio o perdiendo el mismo matchup en ranked. Ambas actividades son perfectamente válidas como investigación artística.',
+    ],
+    interests: [
+      'Guilty Gear Strive (y todo lo que rompe en ranked)',
+      'Persona 5 — menús, diagonal y actitud',
+      'música: lo-fi, city pop, OSTs de fighting games',
+      'estética de cripta: humo, CRT, widgets',
+      'web revival: neocities, foros, clip-art',
+      'café a las 2 a.m. y bocetos a mano alzada',
+      'mis OCs (obviamente)',
+    ],
+    tools: ['Clip Studio Paint', 'ibis Paint', 'MediBang', 'Figma (botones 88x31)'],
+    location: 'México',
+    role: 'digital artist & illustrator',
+  },
 };
 
 /* ============================================================
@@ -497,26 +548,8 @@ async function copyPlain(text) {
   const REACTS = 'lunnie-tx-reacts';
   const REACTS_UI = ['❤️', '🔥', '🌙', '✨'];
 
-  const SEED = [
-    {
-      id: 'seed-1',
-      t: 'boceto del día: gato explorador en su primera cacería nocturna 🕯️ ¿alguien lo quiere como sticker?',
-      d: 'hace 1 h',
-      base: { '❤️': 12, '🔥': 8, '🌙': 4, '✨': 9 },
-    },
-    {
-      id: 'seed-2',
-      t: 'midnight practicing guilty gear… wrongdoing all night. ¿alguien para el próximo set? ♡',
-      d: 'ayer',
-      base: { '❤️': 6, '🔥': 11, '🌙': 2, '✨': 5 },
-    },
-    {
-      id: 'seed-3',
-      t: "1 semana en este panteón y ya siento que es mi casa :')",
-      d: 'hace 3 días',
-      base: { '❤️': 19, '🔥': 3, '🌙': 7, '✨': 12 },
-    },
-  ];
+  // Transmisiones oficiales vienen de CONFIG.TRANSMISSIONS (gestionables desde admin).
+  const SEED = CONFIG.TRANSMISSIONS || [];
 
   const loadNotes = () => {
     try {
@@ -591,7 +624,15 @@ async function copyPlain(text) {
   function renderWall() {
     wall.textContent = '';
     const mine = loadNotes().map((n) => ({ ...n, isMine: true }));
-    mine.concat(SEED).forEach((n) => wall.appendChild(buildNote(n)));
+    const all = mine.concat(SEED);
+    if (!all.length) {
+      const empty = document.createElement('p');
+      empty.className = 'tx-empty';
+      empty.textContent = '✦ no hay transmisiones aún — sé la primera en dejar una ✦';
+      wall.appendChild(empty);
+      return;
+    }
+    all.forEach((n) => wall.appendChild(buildNote(n)));
   }
 
   post.addEventListener('click', () => {
@@ -962,4 +1003,100 @@ async function copyPlain(text) {
 
   if (document.getElementById('gal-grid')) verify('#gal-grid .g-item', CONFIG.WORKS, 'works', 'galeria.html');
   if (document.getElementById('sec-ocs')) verify('#sec-ocs .oc-card', CONFIG.OCS, 'ocs', 'ocs.html');
+})();
+
+/* ============================================================
+   17. WORKING ON — proyectos en curso desde CONFIG.WIP_TASKS
+   ------------------------------------------------------------
+   Renderiza las filas del panel "working on rn…" en index.html.
+   Cada tarea: { title, status } con status ACTIVE/BUILDING/NEXT/DONE.
+   ============================================================ */
+(function initWorkingOn() {
+  const container = document.querySelector('[data-sec="WIP"] .working-list');
+  if (!container) return;
+
+  const tasks = CONFIG.WIP_TASKS || [];
+  const statusClass = {
+    ACTIVE: 'is-on',
+    BUILDING: '',
+    NEXT: '',
+    DONE: 'is-done',
+  };
+
+  container.textContent = '';
+  if (!tasks.length) {
+    const empty = document.createElement('p');
+    empty.className = 'tiny';
+    empty.textContent = '✦ sin proyectos activos por ahora ✦';
+    container.appendChild(empty);
+    return;
+  }
+
+  tasks.forEach((task) => {
+    const row = document.createElement('div');
+    row.className = 'working-row';
+
+    const dot = document.createElement('span');
+    dot.className = 'dot';
+
+    const p = document.createElement('p');
+    p.textContent = task.title;
+
+    const chip = document.createElement('span');
+    chip.className = 'chip chip-state' + (statusClass[task.status] ? ' ' + statusClass[task.status] : '');
+    chip.textContent = task.status;
+
+    row.append(dot, p, chip);
+    container.appendChild(row);
+  });
+})();
+
+/* ============================================================
+   18. PROFILE — bio e intereses desde CONFIG.PROFILE
+   ------------------------------------------------------------
+   Inyecta la bio y datos del perfil en index.html y sobre-mi.html
+   usando selectores data-attr para que el admin pueda gestionarlos.
+   ============================================================ */
+(function initProfile() {
+  const P = CONFIG.PROFILE;
+  if (!P) return;
+
+  // Bio corta en home (si existe el elemento)
+  const homeBio = document.querySelector('[data-profile="bio-home"]');
+  if (homeBio && P.bioHome) homeBio.textContent = P.bioHome;
+
+  // Bio extendida en sobre-mi.html
+  const aboutBio = document.querySelector('[data-profile="bio-about"]');
+  if (aboutBio && Array.isArray(P.bioAbout)) {
+    aboutBio.textContent = '';
+    P.bioAbout.forEach((para) => {
+      const p = document.createElement('p');
+      p.textContent = para;
+      aboutBio.appendChild(p);
+    });
+  }
+
+  // Intereses
+  const interests = document.querySelector('[data-profile="interests"]');
+  if (interests && Array.isArray(P.interests)) {
+    interests.textContent = '';
+    P.interests.forEach((item) => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      interests.appendChild(li);
+    });
+  }
+
+  // Herramientas (stat-card del home/sobre-mí)
+  const tools = document.querySelector('[data-profile="tools"]');
+  if (tools && Array.isArray(P.tools) && P.tools.length) {
+    tools.textContent = P.tools.join(' / ');
+  }
+
+  // Ubicación y rol
+  const loc = document.querySelector('[data-profile="location"]');
+  if (loc && P.location) loc.textContent = P.location;
+
+  const role = document.querySelector('[data-profile="role"]');
+  if (role && P.role) role.textContent = P.role;
 })();
